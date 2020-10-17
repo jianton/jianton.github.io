@@ -147,7 +147,7 @@ D:\Dropbox\curso_stata\sesión2
                   Total │     33,734      100.00
 </pre>
 <p>En este caso, observamos que hay observaciones que solo aparecen en la base <code>master</code>. ¿Existe un error? No, lo que ocurre es que la base de datos con información básica incluye a todas las personas, mientras que la que comprende información detallada, solo a los mayores de 16 años. No obstante, la variable <code>_merge</code> nos permite distinguir errores de otras circunstancias.</p>
-<p>#1.2. Fusiones de bases de datos de varias observaciones a una observación (o viceversa)</p>
+<h1 id="fusiones-de-bases-de-datos-de-varias-observaciones-a-una-observación-o-viceversa">1.2. Fusiones de bases de datos de varias observaciones a una observación (o viceversa)</h1>
 <p>En ocasiones, precisamos fusionar una base de datos a un cierto nivel (e.g., personas) con otra base de datos con información a nivel superior (e.g., hogares o regiones). Para realizar este tipo de operación empleamos</p>
 <p><code>merge m:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]</code></p>
 <p>En nuestro caso, vamos a fusionar la base de datos de personas con información básica (<code>ecv18r.dta</code>) con la base de datos de los hogares con información básica (<code>ecv18d.dta</code>). La variable de enlace, común en ambas bases, es el identificador del hogar (<code>hid</code>). Según la documentación, el identificador personal está compuesto del identificador laboral más el número de orden de la persona dentro del hogar. En los ficheros de personas, hemos creado un identificador del hogar empleando <code>generate int hid = pid/100</code>, por lo que tenemos dicha variable. La fusión, en este caso, es perfecta, pero, en muchas ocasiones, hay problemas de no respuesta, errores de codificación, etc. y es habitual que nos tengamos que quedar solo con aquellos datos que enlazan perfectamente (<code>_merge == 3</code>).</p>
@@ -372,7 +372,7 @@ D:\Dropbox\curso_stata\sesión2
 ────────────┼───────────────────────────────────
       Total │    105,025      100.00
 </pre>
-<p>#3. Crear una base de datos con estadísticos descriptivos</p>
+<h1 id="crear-una-base-de-datos-con-estadísticos-descriptivos">3. Crear una base de datos con estadísticos descriptivos</h1>
 <p>Esta tarea, si bien se puede realizar combinando otros comandos (<code>egen</code>, <code>merge</code> y <code>append</code>) es mucho más sencilla a través de la potente instrucción <code>collapse</code>:</p>
 <p><code>collapse <i>clist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
 <p>donde <i><code>clist</code></i> viene dado por</p>
@@ -430,7 +430,7 @@ lastnm       last nonmissing value</code></pre>
 . 
 . collapse salariomed = salario, by(ano sexo)
 </pre>
-<p>#4. Cambiar la disposición de los datos</p>
+<h1 id="cambiar-la-disposición-de-los-datos">4. Cambiar la disposición de los datos</h1>
 <p>En muchas ocasiones, especialmente cuando trabajamos con datos de panel, resulta tremendamente útil cambiar la disposición de los datos que tenemos. Por ejemplo, en nuestra base de datos tenemos el salario medio por sexo y año. El formato (llamado <code>long</code>) es el siguiente:</p>
 <pre class='stata'>. sort sexo ano
 
@@ -510,15 +510,15 @@ salariomed2016 salariomed2017 salariomed2018-> salariomed
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 
@@ -536,14 +536,14 @@ Sorted by: sexo  ano
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             3                          
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 
@@ -556,19 +556,19 @@ Sorted by:
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 </pre>
-<h2 id="el-uso-de-macros-local-global-tempname-tempvarytempfile">5.2. El uso de macros: <code>local</code>, <code>global</code>, <code>tempname</code>, tempvar<code>y</code>tempfile`</h2>
+<h2 id="el-uso-de-macros-local-global-tempname-tempvar-y-tempfile">5.2. El uso de macros: <code>local</code>, <code>global</code>, <code>tempname</code>, <code>tempvar</code> y <code>tempfile</code></h2>
 <p><code>global</code> asigna a una macro global (se conserva hasta que se cierre <code>Stata</code>) cadenas de caracteres. Se emplea habitualmente para crear listas de variables (e.g., regresores como variables independientes a introducir en una regresión). Para referirnos a estas macros, debemos utilizar <code>$</code>.</p>
 <p><code>local</code> asigna a una macro local (se conserva hasta que se ejecuta el archivo <code>.do</code>) cadenas de caracteres y tiene un funcionamiento similar a <code>global</code>. Para invocar una macro creada empleamos ``<code>y</code>’`.</p>
 <p><code>tempvar</code> crea varaibles temporales en una base de datos que desaparecen al concluir el programa o el archivo <code>.do</code>.</p>

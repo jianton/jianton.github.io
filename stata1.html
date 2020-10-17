@@ -111,7 +111,15 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>Archivos Markdown de <code>Stata</code>, similares a los archivos <em>.do</em>, que se emplean por comandos como <code>markstat</code> para la creación de documentos dinámicos reproducibles.</p>
 <p>En la práctica, los archivos que más vamos a utilizar son los archivos <code>.do</code> y <code>.dta</code>.</p>
 <h2 id="el-entorno-de-stata">3.2. El entorno de <code>Stata</code></h2>
-<p>El entorno de la versión 16 de <code>Stata</code> nos muestra: * Ventana de resultados. * Línea de comandos. * Ventana de variables. * Ventana de propiedades de las variables. * Menús * Barra de tareas <span class="math inline">\(\rightarrow\)</span> <strong>importantes</strong>: explorador y editor de archivos <code>.do</code></p>
+<p>El entorno de la versión 16 de <code>Stata</code> nos muestra:</p>
+<ul>
+<li>Ventana de resultados.</li>
+<li>Línea de comandos.</li>
+<li>Ventana de variables.</li>
+<li>Ventana de propiedades de las variables.</li>
+<li>Menús</li>
+<li>Barra de tareas <span class="math inline">\(\rightarrow\)</span> <strong>importantes</strong>: explorador y editor de archivos <code>.do</code></li>
+</ul>
 <figure>
 <img src="interface.png" style="width:75.0%" alt="" /><figcaption>Entorno de trabajo de `Stata’</figcaption>
 </figure>
@@ -136,9 +144,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>Algunas opciones de manuales introductorios son <span class="citation" data-cites="Acock2018">Acock (2018)</span> y <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>. En español, hay bastantes menos recursos, entre los que destaca <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span>.</p>
 <p>El tercer tipo de recursos son los tutoriales <em>online</em>. Hay tres de especial interés:</p>
 <ul>
-<li><p>La web de <a href="https://data.princeton.edu/stata">Germán Rodríguez</a> en la Universidad de Princeton.</p></li>
-<li><p>La web del <a href="https://stats.idre.ucla.edu/stata/">Institute for Digital Research and Education de la UCLA</a>. Especialmente útiles es la replicación de los ejemplos de muchos libros (aunque, en la actualidad, los propios manuales ya suelen proporcionar la sintaxis y datos empleados en los ejemplos).</p></li>
-<li><p>El curso para manejo de datos de encuestas de hogares de la <a href="https://www.saldru.uct.ac.za/training/online-stata-course-the-analysis-of-south-african-household-survey-data/">Southern Africa Labour and Development Research Unit</a>.</p></li>
+<li>La web de <a href="https://data.princeton.edu/stata">Germán Rodríguez</a> en la Universidad de Princeton.</li>
+<li>La web del <a href="https://stats.idre.ucla.edu/stata/">Institute for Digital Research and Education de la UCLA</a>. Especialmente útiles es la replicación de los ejemplos de muchos libros (aunque, en la actualidad, los propios manuales ya suelen proporcionar la sintaxis y datos empleados en los ejemplos).</li>
+<li>El curso para manejo de datos de encuestas de hogares de la <a href="https://www.saldru.uct.ac.za/training/online-stata-course-the-analysis-of-south-african-household-survey-data/">Southern Africa Labour and Development Research Unit</a>.</li>
 </ul>
 <p>Además, los diferentes tipos de cursos que ofrece <a href="https://www.stata.com/learn/">StataCorp</a> son una opción interesante, en particular, los <a href="https://www.stata.com/netcourse/">NetCourses</a>. Posiblemente, en estos días, podemos encontrar muchos MOOCs interesantes con <code>Stata</code>.</p>
 <h1 id="primeros-pasos-en-stata">4. Primeros pasos en <code>Stata</code></h1>
@@ -249,7 +257,7 @@ file ecv18r.dta saved
 <p>Para abrir un archivo <code>.dta</code>, la instrucción es muy sencilla.</p>
 <p><code><u>u</u>se <i>filename</i> [, clear <u>nol</u>abel]</code></p>
 <p>En mi caso,</p>
-<pre class='stata'>. use "ecv18r.dta", replace
+<pre class='stata'>. use "ecv18r.dta", clear
 </pre>
 <p>Por último, vamos a crear archivos logs. Son apropiados para documentar de manera muy informal los resultados (e.g., para enviarlos a un co-autor o echar un primer vistazo a los análisis estadísticos). Al comienzo de la parte que queremos “grabar”, añadimos</p>
 <p><code>log using <i>filename</i> [, append replace [<u>t</u>ext|<u>s</u>mcl] name(<i>logname</i>) nomsg]</code></p>
@@ -284,8 +292,8 @@ log using curso1, replace</code></pre>
 </tr>
 <tr class="even">
 <td style="text-align: left;">- resta</td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;">o</td>
+<td style="text-align: left;">| o</td>
+<td style="text-align: left;">&lt; menor que</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">* producto</td>
@@ -332,9 +340,9 @@ log using curso1, replace</code></pre>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (<code>rb210</code>).</p>
 <pre class='stata'>. codebook rb210
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-rb210                                                                                                                                 RB210
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+rb210                                                                                                                                               RB210
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (byte)
 
@@ -401,7 +409,10 @@ rb210                                                                           
 <pre class='stata'>. keep if rb090 == 2
 (16,266 observations deleted)
 </pre>
-<h2 id="etiquetado-de-variables">4.4. Etiquetado de variables</h2>
+<p>Volvemos a la base de datos original.</p>
+<pre class='stata'>. use "ecv18r.dta", clear
+</pre>
+<h2 id="etiquetado-de-datos-variables-y-valores">4.4. Etiquetado de datos, variables y valores</h2>
 <p>Obviamente, resulta muy tedioso operar con estos nombres, por lo que lo habitual es etiquetar las variables y sus valores. También es posible etiquetar la base de datos.</p>
 <p>Para etiquetar la base de datos empleamos</p>
 <p><code><u>la</u>bel <u>da</u>ta [“<i>label</i>”]</code></p>
@@ -449,20 +460,20 @@ rb210                                                                           
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-        edad │     17,468    46.01334    23.38652          0         86
+        edad │     33,734     44.8642    23.21889          0         86
 </pre>
 <p>Podemos generar una variable que recoja los grupos de propiedades</p>
 <pre class='stata'>. generate gedad = 1 if edad &lt;= 29
-(12,800 missing values generated)
+(24,224 missing values generated)
 
 . replace gedad = 2 if edad >= 30 &amp; edad &lt;= 49
-(4,486 real changes made)
+(8,779 real changes made)
 
 . replace gedad = 3 if edad >= 50 &amp; edad &lt;= 64
-(4,059 real changes made)
+(7,886 real changes made)
 
 . replace gedad = 4 if edad >= 65
-(4,255 real changes made)
+(7,559 real changes made)
 
 . 
 . // Etiqueamos la variable y sus valores
@@ -478,12 +489,12 @@ rb210                                                                           
 
     Grupo de edad │      Freq.     Percent        Cum.
 ──────────────────┼───────────────────────────────────
-Menor que 30 años │      4,668       26.72       26.72
-  De 30 a 49 años │      4,486       25.68       52.40
-  De 50 a 64 años │      4,059       23.24       75.64
-    65 y más años │      4,255       24.36      100.00
+Menor que 30 años │      9,510       28.19       28.19
+  De 30 a 49 años │      8,779       26.02       54.22
+  De 50 a 64 años │      7,886       23.38       77.59
+    65 y más años │      7,559       22.41      100.00
 ──────────────────┼───────────────────────────────────
-            Total │     17,468      100.00
+            Total │     33,734      100.00
 </pre>
 <h3 id="recodificación-de-variables">Recodificación de variables</h3>
 <p>A través del comando <code>recode</code> podemos recodificar variables.</p>
@@ -527,7 +538,7 @@ Menor que 30 años │      4,668       26.72       26.72
 <p><code>recode <i>varlist</i> (<i>rule</i>) [(<i>rule</i>) …] [, generate(<i>newvar</i>)]</code></p>
 <p>En nuestro caso, podemos recodificar la variable <code>gedad</code> en un menor número de categorías.</p>
 <pre class='stata'>. recode gedad (1 2 = 1) (3 4 = 2)
-(gedad: 12800 changes made)
+(gedad: 24224 changes made)
 
 . 
 . // Etiquetamos la nueva variable y sus valores
@@ -543,10 +554,10 @@ Menor que 30 años │      4,668       26.72       26.72
 
    Grupo de edad │      Freq.     Percent        Cum.
 ─────────────────┼───────────────────────────────────
-Menor de 50 años │      9,154       52.40       52.40
-   50 y más años │      8,314       47.60      100.00
+Menor de 50 años │     18,289       54.22       54.22
+   50 y más años │     15,445       45.78      100.00
 ─────────────────┼───────────────────────────────────
-           Total │     17,468      100.00
+           Total │     33,734      100.00
 </pre>
 <h3 id="generación-extendida-de-variables">Generación extendida de variables</h3>
 <p>El comando <code>egen</code> nos permite realizar muchas operaciones a partir de una o varias variables (conteo, medias, etc.)</p>
@@ -555,7 +566,7 @@ Menor de 50 años │      9,154       52.40       52.40
 <pre class='stata'>. egen edadm = mean(edad)
 </pre>
 <h3 id="los-valores-perdidos">Los valores perdidos</h3>
-<p>Una particularidad de los microdatos es la existencia frecuente de valores perdidos, debido a no respuesta, error de codificación o, simplemente, no disponibilidad de la variable para ciertas personas (e.g., salario para una persona que no está ocupada). <code>Stata</code> tiene dos formas de codificar estos valores. La primera de ellas son valores perdidos genéricos (<code>.</code>). La segunda consiste en valores perdidos específicos, que se etiquetan con letras (<code>.a</code>&lt;<code>.b</code>&lt;…&lt;<code>z</code>). Matemáticamente, <code>Stata</code> considera los valores perdidos como valores más elevados que el resto (<code>.</code>&lt;.a<code>&lt;</code>.b<code>&lt;...&lt;</code>z`)</p>
+<p>Una particularidad de los microdatos es la existencia frecuente de valores perdidos, debido a no respuesta, error de codificación o, simplemente, no disponibilidad de la variable para ciertas personas (e.g., salario para una persona que no está ocupada). <code>Stata</code> tiene dos formas de codificar estos valores. La primera de ellas son valores perdidos genéricos (<code>.</code>). La segunda consiste en valores perdidos específicos, que se etiquetan con letras (<code>.a</code>&lt;<code>.b</code>&lt;…&lt;<code>.z</code>). Matemáticamente, <code>Stata</code> considera los valores perdidos como valores más elevados que el resto, es decir,</p>
 <p><span class="math display">\[
     . &lt; .a &lt; .b &lt; \dots &lt; .z
 \]</span></p>
@@ -919,12 +930,12 @@ phd05t_f already numeric; no replace
 </pre>
 <p>Otra opción posible podía haber sido codificar -2 como <code>.a</code> y -1 como <code>.b</code>.</p>
 <p>En algunos casos, esto puede ser mucho más relevante y no corregirlo es problemático. Por ejemplo, algunas bases de datos emplean valores extremos o sin sentido para los casos de no respuesta (e.g., -2, -999, 999999, etc.) en variables numéricas. En estos casos, conviene, antes de nada, recodificar estos valores como perdidos, por ejemplo, pueden codificar la no respuesta en la variable renta con el valor -9999. Si calculamos, por ejemplo, una media sin corregir esto, el valor numérico obtenido es completamente erróneo.</p>
-<p>#5. La comunidad de usuarios</p>
+<h1 id="la-comunidad-de-usuarios">5. La comunidad de usuarios</h1>
 <p>Una de las ventajas fundamentales del uso de <code>Stata</code>, quizás solo compartida (y superada) por el programa R, es la gran comunidad de usuarios con los que cuenta. Esto se plasma en varias herramientas:</p>
 <p><strong>Los paquetes creados por los usuarios</strong>. Existen una gran cantidad de paquetes que han sido creados por los usuarios de <code>Stata</code>. Normalmente, están adecuadamente documentados. En términos generales, podemos buscar paquetes de <code>Stata</code> con la siguiente instrucción:</p>
-<p><code>net search <i>word</i> [<i>word</i> …] [, options]&lt;&gt;</p>
+<p><code>net search <i>word</i> [<i>word</i> …] [, options]</code></p>
 <p>Si sabemos el nombre del paquete, podemos emplearse</p>
-<p>&lt;code&lt;ssc install <i>pkgname</i> [, all replace]</code></p>
+<p><code>ssc install <i>pkgname</i> [, all replace]</code></p>
 <p>Así, por ejemplo, podemos buscar paquetes que permitan realizar mediciones de pobreza con la siguiente instrucción</p>
 <pre class='stata'>. net search poverty
 (contacting http://www.stata.com)
@@ -1236,16 +1247,16 @@ http://fmwww.bc.edu/RePEc/bocode/a/
     test for autocorrelation / module to implement the Alpha-Beta-Gamma Method
 
 http://fmwww.bc.edu/RePEc/bocode/c/
-    module to generate calendar / module to estimate proportions and means
-    after survey data have been calibrated to population totals / module for
-    inverse regression and calibration / module to calibrate survey datasets
-    to population totals / module to compute Calinski-Harabasz cluster
+    module to implement machine learning classification in Stata / module to
+    generate calendar / module to estimate proportions and means after survey
+    data have been calibrated to population totals / module for inverse
+    regression and calibration / module to calibrate survey datasets to
 
 http://fmwww.bc.edu/RePEc/bocode/d/
     module to create network visualizations using D3.js to view in browser /
-    module to provide utilities for directed acyclic graphs / module to fit a
-    Generalized Beta (Type 2) distribution to grouped data via ML / module to
-    fit a Dagum distribution by maximum likelihood / module to score
+    module to produce terrible dad jokes / module to provide utilities for
+    directed acyclic graphs / module to fit a Generalized Beta (Type 2)
+    distribution to grouped data via ML / module to fit a Dagum distribution
 
 http://fmwww.bc.edu/RePEc/bocode/e/
     module to estimate endogenous attribute attendance models / module to
@@ -1283,7 +1294,7 @@ checking povdeco consistency and verifying not already installed...
 all files already exist and are up to date.
 </pre>
 <p>Además, es frecuente que otros autores ofrezcan sus programas con más o menos sofisticación y mejor o peor presentación.</p>
-<p><strong><a href="https://www.stata.com/learn/">Stata Journal</a></strong>. Se trata de una revista de StataCorp, indexada en el Journal Citation Reports, donde se publican estrategias de uso de <code>Stata</code> y se proponen nuevos comandos y se ponen a disposición de los usuarios. el <a href="https://www.stata-journal.com/sjpdf.html?articlenum=st0151">artículo</a> de <span class="citation" data-cites="Jann2008">Jann (2008)</span> representa un ejemplo típico: introduce el parquete <code>oaxaca</code>, proporcionando unas nociones estadísticas mínimas y explicando el funcionamiento del mismo, ilustrado con ejemplos.</p>
+<p><strong><a href="https://www.stata.com/learn/">Stata Journal</a></strong>. Se trata de una revista de StataCorp, indexada en el Journal Citation Reports, donde se publican estrategias de uso de <code>Stata</code> y se proponen nuevos comandos y se ponen a disposición de los usuarios. El <a href="https://www.stata-journal.com/sjpdf.html?articlenum=st0151">artículo</a> de <span class="citation" data-cites="Jann2008">Jann (2008)</span> representa un ejemplo típico: introduce el parquete <code>oaxaca</code>, proporcionando unas nociones estadísticas mínimas y explicando el funcionamiento del mismo, ilustrado con ejemplos.</p>
 <figure>
 <img src="sjcover.png" style="width:15.0%" alt="" /><figcaption>Stata Journal</figcaption>
 </figure>
