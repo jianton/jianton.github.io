@@ -428,7 +428,7 @@ lastnm       last nonmissing value</code></pre>
 . 
 . //  Generamos una base de datos con el salario medio por Comunidad Autónoma y año
 . 
-. collapse salariomed = salario, by(ano sexo)
+. collapse (mean) salariomed = salario, by(ano sexo)
 </pre>
 <h1 id="cambiar-la-disposición-de-los-datos">4. Cambiar la disposición de los datos</h1>
 <p>En muchas ocasiones, especialmente cuando trabajamos con datos de panel, resulta tremendamente útil cambiar la disposición de los datos que tenemos. Por ejemplo, en nuestra base de datos tenemos el salario medio por sexo y año. El formato (llamado <code>long</code>) es el siguiente:</p>
