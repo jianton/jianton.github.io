@@ -32,6 +32,7 @@
   title     = {An{\'a}lisis de datos con Stata},
   year      = {2012},
   address   = {Madrid},
+  edition   = {2},
 }
 
 @Book{Baum2006,

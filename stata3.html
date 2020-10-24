@@ -71,9 +71,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <h2 id="tablas-de-frecuencia-con-una-o-dos-variables-tabulate">Tablas de frecuencia con una o dos variables (<code>tabulate</code>)</h2>
 <p>Es uno de los comandos más utilizados de <code>Stata</code>, esencial para explorar las bases de datos. La sintaxis es la siguiente:</p>
 <p>Tabla de una variable (<em>one-way table</em>)</p>
-<p><code><u>tab</u>ulate <i>varname1</i> <i>varname2</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
-<p>Tabla de dos variables (<em>two-way table</em>)</p>
 <p><code><u>tab</u>ulate <i>varname</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>tabulate1_options</i>]</code></p>
+<p>Tabla de dos variables (<em>two-way table</em>)</p>
+<p><code><u>tab</u>ulate <i>varname1</i> <i>varname2</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
 <p>Las opciones para crear las tablas son numerosas: número de observaciones, frecuencias de celdas, filas o columnas, etc.</p>
 <p>En nuestra base de datos, por ejemplo, podemos crear una tabla con la distribución de la educación en la población.</p>
 <pre class='stata'>. //  Fijamos el directorio de trabajo
@@ -595,35 +595,35 @@ aportacionesg                                                                   
            percentiles:        10%       25%       50%       75%       90%
                                  0         0         0         0         0
 </pre>
-<p>En nuestro caso, el modelo a estimar es</p>
+<p>En nuestro caso, la estimación del modelo será la siguiente (en este caso, los efectos marginales coinciden con los coeficientes):</p>
 <pre class='stata'>. //  Estimación del modelo tobit
 . 
-. tobit empleo i.sexo edad edad2 i.educg, ll(0)
+. tobit aportacionesg i.sexo edad edad2 i.educg, ll(0)
 
 Tobit regression                                Number of obs     =     20,292
-                                                   Uncensored     =     12,757
-Limits: lower = 0                                  Left-censored  =      7,535
+                                                   Uncensored     =      1,555
+Limits: lower = 0                                  Left-censored  =     18,737
         upper = +inf                               Right-censored =          0
 
-                                                LR chi2(5)        =    5284.01
+                                                LR chi2(5)        =    1395.55
                                                 Prob > chi2       =     0.0000
-Log likelihood = -18582.501                     Pseudo R2         =     0.1245
+Log likelihood = -17863.536                     Pseudo R2         =     0.0376
 
 ───────────────────────┬────────────────────────────────────────────────────────────────
-                empleo │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+         aportacionesg │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ───────────────────────┼────────────────────────────────────────────────────────────────
                   sexo │
-                Mujer  │  -.2095772   .0095449   -21.96   0.000    -.2282859   -.1908685
-                  edad │   .1584342   .0027686    57.23   0.000     .1530075    .1638608
-                 edad2 │  -.0018007   .0000324   -55.55   0.000    -.0018643   -.0017372
+                Mujer  │  -498.8578    94.7571    -5.26   0.000    -684.5894   -313.1263
+                  edad │   544.6668   48.05013    11.34   0.000     450.4846    638.8489
+                 edad2 │  -4.479357   .4949234    -9.05   0.000    -5.449447   -3.509267
                        │
                  educg │
-Nivel educativo medio  │   .1534928   .0123214    12.46   0.000     .1293419    .1776437
- Nivel educativo alto  │   .3678625    .011259    32.67   0.000      .345794    .3899311
+Nivel educativo medio  │   984.3967   135.6877     7.25   0.000     718.4379    1250.356
+ Nivel educativo alto  │   2495.094   121.1938    20.59   0.000     2257.544    2732.643
                        │
-                 _cons │  -2.781385   .0566561   -49.09   0.000    -2.892436   -2.670334
+                 _cons │  -21310.24   1189.214   -17.92   0.000     -23641.2   -18979.29
 ───────────────────────┼────────────────────────────────────────────────────────────────
-                /sigma │   .6352497   .0044404                      .6265462    .6439533
+                /sigma │    3431.72   72.54803                      3289.519     3573.92
 ───────────────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -642,12 +642,12 @@ dy/dx w.r.t. : 2.sexo edad 2.educg 3.educg
                        │      dy/dx   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ───────────────────────┼────────────────────────────────────────────────────────────────
                   sexo │
-                Mujer  │  -.2095772   .0095449   -21.96   0.000    -.2282859   -.1908685
-                  edad │   .1584342   .0027686    57.23   0.000     .1530075    .1638608
+                Mujer  │  -498.8578    94.7571    -5.26   0.000    -684.5894   -313.1263
+                  edad │   544.6668   48.05013    11.34   0.000     450.4846    638.8489
                        │
                  educg │
-Nivel educativo medio  │   .1534928   .0123214    12.46   0.000     .1293419    .1776437
- Nivel educativo alto  │   .3678625    .011259    32.67   0.000      .345794    .3899311
+Nivel educativo medio  │   984.3967   135.6877     7.25   0.000     718.4379    1250.356
+ Nivel educativo alto  │   2495.094   121.1938    20.59   0.000     2257.544    2732.643
 ───────────────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
@@ -984,37 +984,37 @@ Statistics for column categories in standard normalization
 
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
 <div id="ref-Adkins2010">
-<p>Adkins, L. C., &amp; Hill, R. C. (2010). <em>Using Stata for Principles of Econometrics, fourth edition</em>. John Wiley &amp; Sons, Inc.</p>
+<p>Adkins, L. C., &amp; Hill, R. C. (2010). <em>Using Stata for Principles of Econometrics</em> (4th ed.). John Wiley &amp; Sons, Inc.</p>
 </div>
 <div id="ref-Baum2006">
-<p>Baum, C. F. (2006). <em>An introduction to modern econometrics using stata</em>. Stata Press.</p>
+<p>Baum, C. F. (2006). <em>An introduction to modern Econometrics using Stata</em>. Stata Press.</p>
 </div>
 <div id="ref-Cameron2010">
-<p>Cameron, A. C., &amp; Trivedi, P. K. (2010). <em>Microeconometrics using stata</em> (2nd ed.). Stata Press.</p>
+<p>Cameron, A. C., &amp; Trivedi, P. K. (2010). <em>Microeconometrics using Stata</em> (2nd ed.). Stata Press.</p>
 </div>
 <div id="ref-Cleves2016">
-<p>Cleves, M., Gould, W. W., &amp; Marchenko, Y. V. (2016). <em>An introduction to survival analysis using stata</em>. Stata Press.</p>
+<p>Cleves, M., Gould, W. W., &amp; Marchenko, Y. V. (2016). <em>An introduction to survival analysis using Stata</em>. Stata Press.</p>
 </div>
 <div id="ref-Escobar2012">
-<p>Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>Análisis de datos con stata</em> (2nd ed.). Centro de Investigaciones Sociólogicas.</p>
+<p>Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>Análisis de datos con Stata</em> (2nd ed.). Centro de Investigaciones Sociólogicas.</p>
 </div>
 <div id="ref-Kohler2012">
 <p>Kohler, U., &amp; Kreuter, F. (2012). <em>Data analysis using Stata</em> (3rd ed.). Stata Press.</p>
 </div>
 <div id="ref-Long2014">
-<p>Long, J. S., &amp; Freese, J. (2014). <em>Regression models for categorical dependent variables using stata</em> (3rd ed.). Stata Press.</p>
+<p>Long, J. S., &amp; Freese, J. (2014). <em>Regression models for categorical dependent variables using Stata</em> (3rd ed.). Stata Press.</p>
 </div>
 <div id="ref-Mincer1958">
 <p>Mincer, J. (1958). Investment in human capital and personal income distribution. <em>Journal of Political Economy</em>, <em>66</em>(4), 281–302.</p>
 </div>
 <div id="ref-Skrondal2012a">
-<p>Skrondal, A., &amp; Rabe-Heskerth, S. (2012a). <em>Multilevel and longitudinal modeling using stata. Volume i: Continuous responses</em> (3rd ed.). Stata Press.</p>
+<p>Skrondal, A., &amp; Rabe-Heskerth, S. (2012a). <em>Multilevel and longitudinal modeling using Stata. Volume I: Continuous responses</em> (3rd ed.). Stata Press.</p>
 </div>
 <div id="ref-Skrondal2012b">
-<p>Skrondal, A., &amp; Rabe-Heskerth, S. (2012b). <em>Multilevel and longitudinal modeling using stata. Volume ii: Categorical responses, counts, and survival</em> (3rd ed.). Stata Press.</p>
+<p>Skrondal, A., &amp; Rabe-Heskerth, S. (2012b). <em>Multilevel and longitudinal modeling using Stata. Volume II: Categorical responses, counts, and survival</em> (3rd ed.). Stata Press.</p>
 </div>
 <div id="ref-Wooldridge2019">
-<p>Wooldridge, J. M. (2019). <em>Introductory econometrics: A modern approach</em> (7th ed.). Cengage Learning.</p>
+<p>Wooldridge, J. M. (2019). <em>Introductory Econometrics: A modern approach</em> (7th ed.). Cengage Learning.</p>
 </div>
 </div>
 </body>

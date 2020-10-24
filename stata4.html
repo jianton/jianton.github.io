@@ -76,26 +76,11 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </figure>
 <p>El problema radica en la <strong>reproducibilidad</strong>: si reiniciamos el análisis gráfico o salimos del programa, tendremos que acordarnos de todas las opciones seleccionadas y, además, tendremos que repetir los cambios realizados en el editor de gráficos sobre la propia figura. <span class="math inline">\(\rightarrow\)</span> <strong>Opción práctica:</strong> realizamos el gráfico con los menús de ventanas, empleando <code>submit</code> para ver cada cambio realizado y, cuando estemos satisfechos, copiamos el código y podemos reutilizarlo con adaptaciones.</p>
 <h2 id="personalizando-gráficos">Personalizando gráficos</h2>
-<p>Un avance sustancial viene dado por el paquete <code>grstyle</code>, que debe utilizarse conjuntamente <code>palettes</code> y <code>colrspace</code> <span class="citation" data-cites="Jann2018a">(Jann, 2018a, p. @Jann2018b)</span>. También es muy potente el paquete <code>brewscheme</code>. La idea de estos paquetes es que podemos definir previamente el formato de los gráficos (colores, ancho de las líneas, etc.) y, posteriormente, emplear comandos sencillos para la realización de los gráficos donde no tengamos que especificar muchas opciones.</p>
-<pre class='stata'>. ssc install grstyle
-checking grstyle consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. ssc install palettes
-checking palettes consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. ssc install colrspace
-checking colrspace consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. ssc install brewscheme
-checking brewscheme consistency and verifying not already installed...
-all files already exist and are up to date.
-</pre>
+<p>Un avance sustancial viene dado por el paquete <code>grstyle</code>, que debe utilizarse conjuntamente <code>palettes</code> y <code>colrspace</code> <span class="citation" data-cites="Jann2018a Jann2018b">(Jann, 2018a, 2018b)</span>. También es muy potente el paquete <code>brewscheme</code>. La idea de estos paquetes es que podemos definir previamente el formato de los gráficos (colores, ancho de las líneas, etc.) y, posteriormente, emplear comandos sencillos para la realización de los gráficos donde no tengamos que especificar muchas opciones.</p>
+<p>ssc install grstyle, replace ssc install palettes, replace ssc install colrspace, replace ssc install brewscheme, replace</p>
 <p>Estos paquetes nos facilitan bastante el trabajo, pero es muy posible que queramos, en cada gráfico, añadir opciones específicas de personalización más allá de los parámetros generales.</p>
 <h2 id="formatos-de-exportación">Formatos de exportación</h2>
-<p><code>Stata</code> cuenta con un formato nativo <code>.gph</code> con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint) Sin embargo, existe un gran número de formatos en los que <code>Stata</code> puede guardar los graficos: <code>.ps</code>, <code>.eps</code>, <code>.svg</code>, <code>.wmf</code>, <code>.emf</code>, <code>.pdf</code>, <code>.png</code>, <code>.tif</code>, <code>.gif</code> y <code>jpg</code>. Formatos como <code>.wmf</code> y <code>.emf</code> son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (.ps<code>,</code>.eps<code>,</code>.svg<code>,</code>.pdf<code>,</code>.png`). La instrucción para exportar gráficos es la siguiente:</p>
+<p><code>Stata</code> cuenta con un formato nativo <code>.gph</code> con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint) Sin embargo, existe un gran número de formatos en los que <code>Stata</code> puede guardar los graficos: <code>.ps</code>, <code>.eps</code>, <code>.svg</code>, <code>.wmf</code>, <code>.emf</code>, <code>.pdf</code>, <code>.png</code>, <code>.tif</code>, <code>.gif</code> y <code>jpg</code>. Formatos como <code>.wmf</code> y <code>.emf</code> son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (<code>.ps</code>, <code>.eps</code>, <code>.svg</code>, <code>.pdf</code>, <code>.png</code>). La instrucción para exportar gráficos es la siguiente:</p>
 <p><code>graph export <i>newfilename.suffix</i> [, <i>options</i>]</code></p>
 <h1 id="gráficos-más-frecuentes-y-potencialidades-de-los-gráficos-de-stata">2. Gráficos más frecuentes y potencialidades de los gráficos de <code>Stata</code></h1>
 <p>En primer lugar, vamos a configurar el formato de los gráficos para que nos sirva para todas las figuras que elaboraremos con el comando <code>grstryle</code>. Sin embargo, como se mencionaba anteriormente, de forma habitual, necesitaremos implementar opciones adicionales. En esta sección, vamos a tratar de elaborar gráficos de alta calidad aptos para publicaciones científicas siguiendo los formatos sugeridos por <span class="citation" data-cites="Schwabish2014">Schwabish (2014)</span> para Ciencias Sociales. Dado que el número de gráficos que <code>Stata</code> puede realizar no puede ser abarcado (siquiera lejanamente) en un curso de estas características, aquí nos limitamos a presentar una serie de figuras que ilustran su potencial. El proceso de realización de los mismos se fundamenta en procesos de ensayo-error y en emplear las herramientas de ayuda destacadas con anterioridad.</p>
@@ -231,8 +216,8 @@ D:\Dropbox\curso_stata\sesión4
 . 
 . twoway (scatter hpobreza salario [pweight = nper] if region != 9) ///
 > (scatter hpobreza salario [pweight = nper] if region == 9, mcolor(red)) ///
-> (scatter hpobreza salario [pweight = nper] if region == 9, mlabel(region) mlabsize(vsmall) mlabcolor(red) mlabposition(12) mlabgap(medsma
-> ll) mcolor(none)) ///
+> (scatter hpobreza salario [pweight = nper] if region == 9, mlabel(region) mlabsize(vsmall) mlabcolor(red) mlabposition(12) mlabgap(medsmall) mcolor(non
+> e)) ///
 > (lfit hpobreza salario [pweight = nper]), ///
 > title("Salario y pobreza por CCAA (2018)", size(medsmall) margin(small)) ///
 > xtitle("Salario bruto (euros/mes)", margin(small) size(small)) xlabel(, format(%9,0gc) labsize(small)) ///
@@ -448,8 +433,8 @@ D:\Dropbox\curso_stata\sesión4
 > (line educg empleo if educg == 3, lcolor(black)) ///
 > (line educg empleo if educg == 4, lcolor(black)) ///
 > (scatter educg empleo if sex == 1, mcolor(navy) msize(4-pt) msymbol(circle) mlabcolor()) ///
-> (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlabel(educg) mlabsize(small) mlabcolor(black) mlabpositio
-> n(9) mlabgap(small)), ///
+> (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlabel(educg) mlabsize(small) mlabcolor(black) mlabposition(9) mlabgap(s
+> mall)), ///
 > title("Tasa de empleo por sexo y nivel educativo en España (2018)", size(medsmall) margin(small)) ///
 > yscale(off) ylabel(0(1)4) ///
 > xtitle("Porcentaje de personas empleadas (%)", margin(small) size(small)) xlabel(0(20)100, labsize(vsmall)) ///
@@ -536,12 +521,11 @@ xij variables:
 
 . gr_edit plotregion1.added_text_rec = 1
 
-. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) color(navy) horizontal(left) 
-> vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative
-> ) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmarg
-> in( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)
-> ) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(bl
-> ack) pattern(solid) align(inside)) box_alignment(east) editcopy
+. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) color(navy) horizontal(left) vertical(middl
+> e) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbott
+> om( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_p
+> ct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillco
+> lor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
 
 . gr_edit plotregion1.added_text[1].style.editstyle size(vsmall) editcopy
 
@@ -556,12 +540,11 @@ xij variables:
 
 . gr_edit plotregion1.added_text_rec = 2
 
-. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) color(navy) horizontal
-> (left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(r
-> elative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) 
-> boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow
-> _pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) c
-> olor(black) pattern(solid) align(inside)) box_alignment(east) editcopy
+. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) color(navy) horizontal(left) vertica
+> l(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)
+> ) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) 
+> allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1)))
+>  fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
 
 . gr_edit plotregion1.added_text[2].style.editstyle size(vsmall) editcopy
 
@@ -578,11 +561,11 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 1
 
-. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) a
-> lign(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)
-> ) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( szty
-> pe(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(
-> 1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) 
+> headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( szty
+> pe(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(n
+> avy) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neit
+> her) editcopy
 
 . 
 . gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 35.56545925471323 9.872859791068407 35.56545925471323
@@ -591,11 +574,11 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 2
 
-. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) a
-> lign(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)
-> ) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( szty
-> pe(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pc
-> t(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) 
+> headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( szty
+> pe(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(b
+> lack) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(he
+> ad) editcopy
 
 . 
 . gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 27.44753863498822 15.89026161770668 32.2854913275516
@@ -604,11 +587,11 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 3
 
-. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid)
->  align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(ins
-> ide)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width
-> ( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) all
-> ow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)
+> ) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size
+> ( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) c
+> olor(black) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headp
+> os(neither) editcopy
 
 . 
 . gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 32.28549132755161 18.74852748535989 32.28549132755161
@@ -617,11 +600,11 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 4
 
-. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid)
->  align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(ins
-> ide)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width
-> ( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) al
-> low_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)
+> ) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size
+> ( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) c
+> olor(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) head
+> pos(head) editcopy
 </pre>
 
 <figure>
@@ -720,24 +703,12 @@ xij variables:
 </figure>
 <h1 id="elaboración-de-mapas">4. Elaboración de mapas</h1>
 <p>No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como <code>spmap</code> o <code>geo2xy</code>. En este curso, emplearemos el primero de ellos, <code>spmap</code>. Podemos encontrar una buena introducción al uso de este paquete en <span class="citation" data-cites="Wiedemann2020">Wiedemann (2020)</span> Este paquete requiere la instalación adicional de <code>shp2dta</code> y <code>mif2dta</code>. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:</p>
-<pre class='stata'>. ssc install spmap
-checking spmap consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. ssc install shp2dta
-checking shp2dta consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. ssc install mif2dta
-checking mif2dta consistency and verifying not already installed...
-all files already exist and are up to date.
-</pre>
+<p>ssc install spmap, replace ssc install shp2dta, replace ssc install mif2dta, replace</p>
 <p>Con <code>spmap</code>, <code>Stata</code> puede manejar dos tipos de formatos gráficos: <strong>ESRI shapefiles</strong> (incluye un archivo <code>.shp</code> de coordenadas, un archivo <code>.shx</code>, un índice y un archivo <code>.dbf</code>, con códigos) y el <strong>MapInfo Interchange Format files</strong> (que comprende un archivo <code>.mif</code> con las coordenadas y un archivo <code>.mid</code> con los códigos). El manejo del primer tipo de formato es, con frecuencia, más sencillo. Para explorar las capacidades de <code>Stata</code> en esta área, vamos a realizar un mapa de España por Comunidades Autónomas con su tasa de pobreza.</p>
 <p>Procedemos en varios pasos.</p>
-<p><strong>Paso 1</strong>. Buscamos los <strong>ESRI shapefiles</strong> que precisamos. En este caso, podemos encontrarlos en muchos lugares. El mapa “oficial” se encuentra en el (Centro Nacional de Información Geográfica](http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip], los copiamos a la carpeta de trabajo y descomprimimos la carpeta. Nuestro interés radica en la carpeta <code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>. Nos vamos a limitar a la península, por simplicidad. Extraemos sus archivos y los situamos en la carpeta de trabajo.</p>
+<p><strong>Paso 1</strong>. Buscamos los <strong>ESRI shapefiles</strong> que precisamos. En este caso, podemos encontrarlos en muchos lugares. El mapa “oficial” se encuentra en el [Centro Nacional de Información Geográfica](http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip], los copiamos a la carpeta de trabajo y descomprimimos la carpeta. Nuestro interés radica en la carpeta <code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>. Nos vamos a limitar a la península, por simplicidad. Extraemos sus archivos y los situamos en la carpeta de trabajo.</p>
 <p><strong>Paso 2</strong>. Creamos los archivos de atributos y coordenadas con la siguiente instrucción:</p>
-<pre class='stata'>. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta") coord("ccaa_coord.dta") genid(stid) gencentroids(cc) 
-> replace
+<pre class='stata'>. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta") coord("ccaa_coord.dta") genid(stid) gencentroids(cc) replace
 type: 5
 </pre>
 <p><strong>Paso 3</strong>. Con nuestra base de datos, generamos un archivo que podamos unir al de atributos empleando la variable <code>stid</code> del fichero <code>ccaa_attr.dta</code>. Prescindimos, además, de Ceuta y Melilla, por simplicidad.</p>
@@ -766,8 +737,7 @@ type: 5
 . 
 . //  Recodificamos las regiones para enlazar con la variable stid de ccaa_attr.dta
 . 
-. recode region (1=10) (2=18) (3=16) (4=6) (5=7) (6=5) (7=19) (8=9) (9=15) (10=14) (11=11) (12=13) (13=12) (14=17) (15=20) (16=8) (17=3) (1
-> 8=4)
+. recode region (1=10) (2=18) (3=16) (4=6) (5=7) (6=5) (7=19) (8=9) (9=15) (10=14) (11=11) (12=13) (13=12) (14=17) (15=20) (16=8) (17=3) (18=4)
 (region: 17 changes made)
 
 . 
@@ -856,10 +826,10 @@ file ccaa_labels.dta saved
 
 <div id="refs" class="references hanging-indent" role="doc-bibliography">
 <div id="ref-Cox2014">
-<p>Cox, N. J. (2014). <em>Speaking stata graphics</em>. Stata Press.</p>
+<p>Cox, N. J. (2014). <em>Speaking Stata graphics</em>. Stata Press.</p>
 </div>
 <div id="ref-Escobar2012">
-<p>Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>Análisis de datos con stata</em> (2nd ed.). Centro de Investigaciones Sociólogicas.</p>
+<p>Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>Análisis de datos con Stata</em> (2nd ed.). Centro de Investigaciones Sociólogicas.</p>
 </div>
 <div id="ref-Jann2018a">
 <p>Jann, B. (2018a). Customizing Stata graphs made easy (part 1). <em>Stata Journal</em>, <em>3</em>(18), 491–502.</p>
