@@ -137,7 +137,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\example.png" style="width:40.0%" alt="" /><figcaption>Gráfico por defecto</figcaption>
+<img src="example.png" style="width:40.0%" alt="" /><figcaption>Gráfico por defecto</figcaption>
 </figure>
 <p>Ahora vamos a realizar el mismo gráfico de una manera mucho más personalizada.</p>
 <pre class='stata'>. //  Podemos cambiar el tipo de letra
@@ -226,7 +226,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\scatter.png" style="width:40.0%" alt="" /><figcaption>Gráfico de dispersión (personalizado)</figcaption>
+<img src="scatter.png" style="width:40.0%" alt="" /><figcaption>Gráfico de dispersión (personalizado)</figcaption>
 </figure>
 <h2 id="gráfico-de-líneas">Gráfico de líneas</h2>
 <p>En este ejemplo, vamos a representar el salario por grupos de edad y nivel de estudios.</p>
@@ -364,7 +364,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\lineplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de líneas</figcaption>
+<img src="lineplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de líneas</figcaption>
 </figure>
 <h2 id="gráfico-de-puntos">Gráfico de puntos</h2>
 <p>En este subapartado, elaboramos una figura que muestra la tasa de empleo por sexo y nivel educativo en España.</p>
@@ -442,7 +442,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\dotplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de puntos</figcaption>
+<img src="dotplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de puntos</figcaption>
 </figure>
 <h2 id="gráfico-de-barras">Gráfico de barras</h2>
 <p>A continuación, mostramos la tasa de pobreza por nivel educativo y sexo en España en el año 2018. Además, en este ejemplo, vamos a usar el editor de gráficos de <code>Stata</code>.</p>
@@ -608,7 +608,7 @@ xij variables:
 </pre>
 
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\barplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de barras</figcaption>
+<img src="barplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de barras</figcaption>
 </figure>
 <p>La última parte del código corresponde al editor de gráficos de <code>Stata</code>, que permite hacer cambios manualmente. Si queremos asegurar que el gráfico es reproducible podemos seguir estos pasos:</p>
 <p><strong>Paso 1</strong>. Abrimos el gráfico en el editor.</p>
@@ -618,9 +618,9 @@ xij variables:
 <p><strong>Paso 5</strong>. Abrimos el archivo <code>.grec</code> creado en el blog de notas (o el propio editor de archivos <code>.do</code> de <code>Stata</code>).</p>
 <p><strong>Paso 6</strong>. Copiamos el código y relevante al arhivo <code>.do</code> tras el grafico, eliminamos el <code>.</code> e incluimos antes de cada instrucción <code>gr_edit</code> seguido de un espacio.</p>
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\grapheditor.png" style="width:40.0%" alt="" /><figcaption>Modificación de gráficos con el editor de <code>Stata</code></figcaption>
+<img src="grapheditor.png" style="width:40.0%" alt="" /><figcaption>Modificación de gráficos con el editor de <code>Stata</code></figcaption>
 </figure>
-<h3 id="funciones-de-densidad">Funciones de densidad</h3>
+<h2 id="funciones-de-densidad">Funciones de densidad</h2>
 <p>Se trata de uno de los fuertes de <code>Stata</code>, que es complicado de abordar con otro tipo de programas (e.g., Microsoft Excel). En este caso, vamos a representar las funciones de densidad del salario mensual de las personas con educación elemental y educación superior.</p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
@@ -698,15 +698,13 @@ xij variables:
 > legend(on order(1 "Educación elemental" 2 "Educación superior") cols(1) size(vsmall) position(10) ring(0))
 </pre>
 
-<figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\kdensity.png" style="width:40.0%" alt="" /><figcaption>Gráfico de barras</figcaption>
-</figure>
+<p>![kdensity.png){width=40%}</p>
 <h1 id="elaboración-de-mapas">4. Elaboración de mapas</h1>
 <p>No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como <code>spmap</code> o <code>geo2xy</code>. En este curso, emplearemos el primero de ellos, <code>spmap</code>. Podemos encontrar una buena introducción al uso de este paquete en <span class="citation" data-cites="Wiedemann2020">Wiedemann (2020)</span> Este paquete requiere la instalación adicional de <code>shp2dta</code> y <code>mif2dta</code>. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:</p>
 <p>ssc install spmap, replace ssc install shp2dta, replace ssc install mif2dta, replace</p>
 <p>Con <code>spmap</code>, <code>Stata</code> puede manejar dos tipos de formatos gráficos: <strong>ESRI shapefiles</strong> (incluye un archivo <code>.shp</code> de coordenadas, un archivo <code>.shx</code>, un índice y un archivo <code>.dbf</code>, con códigos) y el <strong>MapInfo Interchange Format files</strong> (que comprende un archivo <code>.mif</code> con las coordenadas y un archivo <code>.mid</code> con los códigos). El manejo del primer tipo de formato es, con frecuencia, más sencillo. Para explorar las capacidades de <code>Stata</code> en esta área, vamos a realizar un mapa de España por Comunidades Autónomas con su tasa de pobreza.</p>
 <p>Procedemos en varios pasos.</p>
-<p><strong>Paso 1</strong>. Buscamos los <strong>ESRI shapefiles</strong> que precisamos. En este caso, podemos encontrarlos en muchos lugares. El mapa “oficial” se encuentra en el [Centro Nacional de Información Geográfica](http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip], los copiamos a la carpeta de trabajo y descomprimimos la carpeta. Nuestro interés radica en la carpeta <code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>. Nos vamos a limitar a la península, por simplicidad. Extraemos sus archivos y los situamos en la carpeta de trabajo.</p>
+<p><strong>Paso 1</strong>. Buscamos los <strong>ESRI shapefiles</strong> que precisamos. En este caso, podemos encontrarlos en muchos lugares. El mapa “oficial” se encuentra en el <a href="http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip">Centro Nacional de Información Geográfica</a>, los copiamos a la carpeta de trabajo y descomprimimos la carpeta. Nuestro interés radica en la carpeta <code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>. Nos vamos a limitar a la península, por simplicidad. Extraemos sus archivos y los situamos en la carpeta de trabajo.</p>
 <p><strong>Paso 2</strong>. Creamos los archivos de atributos y coordenadas con la siguiente instrucción:</p>
 <pre class='stata'>. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta") coord("ccaa_coord.dta") genid(stid) gencentroids(cc) replace
 type: 5
@@ -820,7 +818,7 @@ file ccaa_labels.dta saved
 </pre>
 
 <figure>
-<img src="D:\Dropbox\curso_stata\jianton.github.io\map.png" style="width:70.0%" alt="" /><figcaption>Mapa con el paquete <code>spmap</code></figcaption>
+<img src="map.png" style="width:70.0%" alt="" /><figcaption>Mapa con el paquete <code>spmap</code></figcaption>
 </figure>
 <h1 id="references">References</h1>
 
