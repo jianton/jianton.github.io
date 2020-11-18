@@ -95,7 +95,7 @@ D:\Dropbox\curso_stata\sesión2
     Result                           # of obs.
     ─────────────────────────────────────────
     not matched                             0
-    matched                            13,368  (_merge==3)
+    matched                            13.368  (_merge==3)
     ─────────────────────────────────────────
 
 . 
@@ -105,9 +105,9 @@ D:\Dropbox\curso_stata\sesión2
 
                  _merge │      Freq.     Percent        Cum.
 ────────────────────────┼───────────────────────────────────
-            matched (3) │     13,368      100.00      100.00
+            matched (3) │      13368      100,00      100,00
 ────────────────────────┼───────────────────────────────────
-                  Total │     13,368      100.00
+                  Total │      13368      100,00
 </pre>
 <p>Observamos que las observaciones se encuentran en ambas bases de datos simultáneamente.</p>
 <p>A continuación, fusionamos la base de datos con información básica de personas (<code>ecv18r.dta</code>) con la base de datos con información detallada (<code>ecv18p.dta</code>). De acuerdo a la documentación de la encuestas y nuestro etiquetado, la variable de enlace es el identificador personal (<code>pid</code>), que corresponde a las variables de identificador del hogar en cada archivo (<code>rb030</code> y <code>pb030</code>, respectivamente). Esta variable, según la documentación está formada porque</p>
@@ -127,11 +127,11 @@ D:\Dropbox\curso_stata\sesión2
 
     Result                           # of obs.
     ─────────────────────────────────────────
-    not matched                         5,362
-        from master                     5,362  (_merge==1)
+    not matched                         5.362
+        from master                     5.362  (_merge==1)
         from using                          0  (_merge==2)
 
-    matched                            28,372  (_merge==3)
+    matched                            28.372  (_merge==3)
     ─────────────────────────────────────────
 
 . 
@@ -141,10 +141,10 @@ D:\Dropbox\curso_stata\sesión2
 
                  _merge │      Freq.     Percent        Cum.
 ────────────────────────┼───────────────────────────────────
-        master only (1) │      5,362       15.89       15.89
-            matched (3) │     28,372       84.11      100.00
+        master only (1) │       5362       15,89       15,89
+            matched (3) │      28372       84,11      100,00
 ────────────────────────┼───────────────────────────────────
-                  Total │     33,734      100.00
+                  Total │      33734      100,00
 </pre>
 <p>En este caso, observamos que hay observaciones que solo aparecen en la base <code>master</code>. ¿Existe un error? No, lo que ocurre es que la base de datos con información básica incluye a todas las personas, mientras que la que comprende información detallada, solo a los mayores de 16 años. No obstante, la variable <code>_merge</code> nos permite distinguir errores de otras circunstancias.</p>
 <h1 id="fusiones-de-bases-de-datos-de-varias-observaciones-a-una-observación-o-viceversa">1.2. Fusiones de bases de datos de varias observaciones a una observación (o viceversa)</h1>
@@ -164,7 +164,7 @@ D:\Dropbox\curso_stata\sesión2
     Result                           # of obs.
     ─────────────────────────────────────────
     not matched                             0
-    matched                            33,734  (_merge==3)
+    matched                            33.734  (_merge==3)
     ─────────────────────────────────────────
 
 . 
@@ -174,9 +174,9 @@ D:\Dropbox\curso_stata\sesión2
 
                  _merge │      Freq.     Percent        Cum.
 ────────────────────────┼───────────────────────────────────
-            matched (3) │     33,734      100.00      100.00
+            matched (3) │      33734      100,00      100,00
 ────────────────────────┼───────────────────────────────────
-                  Total │     33,734      100.00
+                  Total │      33734      100,00
 </pre>
 <p>Podemos, fácilmente, fusionar todas las bases de datos en un único fichero (y, si queremos, ordenar la base de datos posteriormente). Debemos eliminar antes de cada fusión la variable <code>_merge</code> (o no crearla al realizar la fusión).</p>
 <pre class='stata'>. //  Fusionamos los archivos de personas
@@ -190,11 +190,11 @@ D:\Dropbox\curso_stata\sesión2
 
     Result                           # of obs.
     ─────────────────────────────────────────
-    not matched                         5,362
-        from master                     5,362  
+    not matched                         5.362
+        from master                     5.362  
         from using                          0  
 
-    matched                            28,372  
+    matched                            28.372  
     ─────────────────────────────────────────
 
 . 
@@ -205,7 +205,7 @@ D:\Dropbox\curso_stata\sesión2
     Result                           # of obs.
     ─────────────────────────────────────────
     not matched                             0
-    matched                            33,734  
+    matched                            33.734  
     ─────────────────────────────────────────
 
 . merge m:1 hid using "ecv18h.dta", nogenerate
@@ -213,7 +213,7 @@ D:\Dropbox\curso_stata\sesión2
     Result                           # of obs.
     ─────────────────────────────────────────
     not matched                             0
-    matched                            33,734  
+    matched                            33.734  
     ─────────────────────────────────────────
 </pre>
 <p><strong>Importante:</strong> Nunca debe emplearse la fusión <code>merge m:m</code>. Es preferible emplear la función <code>joinby</code> (<code>help joinby</code>).</p>
@@ -366,11 +366,11 @@ D:\Dropbox\curso_stata\sesión2
   Año de la │
    encuesta │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-       2016 │     36,380       34.64       34.64
-       2017 │     34,911       33.24       67.88
-       2018 │     33,734       32.12      100.00
+       2016 │      36380       34,64       34,64
+       2017 │      34911       33,24       67,88
+       2018 │      33734       32,12      100,00
 ────────────┼───────────────────────────────────
-      Total │    105,025      100.00
+      Total │     105025      100,00
 </pre>
 <h1 id="crear-una-base-de-datos-con-estadísticos-descriptivos">3. Crear una base de datos con estadísticos descriptivos</h1>
 <p>Esta tarea, si bien se puede realizar combinando otros comandos (<code>egen</code>, <code>merge</code> y <code>append</code>) es mucho más sencilla a través de la potente instrucción <code>collapse</code>:</p>
@@ -407,16 +407,16 @@ lastnm       last nonmissing value</code></pre>
 <pre class='stata'>. //  Seleccionamos los trabajadores únicamente
 . 
 . generate rentaasa = rentamonasag + rentamonasag
-(16,671 missing values generated)
+(16.671 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(17,397 missing values generated)
+(17.397 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(61,314 observations deleted)
+(61.314 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(8,173 observations deleted)
+(8.173 observations deleted)
 
 . 
 . //  Creamos el salario bruto mensual de los trabajadores
@@ -439,13 +439,13 @@ lastnm       last nonmissing value</code></pre>
      ┌──────────────────────────┐
      │   sexo    ano   salari~d │
      ├──────────────────────────┤
-  1. │ Hombre   2016   4547.371 │
-  2. │ Hombre   2017   4377.464 │
-  3. │ Hombre   2018   4368.562 │
-  4. │  Mujer   2016   3744.402 │
-  5. │  Mujer   2017   3655.809 │
+  1. │ Hombre   2016   4547,371 │
+  2. │ Hombre   2017   4377,464 │
+  3. │ Hombre   2018   4368,562 │
+  4. │  Mujer   2016   3744,402 │
+  5. │  Mujer   2017   3655,809 │
      ├──────────────────────────┤
-  6. │  Mujer   2018   3696.953 │
+  6. │  Mujer   2018   3696,953 │
      └──────────────────────────┘
 </pre>
 <p>Para calcular cuál es la evolución del salario medio por sexo, para ello, sería más fácil disponer de tres variables que recojan el salario, una para cada año (formato <code>wide</code>). El comando <code>reshape</code> funciona de la siguiente forma:</p>
@@ -480,8 +480,8 @@ xij variables:
      ┌──────────────────────────────────────────┐
      │   sexo   sal~2016   sal~2018   camb~1618 │
      ├──────────────────────────────────────────┤
-  1. │ Hombre   4547.371   4368.562   -3.932153 │
-  2. │  Mujer   3744.402   3696.953   -1.267204 │
+  1. │ Hombre   4547,371   4368,562   -3,932153 │
+  2. │  Mujer   3744,402   3696,953   -1,267204 │
      └──────────────────────────────────────────┘
 </pre>
 <p>Podemos volver al formato <code>long</code> de forma análoga:</p>
@@ -510,15 +510,15 @@ salariomed2016 salariomed2017 salariomed2018-> salariomed
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 
@@ -536,14 +536,14 @@ Sorted by: sexo  ano
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             3                          
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 
@@ -556,15 +556,15 @@ Sorted by:
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 </pre>
@@ -582,7 +582,7 @@ Sorted by: sexo  ano
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-        sexo │          6         1.5    .5477226          1          2
+        sexo │          6         1,5    ,5477226          1          2
 </pre>
 <h2 id="el-uso-de-bucles">El uso de bucles</h2>
 <p>El tercer elemento clave en términos de programación son los bucles, que, a través de macros locales, nos permiten realizar operaciones de forma repetida y, de esa forma, programar de forma eficiente. Los principales bucles que podemos emplear son los siguientes:</p>
@@ -611,15 +611,15 @@ Sorted by: sexo  ano
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          2    4145.887    567.7846   3744.402   4547.371
+  salariomed │          2    4145,887    567,7846   3744,402   4547,371
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          2    4016.636    510.2877   3655.809   4377.464
+  salariomed │          2    4016,636    510,2877   3655,809   4377,464
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          2    4032.757    474.8989   3696.953   4368.562
+  salariomed │          2    4032,757    474,8989   3696,953   4368,562
 </pre>
 <h2 id="referencias">Referencias</h2>
 
