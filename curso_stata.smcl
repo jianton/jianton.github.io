@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\curso_stata.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 10:47:13
+ {txt}opened on:  {res} 1 Aug 2019, 15:45:48
 {txt}
 {com}. //_1q
 . quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
@@ -13,7 +13,7 @@
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\curso_stata.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 10:47:13
+ {txt}closed on:  {res} 1 Aug 2019, 15:45:48
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
