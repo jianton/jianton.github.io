@@ -151,8 +151,13 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>Además, los diferentes tipos de cursos que ofrece <a href="https://www.stata.com/learn/">StataCorp</a> son una opción interesante, en particular, los <a href="https://www.stata.com/netcourse/">NetCourses</a>. Posiblemente, en estos días, podemos encontrar muchos MOOCs interesantes con <code>Stata</code>.</p>
 <h1 id="primeros-pasos-en-stata">4. Primeros pasos en <code>Stata</code></h1>
 <h2 id="introducción-de-datos-en-stata">4.1. Introducción de datos en <code>Stata</code></h2>
-<p>Cada vez es más habitual que muchas instituciones y organismos proporcionen la información en el formato nativo de <code>Stata</code>, los archivos <code>.dta</code>, pero, con todo, no es lo habitual. En muchas ocasiones nos encontramos formatos como <code>.csv</code>, <code>.txt</code>, <code>raw</code>, etc. Por ello, es necesario saber cómo leer diferentes tipos de archivos en <code>Stata</code>.</p>
-<p>Antes de nada, vamos a crear un nuevo archivo <code>.do</code> donde iremos escribiendo la sintaxis y que podemos llamar <code>curso1.do</code>. Es extremadamente importante y útil documentar los archivos <code>.do</code>. En este sentido, el libro de <span class="citation" data-cites="Long2009">Long (2009)</span> ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes: * Podemos incluir comentarios en los archivos <code>.do</code> empleando <code>*</code> o <code>//</code> (el último, también en la misma línea). * Asimismo, podemos indicar a <code>Stata</code> a no tener en cuenta los saltos de línea empleando <code>///</code> al final de la línea. * Podemos ordenar a <code>Stata</code> omitir la lectura de todo el contenido incluido entre <code>/*</code> y <code>*/</code>.</p>
+<p>Cada vez es más habitual que muchas instituciones y organismos proporcionen la información en el formato nativo de <code>Stata</code>, los archivos <code>.dta</code>, pero, con todo, no es lo habitual. En muchas ocasiones nos encontramos formatos como <code>.csv</code>, <code>.txt</code>, <code>.raw</code>, etc. Por ello, es necesario saber cómo leer diferentes tipos de archivos en <code>Stata</code>.</p>
+<p>Antes de nada, vamos a crear un nuevo archivo <code>.do</code> donde iremos escribiendo la sintaxis y que podemos llamar <code>curso1.do</code>. Es extremadamente importante y útil documentar los archivos <code>.do</code>. En este sentido, el libro de <span class="citation" data-cites="Long2009">Long (2009)</span> ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes:</p>
+<ul>
+<li>Podemos incluir comentarios en los archivos <code>.do</code> empleando <code>*</code> o <code>//</code> (el último, también en la misma línea).</li>
+<li>Asimismo, podemos indicar a <code>Stata</code> a no tener en cuenta los saltos de línea empleando <code>///</code> al final de la línea.</li>
+<li>Podemos ordenar a <code>Stata</code> omitir la lectura de todo el contenido incluido entre <code>/*</code> y <code>*/</code>.</li>
+</ul>
 <p>En primer lugar, podemos liberar el especio de trabajo con la instrucción</p>
 <pre class='stata'>. clear all
 </pre>
@@ -193,7 +198,7 @@ D:\Dropbox\curso_stata\sesión1
 <figure>
 <img src="browse.png" style="width:75.0%" alt="" /><figcaption>Variables importadas de la ECV 2018</figcaption>
 </figure>
-<p>Podemos solventar eso con el comando <code>destring</code> que convierte todas las variables numéricas a formato numérico sin perder información (si hay pérdida de información, no lo hace). Existe, asimismo, un comando para realizar la operación contraria (<code>help tostring</code>).</p>
+<p>Podemos solventar eso con el comando <code>destring</code> que convierte todas las variables en formato texto a formato numérico sin perder información (si hay pérdida de información, no lo hace). Existe, asimismo, un comando para realizar la operación contraria (<code>help tostring</code>).</p>
 <p><code>destring [<i>varlist</i>] , {generate(<i>newvarlist</i>)|replace} [<i>destring_options</i>]</code></p>
 <p>En nuestro caso, aplicamos el comando como sigue</p>
 <pre class='stata'>. destring, replace
@@ -264,7 +269,7 @@ file ecv18r.dta saved
 <p>Al final de la parte que deseamos reportar, empleamos</p>
 <p><code>log close [<i>logname</i> | _all]</code></p>
 <p>En nuestro caso, podríamos añadir al principio</p>
-<pre><code>capture log close&lt;code&gt; // Para cerrar logs abiertos
+<pre><code>capture log close // Para cerrar logs abiertos
 log using curso1, replace</code></pre>
 <p>Al final,</p>
 <pre><code>log close</code></pre>
@@ -347,13 +352,13 @@ rb210                                                                           
                   type:  numeric (byte)
 
                  range:  [1,4]                        units:  1
-         unique values:  4                        missing .:  1/33.734
+         unique values:  4                        missing .:  1/33,734
 
             tabulation:  Freq.  Value
-                        13.021  1
-                         2.990  2
-                         6.183  3
-                        11.539  4
+                        13,021  1
+                         2,990  2
+                         6,183  3
+                        11,539  4
                              1  .
 </pre>
 <p>Fácilmente, podemos ver la distribución de la misma.</p>
@@ -361,24 +366,24 @@ rb210                                                                           
 
       RB210 │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          1 │      13021       38,60       38,60
-          2 │       2990        8,86       47,46
-          3 │       6183       18,33       65,79
-          4 │      11539       34,21      100,00
+          1 │     13,021       38.60       38.60
+          2 │      2,990        8.86       47.46
+          3 │      6,183       18.33       65.79
+          4 │     11,539       34.21      100.00
 ────────────┼───────────────────────────────────
-      Total │      33733      100,00
+      Total │     33,733      100.00
 </pre>
 <p>Además, podemos ver dicha distribución para un grupo concreto. Por ejemplo, estudiar cuál es la situación laboral de las mujeres (la variable sexo es <code>rb090</code>).</p>
 <pre class='stata'>. tabulate rb210 if rb090 == 2
 
       RB210 │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          1 │       6023       34,48       34,48
-          2 │       1550        8,87       43,35
-          3 │       2562       14,67       58,02
-          4 │       7333       41,98      100,00
+          1 │      6,023       34.48       34.48
+          2 │      1,550        8.87       43.35
+          3 │      2,562       14.67       58.02
+          4 │      7,333       41.98      100.00
 ────────────┼───────────────────────────────────
-      Total │      17468      100,00
+      Total │     17,468      100.00
 </pre>
 <p>Un comando para inspeccionar directamente los datos es <code>list</code>. Por ejemplo, podemos inspeccionar los 10 primeros valores de la variable sexo (<code>rb090</code>):</p>
 <pre class='stata'>. list rb090 in 1/10
@@ -407,7 +412,7 @@ rb210                                                                           
 </pre>
 <p>O quedarnos únicamente con las mujeres</p>
 <pre class='stata'>. keep if rb090 == 2
-(16.266 observations deleted)
+(16,266 observations deleted)
 </pre>
 <p>Volvemos a la base de datos original.</p>
 <pre class='stata'>. use "ecv18r.dta", clear
@@ -460,20 +465,20 @@ rb210                                                                           
 
     Variable │        Obs        Mean    Std. Dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-        edad │     33.734     44,8642    23,21889          0         86
+        edad │     33,734     44.8642    23.21889          0         86
 </pre>
 <p>Podemos generar una variable que recoja los grupos de propiedades</p>
 <pre class='stata'>. generate gedad = 1 if edad &lt;= 29
-(24.224 missing values generated)
+(24,224 missing values generated)
 
 . replace gedad = 2 if edad >= 30 &amp; edad &lt;= 49
-(8.779 real changes made)
+(8,779 real changes made)
 
 . replace gedad = 3 if edad >= 50 &amp; edad &lt;= 64
-(7.886 real changes made)
+(7,886 real changes made)
 
 . replace gedad = 4 if edad >= 65
-(7.559 real changes made)
+(7,559 real changes made)
 
 . 
 . // Etiqueamos la variable y sus valores
@@ -489,12 +494,12 @@ rb210                                                                           
 
     Grupo de edad │      Freq.     Percent        Cum.
 ──────────────────┼───────────────────────────────────
-Menor que 30 años │       9510       28,19       28,19
-  De 30 a 49 años │       8779       26,02       54,22
-  De 50 a 64 años │       7886       23,38       77,59
-    65 y más años │       7559       22,41      100,00
+Menor que 30 años │      9,510       28.19       28.19
+  De 30 a 49 años │      8,779       26.02       54.22
+  De 50 a 64 años │      7,886       23.38       77.59
+    65 y más años │      7,559       22.41      100.00
 ──────────────────┼───────────────────────────────────
-            Total │      33734      100,00
+            Total │     33,734      100.00
 </pre>
 <h3 id="recodificación-de-variables">Recodificación de variables</h3>
 <p>A través del comando <code>recode</code> podemos recodificar variables.</p>
@@ -554,10 +559,10 @@ Menor que 30 años │       9510       28,19       28,19
 
    Grupo de edad │      Freq.     Percent        Cum.
 ─────────────────┼───────────────────────────────────
-Menor de 50 años │      18289       54,22       54,22
-   50 y más años │      15445       45,78      100,00
+Menor de 50 años │     18,289       54.22       54.22
+   50 y más años │     15,445       45.78      100.00
 ─────────────────┼───────────────────────────────────
-           Total │      33734      100,00
+           Total │     33,734      100.00
 </pre>
 <h3 id="generación-extendida-de-variables">Generación extendida de variables</h3>
 <p>El comando <code>egen</code> nos permite realizar muchas operaciones a partir de una o varias variables (conteo, medias, etc.)</p>
@@ -910,19 +915,19 @@ phd05t_f already numeric; no replace
 
      P78a_U │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-         -2 │      22051       78,31       78,31
-         -1 │          2        0,01       78,31
-          1 │       1388        4,93       83,24
-          2 │       2248        7,98       91,23
-          3 │       1968        6,99       98,21
-          4 │         44        0,16       98,37
-          5 │        252        0,89       99,26
-          6 │        176        0,63       99,89
-          7 │          3        0,01       99,90
-          8 │         25        0,09       99,99
-          9 │          3        0,01      100,00
+         -2 │     22,051       78.31       78.31
+         -1 │          2        0.01       78.31
+          1 │      1,388        4.93       83.24
+          2 │      2,248        7.98       91.23
+          3 │      1,968        6.99       98.21
+          4 │         44        0.16       98.37
+          5 │        252        0.89       99.26
+          6 │        176        0.63       99.89
+          7 │          3        0.01       99.90
+          8 │         25        0.09       99.99
+          9 │          3        0.01      100.00
 ────────────┼───────────────────────────────────
-      Total │      28160      100,00
+      Total │     28,160      100.00
 </pre>
 <p>Una buena opción es, antes de nada, recodificar estos valores como perdidos, por ejemplo,</p>
 <pre class='stata'>. recode p78a_u (-2 -1 = .)
@@ -940,7 +945,7 @@ phd05t_f already numeric; no replace
 <pre class='stata'>. net search poverty
 (contacting http://www.stata.com)
 
-46 packages found (Stata Journal and STB listed first)
+48 packages found (Stata Journal and STB listed first)
 ──────────────────────────────────────────────────────
 
 st0492 from http://www.stata-journal.com/software/sj17-3
@@ -1026,6 +1031,12 @@ drdecomp from http://fmwww.bc.edu/RePEc/bocode/d
     shapley value of the Datt and Ravallion / (1992) decomposition of changes
     in a welfare indicator into / growth and distribution, however, following
 
+dstat from http://fmwww.bc.edu/RePEc/bocode/d
+    'DSTAT': module to compute summary statistics and distribution functions
+    including standard errors and optional covariate balancing / dstat unites
+    a variety of methods to describe (univariate) / statistical distributions.
+    Covered are density estimation, / histograms, cumulative distribution
+
 egen_inequal from http://fmwww.bc.edu/RePEc/bocode/e
     'EGEN_INEQUAL': module providing extensions to generate inequality and
     poverty measures / The set of programs in this package uses egen to create
@@ -1073,6 +1084,12 @@ hoishapley from http://fmwww.bc.edu/RePEc/bocode/h
     Opportunity Index / hoishapley computes the Shapley decomposition of the
     Human / Opportunity Index (HOI), it includes the estimation of the basic /
     statistics like Coverage of Basic Opportunities (C), the / Dissimilarity
+
+ipabcstats from http://fmwww.bc.edu/RePEc/bocode/i
+    'IPABCSTATS': module to compare survey and back check data, producing an
+    Excel output of comparisons and error rates / ipabcstats compares back
+    check data and survey data, producing / a data set of comparisons.  It
+    completes enumerator checks for / type 1 and type 2 variables and
 
 isopoverty from http://fmwww.bc.edu/RePEc/bocode/i
     'ISOPOVERTY': module to generate data for Inequality-Poverty and
