@@ -292,7 +292,7 @@ log using curso1, replace</code></pre>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">+ suma</td>
-<td style="text-align: left;">&amp; and</td>
+<td style="text-align: left;">&amp; y</td>
 <td style="text-align: left;">&gt; mayor que</td>
 </tr>
 <tr class="even">
@@ -406,7 +406,12 @@ rb210                                                                           
 </pre>
 <h2 id="eliminar-variables-y-observaciones">4.3. Eliminar variables y observaciones</h2>
 <p>Para eliminar variables y observaciones de la base de datos podemos emplear tanto <code>drop</code> como <code>keep</code>.</p>
-<p><code> drop <i>varlist</i></code> <code>drop if <i>exp</i></code> <code>drop in </i>range</i> [if exp]</code> <code>keep <i>varlist</i></code> <code>keep if <i>exp</i></code> <code>keep if <i>range</i> [if <i>exp</i>]</code></p>
+<p><code>drop <i>varlist</i></code></p>
+<p><code>drop if <i>exp</i></code></p>
+<p><code>drop in </i>range</i> [if exp]</code></p>
+<p><code>keep <i>varlist</i></code></p>
+<p><code>keep if <i>exp</i></code></p>
+<p><code>keep if <i>range</i> [if <i>exp</i>]</code></p>
 <p>Así, por ejemplo, podemos eliminar el mes de nacimiento de la persona</p>
 <pre class='stata'>. drop rb070
 </pre>
