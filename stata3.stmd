@@ -163,7 +163,7 @@ regress logsalario i.sexo edad edad2 ib1.educg
 Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de `Stata`.
 
 ```{s}
-regress logsalario edad i.sexo#c.edad i.sexo##educg
+regress logsalario i.sexo edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
 ```
 
 # 4. Otros modelos econométricos de uso común
@@ -175,11 +175,11 @@ En este ejemplo, vamos a analizar cuál es la influencia del sexo, la edad, la e
 ```{s}
 //  Estimación del modelo logit
 
-logit empleo i.sexo edad edad2
+logit empleo i.sexo c.edad c.edad#c.edad
 
 //  Estimación del modelo probit
 
-probit empleo i.sexo edad edad2
+probit empleo i.sexo c.edad c.edad#c.edad
 ```
 
 Es muy posible que recordemos que los coeficientes estimados de muchos modelos no lineales no son directamente interpretables. Por eso, habitualmente, presentamos, por ejemplo, los efectos marginales. `Stata` permite abordar esta tarea a través del uso del comando `margins` después de la estimación del modelo correspondiente:
@@ -191,7 +191,7 @@ En este tipo de modelos, los efectos marginales (el efecto de un incremento de u
 ```{s}
 //  Estimación del modelo logit
 
-logit empleo i.sexo edad edad2
+logit empleo i.sexo c.edad c.edad#c.edad
 
 //  Efectos marginales
 
@@ -203,7 +203,7 @@ Otra opción habitual es calcular efectos marginales para cada observación y pr
 ```{s}
 //  Estimación del modelo probit
 
-probit empleo i.sexo edad edad2
+probit empleo i.sexo c.edad c.edad#c.edad
 
 //  Efectos marginales
 
@@ -221,7 +221,7 @@ En nuestro caso, la estimación del modelo será la siguiente (en este caso, los
 ```{s}
 //  Estimación del modelo tobit
 
-tobit aportacionesg i.sexo edad edad2 i.educg, ll(0)
+tobit aportacionesg i.sexo c.edad c.edad#c.edad i.educg, ll(0)
 
 //  Efectos marginales
 
@@ -238,7 +238,7 @@ tab salud, nolabel
 
 //  Estimación del modelo logit ordenado
 
-ologit salud i.sexo edad edad2 i.educg
+ologit salud i.sexo c.edad c.edad#c.edad i.educg
 
 //  Efectos marginales
 
@@ -260,7 +260,7 @@ svyset psu [pweight=peso], strata(region) vce(linearized) singleunit(missing)
 Ahora, utilizamos la contraparte para este tipo de datos de `Stata`, `svy: regress`:
 
 ```{s}
-svy: regress logsalario edad i.sexo#c.edad i.sexo##educg
+svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
 ```
 
 Además, muchos comandos en `Stata` admiten el empleo de ponderaciones. En el caso de los

@@ -58,7 +58,7 @@ Observamos que las observaciones se encuentran en ambas bases de datos simultán
 
 A continuación, fusionamos la base de datos con información básica de personas (`ecv18r.dta`) con la base de datos con información detallada (`ecv18p.dta`). De acuerdo a la documentación de la encuestas y nuestro etiquetado, la variable de enlace es el identificador personal (`pid`), que corresponde a las variables de identificador del hogar en cada archivo (`rb030` y `pb030`, respectivamente). Esta variable, según la documentación está formada porque
 
-$$ \text{pid} = \text{hid} + \text{nº de 0 a 10 indicando el número de la persona en el hogar}$$
+$$ \text{pid} = 100 \cdot \text{hid} + \text{nº de 0 a 10 indicando el número de la persona en el hogar}$$
 
 Procedemos como sigue:
 
@@ -120,6 +120,7 @@ merge m:1 hid using "ecv18h.dta", nogenerate
 El comando `append` nos permite unir archivos que contienen las mismas variables pero referidas a distintas unidades de análisis. Por ejemplo, podemos fusionar la base de datos de la ECV del año 2018 (`ecv18`) con otras de años anteriores, como la base de datos del año 2017 (`ecv17`) y 2016 (`ecv16`). El procedimiento es el siguiente:
 
 **Paso 1.** Abrimos uno de los archivos.
+
 **Paso 2.** Con el comando, `append` agregamos el resto de archivos.
 
   <code><u>ap</u>pend using <i>filename</i> [<i>filename</i> <i>...</i>] [, <i>options</i>]</code>
@@ -184,7 +185,7 @@ Por ejemplo, vamos a crear un archivo que contenga el salario medio por sexo y a
 ```{s}
 //  Seleccionamos los trabajadores únicamente
 
-generate rentaasa = rentamonasag + rentamonasag
+generate rentaasa = rentamonasag + rentanomonasag
 generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
 keep if rentaasa > 0 & rentaasa < .
 keep if nmesesasa > 0 & nmesesasa < .
@@ -284,7 +285,7 @@ global var1 "sexo"
 summarize $var1
 ```
 
-## El uso de bucles
+## 5.3 El uso de bucles
 
 El tercer elemento clave en términos de programación son los bucles, que, a través de macros locales, nos permiten realizar operaciones de forma repetida y, de esa forma, programar de forma eficiente. Los principales bucles que podemos emplear son los siguientes:
 
@@ -319,6 +320,12 @@ El tercer elemento clave en términos de programación son los bucles, que, a tr
   <code>}</code>
 
   <code>foreach <i>lname</i> of <u>num</u>list <i>numlist</i> {</code>
+
+  <code>        <i>commands referring to `lname'</i></code>
+
+  <code>}</code>
+
+  {code}forvalues <i>lname</i> = <i>range</i> {</code>
 
   <code>        <i>commands referring to `lname'</i></code>
 

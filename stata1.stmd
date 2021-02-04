@@ -132,9 +132,10 @@ Además, los diferentes tipos de cursos que ofrece [StataCorp](https://www.stata
 
 ## 4.1. Introducción de datos en `Stata`
 
-Cada vez es más habitual que muchas instituciones y organismos proporcionen la información en el formato nativo de `Stata`, los archivos `.dta`, pero, con todo, no es lo habitual. En muchas ocasiones nos encontramos formatos como `.csv`, `.txt`, `raw`, etc. Por ello, es necesario saber cómo leer diferentes tipos de archivos en `Stata`.
+Cada vez es más habitual que muchas instituciones y organismos proporcionen la información en el formato nativo de `Stata`, los archivos `.dta`, pero, con todo, no es lo habitual. En muchas ocasiones nos encontramos formatos como `.csv`, `.txt`, `.raw`, etc. Por ello, es necesario saber cómo leer diferentes tipos de archivos en `Stata`.
 
 Antes de nada, vamos a crear un nuevo archivo `.do` donde iremos escribiendo la sintaxis y que podemos llamar `curso1.do`. Es extremadamente importante y útil documentar los archivos `.do`. En este sentido, el libro de @Long2009 ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes:
+
 * Podemos incluir comentarios en los archivos `.do` empleando `*` o `//` (el último, también en la misma línea).
 * Asimismo, podemos indicar a `Stata` a no tener en cuenta los saltos de línea empleando `///` al final de la línea.
 * Podemos ordenar a `Stata` omitir la lectura de todo el contenido incluido entre `/*` y `*/`.
@@ -190,7 +191,7 @@ Veremos que algunas variables se encuentran en formato numérico y otras, como c
 
 ![Variables importadas de la ECV 2018](browse.png){width=75%}
 
-Podemos solventar eso con el comando `destring` que convierte todas las variables numéricas a formato numérico sin perder información (si hay pérdida de información, no lo hace). Existe, asimismo, un comando para realizar la operación contraria (`help tostring`).
+Podemos solventar eso con el comando `destring` que convierte todas las variables en formato texto a formato numérico sin perder información (si hay pérdida de información, no lo hace). Existe, asimismo, un comando para realizar la operación contraria (`help tostring`).
 
   <code>destring [<i>varlist</i>] , {generate(<i>newvarlist</i>)|replace} [<i>destring_options</i>]</code>
 
@@ -228,7 +229,7 @@ Al final de la parte que deseamos reportar, empleamos
 
 En nuestro caso, podríamos añadir al principio
 
-    capture log close<code> // Para cerrar logs abiertos
+    capture log close // Para cerrar logs abiertos
     log using curso1, replace
 
 Al final,
@@ -243,7 +244,7 @@ Tenemos varios comandos que nos permiten hacernos una idea de cuál es el conten
 
 | Operadores aritméticos    | Operadores lógicos         | Operadores relacionales<br>(variables numéricas y alfanuméricas)   |
 |:--------------------------|:---------------------------|:-------------------------------------------------------------------|
-| +   suma                  | &   and                    | >   mayor que                                                      |
+| +   suma                  | &   y                    | >   mayor que                                                      |
 | -   resta                 | \|   o                      | <   menor que                                                      |
 | *   producto              | !   no                     | >=  mayor o igual                                                  |
 | /   cociente              | ~   no                     | <=  menor o igual                                                  |
@@ -307,11 +308,16 @@ list rb090 in 1/10
 
 Para eliminar variables y observaciones de la base de datos podemos emplear tanto `drop` como `keep`.
 
-  <code> drop <i>varlist</i></code>
+  <code>drop <i>varlist</i></code>
+
   <code>drop if <i>exp</i></code>
+
   <code>drop in </i>range</i> [if exp]</code>
+
   <code>keep <i>varlist</i></code>
+
   <code>keep if <i>exp</i></code>
+
   <code>keep if <i>range</i> [if <i>exp</i>]</code>
 
 Así, por ejemplo, podemos eliminar el mes de nacimiento de la persona
@@ -523,7 +529,7 @@ ssc install povdeco
 
 Además, es frecuente que otros autores ofrezcan sus programas con más o menos sofisticación y mejor o peor presentación.
 
-**[Stata Journal](https://www.stata.com/learn/)**. Se trata de una revista de StataCorp, indexada en el Journal Citation Reports, donde se publican estrategias de uso de `Stata` y se proponen nuevos comandos  y se ponen a disposición de los usuarios. El [artículo](https://www.stata-journal.com/sjpdf.html?articlenum=st0151) de @Jann2008 representa un ejemplo típico: introduce el parquete `oaxaca`, proporcionando unas nociones estadísticas mínimas y explicando el funcionamiento del mismo, ilustrado con ejemplos.
+**[Stata Journal](https://www.stata.com/learn/)**. Se trata de una revista de StataCorp, indexada en el Journal Citation Reports, donde se publican estrategias de uso de `Stata` y se proponen nuevos comandos  y se ponen a disposición de los usuarios. El [artículo](https://www.stata-journal.com/sjpdf.html?articlenum=st0151) de @Jann2008 representa un ejemplo típico: introduce el paquete `oaxaca`, proporcionando unas nociones estadísticas mínimas y explicando el funcionamiento del mismo, ilustrado con ejemplos.
 
 ![Stata Journal](sjcover.png){width=15%}
 

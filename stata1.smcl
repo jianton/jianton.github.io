@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 10:47:13
+ {txt}opened on:  {res} 1 Aug 2019, 09:06:05
 {txt}
 {com}. //_1
 . clear all
@@ -105,13 +105,13 @@
 {col 19}type:  numeric ({res}byte{txt})
 
 {col 18}range:  [{res}1{txt},{res}4{txt}]{col 55}units:  {res}1
-{col 10}{txt}unique values:  {res}4{col 51}{txt}missing .:  {res}1{txt}/{res}33.734
+{col 10}{txt}unique values:  {res}4{col 51}{txt}missing .:  {res}1{txt}/{res}33,734
 
 {txt}{col 13}tabulation:  Freq.  Value
-{col 21}{res}    13.021{col 33}1
-{col 21}     2.990{col 33}2
-{col 21}     6.183{col 33}3
-{col 21}    11.539{col 33}4
+{col 21}{res}    13,021{col 33}1
+{col 21}     2,990{col 33}2
+{col 21}     6,183{col 33}3
+{col 21}    11,539{col 33}4
 {col 21}         1{col 33}.
 {txt}
 {com}. //_10
@@ -119,24 +119,24 @@
 
       {txt}RB210 {c |}      Freq.     Percent        Cum.
 {hline 12}{c +}{hline 35}
-          1 {c |}{res}      13021       38,60       38,60
-{txt}          2 {c |}{res}       2990        8,86       47,46
-{txt}          3 {c |}{res}       6183       18,33       65,79
-{txt}          4 {c |}{res}      11539       34,21      100,00
+          1 {c |}{res}     13,021       38.60       38.60
+{txt}          2 {c |}{res}      2,990        8.86       47.46
+{txt}          3 {c |}{res}      6,183       18.33       65.79
+{txt}          4 {c |}{res}     11,539       34.21      100.00
 {txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      33733      100,00
+      Total {c |}{res}     33,733      100.00
 {txt}
 {com}. //_11
 . tabulate rb210 if rb090 == 2
 
       {txt}RB210 {c |}      Freq.     Percent        Cum.
 {hline 12}{c +}{hline 35}
-          1 {c |}{res}       6023       34,48       34,48
-{txt}          2 {c |}{res}       1550        8,87       43,35
-{txt}          3 {c |}{res}       2562       14,67       58,02
-{txt}          4 {c |}{res}       7333       41,98      100,00
+          1 {c |}{res}      6,023       34.48       34.48
+{txt}          2 {c |}{res}      1,550        8.87       43.35
+{txt}          3 {c |}{res}      2,562       14.67       58.02
+{txt}          4 {c |}{res}      7,333       41.98      100.00
 {txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      17468      100,00
+      Total {c |}{res}     17,468      100.00
 {txt}
 {com}. //_12
 . list rb090 in 1/10
@@ -162,7 +162,7 @@
 {txt}
 {com}. //_14
 . keep if rb090 == 2
-{txt}(16.266 observations deleted)
+{txt}(16,266 observations deleted)
 
 {com}. //_15
 . use "ecv18r.dta", clear
@@ -196,20 +196,20 @@
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 8}edad {c |}{res}     33.734     44,8642    23,21889          0         86
+{space 8}edad {c |}{res}     33,734     44.8642    23.21889          0         86
 {txt}
 {com}. //_21
 . generate gedad = 1 if edad <= 29
-{txt}(24.224 missing values generated)
+{txt}(24,224 missing values generated)
 
 {com}. replace gedad = 2 if edad >= 30 & edad <= 49
-{txt}(8.779 real changes made)
+{txt}(8,779 real changes made)
 
 {com}. replace gedad = 3 if edad >= 50 & edad <= 64
-{txt}(7.886 real changes made)
+{txt}(7,886 real changes made)
 
 {com}. replace gedad = 4 if edad >= 65
-{txt}(7.559 real changes made)
+{txt}(7,559 real changes made)
 
 {com}. 
 . // Etiqueamos la variable y sus valores
@@ -225,12 +225,12 @@
 
     {txt}Grupo de edad {c |}      Freq.     Percent        Cum.
 {hline 18}{c +}{hline 35}
-Menor que 30 años {c |}{res}       9510       28,19       28,19
-{txt}  De 30 a 49 años {c |}{res}       8779       26,02       54,22
-{txt}  De 50 a 64 años {c |}{res}       7886       23,38       77,59
-{txt}    65 y más años {c |}{res}       7559       22,41      100,00
+Menor que 30 años {c |}{res}      9,510       28.19       28.19
+{txt}  De 30 a 49 años {c |}{res}      8,779       26.02       54.22
+{txt}  De 50 a 64 años {c |}{res}      7,886       23.38       77.59
+{txt}    65 y más años {c |}{res}      7,559       22.41      100.00
 {txt}{hline 18}{c +}{hline 35}
-            Total {c |}{res}      33734      100,00
+            Total {c |}{res}     33,734      100.00
 {txt}
 {com}. //_22
 . recode gedad (1 2 = 1) (3 4 = 2)
@@ -250,10 +250,10 @@ Menor que 30 años {c |}{res}       9510       28,19       28,19
 
    {txt}Grupo de edad {c |}      Freq.     Percent        Cum.
 {hline 17}{c +}{hline 35}
-Menor de 50 años {c |}{res}      18289       54,22       54,22
-{txt}   50 y más años {c |}{res}      15445       45,78      100,00
+Menor de 50 años {c |}{res}     18,289       54.22       54.22
+{txt}   50 y más años {c |}{res}     15,445       45.78      100.00
 {txt}{hline 17}{c +}{hline 35}
-           Total {c |}{res}      33734      100,00
+           Total {c |}{res}     33,734      100.00
 {txt}
 {com}. //_23
 . egen edadm = mean(edad)
@@ -594,19 +594,19 @@ Menor de 50 años {c |}{res}      18289       54,22       54,22
 
      {txt}P78a_U {c |}      Freq.     Percent        Cum.
 {hline 12}{c +}{hline 35}
-         -2 {c |}{res}      22051       78,31       78,31
-{txt}         -1 {c |}{res}          2        0,01       78,31
-{txt}          1 {c |}{res}       1388        4,93       83,24
-{txt}          2 {c |}{res}       2248        7,98       91,23
-{txt}          3 {c |}{res}       1968        6,99       98,21
-{txt}          4 {c |}{res}         44        0,16       98,37
-{txt}          5 {c |}{res}        252        0,89       99,26
-{txt}          6 {c |}{res}        176        0,63       99,89
-{txt}          7 {c |}{res}          3        0,01       99,90
-{txt}          8 {c |}{res}         25        0,09       99,99
-{txt}          9 {c |}{res}          3        0,01      100,00
+         -2 {c |}{res}     22,051       78.31       78.31
+{txt}         -1 {c |}{res}          2        0.01       78.31
+{txt}          1 {c |}{res}      1,388        4.93       83.24
+{txt}          2 {c |}{res}      2,248        7.98       91.23
+{txt}          3 {c |}{res}      1,968        6.99       98.21
+{txt}          4 {c |}{res}         44        0.16       98.37
+{txt}          5 {c |}{res}        252        0.89       99.26
+{txt}          6 {c |}{res}        176        0.63       99.89
+{txt}          7 {c |}{res}          3        0.01       99.90
+{txt}          8 {c |}{res}         25        0.09       99.99
+{txt}          9 {c |}{res}          3        0.01      100.00
 {txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}      28160      100,00
+      Total {c |}{res}     28,160      100.00
 {txt}
 {com}. //_26
 . recode p78a_u (-2 -1 = .)
@@ -617,7 +617,7 @@ Menor de 50 años {c |}{res}      18289       54,22       54,22
 {txt}(contacting http://www.stata.com)
 
 {s6hlp}
-46 packages found (Stata Journal and STB listed first)
+48 packages found (Stata Journal and STB listed first)
 ------------------------------------------------------
 
 @net:describe st0492, from(http://www.stata-journal.com/software/sj17-3)!st0492 from http://www.stata-journal.com/software/sj17-3@
@@ -703,6 +703,12 @@ Menor de 50 años {c |}{res}      18289       54,22       54,22
     shapley value of the Datt and Ravallion / (1992) decomposition of changes
     in a welfare indicator into / growth and distribution, however, following
 
+@net:describe dstat, from(http://fmwww.bc.edu/RePEc/bocode/d)!dstat from http://fmwww.bc.edu/RePEc/bocode/d@
+    'DSTAT': module to compute summary statistics and distribution functions
+    including standard errors and optional covariate balancing / dstat unites
+    a variety of methods to describe (univariate) / statistical distributions.
+    Covered are density estimation, / histograms, cumulative distribution
+
 @net:describe egen_inequal, from(http://fmwww.bc.edu/RePEc/bocode/e)!egen_inequal from http://fmwww.bc.edu/RePEc/bocode/e@
     'EGEN_INEQUAL': module providing extensions to generate inequality and
     poverty measures / The set of programs in this package uses egen to create
@@ -750,6 +756,12 @@ Menor de 50 años {c |}{res}      18289       54,22       54,22
     Opportunity Index / hoishapley computes the Shapley decomposition of the
     Human / Opportunity Index (HOI), it includes the estimation of the basic /
     statistics like Coverage of Basic Opportunities (C), the / Dissimilarity
+
+@net:describe ipabcstats, from(http://fmwww.bc.edu/RePEc/bocode/i)!ipabcstats from http://fmwww.bc.edu/RePEc/bocode/i@
+    'IPABCSTATS': module to compare survey and back check data, producing an
+    Excel output of comparisons and error rates / ipabcstats compares back
+    check data and survey data, producing / a data set of comparisons.  It
+    completes enumerator checks for / type 1 and type 2 variables and
 
 @net:describe isopoverty, from(http://fmwww.bc.edu/RePEc/bocode/i)!isopoverty from http://fmwww.bc.edu/RePEc/bocode/i@
     'ISOPOVERTY': module to generate data for Inequality-Poverty and
@@ -979,7 +991,7 @@ all files already exist and are up to date.
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 10:47:13
+ {txt}closed on:  {res} 1 Aug 2019, 09:06:05
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
