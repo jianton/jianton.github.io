@@ -6,7 +6,7 @@ csl: apa.csl
 ---
 _ _ _
 
-<p style="text-align: center;">[<span style="color:red"><font size="4">Inicio</font></span>](https://jianton.github.io/curso_stata.html) &nbsp;&nbsp;&nbsp;&nbsp; [<span style="color:red"><font size="4">Sesión 1</font></span>](https://jianton.github.io/stata1.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 2</font></span>](https://jianton.github.io/stata2.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 3</font></span>](https://jianton.github.io/stata3.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 4</font></span>](https://jianton.github.io/stata4.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 5</font></span>](https://jianton.github.io/stata5.html) &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Ejercicios</font></span>](https://jianton.github.io/stata_ejercicios.html) </p>
+<p style="text-align: center;">[<span style="color:red"><font size="4">Inicio</font></span>](https://jianton.github.io/curso_stata.html) &nbsp;&nbsp;&nbsp;&nbsp; [<span style="color:red"><font size="4">Sesión 1</font></span>](https://jianton.github.io/stata1.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 2</font></span>](https://jianton.github.io/stata2.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 3</font></span>](https://jianton.github.io/stata3.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 4</font></span>](https://jianton.github.io/stata4.html)    &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Sesión 5</font></span>](https://jianton.github.io/stata5.html) &nbsp;&nbsp;&nbsp;&nbsp;   [<span style="color:red"><font size="4">Ejercicios</font></span>](https://drive.google.com/file/d/1tsgvLeIRF3yPGc7pcpT4aZkgi4xUemO2/view?usp=sharing) </p>
 _ _ _
 
 ## Profesor
@@ -98,9 +98,9 @@ El curso se divide en cinco sesiones con los siguientes contenidos:
 
   **<span style="color:red">4.</span>** Documentos dinámicos y otras posibilidades
 
-Los materiales del curso pueden descargarse en este [enlace](https://drive.google.com/file/d/1rIRv6NaByFUjFtOpVnys252krxSiG6OG/view?usp=sharing). Se incluyen todos los archivos que empleamos (y generamos) durante las sesiones y, además, dentro de la subcarpeta `extra`, se adjuntan los archivos de sintaxis utilizados por el profesor para generar estos materiales desde los datos en bruto descargados de la web.
+Los materiales del curso pueden descargarse en este [enlace](https://drive.google.com/file/d/16bukxS8OwOsmH51R0O_hw3ggXhfdZh6O/view?usp=sharing. Se incluyen todos los archivos que empleamos (y generamos) durante las sesiones y, además, dentro de la subcarpeta `extra`, se adjuntan los archivos de sintaxis utilizados por el profesor para generar estos materiales desde los datos en bruto descargados de la web.
 
-Para superar el curso, los estudiantes deberán entregar la solución a la hoja de problemas que puede descargarse en este enlace. Los ejercicios pueden entregarse proporcionando al profesor un archivo `.do` o un archivo log (e.g., `smcl`), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos `.html` o `.pdf` generados con Markdown o TeX). Se requiere resolver adecuadamente un 80% de los ejercicios propuestos.
+Para superar el curso, los estudiantes deberán entregar la solución a la hoja de problemas que puede descargarse en este [enlace](https://drive.google.com/file/d/1tsgvLeIRF3yPGc7pcpT4aZkgi4xUemO2/view?usp=sharing). Los ejercicios pueden entregarse proporcionando al profesor un archivo `.do` o un archivo log (e.g., `smcl`), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos `.html` o `.pdf` generados con Markdown o TeX).
 :::
 ::::::::::::::
 ```{s/}

@@ -65,14 +65,14 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <a href="https://jianton.github.io/curso_stata.html"><span style="color:red"><font size="4">Inicio</font></span></a>      <a href="https://jianton.github.io/stata1.html"><span style="color:red"><font size="4">Sesión 1</font></span></a>      <a href="https://jianton.github.io/stata2.html"><span style="color:red"><font size="4">Sesión 2</font></span></a>      <a href="https://jianton.github.io/stata3.html"><span style="color:red"><font size="4">Sesión 3</font></span></a>      <a href="https://jianton.github.io/stata4.html"><span style="color:red"><font size="4">Sesión 4</font></span></a>      <a href="https://jianton.github.io/stata5.html"><span style="color:red"><font size="4">Sesión 5</font></span></a>      <a href="https://jianton.github.io/stata_ejercicios.html"><span style="color:red"><font size="4">Ejercicios</font></span></a>
 </p>
 <hr />
-<p><strong>Evaluación:</strong> Para superar el curso, los estudiantes deberán entregar la solución a la hoja de problemas que puede descargarse en este enlace. Los ejercicios pueden entregarse proporcionando al profesor un archivo <code>.do</code> o un log (e.g., un archivo <code>.smcl</code>), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos <code>.html</code> o <code>.pdf</code> generados con Markdown o TeX). Se requiere resolver adecuadamente un 80% de los ejercicios propuestos.</p>
+<p><strong>Evaluación:</strong> Para superar el curso, los estudiantes deberán entregar la solución a la hoja de problemas que puede descargarse en este enlace. Los ejercicios pueden entregarse proporcionando al profesor un archivo <code>.do</code> o un log (e.g., un archivo <code>.smcl</code>), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos <code>.html</code> o <code>.pdf</code> generados con Markdown o TeX).</p>
 <hr style="border-top: dotted 1px;" />
 <p><strong><span style="color:blue"><font size="3">Ejercicio 1</font></span></strong></p>
 <p>El Latinobarómetro es una encuesta anual que se realiza en la mayor parte de los países de América Latina y el Caribe y que recoge información sobre la percepción de los ciudadanos de la democracia, la economía y la sociedad. Visita la <a href="https://www.latinobarometro.org/latContents.jsp">página web de la encuesta</a> y realiza las siguientes tareas:</p>
-<p><strong><span style="color:red">a)</span></strong> Descarga la base de datos del año 2018 en formato <code>.dta</code>.</p>
-<p><strong><span style="color:red">b)</span></strong> Crea una variable que recoja la edad del entrevistado en 3 intervalos (menores 30, entre 30 y 64 años y 65 y más años) y la educación en tres categorías (baja [secundaria incompleta o menos], media[secundaria completa y superior incompleta] y superior [superior completa]). Renombra las variables empleando algún término que te permita identificar mejor la variable (e.g., la variable que recoge el sexo puedes denominarla <code>sexo</code>) Etiqueta la variable y sus valores.</p>
+<p><strong><span style="color:red">a)</span></strong> Descarga la base de datos del año 2018 en el formato que prefieras (el archivo <code>.dta</code> contiene algunos errores, por lo que puede ser preferible importar los archivos descargados en otro formato).</p>
+<p><strong><span style="color:red">b)</span></strong> Crea una variable que recoja la edad del entrevistado en 3 intervalos (menores 30, entre 30 y 64 años y 65 y más años). Renombra las variable empleando algún término que te permita identificar mejor la variable (e.g., la variable que recoge el sexo puedes denominarla <code>sexo</code>) Etiqueta la variable y sus valores.</p>
 <p><strong><span style="color:red">c)</span></strong> Explora la variable <em>Escala izquierda-derecha</em> y recodifica aquellas respuestas distintas a la escala 0-10 (Ninguno, no sabe, no contesta) como valores perdidos.</p>
-<p><strong><span style="color:red">d)</span></strong> Guarda un archivo con nombre <code>latbar2018.dta</code> que contengan el país de la entrevista, año de la entrevista, sexo, edad, educación en tres grupos y escala izquierda-derecha (solo las personas con valores 0-10). Excluye de la muestra a España, la población de 65 y más años y todas las personas con valores perdidos en cualquiera de las seis variables.</p>
+<p><strong><span style="color:red">d)</span></strong> Guarda un archivo con nombre <code>latbar2018.dta</code> con variables que contengan el país de la entrevista, año de la entrevista, sexo, edad, educación en tres grupos y escala izquierda-derecha (solo las personas con valores 0-10). Excluye de la muestra a España, la población de 65 y más años y todas las personas con valores perdidos en cualquiera de las seis variables.</p>
 <p><br/><br/></p>
 <p><strong><span style="color:blue"><font size="3">Ejercicio 2</font></span></strong></p>
 <p><strong><span style="color:red">a)</span></strong> Descarga de la misma página los datos del Latinobarómetro correspondientes a 1998 y 2008, con similares valores y filtros que la base de datos de 2018.</p>
@@ -95,9 +95,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p><strong><span style="color:blue"><font size="3">Ejercicio 5</font></span></strong></p>
 <p>Realiza las cuatro regresiones de la posición ideológica sobre los siguientes grupos de variables:<br />
 (1) sexo,<br />
-(2) sexo, edad y edad al cuadrado;<br />
-(3) sexo, edad, edad al cuadrado y educación.<br />
-(4) sexo, edad, edad al cuadrado, educación y año de la encuesta.<br />
+(2) sexo, edad y edad al cuadrado,<br />
+(3) sexo, edad, edad al cuadrado y educación,<br />
+(4) sexo, edad, edad al cuadrado, educación y año de la encuesta,<br />
 </p>
 <p>Con ayuda de <code>esttab</code> o <code>putexcel</code>, crea una tabla en Microsoft Word (o un procesador de textos similar) con la tabla de regresión.</p>
 

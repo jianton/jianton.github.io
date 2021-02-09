@@ -71,7 +71,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <ul>
 <li>En cada vez más revistas y disciplinas, se exige que se proporcione todo el material que permita obtener los resultados presentados en los artículos. En algunas publicaciones, como <em>American Economic Review</em>, se dispone incluso de recursos humanos que garantizarán esta reproducibilidad (es decir, comprueban que, con los materiales provistos por los autores, se pueda llegar a sus resultados).</li>
 <li>Tener la capacidad de reproducir nuestros resultados con un flujo de trabajo adecuado puede suponer un cierto esfuerzo en el corto plazo, pero el ahorro de tiempo a largo plazo es muy superior.</li>
-<li>Al margen de ser un proceso intensivo en tiempo, Copiar y pegar nuestros resultados desde el programa estadístico que utilicemos es una práctica de riesgo en términos de errores.</li>
+<li>Al margen de ser un proceso intensivo en tiempo, copiar y pegar nuestros resultados desde el programa estadístico que utilicemos es una práctica de riesgo en términos de errores.</li>
 </ul>
 <p>Naturalmente, el estilo adoptado en el establecimiento de un flujo de trabajo tiene mucho de personal. No obstante, existen buenas prácticas y propuestas muy sólidas que podemos adoptar y de las que podemos aprender y, por qué no, incluso tratar de mejorar.</p>
 <p>A continuación, nos centraremos en dos flujos de trabajo, uno de ellos, para aquellos que emplean Microsoft Word y otro, más avanzado y con un grado mucho mayor de automatización, para los que prefieren LaTeX. Como referencias generales sobre el tema podemos citar los trabajos de <span class="citation" data-cites="Christensen2018">Christensen &amp; Miguel (2018)</span> y <span class="citation" data-cites="Orozco2018">Orozco et al. (2018)</span>.</p>
@@ -79,7 +79,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <figure>
 <img src="flow1.png" style="width:50.0%" alt="" /><figcaption>Propuesta de flujo de trabajo (I)</figcaption>
 </figure>
-<p>Existen varios comandos y paquetes que nos permiten exportar nuestros resultados a Microsoft Word (o Microsoft Excel). Algunos ejemplos son <code>estout</code> (que emplearemos posteriormente) y <code>outreg</code>. Sin embargo, el formato en el que obtenemos estos resultados, aunque puede ser adecuado para explorar los resultados preliminares de nuestro trabajo, no se acerca a los estándares de forma necesarios para la publicación. En otras palabras, nos va a obligar a un trabajo adicional importante. Si tenemos que repetir el análisis con alguna modificación, vamos a tener que realizar ese esfuerzo nuevamente. Podemos encontrar información detallada sobre <code>estout</code> en varios artículos de su autor <span class="citation" data-cites="Jann2005 Jann2006">(<span class="citeproc-not-found" data-reference-id="Jann2006"><strong>???</strong></span>; Jann, 2005)</span> y en la <a href="http://repec.sowi.unibe.ch/stata/estout/">página web</a> dedicada al paquete por este. En particular, para esta tarea vamos a emplear el comando <code>esttab</code> que incluye este paquete.</p>
+<p>Existen varios comandos y paquetes que nos permiten exportar nuestros resultados a Microsoft Word (o Microsoft Excel). Algunos ejemplos son <code>estout</code> (que emplearemos posteriormente) y <code>outreg</code>. Sin embargo, el formato en el que obtenemos estos resultados, aunque puede ser adecuado para explorar los resultados preliminares de nuestro trabajo, no se acerca a los estándares de forma necesarios para la publicación. En otras palabras, nos va a obligar a un trabajo adicional importante. Si tenemos que repetir el análisis con alguna modificación, vamos a tener que realizar ese esfuerzo nuevamente. Podemos encontrar información detallada sobre <code>estout</code> en varios artículos de su autor <span class="citation" data-cites="Jann2005 Jann2016">(Jann, 2005, 2016)</span> y en la <a href="http://repec.sowi.unibe.ch/stata/estout/">página web</a> dedicada al paquete por este. En particular, para esta tarea vamos a emplear el comando <code>esttab</code> que incluye este paquete.</p>
 <pre class='stata'>. //  Fijamos el directorio de trabajo
 . 
 . cd "D:\Dropbox\curso_stata\sesión5"
@@ -110,70 +110,70 @@ all files already exist and are up to date.
 . 
 . eststo total: regress logsalario ib1.sexo edad edad2 ib1.educg
 
-      Source │       SS           df       MS      Number of obs   =    11.599
-─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
-       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
-    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
-       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
+      Source │       SS           df       MS      Number of obs   =    11,599
+─────────────┼──────────────────────────────────   F(5, 11593)     =    577.13
+       Model │  1600.34458         5  320.068916   Prob > F        =    0.0000
+    Residual │  6429.36841    11,593  .554590565   R-squared       =    0.1993
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.1990
+       Total │    8029.713    11,598  .692336006   Root MSE        =    .74471
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
         sexo │
-      Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
-        edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
-       edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
+      Mujer  │  -.2365705     .01394   -16.97   0.000    -.2638953   -.2092458
+        edad │   .0721823   .0046198    15.62   0.000     .0631268    .0812378
+       edad2 │  -.0005808   .0000535   -10.86   0.000    -.0006856   -.0004759
              │
        educg │
-Nivel medio  │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
- Nivel alto  │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
+Nivel medio  │    .240602   .0185962    12.94   0.000     .2041503    .2770537
+ Nivel alto  │    .613554   .0163944    37.42   0.000     .5814181    .6456898
              │
-       _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
+       _cons │   5.145524   .0958254    53.70   0.000      4.95769    5.333357
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . eststo male: regress logsalario edad edad2 ib1.educg if sexo == 1
 
-      Source │       SS           df       MS      Number of obs   =     5.966
-─────────────┼──────────────────────────────────   F(4, 5961)      =    386,62
-       Model │  833,616132         4  208,404033   Prob > F        =    0,0000
-    Residual │  3213,21346     5.961  ,539039333   R-squared       =    0,2060
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,2055
-       Total │   4046,8296     5.965  ,678429102   Root MSE        =    ,73419
+      Source │       SS           df       MS      Number of obs   =     5,966
+─────────────┼──────────────────────────────────   F(4, 5961)      =    386.62
+       Model │  833.616132         4  208.404033   Prob > F        =    0.0000
+    Residual │  3213.21346     5,961  .539039333   R-squared       =    0.2060
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.2055
+       Total │   4046.8296     5,965  .678429102   Root MSE        =    .73419
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   ,0758506   ,0061639    12,31   0,000     ,0637672     ,087934
-       edad2 │  -,0005995   ,0000715    -8,38   0,000    -,0007397   -,0004593
+        edad │   .0758506   .0061639    12.31   0.000     .0637672     .087934
+       edad2 │  -.0005995   .0000715    -8.38   0.000    -.0007397   -.0004593
              │
        educg │
-Nivel medio  │   ,2544457   ,0246757    10,31   0,000     ,2060723    ,3028191
- Nivel alto  │   ,5653884   ,0220473    25,64   0,000     ,5221677    ,6086091
+Nivel medio  │   .2544457   .0246757    10.31   0.000     .2060723    .3028191
+ Nivel alto  │   .5653884   .0220473    25.64   0.000     .5221677    .6086091
              │
-       _cons │   5,037839    ,127506    39,51   0,000     4,787881    5,287797
+       _cons │   5.037839    .127506    39.51   0.000     4.787881    5.287797
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . eststo female: regress logsalario edad edad2 ib1.educg if sexo == 2
 
-      Source │       SS           df       MS      Number of obs   =     5.633
-─────────────┼──────────────────────────────────   F(4, 5628)      =    309,16
-       Model │  703,432328         4  175,858082   Prob > F        =    0,0000
-    Residual │  3201,40011     5.628   ,56883442   R-squared       =    0,1801
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,1796
-       Total │  3904,83244     5.632  ,693329624   Root MSE        =    ,75421
+      Source │       SS           df       MS      Number of obs   =     5,633
+─────────────┼──────────────────────────────────   F(4, 5628)      =    309.16
+       Model │  703.432328         4  175.858082   Prob > F        =    0.0000
+    Residual │  3201.40011     5,628   .56883442   R-squared       =    0.1801
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.1796
+       Total │  3904.83244     5,632  .693329624   Root MSE        =    .75421
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   ,0665724     ,00695     9,58   0,000     ,0529477     ,080197
-       edad2 │  -,0005401   ,0000803    -6,73   0,000    -,0006974   -,0003827
+        edad │   .0665724     .00695     9.58   0.000     .0529477     .080197
+       edad2 │  -.0005401   .0000803    -6.73   0.000    -.0006974   -.0003827
              │
        educg │
-Nivel medio  │   ,2314164   ,0282288     8,20   0,000      ,176077    ,2867557
- Nivel alto  │   ,6600433   ,0245986    26,83   0,000     ,6118206    ,7082661
+Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
+ Nivel alto  │   .6600433   .0245986    26.83   0.000     .6118206    .7082661
              │
-       _cons │    5,05201   ,1443795    34,99   0,000     4,768971     5,33505
+       _cons │    5.05201   .1443795    34.99   0.000     4.768971     5.33505
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -345,8 +345,8 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 <img src="flow2.png" style="width:50.0%" alt="" /><figcaption>Propuesta de flujo de trabajo (II)</figcaption>
 </figure>
 <p>Una opción excelente para configurar nuestro flujo de trabajo es utilizar <a href="https://es.wikipedia.org/wiki/LaTeX">LaTeX</a> para escribir nuestros textos. Es un sistema de composición de textos de código abierto que emplea comandos de TeX, un lenguaje de nivel bajo con comandos muy elementales. La principal desventaja de LaTeX es que no se trata de un procesador WYSIWYG (“lo que ves es lo que obtienes”), sino que se basa en instrucciones. Esto implica que el contenido está separado de la forma, lo cual puede ser una ventaja. Como el contenido es básicamente texto plano, podemos integrar output en texto plano que obtengamos de otros programas, como <code>Stata</code>. La gran ventaja de LaTeX es la altísima calidad de los documentos, especialmente apreciable en trabajos que requieran el empleo de fórmulas matemáticas. Por esta razón, es una herramienta de edición profesional. Otras ventajas, no exclusivas de este sistema, se refieren a la gestión de la bibliografía.</p>
-<p>La integración de <code>Stata</code> y LaTeX en nuestro flujo de trabajo es sencilla. Requerimos únicamente una distribución y un editor de TeX y generar resultados e incluso fragmentos de texto que puedan ser directamente incluidos en LaTeX. Las principales distribuciones de TeX son <a href="https://miktex.org/">MiKTeX</a> y <a href="https://www.tug.org/texlive/">TeX Live</a>. Existen muchos editores de TeX gratuitos, como <a href="https://www.texstudio.org/">TeXStudio</a>, <a href="https://www.xm1math.net/texmaker/">Texmaker</a> o <a href="https://www.lyx.org/">LyX</a>. Mediante alguna herramienta como <a href="https://www.dropbox.com">Dropbox</a> o <a href="https://www.google.es/drive/">Google Drive</a> podemos lograr un muy buen sistema de trabajo reproducible colaborativo.</p>
-<p>Otra opción es optar por Resultados de <a href="https://www.overleaf.com/">Overleaf</a>. Se trata un editor online que incorpora la distribución de TeX Live. No requiere instalar ninguna distribución ni editor en nuestro equipo, permite la colaboración en tiempo real (como Google Docs, al contrario que Dropbox) e incluye control de versiones. Existe una versión gratuita, en la que algunas de sus capacidades no están disponibles. Debido a que no requiere instalación local, lo emplearemos en los siguientes ejemplos, aunque hagan que el flujo de trabajo sea menos fluido que con una instalación local, ya que, además, no disponemos de la versión de pago (que incluye la sincronización con Dropbox y GitHub, un sistema de control de versiones que comentaremos en la siguiente sección).</p>
+<p>La integración de <code>Stata</code> y LaTeX en nuestro flujo de trabajo es sencilla. Requerimos únicamente una distribución y un editor de TeX y generar resultados e incluso fragmentos de texto que puedan ser directamente incluidos en LaTeX. Las principales distribuciones de TeX son <a href="https://miktex.org/">MiKTeX</a> y <a href="https://www.tug.org/texlive/">TeX Live</a>. Existen muchos editores de TeX gratuitos, como <a href="https://www.texstudio.org/">TeXstudio</a>, <a href="https://www.xm1math.net/texmaker/">Texmaker</a> o <a href="https://www.lyx.org/">LyX</a>. Mediante alguna herramienta como <a href="https://www.dropbox.com">Dropbox</a> o <a href="https://www.google.es/drive/">Google Drive</a> podemos lograr un muy buen sistema de trabajo reproducible colaborativo.</p>
+<p>Otra opción es optar por <a href="https://www.overleaf.com/">Overleaf</a>. Se trata un editor online que incorpora la distribución de TeX Live. No requiere instalar ninguna distribución ni editor en nuestro equipo, permite la colaboración en tiempo real (como Google Docs, al contrario que Dropbox) e incluye control de versiones. Existe una versión gratuita, en la que algunas de sus capacidades no están disponibles. Debido a que no requiere instalación local, lo emplearemos en los siguientes ejemplos, aunque hagan que el flujo de trabajo sea menos fluido que con una instalación local, ya que, además, no disponemos de la versión de pago (que incluye la sincronización con Dropbox y GitHub, un sistema de control de versiones que comentaremos en la siguiente sección).</p>
 <p>Para poner en marcha este tipo de flujo, vamos a emplear el paquete <code>estout</code>, mencionado en la sección anterior, y el paquete paquete texdoc <span class="citation" data-cites="Jann2016">(Jann, 2016)</span>, que nos va a pemitir crear textos planos con resultados de <code>Stata</code> que vamos a poder llevar a nuestro editor de LaTeX. La idea básica es que <code>Stata</code> genere archivos de texto plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando <code>input{}</code> para incluir el archivo generado. La mayor parte del formato resultante del texto incluido será responsabilidad de LaTeX, que habremos configurado previamente. En general, mi consejo es únicamente crear en <code>Stata</code> de las filas con la información estadística y diseñar el resto de la tabla en el editor de LaTeX.</p>
 
 <pre class='stata'>. //    Establecemos la coma como decimal
@@ -465,7 +465,7 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 </figure>
 <p>Por último, cabe mencionar la facilidad de gestión de referencias bibliográficas con programas gratuitos como <a href="https://www.jabref.org/">JabRef</a>, <a href="https://www.mendeley.com/">Mendeley</a> o <a href="https://www.zotero.org/">Zotero</a>, que pueden utilizarse, además, con otro tipo de aplicaciones para procesar textos. Los recursos disponibles en la red para el aprendizaje de LaTeX, que es, fundamentalmente, un proceso <em>learning by doing</em>, son realmente inabarcables. Una buena referencia inicial para Ciencias Sociales podría ser <span class="citation" data-cites="Frain2014">Frain (2014)</span>.</p>
 <h1 id="documentos-dinámicos-y-otras-posibilidades">4. Documentos dinámicos y otras posibilidades</h1>
-<p>Una de las últimas novedades en el uso de <code>Stata</code> pasan por la elaboración de documentos dinámicos. Se trata de archivos, normalmente, <code>.docx</code>, <code>.pdf</code> o <code>.html</code> que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, <code>Stata</code> está lejos todavía de las posibilidades que ofrece R con RStudio y knitr <span class="citation" data-cites="Gandrud2020">(Gandrud, 2020, p. @Xie2015)</span>.</p>
+<p>Una de las últimas novedades en el uso de <code>Stata</code> pasan por la elaboración de documentos dinámicos. Se trata de archivos, normalmente, <code>.docx</code>, <code>.pdf</code> o <code>.html</code> que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, <code>Stata</code> está lejos todavía de las posibilidades que ofrece R con RStudio y knitr <span class="citation" data-cites="Gandrud2020 Xie2015">(Gandrud, 2020; Xie, 2015)</span>.</p>
 <p>En el caso de <code>Stata</code>, existen varias opciones para elaborar documentos dinámicos. La versión 15 de <code>Stata</code> incorpora esta posibilidad dentro del paquete <code>dyndoc</code>. Sin embargo, hay otras alternativas creadas por los usuarios. Para generar todas las páginas web en las que se ha organizado este curso, por ejemplo, hemos utilizado el paquete <code>markstat</code> <span class="citation" data-cites="Rodriguez2017">(Rodríguez, 2017)</span>. En mi opinión, esta opción es preferible al paquete oficial porque es mucho más parecido al lenguage <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a>. En su página web, el creador de <code>markstat</code>, Germán Rodríguez, nos orienta de las posibilidades de este paquete, con abundantes ejemplos.</p>
 <p>En <code>Stata 16</code>, además, existe la pobilidad de integrar código de <a href="https://www.stata.com/new-in-stata/python-integration/">Python en <code>Stata</code></a> y código de <a href="https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd"><code>Stata</code> en Python</a>.</p>
 <p>Por último, una tendencia reciente es el empleo de sistemas control de versiones, como <code>Git</code>, especialmente, a través de la nube con <code>GitHub</code>. La curva de aprendizaje puede reducirse sustancialmente instalando <a href="https://desktop.github.com/"><code>GitHub Desktop</code></a>. Básicamente, este sistema permite trabajar de manera colaborativa en la escritura de código. En el caso de <code>Stata</code>, es aplicable, por lo tanto, a los archivos <code>.do</code> y <code>.ado</code>. Permite que varias personas trabajen de forma simultánea (e incluso cualquier usuario puede solicitar contributir) y todos los cambios son reversibles, pudiendo volver en cualquier momento a la versión que deseemos. Podemos encontrar una buena introducción en <span class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo (2018)</span>.</p>

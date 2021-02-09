@@ -263,7 +263,7 @@ Ahora, utilizamos la contraparte para este tipo de datos de `Stata`, `svy: regre
 svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
 ```
 
-Además, muchos comandos en `Stata` admiten el empleo de ponderaciones. En el caso de los
+Además, muchos comandos en `Stata` admiten el empleo de ponderaciones. En el caso de los encuestas, estas reflejan el inverso de la probabilidad de cada observación ser seleccionada y deben introducirse como `pweight` (pesos probabilísticos). Hay muchas especificades asociadas al empleo de ponderaciones y no todos los comandos admiten el empleo de pesos.
 
 El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: A través de `xtset`, `Stata` permite especificar cuáles son las unidades del panel (*`panelvar`*) y cuál es la variable temporal (*`timevar`*) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).
 
@@ -275,7 +275,7 @@ Al margen de los libros mencionados con anterioridad, especialmente @Cameron2010
 
 `Stata` es capaz de implementar un elevado rango de técnicas de análisis de multivariantes, ya sea a través de los paquetes que incluye de serie el programa o mediante comandos diseñados por algunos usuarios (hablaremos de esto posteriormente).
 
-A modo de ilustración, vamos a construir un índice de bienestar de los hogares españoles a partir de indicadores de bienes que posee el hogar a través de un análisis de componentes principales y de un análisis de correspondencias múltiple. Son técnicas que se emplean para reducir la dimensionalidad de los datos, entre otras aplicaciones. Para ello, partimos del archivo `ecv2018w.dta` en nuestro directorio `sesión3.
+A modo de ilustración, vamos a construir un índice de bienestar de los hogares españoles a partir de indicadores de bienes que posee el hogar a través de un análisis de componentes principales y de un análisis de correspondencias múltiple. Son técnicas que se emplean para reducir la dimensionalidad de los datos, entre otras aplicaciones. Para ello, partimos del archivo `ecv2018w.dta` en nuestro directorio `sesión3`.
 
 La instrucción para el análisis de componentes principales es
 

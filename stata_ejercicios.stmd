@@ -10,7 +10,7 @@ _ _ _
 
 _ _ _
 
-**Evaluación:** Para superar el curso, los estudiantes deberán entregar la solución a la hoja de problemas que puede descargarse en este enlace. Los ejercicios pueden entregarse proporcionando al profesor un archivo `.do` o un log (e.g., un archivo `.smcl`), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos `.html` o `.pdf` generados con Markdown o TeX). Se requiere resolver adecuadamente un 80% de los ejercicios propuestos.
+**Evaluación:** Para superar el curso, los estudiantes deberán entregar la solución a la hoja de problemas que puede descargarse en este enlace. Los ejercicios pueden entregarse proporcionando al profesor un archivo `.do` o un log (e.g., un archivo `.smcl`), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos `.html` o `.pdf` generados con Markdown o TeX).
 
 <hr style="border-top: dotted 1px;" />
 
@@ -18,13 +18,13 @@ _ _ _
 
 El Latinobarómetro es una encuesta anual que se realiza en la mayor parte de los países de América Latina y el Caribe y que recoge información sobre la percepción de los ciudadanos de la democracia, la economía y la sociedad. Visita la [página web de la encuesta](https://www.latinobarometro.org/latContents.jsp) y realiza las siguientes tareas:
 
-**<span style="color:red">a)</span>** Descarga la base de datos del año 2018 en formato `.dta`.
+**<span style="color:red">a)</span>** Descarga la base de datos del año 2018 en el formato que prefieras (el archivo `.dta` contiene algunos errores, por lo que puede ser preferible importar los archivos descargados en otro formato).
 
-**<span style="color:red">b)</span>** Crea una variable que recoja la edad del entrevistado en 3 intervalos (menores 30, entre 30 y 64 años y 65 y más años) y la educación en tres categorías (baja [secundaria incompleta o menos], media[secundaria completa y superior incompleta] y superior [superior completa]). Renombra las variables empleando algún término que te permita identificar mejor la variable (e.g., la variable que recoge el sexo puedes denominarla `sexo`) Etiqueta la variable y sus valores.
+**<span style="color:red">b)</span>** Crea una variable que recoja la edad del entrevistado en 3 intervalos (menores 30, entre 30 y 64 años y 65 y más años). Renombra las variable empleando algún término que te permita identificar mejor la variable (e.g., la variable que recoge el sexo puedes denominarla `sexo`) Etiqueta la variable y sus valores.
 
 **<span style="color:red">c)</span>** Explora la variable *Escala izquierda-derecha* y recodifica aquellas respuestas distintas a la escala 0-10 (Ninguno, no sabe, no contesta) como valores perdidos.
 
-**<span style="color:red">d)</span>** Guarda un archivo con nombre `latbar2018.dta` que contengan el país de la entrevista, año de la entrevista, sexo, edad, educación en tres grupos y escala izquierda-derecha (solo las personas con valores 0-10). Excluye de la muestra a España, la población de 65 y más años y todas las personas con valores perdidos en cualquiera de las seis variables.
+**<span style="color:red">d)</span>** Guarda un archivo con nombre `latbar2018.dta` con variables que contengan el país de la entrevista, año de la entrevista, sexo, edad, educación en tres grupos y escala izquierda-derecha (solo las personas con valores 0-10). Excluye de la muestra a España, la población de 65 y más años y todas las personas con valores perdidos en cualquiera de las seis variables.
 
 <br/><br/>
 
@@ -68,9 +68,9 @@ El Latinobarómetro es una encuesta anual que se realiza en la mayor parte de lo
 
 Realiza las cuatro regresiones de la posición ideológica sobre los siguientes grupos de variables:\
 (1) sexo,\
-(2) sexo, edad y edad al cuadrado;\
-(3) sexo, edad, edad al cuadrado y educación.\
-(4) sexo, edad, edad al cuadrado, educación y año de la encuesta.\
+(2) sexo, edad y edad al cuadrado,\
+(3) sexo, edad, edad al cuadrado y educación,\
+(4) sexo, edad, edad al cuadrado, educación y año de la encuesta,\
 
 Con ayuda de `esttab` o `putexcel`, crea una tabla en Microsoft Word (o un procesador de textos similar) con la tabla de regresión.
 

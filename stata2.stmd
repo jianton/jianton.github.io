@@ -183,7 +183,7 @@ El comando admite el cálculo de un amplio conjunto de estadísticos descriptivo
 Por ejemplo, vamos a crear un archivo que contenga el salario medio por sexo y año.
 
 ```{s}
-//  Seleccionamos los trabajadores únicamente
+//  Seleccionamos los trabajadores asalariados únicamente
 
 generate rentaasa = rentamonasag + rentanomonasag
 generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
@@ -269,7 +269,7 @@ describe
 
 `global` asigna a una macro global (se conserva hasta que se cierre `Stata`) cadenas de caracteres. Se emplea habitualmente para crear listas de variables (e.g., regresores como variables independientes a introducir en una regresión). Para referirnos a estas macros, debemos utilizar `$`.
 
-`local` asigna a una macro local (se conserva hasta que se ejecuta el archivo `.do`) cadenas de caracteres y tiene un funcionamiento similar a `global`. Para invocar una macro creada empleamos ``` y `'`.
+`local` asigna a una macro local (se conserva hasta que se ejecuta el archivo `.do`) cadenas de caracteres y tiene un funcionamiento similar a `global`. Para invocar una macro creada empleamos ````` y `'`.
 
 `tempvar` crea varaibles temporales en una base de datos que desaparecen al concluir el programa o el archivo `.do`.
 

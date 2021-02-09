@@ -29,22 +29,24 @@ El problema radica en la **reproducibilidad**: si reiniciamos el análisis gráf
 Un avance sustancial viene dado por el paquete `grstyle`, que debe utilizarse conjuntamente `palettes` y `colrspace` [@Jann2018a;@Jann2018b]. También es muy potente el paquete `brewscheme`. La idea de estos paquetes es que podemos definir previamente el formato de los gráficos (colores, ancho de las líneas, etc.) y, posteriormente, emplear comandos sencillos para la realización de los gráficos donde no tengamos que especificar muchas opciones.
 
   ssc install grstyle, replace
-  ssc install palettes, replace
-  ssc install colrspace, replace
-  ssc install brewscheme, replace
 
+  ssc install palettes, replace
+
+  ssc install colrspace, replace
+
+  ssc install brewscheme, replace
 
 Estos paquetes nos facilitan bastante el trabajo, pero es muy posible que queramos, en cada gráfico, añadir opciones específicas de personalización más allá de los parámetros generales.
 
 ## Formatos de exportación
 
-`Stata` cuenta con un formato nativo `.gph` con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint) Sin embargo, existe un gran número de formatos en los que `Stata` puede guardar los graficos: `.ps`, `.eps`, `.svg`, `.wmf`, `.emf`, `.pdf`, `.png`, `.tif`, `.gif` y `jpg`. Formatos como `.wmf` y `.emf` son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (`.ps`, `.eps`, `.svg`, `.pdf`, `.png`). La instrucción para exportar gráficos es la siguiente:
+`Stata` cuenta con un formato nativo `.gph` con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint) Sin embargo, existe un gran número de formatos en los que `Stata` puede guardar los graficos: `.ps`, `.eps`, `.svg`, `.wmf`, `.emf`, `.pdf`, `.png`, `.tif`, `.gif` y `.jpg`. Formatos como `.wmf` y `.emf` son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (`.ps`, `.eps`, `.svg`, `.pdf`, `.png`). La instrucción para exportar gráficos es la siguiente:
 
   <code>graph export <i>newfilename.suffix</i> [, <i>options</i>]</code>
 
 # 2. Gráficos más frecuentes y potencialidades de los gráficos de `Stata`
 
-En primer lugar, vamos a configurar el formato de los gráficos para que nos sirva para todas las figuras que elaboraremos con el comando `grstryle`. Sin embargo, como se mencionaba anteriormente, de forma habitual, necesitaremos implementar opciones adicionales. En esta sección, vamos a tratar de elaborar gráficos de alta calidad aptos para publicaciones científicas siguiendo los formatos sugeridos por @Schwabish2014 para Ciencias Sociales. Dado que el número de gráficos que `Stata` puede realizar no puede ser abarcado (siquiera lejanamente) en un curso de estas características, aquí nos limitamos a presentar una serie de figuras que ilustran su potencial. El proceso de realización de los mismos se fundamenta en procesos de ensayo-error y en emplear las herramientas de ayuda destacadas con anterioridad.
+En primer lugar, vamos a configurar el formato de los gráficos para que nos sirva para todas las figuras que elaboraremos con el comando `grstyle`. Sin embargo, como se mencionaba anteriormente, de forma habitual, necesitaremos implementar opciones adicionales. En esta sección, vamos a tratar de elaborar gráficos de alta calidad aptos para publicaciones científicas siguiendo los formatos sugeridos por @Schwabish2014 para Ciencias Sociales. Dado que el número de gráficos que `Stata` puede realizar no puede ser abarcado (siquiera lejanamente) en un curso de estas características, aquí nos limitamos a presentar una serie de figuras que ilustran su potencial. El proceso de realización de los mismos se fundamenta en procesos de ensayo-error y en emplear las herramientas de ayuda destacadas con anterioridad.
 
 ## Gráfico de dispersión
 
@@ -69,7 +71,7 @@ use "ecv18.dta", clear
 ```{s}
 //  Calculamos el salario medio y la tasa de pobreza por CCAA
 
-generate rentaasa = rentamonasag + rentamonasag
+generate rentaasa = rentamonasag + rentanomonasag
 generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
 keep if rentaasa > 0 & rentaasa < .
 keep if nmesesasa > 0 & nmesesasa < .
@@ -210,7 +212,7 @@ label values educg educg_lab
 
 //  Calculamos el salario
 
-generate rentaasa = rentamonasag + rentamonasag
+generate rentaasa = rentamonasag + rentanomonasag
 generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
 keep if rentaasa > 0 & rentaasa < .
 keep if nmesesasa > 0 & nmesesasa < .
@@ -495,14 +497,16 @@ quietly{
 }
 ```
 
-![kdensity.png){width=40%}
+![Gráfico de densidad](kdensity.png){width=40%}
 
 # 4. Elaboración de mapas
 
 No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como `spmap` o `geo2xy`. En este curso, emplearemos el primero de ellos, `spmap`. Podemos encontrar una buena introducción al uso de este paquete en @Wiedemann2020 Este paquete requiere la instalación adicional de `shp2dta` y `mif2dta`. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:
 
   ssc install spmap, replace
+
   ssc install shp2dta, replace
+
   ssc install mif2dta, replace
 
 Con `spmap`, `Stata` puede manejar dos tipos de formatos gráficos: **ESRI shapefiles** (incluye un archivo `.shp` de coordenadas, un archivo `.shx`, un índice y un archivo `.dbf`, con códigos) y el  **MapInfo Interchange Format files** (que comprende un archivo `.mif` con las coordenadas y un archivo `.mid` con los códigos). El manejo del primer tipo de formato es, con frecuencia, más sencillo. Para explorar las capacidades de `Stata` en esta área, vamos a realizar un mapa de España por Comunidades Autónomas con su tasa de pobreza.
