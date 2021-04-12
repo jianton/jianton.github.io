@@ -79,6 +79,9 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <li>Buena integración con otros programas y lenguajes (Word, Excel, Markdown, Python, PDF, GitHub o LaTeX). Esta página, por ejemplo, esta elaborada con el paquete <code>markstat</code>.</li>
 </ul>
 <p>Una alternativa muy razonable es <code>R</code>: potente, flexible, gratuito, con una comunidad de usuarios impresionante, un lenguaje de programación muy potente y muchas cosas más… pero con una curva de aprendizaje muchísimo más pronunciada.</p>
+<figure>
+<img src="software.png" alt="" /><figcaption>Porcentaje de uso de distintos softwares en los materiales suplementarios de revistas de la AEA</figcaption>
+</figure>
 <h1 id="objetivos-del-curso">2. Objetivos del curso</h1>
 <p>El curso consta de 10 horas, por lo que la finalidad es proporcionar a los asistentes un panorama de lo que <code>Stata</code> puede hacer y orientarles en la búsqueda de recursos apropiados para que puedan aprender de forma autónoma de acuerdo con sus intereses. Todos los materiales del curso pueden descargarse en el siguiente <a href="https://drive.google.com/drive/folders/1EE9fOnmFQfY-7pImpfMrsgYFo_7MaD6_?usp=sharing">enlace</a>.</p>
 <h1 id="conceptos-básicos">3. Conceptos básicos</h1>
@@ -125,7 +128,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </figure>
 <p>Conviene operar, preferentemente, con el editor de archivos <code>.do</code>.</p>
 <figure>
-<img src="editor.png" style="width:75.0%" alt="" /><figcaption>Entorno de trabajo de `Stata’</figcaption>
+<img src="editor.png" style="width:75.0%" alt="" /><figcaption>Editor de archivos <code>.do</code> de `Stata’</figcaption>
 </figure>
 <h2 id="recursos-de-ayuda">3.3. Recursos de ayuda</h2>
 <p>La ayuda de <code>Stata</code> es bastante buena y, además, nos permite acceder directamente a los manuales en formato <code>.pdf</code> del programa, que contienen breves explicaciones estadísticas, ejemplos e incluso referencias. Es muy sencillo acudir a la ayuda.</p>
@@ -345,9 +348,9 @@ log using curso1, replace</code></pre>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (<code>rb210</code>).</p>
 <pre class='stata'>. codebook rb210
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-rb210                                                                                                                                                     RB210
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+rb210                                                                                                                                     RB210
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (byte)
 
@@ -950,7 +953,7 @@ phd05t_f already numeric; no replace
 <pre class='stata'>. net search poverty
 (contacting http://www.stata.com)
 
-48 packages found (Stata Journal and STB listed first)
+49 packages found (Stata Journal and STB listed first)
 ──────────────────────────────────────────────────────
 
 st0492 from http://www.stata-journal.com/software/sj17-3
@@ -1131,6 +1134,12 @@ orth_out from http://fmwww.bc.edu/RePEc/bocode/o
     tables / orth_out produces summary stats tables and orthogonality tables.
     / orth_out is useful in testing balance of means across variables / in
     multiple groups, particularly the balance of baseline / characteristics
+
+outdetect from http://fmwww.bc.edu/RePEc/bocode/o
+    'OUTDETECT': module to perform outlier detection and diagnostics for
+    welfare analysts / outdetect identifies outliers (extreme values) in the /
+    distribution of a variable, and assesses their impact on a / selection of
+    popular inequality and poverty measures. The / procedure by which outliers
 
 pobrezaecu from http://fmwww.bc.edu/RePEc/bocode/p
     'POBREZAECU': module to predict poverty in Ecuador / pobrezaECU predicts
