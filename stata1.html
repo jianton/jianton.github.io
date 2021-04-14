@@ -344,7 +344,7 @@ log using curso1, replace</code></pre>
 <p>Correlación entre variables</p>
 <p><code>correlate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]</code></p>
 <p>Ordenar la base de datos por una o varias variables</p>
-<p><code> <u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code></p>
+<p><code><u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code></p>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (<code>rb210</code>).</p>
 <pre class='stata'>. codebook rb210
 
@@ -411,7 +411,7 @@ rb210                                                                           
 <p>Para eliminar variables y observaciones de la base de datos podemos emplear tanto <code>drop</code> como <code>keep</code>.</p>
 <p><code>drop <i>varlist</i></code></p>
 <p><code>drop if <i>exp</i></code></p>
-<p><code>drop in </i>range</i> [if exp]</code></p>
+<p><code>drop in <i>range</i> [if <i>exp</i>]</code></p>
 <p><code>keep <i>varlist</i></code></p>
 <p><code>keep if <i>exp</i></code></p>
 <p><code>keep if <i>range</i> [if <i>exp</i>]</code></p>
