@@ -571,7 +571,7 @@ Sorted by: sexo  ano
 </pre>
 <h2 id="el-uso-de-macros-local-global-tempname-tempvar-y-tempfile">5.2. El uso de macros: <code>local</code>, <code>global</code>, <code>tempname</code>, <code>tempvar</code> y <code>tempfile</code></h2>
 <p><code>global</code> asigna a una macro global (se conserva hasta que se cierre <code>Stata</code>) cadenas de caracteres. Se emplea habitualmente para crear listas de variables (e.g., regresores como variables independientes a introducir en una regresión). Para referirnos a estas macros, debemos utilizar <code>$</code>.</p>
-<p><code>local</code> asigna a una macro local (se conserva hasta que se ejecuta el archivo <code>.do</code>) cadenas de caracteres y tiene un funcionamiento similar a <code>global</code>. Para invocar una macro creada empleamos ````<code>y</code>’`.</p>
+<p><code>local</code> asigna a una macro local (se conserva hasta que se ejecuta el archivo <code>.do</code>) cadenas de caracteres y tiene un funcionamiento similar a <code>global</code>. Para invocar una macro creada, debemos hacerlo entre los caracteres <code>`</code> y <code>'</code>.</p>
 <p><code>tempvar</code> crea varaibles temporales en una base de datos que desaparecen al concluir el programa o el archivo <code>.do</code>.</p>
 <p><code>tempname</code> cumple la misma función, pero con matrices o escalares.</p>
 <p><code>tempfile</code> funciona de forma análoga para nombres de archivos.</p>

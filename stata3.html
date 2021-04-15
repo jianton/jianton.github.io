@@ -67,7 +67,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </p>
 <hr />
 <h1 id="tablas-de-contingencia">1. Tablas de contingencia</h1>
-<p><code>Stata</code> es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos <code>ech18t, que se encuentra en la carpeta</code>sesión3` e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> o el de <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
+<p><code>Stata</code> es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos <code>ech18t</code>, que se encuentra en la carpeta <code>sesión3</code> e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> o el de <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
 <h2 id="tablas-de-frecuencia-con-una-o-dos-variables-tabulate">Tablas de frecuencia con una o dos variables (<code>tabulate</code>)</h2>
 <p>Es uno de los comandos más utilizados de <code>Stata</code>, esencial para explorar las bases de datos. La sintaxis es la siguiente:</p>
 <p>Tabla de una variable (<em>one-way table</em>)</p>
@@ -393,8 +393,8 @@ Nivel educativo medio  │    .240602   .0185962    12.94   0.000     .2041503  
 
 . 
 </pre>
-<p>Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de <code>Stata</code>.</p>
-<pre class='stata'>. regress logsalario i.sexo edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
+<p>Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de <code>Stata</code>. Para el cálculo de las mismas, podemos emplear los caracteres <code>#</code> o <code>##</code>. El primero de ellos (<code>#</code>) incluye en la ecuación únicamente las interacciones, mientras que <code>##</code> incluye las variables por separado y su interacción.</p>
+<pre class='stata'>. regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#educg
 
       Source │       SS           df       MS      Number of obs   =    11,599
 ─────────────┼──────────────────────────────────   F(8, 11590)     =    364.72
@@ -412,8 +412,41 @@ Nivel educativo medio  │    .240602   .0185962    12.94   0.000     .2041503  
                              │
                c.edad#c.edad │  -.0005724   .0000535   -10.71   0.000    -.0006772   -.0004676
                              │
+                       educg │
+      Nivel educativo medio  │   .2543874   .0250038    10.17   0.000     .2053758    .3033991
+       Nivel educativo alto  │   .5659028   .0223213    25.35   0.000     .5221494    .6096563
+                             │
                  sexo#c.edad │
                       Mujer  │  -.0041906   .0012553    -3.34   0.001    -.0066513     -.00173
+                             │
+                  sexo#educg │
+Mujer#Nivel educativo medio  │  -.0232393    .037422    -0.62   0.535    -.0965927    .0501142
+ Mujer#Nivel educativo alto  │   .0929502   .0328386     2.83   0.005      .028581    .1573195
+                             │
+                       _cons │   5.083543    .099395    51.14   0.000     4.888712    5.278374
+─────────────────────────────┴────────────────────────────────────────────────────────────────
+</pre>
+<pre class='stata'>. regress logsalario c.edad##c.edad i.sexo#c.edad i.sexo##educg
+
+      Source │       SS           df       MS      Number of obs   =    11,599
+─────────────┼──────────────────────────────────   F(8, 11590)     =    364.72
+       Model │  1614.92975         8  201.866218   Prob > F        =    0.0000
+    Residual │  6414.78325    11,590   .55347569   R-squared       =    0.2011
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.2006
+       Total │    8029.713    11,598  .692336006   Root MSE        =    .74396
+
+─────────────────────────────┬────────────────────────────────────────────────────────────────
+                  logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+─────────────────────────────┼────────────────────────────────────────────────────────────────
+                        edad │   .0735382   .0046441    15.83   0.000      .064435    .0826414
+                             │
+               c.edad#c.edad │  -.0005724   .0000535   -10.71   0.000    -.0006772   -.0004676
+                             │
+                 sexo#c.edad │
+                      Mujer  │  -.0041906   .0012553    -3.34   0.001    -.0066513     -.00173
+                             │
+                        sexo │
+                      Mujer  │  -.0864934    .062616    -1.38   0.167    -.2092312    .0362445
                              │
                        educg │
       Nivel educativo medio  │   .2543874   .0250038    10.17   0.000     .2053758    .3033991
@@ -588,9 +621,9 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 <p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).</p>
 <pre class='stata'>. codebook aportacionesg
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-aportacionesg                                                                                 Aportaciones a planes privados de pensiones individuales (brutas)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+aportacionesg                                                                 Aportaciones a planes privados de pensiones individuales (brutas)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (float)
 
