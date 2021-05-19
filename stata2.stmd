@@ -269,7 +269,7 @@ describe
 
 `global` asigna a una macro global (se conserva hasta que se cierre `Stata`) cadenas de caracteres. Se emplea habitualmente para crear listas de variables (e.g., regresores como variables independientes a introducir en una regresión). Para referirnos a estas macros, debemos utilizar `$`.
 
-`local` asigna a una macro local (se conserva hasta que se ejecuta el archivo `.do`) cadenas de caracteres y tiene un funcionamiento similar a `global`. Para invocar una macro creada empleamos ````` y `'`.
+`local` asigna a una macro local (se conserva hasta que se ejecuta el archivo `.do`) cadenas de caracteres y tiene un funcionamiento similar a `global`. Para invocar una macro creada, debemos hacerlo entre los caracteres `` ` `` y `'`.
 
 `tempvar` crea varaibles temporales en una base de datos que desaparecen al concluir el programa o el archivo `.do`.
 
@@ -325,7 +325,7 @@ El tercer elemento clave en términos de programación son los bucles, que, a tr
 
   <code>}</code>
 
-  {code}forvalues <i>lname</i> = <i>range</i> {</code>
+  <code>forvalues <i>lname</i> = <i>range</i> {</code>
 
   <code>        <i>commands referring to `lname'</i></code>
 

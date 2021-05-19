@@ -12,7 +12,7 @@ _ _ _
 
 # 1. Tablas de contingencia
 
-`Stata` es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos `ech18t, que se encuentra en la carpeta `sesión3` e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de @Escobar2012 o el de @Kohler2012.
+`Stata` es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos `ech18t`, que se encuentra en la carpeta `sesión3` e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de @Escobar2012 o el de @Kohler2012.
 
 ## Tablas de frecuencia con una o dos variables (`tabulate`)
 
@@ -160,10 +160,14 @@ regress logsalario i.sexo edad edad2 ib1.educg
 
 ```
 
-Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de `Stata`.
+Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de `Stata`. Para el cálculo de las mismas, podemos emplear los caracteres `#` o `##`. El primero de ellos (`#`) incluye en la ecuación únicamente las interacciones, mientras que `##` incluye las variables por separado y su interacción. 
 
 ```{s}
-regress logsalario i.sexo edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
+regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#educg
+```
+
+```{s}
+regress logsalario c.edad##c.edad i.sexo#c.edad i.sexo##educg
 ```
 
 # 4. Otros modelos econométricos de uso común

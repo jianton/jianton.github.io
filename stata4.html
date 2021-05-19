@@ -1,10 +1,176 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="José-Ignacio Antón" />
+  <title>Sesión 4. Análisis gráfico</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
 body{padding:14px 28px;}
-body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px; width: 95%; max-width: unset;}
 h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
 h1 {font-size: 200%;}
 h2 {font-size: 150%;}
@@ -26,7 +192,7 @@ pre code { color:black; background-color:white}
 figure > img, div.figure > img {display:block; margin:auto}
 figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
 h1.title {text-align:center; margin-bottom:0}
-p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:12px;margin-bottom:-25px}
 p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
 /* Tables*/
 table { margin:auto; border-collapse:collapse; }
@@ -38,23 +204,6 @@ tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
 tbody tr:last-child  td {padding-bottom:6px;}
 table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="José-Ignacio Antón" />
-  <title>Sesión 4. Análisis gráfico</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -72,7 +221,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <p>En primer lugar, resulta muy sencillo realizar gráficos con <code>Stata</code>. Al mismo tiempo, elaborar figuras totalmente satisfactorias suele requerir bastante tiempo <span class="math inline">\(\rightarrow\)</span> <strong>resulta esencial que nuestros gráficos sean reproducibles</strong>.</p>
 <p>Así, por ejemplo, no es complicado realizar gráficos muy sofisticados con la interfaz de <code>Stata</code>. Su sistema de ventanas es muy intuitivo y nos permite controlar múltiples opciones.</p>
 <figure>
-<img src="histogram.png" style="width:30.0%" alt="" /><figcaption>Ejemplo de uso del sistema de ventanas para elaborar un histograma</figcaption>
+<img src="histogram.png" style="width:30.0%" alt="Ejemplo de uso del sistema de ventanas para elaborar un histograma" /><figcaption aria-hidden="true">Ejemplo de uso del sistema de ventanas para elaborar un histograma</figcaption>
 </figure>
 <p>El problema radica en la <strong>reproducibilidad</strong>: si reiniciamos el análisis gráfico o salimos del programa, tendremos que acordarnos de todas las opciones seleccionadas y, además, tendremos que repetir los cambios realizados en el editor de gráficos sobre la propia figura. <span class="math inline">\(\rightarrow\)</span> <strong>Opción práctica:</strong> realizamos el gráfico con los menús de ventanas, empleando <code>submit</code> para ver cada cambio realizado y, cuando estemos satisfechos, copiamos el código y podemos reutilizarlo con adaptaciones.</p>
 <h2 id="personalizando-gráficos">Personalizando gráficos</h2>
@@ -140,7 +289,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="example.png" style="width:40.0%" alt="" /><figcaption>Gráfico por defecto</figcaption>
+<img src="example.png" style="width:40.0%" alt="Gráfico por defecto" /><figcaption aria-hidden="true">Gráfico por defecto</figcaption>
 </figure>
 <p>Ahora vamos a realizar el mismo gráfico de una manera mucho más personalizada.</p>
 <pre class='stata'>. //  Podemos cambiar el tipo de letra
@@ -219,8 +368,7 @@ D:\Dropbox\curso_stata\sesión4
 . 
 . twoway (scatter hpobreza salario [pweight = nper] if region != 9) ///
 > (scatter hpobreza salario [pweight = nper] if region == 9, mcolor(red)) ///
-> (scatter hpobreza salario [pweight = nper] if region == 9, mlabel(region) mlabsize(vsmall) mlabcolor(red) mlabposition(12) mlabgap(medsmall) mcolor(none)) //
-> /
+> (scatter hpobreza salario [pweight = nper] if region == 9, mlabel(region) mlabsize(vsmall) mlabcolor(red) mlabposition(12) mlabgap(medsmall) mcolor(none)) ///
 > (lfit hpobreza salario [pweight = nper]), ///
 > title("Salario y pobreza por CCAA (2018)", size(medsmall) margin(small)) ///
 > xtitle("Salario bruto (euros/mes)", margin(small) size(small)) xlabel(, format(%9,0gc) labsize(small)) ///
@@ -229,7 +377,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="scatter.png" style="width:40.0%" alt="" /><figcaption>Gráfico de dispersión (personalizado)</figcaption>
+<img src="scatter.png" style="width:40.0%" alt="Gráfico de dispersión (personalizado)" /><figcaption aria-hidden="true">Gráfico de dispersión (personalizado)</figcaption>
 </figure>
 <h2 id="gráfico-de-líneas">Gráfico de líneas</h2>
 <p>En este ejemplo, vamos a representar el salario por grupos de edad y nivel de estudios.</p>
@@ -367,7 +515,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="lineplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de líneas</figcaption>
+<img src="lineplot.png" style="width:40.0%" alt="Gráfico de líneas" /><figcaption aria-hidden="true">Gráfico de líneas</figcaption>
 </figure>
 <h2 id="gráfico-de-puntos">Gráfico de puntos</h2>
 <p>En este subapartado, elaboramos una figura que muestra la tasa de empleo por sexo y nivel educativo en España.</p>
@@ -436,8 +584,7 @@ D:\Dropbox\curso_stata\sesión4
 > (line educg empleo if educg == 3, lcolor(black)) ///
 > (line educg empleo if educg == 4, lcolor(black)) ///
 > (scatter educg empleo if sex == 1, mcolor(navy) msize(4-pt) msymbol(circle) mlabcolor()) ///
-> (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlabel(educg) mlabsize(small) mlabcolor(black) mlabposition(9) mlabgap(small))
-> , ///
+> (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlabel(educg) mlabsize(small) mlabcolor(black) mlabposition(9) mlabgap(small)), ///
 > title("Tasa de empleo por sexo y nivel educativo en España (2018)", size(medsmall) margin(small)) ///
 > yscale(off) ylabel(0(1)4) ///
 > xtitle("Porcentaje de personas empleadas (%)", margin(small) size(small)) xlabel(0(20)100, labsize(vsmall)) ///
@@ -445,7 +592,7 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="dotplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de puntos</figcaption>
+<img src="dotplot.png" style="width:40.0%" alt="Gráfico de puntos" /><figcaption aria-hidden="true">Gráfico de puntos</figcaption>
 </figure>
 <h2 id="gráfico-de-barras">Gráfico de barras</h2>
 <p>A continuación, mostramos la tasa de pobreza por nivel educativo y sexo en España en el año 2018. Además, en este ejemplo, vamos a usar el editor de gráficos de <code>Stata</code>.</p>
@@ -524,11 +671,10 @@ xij variables:
 
 . gr_edit plotregion1.added_text_rec = 1
 
-. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) color(navy) horizontal(left) vertical(middle) mar
-> gin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(r
-> elative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) gright( szt
-> ype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyl
-> e( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
+. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(
+> relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0
+> ) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) all
+> ow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
 
 . gr_edit plotregion1.added_text[1].style.editstyle size(vsmall) editcopy
 
@@ -543,11 +689,10 @@ xij variables:
 
 . gr_edit plotregion1.added_text_rec = 2
 
-. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) color(navy) horizontal(left) vertical(midd
-> le) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( s
-> ztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) grig
-> ht( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) l
-> inestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
+. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( 
+> sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative
+> ) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(
+> .2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
 
 . gr_edit plotregion1.added_text[2].style.editstyle size(vsmall) editcopy
 
@@ -564,10 +709,9 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 1
 
-. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headst
-> yle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative)
->  val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid
-> ) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) al
+> low_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)
+> ) color(navy) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
 
 . 
 . gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 35.56545925471323 9.872859791068407 35.56545925471323
@@ -576,10 +720,9 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 2
 
-. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headst
-> yle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative)
->  val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(soli
-> d) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) al
+> low_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)
+> ) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
 
 . 
 . gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 27.44753863498822 15.89026161770668 32.2854913275516
@@ -588,10 +731,9 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 3
 
-. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) head
-> style( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(rel
-> ative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) patter
-> n(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) 
+> allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_
+> pct(1)) color(black) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
 
 . 
 . gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 32.28549132755161 18.74852748535989 32.28549132755161
@@ -600,14 +742,13 @@ xij variables:
 
 . gr_edit plotregion1.added_lines_rec = 4
 
-. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) head
-> style( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(rel
-> ative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) patter
-> n(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) 
+> allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_
+> pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
 </pre>
 
 <figure>
-<img src="barplot.png" style="width:40.0%" alt="" /><figcaption>Gráfico de barras</figcaption>
+<img src="barplot.png" style="width:40.0%" alt="Gráfico de barras" /><figcaption aria-hidden="true">Gráfico de barras</figcaption>
 </figure>
 <p>La última parte del código corresponde al editor de gráficos de <code>Stata</code>, que permite hacer cambios manualmente. Si queremos asegurar que el gráfico es reproducible podemos seguir estos pasos:</p>
 <p><strong>Paso 1</strong>. Abrimos el gráfico en el editor.</p>
@@ -617,7 +758,7 @@ xij variables:
 <p><strong>Paso 5</strong>. Abrimos el archivo <code>.grec</code> creado en el blog de notas (o el propio editor de archivos <code>.do</code> de <code>Stata</code>).</p>
 <p><strong>Paso 6</strong>. Copiamos el código y relevante al arhivo <code>.do</code> tras el grafico, eliminamos el <code>.</code> e incluimos antes de cada instrucción <code>gr_edit</code> seguido de un espacio.</p>
 <figure>
-<img src="grapheditor.png" style="width:40.0%" alt="" /><figcaption>Modificación de gráficos con el editor de <code>Stata</code></figcaption>
+<img src="grapheditor.png" style="width:40.0%" alt="Modificación de gráficos con el editor de Stata" /><figcaption aria-hidden="true">Modificación de gráficos con el editor de <code>Stata</code></figcaption>
 </figure>
 <h2 id="funciones-de-densidad">Funciones de densidad</h2>
 <p>Se trata de uno de los fuertes de <code>Stata</code>, que es complicado de abordar con otro tipo de programas (e.g., Microsoft Excel). En este caso, vamos a representar las funciones de densidad del salario mensual de las personas con educación elemental y educación superior.</p>
@@ -698,7 +839,7 @@ xij variables:
 </pre>
 
 <figure>
-<img src="kdensity.png" style="width:40.0%" alt="" /><figcaption>Gráfico de densidad</figcaption>
+<img src="kdensity.png" style="width:40.0%" alt="Gráfico de densidad" /><figcaption aria-hidden="true">Gráfico de densidad</figcaption>
 </figure>
 <h1 id="elaboración-de-mapas">4. Elaboración de mapas</h1>
 <p>No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como <code>spmap</code> o <code>geo2xy</code>. En este curso, emplearemos el primero de ellos, <code>spmap</code>. Podemos encontrar una buena introducción al uso de este paquete en <span class="citation" data-cites="Wiedemann2020">Wiedemann (2020)</span> Este paquete requiere la instalación adicional de <code>shp2dta</code> y <code>mif2dta</code>. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:</p>
@@ -821,31 +962,31 @@ file ccaa_labels.dta saved
 </pre>
 
 <figure>
-<img src="map.png" style="width:70.0%" alt="" /><figcaption>Mapa con el paquete <code>spmap</code></figcaption>
+<img src="map.png" style="width:70.0%" alt="Mapa con el paquete spmap" /><figcaption aria-hidden="true">Mapa con el paquete <code>spmap</code></figcaption>
 </figure>
 <h1 id="references">References</h1>
 
-<div id="refs" class="references hanging-indent" role="doc-bibliography">
-<div id="ref-Cox2014">
-<p>Cox, N. J. (2014). <em>Speaking Stata graphics</em>. Stata Press.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-Cox2014" class="csl-entry" role="doc-biblioentry">
+Cox, N. J. (2014). <em>Speaking <span>S</span>tata graphics</em>. Stata Press.
 </div>
-<div id="ref-Escobar2012">
-<p>Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>Análisis de datos con Stata</em> (2nd ed.). Centro de Investigaciones Sociólogicas.</p>
+<div id="ref-Escobar2012" class="csl-entry" role="doc-biblioentry">
+Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>An<span>á</span>lisis de datos con <span>S</span>tata</em> (2nd ed.). Centro de Investigaciones Soci<span>ó</span>logicas.
 </div>
-<div id="ref-Jann2018a">
-<p>Jann, B. (2018a). Customizing Stata graphs made easy (part 1). <em>Stata Journal</em>, <em>3</em>(18), 491–502.</p>
+<div id="ref-Jann2018a" class="csl-entry" role="doc-biblioentry">
+Jann, B. (2018a). Customizing <span>S</span>tata graphs made easy (part 1). <em>Stata Journal</em>, <em>3</em>(18), 491–502.
 </div>
-<div id="ref-Jann2018b">
-<p>Jann, B. (2018b). Customizing Stata graphs made easy (part 2). <em>Stata Journal</em>, <em>4</em>(19), 786–802.</p>
+<div id="ref-Jann2018b" class="csl-entry" role="doc-biblioentry">
+Jann, B. (2018b). Customizing <span>S</span>tata graphs made easy (part 2). <em>Stata Journal</em>, <em>4</em>(19), 786–802.
 </div>
-<div id="ref-Mitchell2012">
-<p>Mitchell, M. N. (2012). <em>A visual guide to Stata graphics</em> (3rd ed.). Stata Press.</p>
+<div id="ref-Mitchell2012" class="csl-entry" role="doc-biblioentry">
+Mitchell, M. N. (2012). <em>A visual guide to <span>S</span>tata graphics</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Schwabish2014">
-<p>Schwabish, J. A. (2014). An economists guide to visualizing data. <em>Journal of Economic Perspectives</em>, <em>28</em>(1), 209–234.</p>
+<div id="ref-Schwabish2014" class="csl-entry" role="doc-biblioentry">
+Schwabish, J. A. (2014). An economist<span></span>s guide to visualizing data. <em>Journal of Economic Perspectives</em>, <em>28</em>(1), 209–234.
 </div>
-<div id="ref-Wiedemann2020">
-<p>Wiedemann, V. (2020). <em>Creating maps in Stata</em> [Coder’s corner]. Centre for the Study of African Economy. <a href="https://www.csae.ox.ac.uk/materials/coderscorner/1037/coderscornerht20week2fm.pdf">https://www.csae.ox.ac.uk/materials/coderscorner/1037/coderscornerht20week2fm.pdf</a></p>
+<div id="ref-Wiedemann2020" class="csl-entry" role="doc-biblioentry">
+Wiedemann, V. (2020). <em>Creating maps in <span>S</span>tata</em> [Coder's corner]. <span>C</span>entre for the <span>S</span>tudy of <span>A</span>frican <span>E</span>conomy. <a href="https://www.csae.ox.ac.uk/materials/coderscorner/1037/coderscornerht20week2fm.pdf">https://www.csae.ox.ac.uk/materials/coderscorner/1037/coderscornerht20week2fm.pdf</a>
 </div>
 </div>
 </body>

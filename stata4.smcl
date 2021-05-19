@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 22:40:32
+ {txt}opened on:  {res} 1 Aug 2019, 07:39:38
 {txt}
 {com}. //_1q
 . quietly{c -(}
@@ -700,7 +700,7 @@ xij variables:
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 22:40:32
+ {txt}closed on:  {res} 1 Aug 2019, 07:39:38
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

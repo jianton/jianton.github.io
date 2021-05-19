@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 22:40:32
+ {txt}opened on:  {res} 1 Aug 2019, 07:39:38
 {txt}
 {com}. //_1
 . clear all
@@ -35,58 +35,8 @@
 {com}. //_5
 . browse
 {txt}
-{com}. //_6
-. destring, replace
-{txt}rb010 already numeric; no {res}replace
-{txt}rb020: contains nonnumeric characters; no {res}replace
-{txt}rb030 already numeric; no {res}replace
-{txt}rb050 already numeric; no {res}replace
-{txt}rb050_f already numeric; no {res}replace
-{txt}rb070: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(3 missing values generated)
-{res}{txt}rb070_f already numeric; no {res}replace
-{txt}rb080 already numeric; no {res}replace
-{txt}rb080_f already numeric; no {res}replace
-{txt}rb090 already numeric; no {res}replace
-{txt}rb090_f already numeric; no {res}replace
-{txt}rb200: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(1 missing value generated)
-{res}{txt}rb200_f already numeric; no {res}replace
-{txt}rb210: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(1 missing value generated)
-{res}{txt}rb210_f already numeric; no {res}replace
-{txt}rb220: all characters numeric; {res}replaced {txt}as {res}long
-{txt}(25108 missing values generated)
-{res}{txt}rb220_f already numeric; no {res}replace
-{txt}rb230: all characters numeric; {res}replaced {txt}as {res}long
-{txt}(23046 missing values generated)
-{res}{txt}rb230_f already numeric; no {res}replace
-{txt}rb240: all characters numeric; {res}replaced {txt}as {res}long
-{txt}(16714 missing values generated)
-{res}{txt}rb240_f already numeric; no {res}replace
-{txt}rl010: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(32176 missing values generated)
-{res}{txt}rl010_f already numeric; no {res}replace
-{txt}rl020: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(30968 missing values generated)
-{res}{txt}rl020_f already numeric; no {res}replace
-{txt}rl030: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(29834 missing values generated)
-{res}{txt}rl030_f already numeric; no {res}replace
-{txt}rl040: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(29408 missing values generated)
-{res}{txt}rl040_f already numeric; no {res}replace
-{txt}rl050: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(29408 missing values generated)
-{res}{txt}rl050_f already numeric; no {res}replace
-{txt}rl060: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(29417 missing values generated)
-{res}{txt}rl060_f already numeric; no {res}replace
-{txt}rl070: all characters numeric; {res}replaced {txt}as {res}double
-{txt}(29665 missing values generated)
-{res}{txt}rl070_f already numeric; no {res}replace
-{txt}vrlowjob already numeric; no {res}replace
-{txt}vreu2020 already numeric; no {res}replace
+{com}. //_6q
+. quietly{c -(}
 {txt}
 {com}. //_7
 . save "ecv18r.dta", replace
@@ -258,334 +208,8 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 {com}. //_23
 . egen edadm = mean(edad)
 {txt}
-{com}. //_24
-. import delimited using "esudb18p.csv", clear delimiter(",")
-{res}{text}(236 vars, 28,372 obs)
-
-{com}. destring _all, replace
-{txt}pb010 already numeric; no {res}replace
-{txt}pb020: contains nonnumeric characters; no {res}replace
-{txt}pb030 already numeric; no {res}replace
-{txt}pb040 already numeric; no {res}replace
-{txt}pb040_f already numeric; no {res}replace
-{txt}pb100: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pb100_f already numeric; no {res}replace
-{txt}pb110 already numeric; no {res}replace
-{txt}pb110_f already numeric; no {res}replace
-{txt}pb120: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(223 missing values generated)
-{res}{txt}pb120_f already numeric; no {res}replace
-{txt}pb130: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(3 missing values generated)
-{res}{txt}pb130_f already numeric; no {res}replace
-{txt}pb140 already numeric; no {res}replace
-{txt}pb140_f already numeric; no {res}replace
-{txt}pb150 already numeric; no {res}replace
-{txt}pb150_f already numeric; no {res}replace
-{txt}pb160: all characters numeric; {res}replaced {txt}as {res}long
-{txt}(24322 missing values generated)
-{res}{txt}pb160_f already numeric; no {res}replace
-{txt}pb170: all characters numeric; {res}replaced {txt}as {res}long
-{txt}(22878 missing values generated)
-{res}{txt}pb170_f already numeric; no {res}replace
-{txt}pb180: all characters numeric; {res}replaced {txt}as {res}long
-{txt}(11352 missing values generated)
-{res}{txt}pb180_f already numeric; no {res}replace
-{txt}pb190: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pb190_f already numeric; no {res}replace
-{txt}pb200: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pb200_f already numeric; no {res}replace
-{txt}pb210: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(214 missing values generated)
-{res}{txt}pb210_f already numeric; no {res}replace
-{txt}pb220a: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pb220a_f already numeric; no {res}replace
-{txt}pe010: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pe010_f already numeric; no {res}replace
-{txt}pe020: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(25803 missing values generated)
-{res}{txt}pe020_f already numeric; no {res}replace
-{txt}pe030: all characters numeric; {res}replaced {txt}as {res}int
-{txt}(2481 missing values generated)
-{res}{txt}pe030_f already numeric; no {res}replace
-{txt}pe040: all characters numeric; {res}replaced {txt}as {res}int
-{txt}(212 missing values generated)
-{res}{txt}pe040_f already numeric; no {res}replace
-{txt}pl031: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(52 missing values generated)
-{res}{txt}pl031_f already numeric; no {res}replace
-{txt}pl015: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(13064 missing values generated)
-{res}{txt}pl015_f already numeric; no {res}replace
-{txt}pl020: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(13064 missing values generated)
-{res}{txt}pl020_f already numeric; no {res}replace
-{txt}pl025: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(25884 missing values generated)
-{res}{txt}pl025_f already numeric; no {res}replace
-{txt}pl040: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(4065 missing values generated)
-{res}{txt}pl040_f already numeric; no {res}replace
-{txt}pl051: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(4083 missing values generated)
-{res}{txt}pl051_f already numeric; no {res}replace
-{txt}pl060: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(16478 missing values generated)
-{res}{txt}pl060_f already numeric; no {res}replace
-{txt}pl073: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl073_f already numeric; no {res}replace
-{txt}pl074: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl074_f already numeric; no {res}replace
-{txt}pl075: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl075_f already numeric; no {res}replace
-{txt}pl076: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl076_f already numeric; no {res}replace
-{txt}pl080: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl080_f already numeric; no {res}replace
-{txt}pl085: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl085_f already numeric; no {res}replace
-{txt}pl086: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl086_f already numeric; no {res}replace
-{txt}pl087: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl087_f already numeric; no {res}replace
-{txt}pl089: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl089_f already numeric; no {res}replace
-{txt}pl090: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl090_f already numeric; no {res}replace
-{txt}pl100: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(28097 missing values generated)
-{res}{txt}pl100_f already numeric; no {res}replace
-{txt}pl111a: contains nonnumeric characters; no {res}replace
-{txt}pl111a_f already numeric; no {res}replace
-{txt}pl120: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(27104 missing values generated)
-{res}{txt}pl120_f already numeric; no {res}replace
-{txt}pl130: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(15867 missing values generated)
-{res}{txt}pl130_f already numeric; no {res}replace
-{txt}pl140: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(8632 missing values generated)
-{res}{txt}pl140_f already numeric; no {res}replace
-{txt}pl150: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(7988 missing values generated)
-{res}{txt}pl150_f already numeric; no {res}replace
-{txt}pl160: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(15520 missing values generated)
-{res}{txt}pl160_f already numeric; no {res}replace
-{txt}pl170: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(27295 missing values generated)
-{res}{txt}pl170_f already numeric; no {res}replace
-{txt}pl180: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(25834 missing values generated)
-{res}{txt}pl180_f already numeric; no {res}replace
-{txt}pl190: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(4104 missing values generated)
-{res}{txt}pl190_f already numeric; no {res}replace
-{txt}pl200: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(4123 missing values generated)
-{res}{txt}pl200_f already numeric; no {res}replace
-{txt}pl211a: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211a_f already numeric; no {res}replace
-{txt}pl211b: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211b_f already numeric; no {res}replace
-{txt}pl211c: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211c_f already numeric; no {res}replace
-{txt}pl211d: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211d_f already numeric; no {res}replace
-{txt}pl211e: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211e_f already numeric; no {res}replace
-{txt}pl211f: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211f_f already numeric; no {res}replace
-{txt}pl211g: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211g_f already numeric; no {res}replace
-{txt}pl211h: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211h_f already numeric; no {res}replace
-{txt}pl211i: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211i_f already numeric; no {res}replace
-{txt}pl211j: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211j_f already numeric; no {res}replace
-{txt}pl211k: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211k_f already numeric; no {res}replace
-{txt}pl211l: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(216 missing values generated)
-{res}{txt}pl211l_f already numeric; no {res}replace
-{txt}ph010: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}ph010_f already numeric; no {res}replace
-{txt}ph020: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}ph020_f already numeric; no {res}replace
-{txt}ph030: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}ph030_f already numeric; no {res}replace
-{txt}ph040: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(6291 missing values generated)
-{res}{txt}ph040_f already numeric; no {res}replace
-{txt}ph050: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(28248 missing values generated)
-{res}{txt}ph050_f already numeric; no {res}replace
-{txt}ph060: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(14035 missing values generated)
-{res}{txt}ph060_f already numeric; no {res}replace
-{txt}ph070: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(26957 missing values generated)
-{res}{txt}ph070_f already numeric; no {res}replace
-{txt}py010n already numeric; no {res}replace
-{txt}py010n_f already numeric; no {res}replace
-{txt}py020n already numeric; no {res}replace
-{txt}py020n_f already numeric; no {res}replace
-{txt}py021n already numeric; no {res}replace
-{txt}py021n_f already numeric; no {res}replace
-{txt}py035n already numeric; no {res}replace
-{txt}py035n_f already numeric; no {res}replace
-{txt}py050n already numeric; no {res}replace
-{txt}py050n_f already numeric; no {res}replace
-{txt}py080n already numeric; no {res}replace
-{txt}py080n_f already numeric; no {res}replace
-{txt}py090n already numeric; no {res}replace
-{txt}py090n_f already numeric; no {res}replace
-{txt}py100n already numeric; no {res}replace
-{txt}py100n_f already numeric; no {res}replace
-{txt}py110n already numeric; no {res}replace
-{txt}py110n_f already numeric; no {res}replace
-{txt}py120n already numeric; no {res}replace
-{txt}py120n_f already numeric; no {res}replace
-{txt}py130n already numeric; no {res}replace
-{txt}py130n_f already numeric; no {res}replace
-{txt}py140n already numeric; no {res}replace
-{txt}py140n_f already numeric; no {res}replace
-{txt}py010g already numeric; no {res}replace
-{txt}py010g_f already numeric; no {res}replace
-{txt}py020g already numeric; no {res}replace
-{txt}py020g_f already numeric; no {res}replace
-{txt}py021g already numeric; no {res}replace
-{txt}py021g_f already numeric; no {res}replace
-{txt}py030g already numeric; no {res}replace
-{txt}py030g_f already numeric; no {res}replace
-{txt}py035g already numeric; no {res}replace
-{txt}py035g_f already numeric; no {res}replace
-{txt}py050g already numeric; no {res}replace
-{txt}py050g_f already numeric; no {res}replace
-{txt}py080g already numeric; no {res}replace
-{txt}py080g_f already numeric; no {res}replace
-{txt}py090g already numeric; no {res}replace
-{txt}py090g_f already numeric; no {res}replace
-{txt}py100g already numeric; no {res}replace
-{txt}py100g_f already numeric; no {res}replace
-{txt}py110g already numeric; no {res}replace
-{txt}py110g_f already numeric; no {res}replace
-{txt}py120g already numeric; no {res}replace
-{txt}py120g_f already numeric; no {res}replace
-{txt}py130g already numeric; no {res}replace
-{txt}py130g_f already numeric; no {res}replace
-{txt}py140g already numeric; no {res}replace
-{txt}py140g_f already numeric; no {res}replace
-{txt}p78a_u: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pd020: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(213 missing values generated)
-{res}{txt}pd020_f already numeric; no {res}replace
-{txt}pd030: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pd030_f already numeric; no {res}replace
-{txt}pd050: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pd050_f already numeric; no {res}replace
-{txt}pd060: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pd060_f already numeric; no {res}replace
-{txt}pd070: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pd070_f already numeric; no {res}replace
-{txt}pd080: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(212 missing values generated)
-{res}{txt}pd080_f already numeric; no {res}replace
-{txt}pw010t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(557 missing values generated)
-{res}{txt}pw010t_f already numeric; no {res}replace
-{txt}pw030t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(558 missing values generated)
-{res}{txt}pw030t_f already numeric; no {res}replace
-{txt}pw040t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(246 missing values generated)
-{res}{txt}pw040t_f already numeric; no {res}replace
-{txt}pw050t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(550 missing values generated)
-{res}{txt}pw050t_f already numeric; no {res}replace
-{txt}pw060t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(553 missing values generated)
-{res}{txt}pw060t_f already numeric; no {res}replace
-{txt}pw070t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(559 missing values generated)
-{res}{txt}pw070t_f already numeric; no {res}replace
-{txt}pw080t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(564 missing values generated)
-{res}{txt}pw080t_f already numeric; no {res}replace
-{txt}pw090t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(562 missing values generated)
-{res}{txt}pw090t_f already numeric; no {res}replace
-{txt}pw100t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(15687 missing values generated)
-{res}{txt}pw100t_f already numeric; no {res}replace
-{txt}pw110t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(239 missing values generated)
-{res}{txt}pw110t_f already numeric; no {res}replace
-{txt}pw120t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(567 missing values generated)
-{res}{txt}pw120t_f already numeric; no {res}replace
-{txt}pw160t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(567 missing values generated)
-{res}{txt}pw160t_f already numeric; no {res}replace
-{txt}pw190t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(450 missing values generated)
-{res}{txt}pw190t_f already numeric; no {res}replace
-{txt}pw230t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(561 missing values generated)
-{res}{txt}pw230t_f already numeric; no {res}replace
-{txt}pw240t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(448 missing values generated)
-{res}{txt}pw240t_f already numeric; no {res}replace
-{txt}phd01t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(9 missing values generated)
-{res}{txt}phd01t_f already numeric; no {res}replace
-{txt}phd02t: all characters numeric; {res}replaced {txt}as {res}double
-{txt}(27911 missing values generated)
-{res}{txt}phd02t_f already numeric; no {res}replace
-{txt}phd03t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(27903 missing values generated)
-{res}{txt}phd03t_f already numeric; no {res}replace
-{txt}phd04t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(27905 missing values generated)
-{res}{txt}phd04t_f already numeric; no {res}replace
-{txt}phd05t: all characters numeric; {res}replaced {txt}as {res}byte
-{txt}(27903 missing values generated)
-{res}{txt}phd05t_f already numeric; no {res}replace
+{com}. //_24q
+. quietly{c -(}
 {txt}
 {com}. //_25
 . browse p78a_u
@@ -617,7 +241,7 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 {txt}(contacting http://www.stata.com)
 
 {s6hlp}
-48 packages found (Stata Journal and STB listed first)
+46 packages found (Stata Journal and STB listed first)
 ------------------------------------------------------
 
 @net:describe st0492, from(http://www.stata-journal.com/software/sj17-3)!st0492 from http://www.stata-journal.com/software/sj17-3@
@@ -799,6 +423,12 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     / orth_out is useful in testing balance of means across variables / in
     multiple groups, particularly the balance of baseline / characteristics
 
+@net:describe outdetect, from(http://fmwww.bc.edu/RePEc/bocode/o)!outdetect from http://fmwww.bc.edu/RePEc/bocode/o@
+    'OUTDETECT': module to perform outlier detection and diagnostics for
+    welfare analysts / outdetect identifies outliers (extreme values) in the /
+    distribution of a variable, and assesses their impact on a / selection of
+    popular inequality and poverty measures. The / procedure by which outliers
+
 @net:describe pobrezaecu, from(http://fmwww.bc.edu/RePEc/bocode/p)!pobrezaecu from http://fmwww.bc.edu/RePEc/bocode/p@
     'POBREZAECU': module to predict poverty in Ecuador / pobrezaECU predicts
     income poverty in Ecuador, a year ahead, / from the quarterly household
@@ -865,24 +495,6 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     making / replacements that are specified in an external dataset, the /
     replacements file.  / KW: data management / KW: data entry / KW: replace /
 
-@net:describe sae, from(http://fmwww.bc.edu/RePEc/bocode/s)!sae from http://fmwww.bc.edu/RePEc/bocode/s@
-    'SAE': module to provide commands and mata functions devoted to unit level
-    small area estimation / sae is a Stata family of functions for small area
-    estimation, / using the methodology from Elbers, Lanjouw, and Lanjouw
-    (2003). / The package introduces new mata functions and a plugin used to /
-
-@net:describe skdecomp, from(http://fmwww.bc.edu/RePEc/bocode/s)!skdecomp from http://fmwww.bc.edu/RePEc/bocode/s@
-    'SKDECOMP': module to estimate Shapley value of growth, price, and
-    distribution components on changes in poverty indicators / skdecomp
-    implements the shapley value of Kolenikov and / Shorrocks (2003)
-    decomposition of changes in a welfare indicator / into growth,
-
-@net:describe specialexp, from(http://fmwww.bc.edu/RePEc/bocode/s)!specialexp from http://fmwww.bc.edu/RePEc/bocode/s@
-    'SPECIALEXP': module to obtain expression that evaluates to specified
-    string / specialexp returns an expression that evaluates to a specified /
-    string, including strings that cannot be enclosed in double / quotes.  /
-    KW: expressions / KW: quotes / KW: Mata / Requires: Stata version 9 /
-
 @net:describe tex3pt, from(http://fmwww.bc.edu/RePEc/bocode/t)!tex3pt from http://fmwww.bc.edu/RePEc/bocode/t@
     'TEX3PT': module to produce LaTeX documents from estout with
     threeparttable / tex3pt takes .tex output from esttab and writes it into a
@@ -908,7 +520,7 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     implements Wooldridge / simple solution to the initial condition problem
 
 
-11 references found in tables of contents
+10 references found in tables of contents
 -----------------------------------------
 
 @net:from http://www.stata-journal.com/software/sj17-3/!http://www.stata-journal.com/software/sj17-3/@
@@ -971,12 +583,6 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     module to create paired datasets from individual-per-row data / module for
     plots of paired observations / module to import network data in Pajek's
 
-@net:from http://fmwww.bc.edu/RePEc/bocode/s/!http://fmwww.bc.edu/RePEc/bocode/s/@
-    module to compute Sequence Analysis Distance Measures / module to provide
-    commands and mata functions devoted to unit level small area estimation /
-    module to drop variables if and only if varnames specified in full /
-    module to compute sample size for an intra-class correlation (ICC) /
-
 {smcl}
 
 {com}. ssc install povdeco
@@ -991,7 +597,7 @@ all files already exist and are up to date.
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 22:40:32
+ {txt}closed on:  {res} 1 Aug 2019, 07:39:38
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata3.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 22:40:32
+ {txt}opened on:  {res} 1 Aug 2019, 07:39:38
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -306,7 +306,7 @@ Nivel educativo medio  {c |}{col 24}{res}{space 2}  .240602{col 36}{space 2} .01
 {res}{txt}
 {com}. 
 . //_10
-. regress logsalario i.sexo edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
+. regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#educg
 
 {txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    11,599
 {txt}{hline 13}{c +}{hline 34}   F(8, 11590)     = {res}   364.72
@@ -324,8 +324,42 @@ Nivel educativo medio  {c |}{col 24}{res}{space 2}  .240602{col 36}{space 2} .01
 {txt}{space 28} {c |}
 {space 15}c.edad#c.edad {c |}{col 30}{res}{space 2}-.0005724{col 42}{space 2} .0000535{col 53}{space 1}  -10.71{col 62}{space 3}0.000{col 70}{space 4}-.0006772{col 83}{space 3}-.0004676
 {txt}{space 28} {c |}
+{space 23}educg {c |}
+{space 6}Nivel educativo medio  {c |}{col 30}{res}{space 2} .2543874{col 42}{space 2} .0250038{col 53}{space 1}   10.17{col 62}{space 3}0.000{col 70}{space 4} .2053758{col 83}{space 3} .3033991
+{txt}{space 7}Nivel educativo alto  {c |}{col 30}{res}{space 2} .5659028{col 42}{space 2} .0223213{col 53}{space 1}   25.35{col 62}{space 3}0.000{col 70}{space 4} .5221494{col 83}{space 3} .6096563
+{txt}{space 28} {c |}
 {space 17}sexo#c.edad {c |}
 {space 22}Mujer  {c |}{col 30}{res}{space 2}-.0041906{col 42}{space 2} .0012553{col 53}{space 1}   -3.34{col 62}{space 3}0.001{col 70}{space 4}-.0066513{col 83}{space 3}  -.00173
+{txt}{space 28} {c |}
+{space 18}sexo#educg {c |}
+Mujer#Nivel educativo medio  {c |}{col 30}{res}{space 2}-.0232393{col 42}{space 2}  .037422{col 53}{space 1}   -0.62{col 62}{space 3}0.535{col 70}{space 4}-.0965927{col 83}{space 3} .0501142
+{txt}{space 1}Mujer#Nivel educativo alto  {c |}{col 30}{res}{space 2} .0929502{col 42}{space 2} .0328386{col 53}{space 1}    2.83{col 62}{space 3}0.005{col 70}{space 4}  .028581{col 83}{space 3} .1573195
+{txt}{space 28} {c |}
+{space 23}_cons {c |}{col 30}{res}{space 2} 5.083543{col 42}{space 2}  .099395{col 53}{space 1}   51.14{col 62}{space 3}0.000{col 70}{space 4} 4.888712{col 83}{space 3} 5.278374
+{txt}{hline 29}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //_11
+. regress logsalario c.edad##c.edad i.sexo#c.edad i.sexo##educg
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}    11,599
+{txt}{hline 13}{c +}{hline 34}   F(8, 11590)     = {res}   364.72
+{txt}       Model {c |} {res} 1614.92975         8  201.866218   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 6414.78325    11,590   .55347569   {txt}R-squared       ={res}    0.2011
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.2006
+{txt}       Total {c |} {res}   8029.713    11,598  .692336006   {txt}Root MSE        =   {res} .74396
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                  logsalario{col 30}{c |}      Coef.{col 42}   Std. Err.{col 54}      t{col 62}   P>|t|{col 70}     [95% Con{col 83}f. Interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 24}edad {c |}{col 30}{res}{space 2} .0735382{col 42}{space 2} .0046441{col 53}{space 1}   15.83{col 62}{space 3}0.000{col 70}{space 4}  .064435{col 83}{space 3} .0826414
+{txt}{space 28} {c |}
+{space 15}c.edad#c.edad {c |}{col 30}{res}{space 2}-.0005724{col 42}{space 2} .0000535{col 53}{space 1}  -10.71{col 62}{space 3}0.000{col 70}{space 4}-.0006772{col 83}{space 3}-.0004676
+{txt}{space 28} {c |}
+{space 17}sexo#c.edad {c |}
+{space 22}Mujer  {c |}{col 30}{res}{space 2}-.0041906{col 42}{space 2} .0012553{col 53}{space 1}   -3.34{col 62}{space 3}0.001{col 70}{space 4}-.0066513{col 83}{space 3}  -.00173
+{txt}{space 28} {c |}
+{space 24}sexo {c |}
+{space 22}Mujer  {c |}{col 30}{res}{space 2}-.0864934{col 42}{space 2}  .062616{col 53}{space 1}   -1.38{col 62}{space 3}0.167{col 70}{space 4}-.2092312{col 83}{space 3} .0362445
 {txt}{space 28} {c |}
 {space 23}educg {c |}
 {space 6}Nivel educativo medio  {c |}{col 30}{res}{space 2} .2543874{col 42}{space 2} .0250038{col 53}{space 1}   10.17{col 62}{space 3}0.000{col 70}{space 4} .2053758{col 83}{space 3} .3033991
@@ -338,7 +372,7 @@ Mujer#Nivel educativo medio  {c |}{col 30}{res}{space 2}-.0232393{col 42}{space 
 {space 23}_cons {c |}{col 30}{res}{space 2} 5.083543{col 42}{space 2}  .099395{col 53}{space 1}   51.14{col 62}{space 3}0.000{col 70}{space 4} 4.888712{col 83}{space 3} 5.278374
 {txt}{hline 29}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {res}{txt}
-{com}. //_11
+{com}. //_12
 . //  Estimación del modelo logit
 . 
 . logit empleo i.sexo c.edad c.edad#c.edad
@@ -393,7 +427,7 @@ c.edad#c.edad {c |}{col 15}{res}{space 2}-.0033169{col 27}{space 2}  .000061{col
 {space 8}_cons {c |}{col 15}{res}{space 2}-5.091976{col 27}{space 2} .1023362{col 38}{space 1}  -49.76{col 47}{space 3}0.000{col 55}{space 4}-5.292551{col 68}{space 3}-4.891401
 {txt}{hline 14}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
-{com}. //_12
+{com}. //_13
 . //  Estimación del modelo logit
 . 
 . logit empleo i.sexo c.edad c.edad#c.edad
@@ -455,7 +489,7 @@ c.edad#c.edad {c |}{col 15}{res}{space 2}-.0054409{col 27}{space 2} .0001038{col
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 0 78}Note: dy/dx for factor levels is the discrete change from the base level.{txt}{p_end}
 {res}{txt}
-{com}. //_13
+{com}. //_14
 . //  Estimación del modelo probit
 . 
 . probit empleo i.sexo c.edad c.edad#c.edad
@@ -507,7 +541,7 @@ c.edad#c.edad {c |}{col 15}{res}{space 2}-.0033169{col 27}{space 2}  .000061{col
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 0 78}Note: dy/dx for factor levels is the discrete change from the base level.{txt}{p_end}
 {res}{txt}
-{com}. //_14
+{com}. //_15
 . codebook aportacionesg
 
 {txt}{hline}
@@ -525,7 +559,7 @@ c.edad#c.edad {c |}{col 15}{res}{space 2}-.0033169{col 27}{space 2}  .000061{col
 {txt}{col 12}percentiles:{col 32}10%{col 42}25%{col 52}50%{col 62}75%{col 72}90%
 {res}{col 27}       0{col 37}       0{col 47}       0{col 57}       0{col 67}       0
 {txt}
-{com}. //_15
+{com}. //_16
 . //  Estimación del modelo tobit
 . 
 . tobit aportacionesg i.sexo c.edad c.edad#c.edad i.educg, ll(0)
@@ -586,7 +620,7 @@ Nivel educativo medio  {c |}{col 24}{res}{space 2} 984.3967{col 36}{space 2} 135
 {txt}{hline 23}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 0 88}Note: dy/dx for factor levels is the discrete change from the base level.{txt}{p_end}
 {res}{txt}
-{com}. //_16
+{com}. //_17
 . //  Exploramos la variable salud
 . 
 . tab salud
@@ -721,7 +755,7 @@ Nivel educativo medio  {c |}{col 24}{res}{space 2}-.4981022{col 36}{space 2}  .0
 {txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 {p 0 6 0 78}Note: dy/dx for factor levels is the discrete change from the base level.{txt}{p_end}
 {res}{txt}
-{com}. //_17
+{com}. //_18
 . svyset psu [pweight=peso], strata(region) vce(linearized) singleunit(missing)
 
       {txt}pweight:{col 16}{res}peso
@@ -732,7 +766,7 @@ Nivel educativo medio  {c |}{col 24}{res}{space 2}-.4981022{col 36}{space 2}  .0
         {txt}FPC 1:{col 16}<zero>
 {p2colreset}{...}
 
-{com}. //_18
+{com}. //_19
 . svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
 {txt}(running {bf:regress} on estimation sample)
 {res}
@@ -770,7 +804,7 @@ Mujer#Nivel educativo medio  {c |}{col 30}{res}{space 2} -.068334{col 42}{space 
 {space 23}_cons {c |}{col 30}{res}{space 2} 5.140099{col 42}{space 2} .1488365{col 53}{space 1}   34.54{col 62}{space 3}0.000{col 70}{space 4} 4.848217{col 83}{space 3}  5.43198
 {txt}{hline 29}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
 
-{com}. //_19
+{com}. //_20
 . //  Abrimos el archivo
 . 
 . use "ecv18w.dta", clear
@@ -914,7 +948,7 @@ Scoring coefficients
          {txt}mc1 {c |}{res}   0.3368   1.0000
 
 {txt}
-{com}. //_20q
+{com}. //_21q
 . quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
 {txt}
 {com}. //_^
@@ -922,7 +956,7 @@ Scoring coefficients
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata3.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 22:40:32
+ {txt}closed on:  {res} 1 Aug 2019, 07:39:38
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

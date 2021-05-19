@@ -23,6 +23,8 @@ _ _ _
 
 Una alternativa muy razonable es `R`: potente, flexible, gratuito, con una comunidad de usuarios impresionante, un lenguaje de programación muy potente y muchas cosas más... pero con una curva de aprendizaje muchísimo más pronunciada.
 
+![Porcentaje de uso de distintos softwares en los materiales suplementarios de revistas de la AEA](software.png){width=40%}
+
 # 2. Objetivos del curso
 
 El curso consta de 10 horas, por lo que la finalidad es proporcionar a los asistentes un panorama de lo que `Stata` puede hacer y orientarles en la búsqueda de recursos apropiados para que puedan aprender de forma autónoma de acuerdo con sus intereses. Todos los materiales del curso pueden descargarse en el siguiente [enlace](https://drive.google.com/drive/folders/1EE9fOnmFQfY-7pImpfMrsgYFo_7MaD6_?usp=sharing).
@@ -83,7 +85,7 @@ En la práctica, los archivos que más vamos a utilizar son los archivos `.do` y
 
 ## 3.2. El entorno de `Stata`
 
-El entorno de la versión 16 de `Stata` nos muestra:
+El entorno de la versión 17 de `Stata` nos muestra:
 
 * Ventana de resultados.
 * Línea de comandos.
@@ -96,7 +98,7 @@ El entorno de la versión 16 de `Stata` nos muestra:
 
 Conviene operar, preferentemente, con el editor de archivos `.do`.
 
-![Entorno de trabajo de `Stata'](editor.png){width=75%}
+![Editor de archivos `.do` de `Stata'](editor.png){width=75%}
 
 ## 3.3. Recursos de ayuda
 
@@ -110,7 +112,7 @@ De forma más genérica, podemos emplear
 
 En segundo término, las [*cheatsheets*](https://www.stata.com/bookstore/statacheatsheets.pdf) de `Stata` son un magnífico recurso a considerar.
 
-En tercer lugar, tenemos un sinnúmero de manuales, más o menos especializados. Podéis acceder a algunos aquí. Existen algunos especialmente recomendables, como el de J. Scott Long:
+En tercer lugar, tenemos un sinnúmero de manuales, más o menos especializados. Existen algunos especialmente recomendables, como el de J. Scott Long:
 
 ![*The workflow of data analysis using Stata*](book_long.jpg){width=15%}
 
@@ -162,7 +164,7 @@ En segundo lugar, habitualmente, indicamos cuál es el directorio de trabajo.
 
   <code>cd ["]<i>directory_name</i>["]</code>
 
-En mi caso caso,
+En mi caso,
 
 ```{s}
 cd "D:\Dropbox\curso_stata\sesión1"
@@ -197,9 +199,14 @@ Podemos solventar eso con el comando `destring` que convierte todas las variable
 
 En nuestro caso, aplicamos el comando como sigue
 
-```{s}
-destring, replace
+    destring _all, replace
+
+```{s/}
+quietly{
+  destring _all, replace
+}
 ```
+
 Podemos guardarlo mediante la instrucción `save`:
 
   <code><u>sa</u>ve [<i>filename</i>] [, <i>save_options</i>]</code>
@@ -234,7 +241,7 @@ En nuestro caso, podríamos añadir al principio
 
 Al final,
 
-    log close
+  log close
 
 Podemos abrir el archivo y observar que es similar a un archivo de texto enriquecido.
 
@@ -280,7 +287,7 @@ Correlación entre variables
 
 Ordenar la base de datos por una o varias variables
 
-  <code> <u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code>
+  <code><u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code>
 
 Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (`rb210`).
 
@@ -312,7 +319,7 @@ Para eliminar variables y observaciones de la base de datos podemos emplear tant
 
   <code>drop if <i>exp</i></code>
 
-  <code>drop in </i>range</i> [if exp]</code>
+  <code>drop in <i>range</i> [if <i>exp</i>]</code>
 
   <code>keep <i>varlist</i></code>
 
@@ -483,10 +490,16 @@ $$
 
 En ocasiones, nosotros mismos tenemos que manejar los problemas asociados a los valores perdidos. Para ello, vamos recurrir a otro archivo de la ECV 2018, el fichero detallado de información sobre los individuos (`esudb18p.csv`) y procedemos de la misma forma que más arriba.
 
-```{s}
-import delimited using "esudb18p.csv", clear delimiter(",")
-destring _all, replace
+    import delimited using "esudb18p.csv", clear delimiter(",")
+    destring _all, replace
+
+```{s/}
+quietly{
+    import delimited using "esudb18p.csv", clear delimiter(",")
+    destring _all, replace
+}
 ```
+
 Nos fijamos en la variable `p78a_u`, que, de acuerdo con la documentación, recoge información sobre la ayuda que recibe el adulto entrevistado si afronta limitaciones en su vida diaria.
 
 ![Pregunta p78a_u en la documentación de la ECV](p78a_u.png)

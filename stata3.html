@@ -1,10 +1,176 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="José-Ignacio Antón" />
+  <title>Sesión 3. Tablas de contingencia y análisis multivariante</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
 body{padding:14px 28px;}
-body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px;}
+body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px; width: 95%; max-width: unset;}
 h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
 h1 {font-size: 200%;}
 h2 {font-size: 150%;}
@@ -26,7 +192,7 @@ pre code { color:black; background-color:white}
 figure > img, div.figure > img {display:block; margin:auto}
 figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
 h1.title {text-align:center; margin-bottom:0}
-p.author, h2.author {font-style:italic; text-align:center;margin-top:4px;margin-bottom:0}
+p.author, h2.author {font-style:italic; text-align:center;margin-top:12px;margin-bottom:-25px}
 p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
 /* Tables*/
 table { margin:auto; border-collapse:collapse; }
@@ -38,23 +204,6 @@ tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
 tbody tr:last-child  td {padding-bottom:6px;}
 table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </style>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="José-Ignacio Antón" />
-  <title>Sesión 3. Tablas de contingencia y análisis multivariante</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 </head>
 <body>
 <header id="title-block-header">
@@ -621,9 +770,9 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 <p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).</p>
 <pre class='stata'>. codebook aportacionesg
 
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-aportacionesg                                                                 Aportaciones a planes privados de pensiones individuales (brutas)
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+aportacionesg                                                                                                                                                  Aportaciones a planes privados de pensiones individuales (brutas)
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (float)
 
@@ -1027,39 +1176,39 @@ Statistics for column categories in standard normalization
 </pre>
 <h1 id="references">References</h1>
 
-<div id="refs" class="references hanging-indent" role="doc-bibliography">
-<div id="ref-Adkins2010">
-<p>Adkins, L. C., &amp; Hill, R. C. (2010). <em>Using Stata for Principles of Econometrics</em> (4th ed.). John Wiley &amp; Sons, Inc.</p>
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
+<div id="ref-Adkins2010" class="csl-entry" role="doc-biblioentry">
+Adkins, L. C., &amp; Hill, R. C. (2010). <em>Using <span>S</span>tata for <span>P</span>rinciples of <span>E</span>conometrics</em> (4th ed.). John Wiley &amp; Sons, Inc.
 </div>
-<div id="ref-Baum2006">
-<p>Baum, C. F. (2006). <em>An introduction to modern Econometrics using Stata</em>. Stata Press.</p>
+<div id="ref-Baum2006" class="csl-entry" role="doc-biblioentry">
+Baum, C. F. (2006). <em>An introduction to modern <span>E</span>conometrics using <span>S</span>tata</em>. Stata Press.
 </div>
-<div id="ref-Cameron2010">
-<p>Cameron, A. C., &amp; Trivedi, P. K. (2010). <em>Microeconometrics using Stata</em> (2nd ed.). Stata Press.</p>
+<div id="ref-Cameron2010" class="csl-entry" role="doc-biblioentry">
+Cameron, A. C., &amp; Trivedi, P. K. (2010). <em>Microeconometrics using <span>S</span>tata</em> (2nd ed.). Stata Press.
 </div>
-<div id="ref-Cleves2016">
-<p>Cleves, M., Gould, W. W., &amp; Marchenko, Y. V. (2016). <em>An introduction to survival analysis using Stata</em>. Stata Press.</p>
+<div id="ref-Cleves2016" class="csl-entry" role="doc-biblioentry">
+Cleves, M., Gould, W. W., &amp; Marchenko, Y. V. (2016). <em>An introduction to survival analysis using <span>S</span>tata</em>. Stata Press.
 </div>
-<div id="ref-Escobar2012">
-<p>Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>Análisis de datos con Stata</em> (2nd ed.). Centro de Investigaciones Sociólogicas.</p>
+<div id="ref-Escobar2012" class="csl-entry" role="doc-biblioentry">
+Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>An<span>á</span>lisis de datos con <span>S</span>tata</em> (2nd ed.). Centro de Investigaciones Soci<span>ó</span>logicas.
 </div>
-<div id="ref-Kohler2012">
-<p>Kohler, U., &amp; Kreuter, F. (2012). <em>Data analysis using Stata</em> (3rd ed.). Stata Press.</p>
+<div id="ref-Kohler2012" class="csl-entry" role="doc-biblioentry">
+Kohler, U., &amp; Kreuter, F. (2012). <em>Data analysis using <span>S</span>tata</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Long2014">
-<p>Long, J. S., &amp; Freese, J. (2014). <em>Regression models for categorical dependent variables using Stata</em> (3rd ed.). Stata Press.</p>
+<div id="ref-Long2014" class="csl-entry" role="doc-biblioentry">
+Long, J. S., &amp; Freese, J. (2014). <em>Regression models for categorical dependent variables using <span>S</span>tata</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Mincer1958">
-<p>Mincer, J. (1958). Investment in human capital and personal income distribution. <em>Journal of Political Economy</em>, <em>66</em>(4), 281–302.</p>
+<div id="ref-Mincer1958" class="csl-entry" role="doc-biblioentry">
+Mincer, J. (1958). Investment in human capital and personal income distribution. <em>Journal of Political Economy</em>, <em>66</em>(4), 281–302.
 </div>
-<div id="ref-Skrondal2012a">
-<p>Skrondal, A., &amp; Rabe-Heskerth, S. (2012a). <em>Multilevel and longitudinal modeling using Stata. Volume I: Continuous responses</em> (3rd ed.). Stata Press.</p>
+<div id="ref-Skrondal2012a" class="csl-entry" role="doc-biblioentry">
+Skrondal, A., &amp; Rabe-Heskerth, S. (2012a). <em>Multilevel and longitudinal modeling using <span>S</span>tata. Volume <span>I</span>: <span>C</span>ontinuous responses</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Skrondal2012b">
-<p>Skrondal, A., &amp; Rabe-Heskerth, S. (2012b). <em>Multilevel and longitudinal modeling using Stata. Volume II: Categorical responses, counts, and survival</em> (3rd ed.). Stata Press.</p>
+<div id="ref-Skrondal2012b" class="csl-entry" role="doc-biblioentry">
+Skrondal, A., &amp; Rabe-Heskerth, S. (2012b). <em>Multilevel and longitudinal modeling using <span>S</span>tata. Volume <span>II</span>: <span>C</span>ategorical responses, counts, and survival</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Wooldridge2019">
-<p>Wooldridge, J. M. (2019). <em>Introductory Econometrics: A modern approach</em> (7th ed.). Cengage Learning.</p>
+<div id="ref-Wooldridge2019" class="csl-entry" role="doc-biblioentry">
+Wooldridge, J. M. (2019). <em><span>I</span>ntroductory <span>E</span>conometrics: <span>A</span> modern approach</em> (7th ed.). Cengage Learning.
 </div>
 </div>
 </body>
