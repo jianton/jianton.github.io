@@ -216,7 +216,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </p>
 <hr />
 <h1 id="tablas-de-contingencia">1. Tablas de contingencia</h1>
-<p><code>Stata</code> es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos <code>ech18t</code>, que se encuentra en la carpeta <code>sesión3</code> e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> o el de <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
+<p><code>Stata</code> es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos <code>ecv18t</code>, que se encuentra en la carpeta <code>sesión3</code> e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> o el de <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
 <h2 id="tablas-de-frecuencia-con-una-o-dos-variables-tabulate">Tablas de frecuencia con una o dos variables (<code>tabulate</code>)</h2>
 <p>Es uno de los comandos más utilizados de <code>Stata</code>, esencial para explorar las bases de datos. La sintaxis es la siguiente:</p>
 <p>Tabla de una variable (<em>one-way table</em>)</p>
@@ -350,7 +350,7 @@ Nivel educativo medio │     13.36      13.40 │     26.75
 <p>Además, disponemos del comando <code>table</code> para construir tablas con estadísticos descriptivos de forma más flexible.</p>
 <p><code>table <i>rowvar</i> [<i>colvar</i> [<i>supercolvar</i>]] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
 <p>El salario promedio por educación, sexo y tipo de contrato se calcularía como sigue:</p>
-<pre class='stata'>. table educg sexo contrato, c(mean salario)
+<pre class='stata'>. table educg sexo contrato, contents(mean salario)
 
 ──────────────────────┬─────────────────────────────────────────
                       │        Tipo de contrato and Sexo        
@@ -482,7 +482,7 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
        _cons │   5.190086     .10112    51.33   0.000     4.991874    5.388299
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
-<p>En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan <code>i.varname</code> algo a lo que <code>Stata</code> puede ayudarnos con la instrucción siguiente</p>
+<p>En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan <code>i.varname</code> algo a lo que <code>Stata</code> puede ayudarnos con la instrucción siguiente:</p>
 <pre class='stata'>. tabulate educg, generate(educdummy)
 
  Educación (agrupada) │      Freq.     Percent        Cum.
@@ -770,9 +770,9 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 <p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).</p>
 <pre class='stata'>. codebook aportacionesg
 
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-aportacionesg                                                                                                                                                  Aportaciones a planes privados de pensiones individuales (brutas)
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+aportacionesg                                                                                                       Aportaciones a planes privados de pensiones individuales (brutas)
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (float)
 
@@ -1017,7 +1017,7 @@ Mujer#Nivel educativo medio  │   -.068334   .0537433    -1.27   0.204    -.173
 ─────────────────────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <p>Además, muchos comandos en <code>Stata</code> admiten el empleo de ponderaciones. En el caso de los encuestas, estas reflejan el inverso de la probabilidad de cada observación ser seleccionada y deben introducirse como <code>pweight</code> (pesos probabilísticos). Hay muchas especificades asociadas al empleo de ponderaciones y no todos los comandos admiten el empleo de pesos.</p>
-<p>El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: A través de <code>xtset</code>, <code>Stata</code> permite especificar cuáles son las unidades del panel (<em><code>panelvar</code></em>) y cuál es la variable temporal (<em><code>timevar</code></em>) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).</p>
+<p>El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: a través de <code>xtset</code>, <code>Stata</code> permite especificar cuáles son las unidades del panel (<em><code>panelvar</code></em>) y cuál es la variable temporal (<em><code>timevar</code></em>) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).</p>
 <p><code>xtset <i>panelvar</i> <i>timevar</i> [, <i>tsoptions</i>]</code></p>
 <p>Al margen de los libros mencionados con anterioridad, especialmente <span class="citation" data-cites="Cameron2010">Cameron &amp; Trivedi (2010)</span>, podemos destacar el libro de <span class="citation" data-cites="Long2014">Long &amp; Freese (2014)</span> para variables categóricas, los manuales de Skrondal y Rabe-Hesketh <span class="citation" data-cites="Skrondal2012a Skrondal2012b">(2012a, 2012b)</span> para modelos de panel y multinivel y <span class="citation" data-cites="Cleves2016">Cleves et al. (2016)</span> para modelos de supervivencia.</p>
 <h1 id="otras-técnicas-de-análisis-multivariante">5. Otras técnicas de análisis multivariante</h1>

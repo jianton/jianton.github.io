@@ -654,21 +654,21 @@ salariomed2016 salariomed2017 salariomed2018-> salariomed
 <h1 id="nociones-básicas-de-programación-preserve-restore-y-el-uso-de-macros-y-bucles">5. Nociones básicas de programación: <code>preserve</code>, <code>restore</code> y el uso de macros y bucles</h1>
 <p>En esta sección, vamos a revisar una serie de instrucciones que se utilizan fundamentalmente en programación (e.g., en la elaboración de archivos <code>.do</code>). Aunque algunos también pueden emplearse de forma interactiva, en otros, esta estrategia carece de sentido, ya que las macros creadas desaparecen cuando se termina de ejecutar el programa. Aquí únicamente haremos una primera aproximación. Para más detalles, puede consultarse, por ejemplo, <span class="citation" data-cites="Baum2016">Baum (2016)</span>.</p>
 <h2 id="el-uso-de-preserve-y-restore">5.1. El uso de <code>preserve</code> y <code>restore</code></h2>
-<p>En ocasiones, es necesario volver a una versión previa de los datos después de realizar operaciones. Para ello podemos valernos de dos comandos muy útiles, <code>preserve</code> y <code>restore</code>. Al introducir <code>preserve</code> indicamos a <code>Stata</code> que, cuando introduzcamos el comando `restore, debe volver a los datos justo antes de la introducción de este comando. Estas instrucciones son particularmente de interés cuando tenemos que realizar operaciones en las que eliminemos observaciones o variables. Así, por ejemplo, con la base de datos anterior, podemos eliminar una de las variables y, posteriormente, volver a la base de datos original.</p>
+<p>En ocasiones, es necesario volver a una versión previa de los datos después de realizar operaciones. Para ello podemos valernos de dos comandos muy útiles, <code>preserve</code> y <code>restore</code>. Al introducir <code>preserve</code> indicamos a <code>Stata</code> que, cuando introduzcamos el comando <code>restore</code>, debe volver a los datos justo antes de la introducción de este comando. Estas instrucciones son particularmente de interés cuando tenemos que realizar operaciones en las que eliminemos observaciones o variables. Así, por ejemplo, con la base de datos anterior, podemos eliminar una de las variables y, posteriormente, volver a la base de datos original.</p>
 <pre class='stata'>. describe
 
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 
@@ -686,14 +686,14 @@ Sorted by: sexo  ano
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             3                          
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 
@@ -706,15 +706,15 @@ Sorted by:
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 </pre>
