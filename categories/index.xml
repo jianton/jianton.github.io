@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories | J.I. Antón | Applied Microeconometrics</title>
-    <link>/categories/</link>
-      <atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://jianton.github.io/categories/</link>
+      <atom:link href="https://jianton.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <description>Categories</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>/images/icon_hu83426120324ae0ba26ae9f6a53ddb01c_205146_512x512_fill_lanczos_center_2.png</url>
+      <url>https://jianton.github.io/images/icon_hu83426120324ae0ba26ae9f6a53ddb01c_205146_512x512_fill_lanczos_center_2.png</url>
       <title>Categories</title>
-      <link>/categories/</link>
+      <link>https://jianton.github.io/categories/</link>
     </image>
     
   </channel>
