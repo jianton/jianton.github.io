@@ -374,7 +374,7 @@ file ecv18r.dta saved
 <pre><code>capture log close // Para cerrar logs abiertos
 log using curso1, replace</code></pre>
 <p>Al final,</p>
-<p>log close</p>
+<pre><code>log close</code></pre>
 <p>Podemos abrir el archivo y observar que es similar a un archivo de texto enriquecido.</p>
 <h2 id="exploración-de-la-base-de-datos">4.2. Exploración de la base de datos</h2>
 <p>Tenemos varios comandos que nos permiten hacernos una idea de cuál es el contenido de la base de datos, como <code>describe</code>, <code>codebook</code>, <code>browse</code>, <code>list</code>, <code>tabulate</code>, <code>summarize</code> o <code>correlate</code>, entre otros. Además, podemos emplearlos en todo momento con condicionales (<code>if</code>) o limitándonos a ciertas observaciones (<code>in</code>). Para aplicarlos, conviene conocer antes cuáles son los operadores. En este ámbito, el comando <code>sort</code>, que permite ordenar la base de datos en función de una o varias variables, resulta también muy utilizado.</p>
@@ -447,9 +447,9 @@ log using curso1, replace</code></pre>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (<code>rb210</code>).</p>
 <pre class='stata'>. codebook rb210
 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-rb210                                                                                                                                                                           RB210
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+rb210                                                                                                                                                                                                            RB210
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (byte)
 
@@ -1048,8 +1048,8 @@ http://fmwww.bc.edu/RePEc/bocode/d/
 http://fmwww.bc.edu/RePEc/bocode/e/
     module to estimate endogenous attribute attendance models / module to
     perform extreme bound analysis / module to perform Entropy reweighting to
-    create balanced samples / module to perform entropy reweighting to create
-    balanced samples for continuous treatments / module to to display
+    create balanced samples / module to perform entropy balancing / module to
+    perform entropy reweighting to create balanced samples for continuous
 
 http://fmwww.bc.edu/RePEc/bocode/i/
     module to import International Aid Transparency Initiative data / module
@@ -1059,9 +1059,9 @@ http://fmwww.bc.edu/RePEc/bocode/i/
 
 http://fmwww.bc.edu/RePEc/bocode/m/
     module to implement interpoint distance distribution analysis / module to
-    unabbreviate Global Macro Lists / module to perform Dickey-Fuller test on
-    panel data / module to calculate Median Absolute Deviations / module to
-    select matching observations based on a Mahalanobis distance measure /
+    unabbreviate Global Macro Lists / module to compute the macroF evaluation
+    criterion for multi-class outcomes / module to perform Dickey-Fuller test
+    on panel data / module to calculate Median Absolute Deviations / module to
 
 http://fmwww.bc.edu/RePEc/bocode/p/
     module to calculate confidence limits of a regression coefficient from the
