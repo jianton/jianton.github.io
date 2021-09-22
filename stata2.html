@@ -217,7 +217,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <hr />
 <h1 id="operaciones-de-fusión-horizontal-de-archivos">1. Operaciones de fusión horizontal de archivos</h1>
 <p>Una de las operaciones más utilizadas en <code>Stata</code> para manipular archivos es la instrucción <code>merge</code>, que permite fusionar dos archivos a partir de ciertas variables comunes. Ejemplos típicos son la fusión de distintas bases de datos con características de los inviduos o una base de datos con características de los invidividuos que queremos fusionar con una bases de datos con características de los hogares.</p>
-<p>Para ilustrar estos comandos, vamosa emplear los archivos de la ECV 2018, en concreto, el archivo básico de personas (<code>ecv18r.dta</code>), el archivo básico de hogares (<code>ecv18d.dta</code>), el archivo detallado de personas (<code>ecv18p.dta</code>) y el archivo detallado de hogares (<code>ecv18h.dta</code>), que se encuentran en la carpeta <code>sesión2</code>. Lo primer de todo, por lo tanto, es seleccionar el directorio de trabajo</p>
+<p>Para ilustrar estos comandos, vamos a emplear los archivos de la ECV 2018, en concreto, el archivo básico de personas (<code>ecv18r.dta</code>), el archivo básico de hogares (<code>ecv18d.dta</code>), el archivo detallado de personas (<code>ecv18p.dta</code>) y el archivo detallado de hogares (<code>ecv18h.dta</code>), que se encuentran en la carpeta <code>sesión2</code>. Lo primer de todo, por lo tanto, es seleccionar el directorio de trabajo</p>
 <pre class='stata'>. cd "D:\Dropbox\curso_stata\sesión2"
 D:\Dropbox\curso_stata\sesión2
 </pre>
@@ -612,7 +612,8 @@ Number of obs.                        6   ->       2
 Number of variables                   3   ->       4
 j variable (3 values)               ano   ->   (dropped)
 xij variables:
-                             salariomed   ->   salariomed2016 salariomed2017 salariomed2018
+                             salariomed   ->   salariomed2016 salariomed2017 salariom
+> ed2018
 ─────────────────────────────────────────────────────────────────────────────
 
 . 
@@ -660,15 +661,16 @@ salariomed2016 salariomed2017 salariomed2018-> salariomed
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
-cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+cambio1618      float   %9.0g                 Cambio porcentual del salario
+                                                (2016-2018)
+─────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 
@@ -686,14 +688,15 @@ Sorted by: sexo  ano
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             3                          
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
-cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+cambio1618      float   %9.0g                 Cambio porcentual del salario
+                                                (2016-2018)
+─────────────────────────────────────────────────────────────────────────────────────
 Sorted by: 
      Note: Dataset has changed since last saved.
 
@@ -706,15 +709,16 @@ Sorted by:
 Contains data
   obs:             6                          ECV 2016-2018
  vars:             4                          
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
               storage   display    value
 variable name   type    format     label      variable label
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
 ano             int     %10.0g                Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
-cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+cambio1618      float   %9.0g                 Cambio porcentual del salario
+                                                (2016-2018)
+─────────────────────────────────────────────────────────────────────────────────────
 Sorted by: sexo  ano
      Note: Dataset has changed since last saved.
 </pre>

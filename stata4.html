@@ -370,11 +370,14 @@ D:\Dropbox\curso_stata\sesión4
 . 
 . twoway (scatter hpobreza salario [pweight = nper] if region != 9) ///
 > (scatter hpobreza salario [pweight = nper] if region == 9, mcolor(red)) ///
-> (scatter hpobreza salario [pweight = nper] if region == 9, mlabel(region) mlabsize(vsmall) mlabcolor(red) mlabposition(12) mlabgap(medsmall) mcolor(none)) ///
+> (scatter hpobreza salario [pweight = nper] if region == 9, mlabel(region) mlabsize(
+> vsmall) mlabcolor(red) mlabposition(12) mlabgap(medsmall) mcolor(none)) ///
 > (lfit hpobreza salario [pweight = nper]), ///
 > title("Salario y pobreza por CCAA (2018)", size(medsmall) margin(small)) ///
-> xtitle("Salario bruto (euros/mes)", margin(small) size(small)) xlabel(, format(%9,0gc) labsize(small)) ///
-> ytitle("Porcentaje de personas pobres (%)", margin(small) size(small)) ylabel(, format(%2,0fc) labsize(small)) ///
+> xtitle("Salario bruto (euros/mes)", margin(small) size(small)) xlabel(, format(%9,0
+> gc) labsize(small)) ///
+> ytitle("Porcentaje de personas pobres (%)", margin(small) size(small)) ylabel(, for
+> mat(%2,0fc) labsize(small)) ///
 > legend(off)
 </pre>
 
@@ -509,9 +512,12 @@ D:\Dropbox\curso_stata\sesión4
 > (line salario edadg if educg == 3, lcolor(gs10)) ///
 > (line salario edadg if educg == 4, lcolor(gs10)) ///
 > (line salario edadg if educg == 5, lcolor(blue)), ///
-> ytitle("Salario mensual", size(small) margin(small)) ylabel(, labsize(small) format(%5,0fc)) ///
-> xtitle("Edad", size(small) margin(small)) xlabel(1 "16-29" 2 "30-44" 3 "45-54" 4 "55-64", labsize(small)) ///
-> by(copy, note("") legend(off) imargin(medsmall) title("Salario por edad y nivel educativo (2018)", size(medsmall) margin(small))) ///
+> ytitle("Salario mensual", size(small) margin(small)) ylabel(, labsize(small) format
+> (%5,0fc)) ///
+> xtitle("Edad", size(small) margin(small)) xlabel(1 "16-29" 2 "30-44" 3 "45-54" 4 "5
+> 5-64", labsize(small)) ///
+> by(copy, note("") legend(off) imargin(medsmall) title("Salario por edad y nivel edu
+> cativo (2018)", size(medsmall) margin(small))) ///
 > subtitle(, size(small)) ///
 > xsize(4) ysize(4)
 </pre>
@@ -558,7 +564,8 @@ D:\Dropbox\curso_stata\sesión4
 . 
 . label variable educg "Educación (agrupada)"
 
-. label define educg_lab 1 "Educación elemental" 2 "Educación básica" 3 "Educación media" 4 "Educación superior"
+. label define educg_lab 1 "Educación elemental" 2 "Educación básica" 3 "Educación me
+> dia" 4 "Educación superior"
 
 . label values educg educg_lab
 
@@ -585,12 +592,17 @@ D:\Dropbox\curso_stata\sesión4
 > (line educg empleo if educg == 2, lcolor(black)) ///
 > (line educg empleo if educg == 3, lcolor(black)) ///
 > (line educg empleo if educg == 4, lcolor(black)) ///
-> (scatter educg empleo if sex == 1, mcolor(navy) msize(4-pt) msymbol(circle) mlabcolor()) ///
-> (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlabel(educg) mlabsize(small) mlabcolor(black) mlabposition(9) mlabgap(small)), ///
-> title("Tasa de empleo por sexo y nivel educativo en España (2018)", size(medsmall) margin(small)) ///
+> (scatter educg empleo if sex == 1, mcolor(navy) msize(4-pt) msymbol(circle) mlabcol
+> or()) ///
+> (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlab
+> el(educg) mlabsize(small) mlabcolor(black) mlabposition(9) mlabgap(small)), ///
+> title("Tasa de empleo por sexo y nivel educativo en España (2018)", size(medsmall) 
+> margin(small)) ///
 > yscale(off) ylabel(0(1)4) ///
-> xtitle("Porcentaje de personas empleadas (%)", margin(small) size(small)) xlabel(0(20)100, labsize(vsmall)) ///
-> legend(on order(5 "Hombres" 6 "Mujeres") size(vsmall) color(black) nobox position(11))
+> xtitle("Porcentaje de personas empleadas (%)", margin(small) size(small)) xlabel(0(
+> 20)100, labsize(vsmall)) ///
+> legend(on order(5 "Hombres" 6 "Mujeres") size(vsmall) color(black) nobox position(1
+> 1))
 </pre>
 
 <figure>
@@ -621,7 +633,8 @@ D:\Dropbox\curso_stata\sesión4
 . 
 . label variable educg "Educación (agrupada)"
 
-. label define educg_lab 1 "Educación elemental" 2 "Educación básica" 3 "Educación media" 4 "Educación superior"
+. label define educg_lab 1 "Educación elemental" 2 "Educación básica" 3 "Educación me
+> dia" 4 "Educación superior"
 
 . label values educg educg_lab
 
@@ -659,11 +672,14 @@ xij variables:
 . //  Elaboramos el gráfico de interés
 . 
 . graph bar (asis) hpobreza1 hpobreza2, ///
-> over(educg, relabel(1 "Elementales" 2 "Básicos" 3 "Medios" 4 "Superiores") label(labsize(vsmall))) ///
+> over(educg, relabel(1 "Elementales" 2 "Básicos" 3 "Medios" 4 "Superiores") label(la
+> bsize(vsmall))) ///
 > bar(1, fcolor(navy) lcolor(none)) ///
 > bar(2, fcolor(orange) lcolor(none)) ///
-> ytitle(Tasa de pobreza (%)) ytitle(, size(vsmall) margin(sides)) ylabel(0(10)50, labsize(vsmall) nogrid) ///
-> title(Pobreza por sexo y nivel educativo en España (2018), size(medsmall) margin(top_bottom)) legend(off) ///
+> ytitle(Tasa de pobreza (%)) ytitle(, size(vsmall) margin(sides)) ylabel(0(10)50, la
+> bsize(vsmall) nogrid) ///
+> title(Pobreza por sexo y nivel educativo en España (2018), size(medsmall) margin(to
+> p_bottom)) legend(off) ///
 > b1title("Nivel de estudios", size(vsmall) margin(top_bottom))
 
 . 
@@ -673,11 +689,16 @@ xij variables:
 
 . gr_edit plotregion1.added_text_rec = 1
 
-. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(rel
-> ative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( szty
-> pe(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) a
-> llow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(insid
-> e)) box_alignment(east) editcopy
+. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(poin
+> ts) val(2) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( glef
+> t( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(
+> 1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) al
+> low_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( 
+> gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_
+> pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0
+> ) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) a
+> llow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcop
+> y
 
 . gr_edit plotregion1.added_text[1].style.editstyle size(vsmall) editcopy
 
@@ -692,11 +713,16 @@ xij variables:
 
 . gr_edit plotregion1.added_text_rec = 2
 
-. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( gleft( szt
-> ype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linega
-> p( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) v
-> al(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) alig
-> n(inside)) box_alignment(east) editcopy
+. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(rela
+> tive) val(4.1667) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margi
+> n( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) all
+> ow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) va
+> l(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxm
+> argin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0)
+>  allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative
+> ) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) va
+> l(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) 
+> editcopy
 
 . gr_edit plotregion1.added_text[2].style.editstyle size(vsmall) editcopy
 
@@ -707,52 +733,72 @@ xij variables:
 . gr_edit plotregion1.added_text[2].style.editstyle color(orange) editcopy
 
 . 
-. gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 30.4815089676127 6.412853740751393 35.64745845289226
+. gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 30.4815089676127 6
+> .412853740751393 35.64745845289226
 
 . gr_edit plotregion1.added_lines_new = 1
 
 . gr_edit plotregion1.added_lines_rec = 1
 
-. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) li
-> nestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) 
-> symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0)
->  allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relati
+> ve) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symb
+> ol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pat
+> tern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allo
+> w_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(r
+> elative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) backcolor(
+> navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsyman
+> gle(zero)) headpos(neither) editcopy
 
 . 
-. gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 35.56545925471323 9.872859791068407 35.56545925471323
+. gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 35.56545925471323 
+> 9.872859791068407 35.56545925471323
 
 . gr_edit plotregion1.added_lines_new = 2
 
 . gr_edit plotregion1.added_lines_rec = 2
 
-. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) li
-> nestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) 
-> symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(
-> 0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relati
+> ve) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symb
+> ol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pat
+> tern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allo
+> w_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(r
+> elative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor
+> (black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsym
+> angle(zero)) headpos(head) editcopy
 
 . 
-. gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 27.44753863498822 15.89026161770668 32.2854913275516
+. gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 27.44753863498822 
+> 15.89026161770668 32.2854913275516
 
 . gr_edit plotregion1.added_lines_new = 3
 
 . gr_edit plotregion1.added_lines_rec = 3
 
-. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) 
-> linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stda
-> rrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative)
->  val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relati
+> ve) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( sy
+> mbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange)
+>  pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166
+> ) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sz
+> type(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) bac
+> kcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) ba
+> cksymangle(zero)) headpos(neither) editcopy
 
 . 
-. gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 32.28549132755161 18.74852748535989 32.28549132755161
+. gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 32.28549132755161 
+> 18.74852748535989 32.28549132755161
 
 . gr_edit plotregion1.added_lines_new = 4
 
 . gr_edit plotregion1.added_lines_rec = 4
 
-. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) 
-> linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stda
-> rrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative
-> ) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relati
+> ve) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( sy
+> mbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange)
+>  pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166
+> ) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sz
+> type(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) bac
+> kcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) b
+> acksymangle(zero)) headpos(head) editcopy
 </pre>
 
 <figure>
@@ -820,7 +866,8 @@ xij variables:
 . 
 . label variable educg "Educación (agrupada)"
 
-. label define educg_lab 1 "Educación elemental" 2 "Educación básica" 3 "Educación media" 4 "Educación superior"
+. label define educg_lab 1 "Educación elemental" 2 "Educación básica" 3 "Educación me
+> dia" 4 "Educación superior"
 
 . label values educg educg_lab
 
@@ -840,10 +887,14 @@ xij variables:
 . twoway ///
 > (kdensity logsalario if educg == 1 [aweight = peso]) ///
 > (kdensity logsalario [aweight = educg == 4]), ///
-> ytitle("Densidad", size(vsmall) margin(sides)) ylabel(, labsize(vsmall) format(%02,1fc)) ///
-> xtitle("Salario bruto en logaritmos (euros/mes)", size(vsmall) margin(top_bottom)) xlabel(, labsize(vsmall)) ///
-> title("Función de densidad del salario" "por nivel educativo en España (2018)", size(small) margin(top_bottom)) ///
-> legend(on order(1 "Educación elemental" 2 "Educación superior") cols(1) size(vsmall) position(10) ring(0))
+> ytitle("Densidad", size(vsmall) margin(sides)) ylabel(, labsize(vsmall) format(%02,
+> 1fc)) ///
+> xtitle("Salario bruto en logaritmos (euros/mes)", size(vsmall) margin(top_bottom)) 
+> xlabel(, labsize(vsmall)) ///
+> title("Función de densidad del salario" "por nivel educativo en España (2018)", siz
+> e(small) margin(top_bottom)) ///
+> legend(on order(1 "Educación elemental" 2 "Educación superior") cols(1) size(vsmall
+> ) position(10) ring(0))
 </pre>
 
 <figure>
@@ -860,7 +911,8 @@ ssc install mif2dta, replace</code></pre>
 <p>Procedemos en varios pasos.</p>
 <p><strong>Paso 1</strong>. Buscamos los <strong>ESRI shapefiles</strong> que precisamos. En este caso, podemos encontrarlos en muchos lugares. El mapa “oficial” se encuentra en el <a href="http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip">Centro Nacional de Información Geográfica</a>, los copiamos a la carpeta de trabajo y descomprimimos la carpeta. Nuestro interés radica en la carpeta <code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>. Nos vamos a limitar a la península, por simplicidad. Extraemos sus archivos y los situamos en la carpeta de trabajo.</p>
 <p><strong>Paso 2</strong>. Creamos los archivos de atributos y coordenadas con la siguiente instrucción:</p>
-<pre class='stata'>. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta") coord("ccaa_coord.dta") genid(stid) gencentroids(cc) replace
+<pre class='stata'>. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta")
+>  coord("ccaa_coord.dta") genid(stid) gencentroids(cc) replace
 type: 5
 </pre>
 <p><strong>Paso 3</strong>. Con nuestra base de datos, generamos un archivo que podamos unir al de atributos empleando la variable <code>stid</code> del fichero <code>ccaa_attr.dta</code>. Prescindimos, además, de Ceuta y Melilla, por simplicidad.</p>
@@ -889,7 +941,8 @@ type: 5
 . 
 . //  Recodificamos las regiones para enlazar con la variable stid de ccaa_attr.dta
 . 
-. recode region (1=10) (2=18) (3=16) (4=6) (5=7) (6=5) (7=19) (8=9) (9=15) (10=14) (11=11) (12=13) (13=12) (14=17) (15=20) (16=8) (17=3) (18=4)
+. recode region (1=10) (2=18) (3=16) (4=6) (5=7) (6=5) (7=19) (8=9) (9=15) (10=14) (1
+> 1=11) (12=13) (13=12) (14=17) (15=20) (16=8) (17=3) (18=4)
 (region: 17 changes made)
 
 . 
@@ -956,11 +1009,14 @@ file ccaa_labels.dta saved
 . spmap hpobreza using "ccaa_coord.dta", ///
 > id(stid) fcolor(Reds) ///
 > ocolor(black ..) osize(thin ..)  ///
-> legend(size(vsmall) position(5) label(2 "0-10") label(3 "10-20") label(4 "20-30") label(5 "30-40")) ///
+> legend(size(vsmall) position(5) label(2 "0-10") label(3 "10-20") label(4 "20-30") l
+> abel(5 "30-40")) ///
 > clmethod(custom)  clbreaks(0 10 20 30 40) ///
 > legtitle("Tasa de pobreza (%)") ///
-> title("Tasa de pobreza en España por CCAA (2018)", size(small)) name("pobreza2018", replace) ///
-> label(data("ccaa_labels.dta") label(hpobreza) xcoord(x_cc) ycoord(y_cc) color(black) size(vsmall) length(4)) ///
+> title("Tasa de pobreza en España por CCAA (2018)", size(small)) name("pobreza2018",
+>  replace) ///
+> label(data("ccaa_labels.dta") label(hpobreza) xcoord(x_cc) ycoord(y_cc) color(black
+> ) size(vsmall) length(4)) ///
 > freestyle yscale(off) xscale(off)
 
 . 

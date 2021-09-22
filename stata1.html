@@ -304,7 +304,7 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 <h1 id="primeros-pasos-en-stata">4. Primeros pasos en <code>Stata</code></h1>
 <h2 id="introducción-de-datos-en-stata">4.1. Introducción de datos en <code>Stata</code></h2>
 <p>Cada vez es más habitual que muchas instituciones y organismos proporcionen la información en el formato nativo de <code>Stata</code>, los archivos <code>.dta</code>, pero, con todo, no es lo habitual. En muchas ocasiones nos encontramos formatos como <code>.csv</code>, <code>.txt</code>, <code>.raw</code>, etc. Por ello, es necesario saber cómo leer diferentes tipos de archivos en <code>Stata</code>.</p>
-<p>Antes de nada, vamos a crear un nuevo archivo <code>.do</code> donde iremos escribiendo la sintaxis y que podemos llamar <code>curso1.do</code>. Es extremadamente importante y útil documentar los archivos <code>.do</code>. En este sentido, el libro de <span class="citation" data-cites="Long2009">Long (2009)</span> ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes:</p>
+<p>Antes de nada, vamos a crear un nuevo archivo <code>.do</code> donde iremos escribiendo la sintaxis y que podemos llamar <code>curso1.do</code>. Es extremadamente importante y útil documentar los archivos <code>.do</code>. En este sentido, el libro de <span class="citation" data-cites="Long2009">Long (2009)</span> o la web de <a href="https://medium.com/the-stata-guide/the-stata-workflow-guide-52418ce35006">Asjad Naqvi</a> ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes:</p>
 <ul>
 <li>Podemos incluir comentarios en los archivos <code>.do</code> empleando <code>*</code> o <code>//</code> (el último, también en la misma línea).</li>
 <li>Asimismo, podemos indicar a <code>Stata</code> a no tener en cuenta los saltos de línea empleando <code>///</code> al final de la línea.</li>
@@ -441,15 +441,15 @@ log using curso1, replace</code></pre>
 <p>Estadísticos descriptivos</p>
 <p><code><u>su</u>mmarize [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
 <p>Correlación entre variables</p>
-<p><code>correlate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]</code></p>
+<p><code><u>cor</u>relate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]</code></p>
 <p>Ordenar la base de datos por una o varias variables</p>
 <p><code><u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code></p>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (<code>rb210</code>).</p>
 <pre class='stata'>. codebook rb210
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-rb210                                                                                                                                                                                                            RB210
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
+rb210                                                                           RB210
+─────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (byte)
 
@@ -574,7 +574,7 @@ rb210                                                                           
 ─────────────┼─────────────────────────────────────────────────────────
         edad │     33,734     44.8642    23.21889          0         86
 </pre>
-<p>Podemos generar una variable que recoja los grupos de propiedades</p>
+<p>Podemos generar una variable que recoja los grupos de edades:</p>
 <pre class='stata'>. generate gedad = 1 if edad &lt;= 29
 (24,224 missing values generated)
 
@@ -592,7 +592,8 @@ rb210                                                                           
 . 
 . label var gedad "Grupo de edad"
 
-. label define gedad_lab 1 "Menor que 30 años" 2 "De 30 a 49 años" 3 "De 50 a 64 años" 4 "65 y más años"
+. label define gedad_lab 1 "Menor que 30 años" 2 "De 30 a 49 años" 3 "De 50 a 64 años
+> " 4 "65 y más años"
 
 . label values gedad gedad_lab
 
