@@ -14,7 +14,7 @@ _ _ _
 
 Una de las operaciones más utilizadas en `Stata` para manipular archivos es la instrucción `merge`, que permite fusionar dos archivos a partir de ciertas variables comunes. Ejemplos típicos son la fusión de distintas bases de datos con características de los inviduos o una base de datos con características de los invidividuos que queremos fusionar con una bases de datos con características de los hogares.
 
-Para ilustrar estos comandos, vamosa emplear los archivos de la ECV 2018, en concreto, el archivo básico de personas (`ecv18r.dta`), el archivo básico de hogares (`ecv18d.dta`), el archivo detallado de personas (`ecv18p.dta`) y el archivo detallado de hogares (`ecv18h.dta`), que se encuentran en la carpeta `sesión2`. Lo primer de todo, por lo tanto, es seleccionar el directorio de trabajo
+Para ilustrar estos comandos, vamos a emplear los archivos de la ECV 2018, en concreto, el archivo básico de personas (`ecv18r.dta`), el archivo básico de hogares (`ecv18d.dta`), el archivo detallado de personas (`ecv18p.dta`) y el archivo detallado de hogares (`ecv18h.dta`), que se encuentran en la carpeta `sesión2`. Lo primer de todo, por lo tanto, es seleccionar el directorio de trabajo
 
 ```{s}
 cd "D:\Dropbox\curso_stata\sesión2"
@@ -247,7 +247,7 @@ En esta sección, vamos a revisar una serie de instrucciones que se utilizan fun
 
 ## 5.1. El uso de `preserve` y `restore`
 
-En ocasiones, es necesario volver a una versión previa de los datos después de realizar operaciones. Para ello podemos valernos de dos comandos muy útiles, `preserve` y `restore`. Al introducir `preserve` indicamos a `Stata` que, cuando introduzcamos el comando `restore, debe volver a los datos justo antes de la introducción de este comando. Estas instrucciones son particularmente de interés cuando tenemos que realizar operaciones en las que eliminemos observaciones o variables. Así, por ejemplo, con la base de datos anterior, podemos eliminar una de las variables y, posteriormente, volver a la base de datos original.
+En ocasiones, es necesario volver a una versión previa de los datos después de realizar operaciones. Para ello podemos valernos de dos comandos muy útiles, `preserve` y `restore`. Al introducir `preserve` indicamos a `Stata` que, cuando introduzcamos el comando `restore`, debe volver a los datos justo antes de la introducción de este comando. Estas instrucciones son particularmente de interés cuando tenemos que realizar operaciones en las que eliminemos observaciones o variables. Así, por ejemplo, con la base de datos anterior, podemos eliminar una de las variables y, posteriormente, volver a la base de datos original.
 
 ```{s}
 describe

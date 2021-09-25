@@ -28,19 +28,19 @@ El problema radica en la **reproducibilidad**: si reiniciamos el análisis gráf
 
 Un avance sustancial viene dado por el paquete `grstyle`, que debe utilizarse conjuntamente `palettes` y `colrspace` [@Jann2018a;@Jann2018b]. También es muy potente el paquete `brewscheme`. La idea de estos paquetes es que podemos definir previamente el formato de los gráficos (colores, ancho de las líneas, etc.) y, posteriormente, emplear comandos sencillos para la realización de los gráficos donde no tengamos que especificar muchas opciones.
 
-  ssc install grstyle, replace
+    ssc install grstyle, replace
 
-  ssc install palettes, replace
+    ssc install palettes, replace
 
-  ssc install colrspace, replace
+    ssc install colrspace, replace
 
-  ssc install brewscheme, replace
+    ssc install brewscheme, replace
 
 Estos paquetes nos facilitan bastante el trabajo, pero es muy posible que queramos, en cada gráfico, añadir opciones específicas de personalización más allá de los parámetros generales.
 
 ## Formatos de exportación
 
-`Stata` cuenta con un formato nativo `.gph` con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint) Sin embargo, existe un gran número de formatos en los que `Stata` puede guardar los graficos: `.ps`, `.eps`, `.svg`, `.wmf`, `.emf`, `.pdf`, `.png`, `.tif`, `.gif` y `.jpg`. Formatos como `.wmf` y `.emf` son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (`.ps`, `.eps`, `.svg`, `.pdf`, `.png`). La instrucción para exportar gráficos es la siguiente:
+`Stata` cuenta con un formato nativo `.gph` con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint). Sin embargo, existe un gran número de formatos en los que `Stata` puede guardar los graficos: `.ps`, `.eps`, `.svg`, `.wmf`, `.emf`, `.pdf`, `.png`, `.tif`, `.gif` y `.jpg`. Formatos como `.wmf` y `.emf` son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (`.ps`, `.eps`, `.svg`, `.pdf`, `.png`). La instrucción para exportar gráficos es la siguiente:
 
   <code>graph export <i>newfilename.suffix</i> [, <i>options</i>]</code>
 
@@ -501,13 +501,13 @@ quietly{
 
 # 4. Elaboración de mapas
 
-No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como `spmap` o `geo2xy`. En este curso, emplearemos el primero de ellos, `spmap`. Podemos encontrar una buena introducción al uso de este paquete en @Wiedemann2020 Este paquete requiere la instalación adicional de `shp2dta` y `mif2dta`. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:
+No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como `spmap` o `geo2xy`. En este curso, emplearemos el primero de ellos, `spmap`. Podemos encontrar una buena introducción al uso de este paquete en @Wiedemann2020. La mejor referencia sobre elaboración de mapas en Stata es posiblemente la colección de guías y tutoriales de [Asjad Naqvi](https://medium.com/the-stata-guide/tagged/maps). `spmap` requiere la instalación adicional de `shp2dta` y `mif2dta`. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:
 
-  ssc install spmap, replace
+    ssc install spmap, replace
 
-  ssc install shp2dta, replace
+    ssc install shp2dta, replace
 
-  ssc install mif2dta, replace
+    ssc install mif2dta, replace
 
 Con `spmap`, `Stata` puede manejar dos tipos de formatos gráficos: **ESRI shapefiles** (incluye un archivo `.shp` de coordenadas, un archivo `.shx`, un índice y un archivo `.dbf`, con códigos) y el  **MapInfo Interchange Format files** (que comprende un archivo `.mif` con las coordenadas y un archivo `.mid` con los códigos). El manejo del primer tipo de formato es, con frecuencia, más sencillo. Para explorar las capacidades de `Stata` en esta área, vamos a realizar un mapa de España por Comunidades Autónomas con su tasa de pobreza.
 

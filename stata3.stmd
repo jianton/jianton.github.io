@@ -12,7 +12,7 @@ _ _ _
 
 # 1. Tablas de contingencia
 
-`Stata` es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos `ech18t`, que se encuentra en la carpeta `sesión3` e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de @Escobar2012 o el de @Kohler2012.
+`Stata` es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos `ecv18t`, que se encuentra en la carpeta `sesión3` e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de @Escobar2012 o el de @Kohler2012.
 
 ## Tablas de frecuencia con una o dos variables (`tabulate`)
 
@@ -89,7 +89,7 @@ Además, disponemos del comando `table` para construir tablas con estadísticos 
 El salario promedio por educación, sexo y tipo de contrato se calcularía como sigue:
 
 ```{s}
-table educg sexo contrato, c(mean salario)
+table educg sexo contrato, contents(mean salario)
 ```
 
 # 2. Análisis de varianza (ANOVA)
@@ -149,7 +149,7 @@ regress logsalario edad edad2 ib2.sexo
 regress logsalario edad edad2 ib(freq).sexo
 ```
 
-En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan `i.varname` algo a lo que `Stata` puede ayudarnos con la instrucción siguiente
+En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan `i.varname` algo a lo que `Stata` puede ayudarnos con la instrucción siguiente:
 
 ```{s}
 tabulate educg, generate(educdummy)
@@ -160,7 +160,7 @@ regress logsalario i.sexo edad edad2 ib1.educg
 
 ```
 
-Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de `Stata`. Para el cálculo de las mismas, podemos emplear los caracteres `#` o `##`. El primero de ellos (`#`) incluye en la ecuación únicamente las interacciones, mientras que `##` incluye las variables por separado y su interacción. 
+Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de `Stata`. Para el cálculo de las mismas, podemos emplear los caracteres `#` o `##`. El primero de ellos (`#`) incluye en la ecuación únicamente las interacciones, mientras que `##` incluye las variables por separado y su interacción.
 
 ```{s}
 regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#educg
@@ -269,7 +269,7 @@ svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
 
 Además, muchos comandos en `Stata` admiten el empleo de ponderaciones. En el caso de los encuestas, estas reflejan el inverso de la probabilidad de cada observación ser seleccionada y deben introducirse como `pweight` (pesos probabilísticos). Hay muchas especificades asociadas al empleo de ponderaciones y no todos los comandos admiten el empleo de pesos.
 
-El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: A través de `xtset`, `Stata` permite especificar cuáles son las unidades del panel (*`panelvar`*) y cuál es la variable temporal (*`timevar`*) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).
+El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: a través de `xtset`, `Stata` permite especificar cuáles son las unidades del panel (*`panelvar`*) y cuál es la variable temporal (*`timevar`*) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).
 
   <code>xtset <i>panelvar</i> <i>timevar</i> [, <i>tsoptions</i>]</code>
 

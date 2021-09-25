@@ -85,7 +85,7 @@ En la práctica, los archivos que más vamos a utilizar son los archivos `.do` y
 
 ## 3.2. El entorno de `Stata`
 
-El entorno de la versión 17 de `Stata` nos muestra:
+El entorno de `Stata` nos muestra:
 
 * Ventana de resultados.
 * Línea de comandos.
@@ -136,7 +136,7 @@ Además, los diferentes tipos de cursos que ofrece [StataCorp](https://www.stata
 
 Cada vez es más habitual que muchas instituciones y organismos proporcionen la información en el formato nativo de `Stata`, los archivos `.dta`, pero, con todo, no es lo habitual. En muchas ocasiones nos encontramos formatos como `.csv`, `.txt`, `.raw`, etc. Por ello, es necesario saber cómo leer diferentes tipos de archivos en `Stata`.
 
-Antes de nada, vamos a crear un nuevo archivo `.do` donde iremos escribiendo la sintaxis y que podemos llamar `curso1.do`. Es extremadamente importante y útil documentar los archivos `.do`. En este sentido, el libro de @Long2009 ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes:
+Antes de nada, vamos a crear un nuevo archivo `.do` donde iremos escribiendo la sintaxis y que podemos llamar `curso1.do`. Es extremadamente importante y útil documentar los archivos `.do`. En este sentido, el libro de @Long2009 o la guía de [Asjad Naqvi](https://medium.com/the-stata-guide/the-stata-workflow-guide-52418ce35006) ofrece excelentes consejos para sistematizar el trabajo. Algunos comandos de utilidad son los siguientes:
 
 * Podemos incluir comentarios en los archivos `.do` empleando `*` o `//` (el último, también en la misma línea).
 * Asimismo, podemos indicar a `Stata` a no tener en cuenta los saltos de línea empleando `///` al final de la línea.
@@ -241,7 +241,7 @@ En nuestro caso, podríamos añadir al principio
 
 Al final,
 
-  log close
+    log close
 
 Podemos abrir el archivo y observar que es similar a un archivo de texto enriquecido.
 
@@ -283,7 +283,7 @@ Estadísticos descriptivos
 
 Correlación entre variables
 
-  <code>correlate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]</code>
+  <code><u>cor</u>relate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]</code>
 
 Ordenar la base de datos por una o varias variables
 
@@ -304,7 +304,6 @@ Además, podemos ver dicha distribución para un grupo concreto. Por ejemplo, es
 ```{s}
 tabulate rb210 if rb090 == 2
 ```
-
 Un comando para inspeccionar directamente los datos es `list`. Por ejemplo, podemos inspeccionar los 10 primeros valores de la variable sexo (`rb090`):
 
 ```{s}
@@ -422,7 +421,7 @@ label var edad "Edad"
 summarize edad
 ```
 
-Podemos generar una variable que recoja los grupos de propiedades
+Podemos generar una variable que recoja los grupos de edades:
 
 ```{s}
 generate gedad = 1 if edad <= 29
