@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata2.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 07:39:38
+ {txt}opened on:  {res} 1 Aug 2019, 08:02:30
 {txt}
 {com}. //_1
 . cd "D:\Dropbox\curso_stata\sesión2"
@@ -23,7 +23,7 @@
 {txt}{col 5}Result{col 38}# of obs.
 {col 5}{hline 41}
 {col 5}not matched{col 30}{res}               0
-{txt}{col 5}matched{col 30}{res}          13,368{txt}  (_merge==3)
+{txt}{col 5}matched{col 30}{res}          13.368{txt}  (_merge==3)
 {col 5}{hline 41}
 
 {com}. 
@@ -33,9 +33,9 @@
 
                  {txt}_merge {c |}      Freq.     Percent        Cum.
 {hline 24}{c +}{hline 35}
-            matched (3) {c |}{res}     13,368      100.00      100.00
+            matched (3) {c |}{res}      13368      100,00      100,00
 {txt}{hline 24}{c +}{hline 35}
-                  Total {c |}{res}     13,368      100.00
+                  Total {c |}{res}      13368      100,00
 {txt}
 {com}. //_3
 . //  Abrimos la base de datos
@@ -52,11 +52,11 @@
 
 {col 5}Result{col 38}# of obs.
 {col 5}{hline 41}
-{col 5}not matched{col 30}{res}           5,362
-{txt}{col 9}from master{col 30}{res}           5,362{txt}  (_merge==1)
+{col 5}not matched{col 30}{res}           5.362
+{txt}{col 9}from master{col 30}{res}           5.362{txt}  (_merge==1)
 {col 9}from using{col 30}{res}               0{txt}  (_merge==2)
 
-{col 5}matched{col 30}{res}          28,372{txt}  (_merge==3)
+{col 5}matched{col 30}{res}          28.372{txt}  (_merge==3)
 {col 5}{hline 41}
 
 {com}. 
@@ -66,10 +66,10 @@
 
                  {txt}_merge {c |}      Freq.     Percent        Cum.
 {hline 24}{c +}{hline 35}
-        master only (1) {c |}{res}      5,362       15.89       15.89
-{txt}            matched (3) {c |}{res}     28,372       84.11      100.00
+        master only (1) {c |}{res}       5362       15,89       15,89
+{txt}            matched (3) {c |}{res}      28372       84,11      100,00
 {txt}{hline 24}{c +}{hline 35}
-                  Total {c |}{res}     33,734      100.00
+                  Total {c |}{res}      33734      100,00
 {txt}
 {com}. //_4
 . //  Abrimos la base de datos
@@ -85,7 +85,7 @@
 {txt}{col 5}Result{col 38}# of obs.
 {col 5}{hline 41}
 {col 5}not matched{col 30}{res}               0
-{txt}{col 5}matched{col 30}{res}          33,734{txt}  (_merge==3)
+{txt}{col 5}matched{col 30}{res}          33.734{txt}  (_merge==3)
 {col 5}{hline 41}
 
 {com}. 
@@ -95,9 +95,9 @@
 
                  {txt}_merge {c |}      Freq.     Percent        Cum.
 {hline 24}{c +}{hline 35}
-            matched (3) {c |}{res}     33,734      100.00      100.00
+            matched (3) {c |}{res}      33734      100,00      100,00
 {txt}{hline 24}{c +}{hline 35}
-                  Total {c |}{res}     33,734      100.00
+                  Total {c |}{res}      33734      100,00
 {txt}
 {com}. //_5
 . //  Fusionamos los archivos de personas
@@ -111,11 +111,11 @@
 
 {col 5}Result{col 38}# of obs.
 {col 5}{hline 41}
-{col 5}not matched{col 30}{res}           5,362
-{txt}{col 9}from master{col 30}{res}           5,362{txt}  
+{col 5}not matched{col 30}{res}           5.362
+{txt}{col 9}from master{col 30}{res}           5.362{txt}  
 {col 9}from using{col 30}{res}               0{txt}  
 
-{col 5}matched{col 30}{res}          28,372{txt}  
+{col 5}matched{col 30}{res}          28.372{txt}  
 {col 5}{hline 41}
 
 {com}. 
@@ -126,7 +126,7 @@
 {txt}{col 5}Result{col 38}# of obs.
 {col 5}{hline 41}
 {col 5}not matched{col 30}{res}               0
-{txt}{col 5}matched{col 30}{res}          33,734{txt}  
+{txt}{col 5}matched{col 30}{res}          33.734{txt}  
 {col 5}{hline 41}
 
 {com}. merge m:1 hid using "ecv18h.dta", nogenerate
@@ -134,7 +134,7 @@
 {txt}{col 5}Result{col 38}# of obs.
 {col 5}{hline 41}
 {col 5}not matched{col 30}{res}               0
-{txt}{col 5}matched{col 30}{res}          33,734{txt}  
+{txt}{col 5}matched{col 30}{res}          33.734{txt}  
 {col 5}{hline 41}
 
 {com}. //_6
@@ -282,26 +282,26 @@
   {txt}Año de la {c |}
    encuesta {c |}      Freq.     Percent        Cum.
 {hline 12}{c +}{hline 35}
-       2016 {c |}{res}     36,380       34.64       34.64
-{txt}       2017 {c |}{res}     34,911       33.24       67.88
-{txt}       2018 {c |}{res}     33,734       32.12      100.00
+       2016 {c |}{res}      36380       34,64       34,64
+{txt}       2017 {c |}{res}      34911       33,24       67,88
+{txt}       2018 {c |}{res}      33734       32,12      100,00
 {txt}{hline 12}{c +}{hline 35}
-      Total {c |}{res}    105,025      100.00
+      Total {c |}{res}     105025      100,00
 {txt}
 {com}. //_7
 . //  Seleccionamos los trabajadores asalariados únicamente
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-{txt}(16,671 missing values generated)
+{txt}(16.671 missing values generated)
 
 {com}. generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-{txt}(17,397 missing values generated)
+{txt}(17.397 missing values generated)
 
 {com}. keep if rentaasa > 0 & rentaasa < .
-{txt}(61,114 observations deleted)
+{txt}(61.114 observations deleted)
 
 {com}. keep if nmesesasa > 0 & nmesesasa < .
-{txt}(8,361 observations deleted)
+{txt}(8.361 observations deleted)
 
 {com}. 
 . //  Creamos el salario bruto mensual de los trabajadores
@@ -323,13 +323,13 @@
      {c TLC}{hline 8}{c -}{hline 6}{c -}{hline 10}{c TRC}
      {c |} {res}  sexo    ano   salari~d {txt}{c |}
      {c LT}{hline 8}{c -}{hline 6}{c -}{hline 10}{c RT}
-  1. {c |} {res}Hombre   2016    2285.98 {txt}{c |}
-  2. {c |} {res}Hombre   2017   2200.433 {txt}{c |}
-  3. {c |} {res}Hombre   2018   2198.547 {txt}{c |}
-  4. {c |} {res} Mujer   2016   1877.008 {txt}{c |}
-  5. {c |} {res} Mujer   2017   1833.733 {txt}{c |}
+  1. {c |} {res}Hombre   2016    2285,98 {txt}{c |}
+  2. {c |} {res}Hombre   2017   2200,433 {txt}{c |}
+  3. {c |} {res}Hombre   2018   2198,547 {txt}{c |}
+  4. {c |} {res} Mujer   2016   1877,008 {txt}{c |}
+  5. {c |} {res} Mujer   2017   1833,733 {txt}{c |}
      {c LT}{hline 8}{c -}{hline 6}{c -}{hline 10}{c RT}
-  6. {c |} {res} Mujer   2018   1854.421 {txt}{c |}
+  6. {c |} {res} Mujer   2018   1854,421 {txt}{c |}
      {c BLC}{hline 8}{c -}{hline 6}{c -}{hline 10}{c BRC}
 
 {com}. //_9
@@ -362,8 +362,8 @@ xij variables:
      {c TLC}{hline 8}{c -}{hline 10}{c -}{hline 10}{c -}{hline 11}{c TRC}
      {c |} {res}  sexo   sal~2016   sal~2018   camb~1618 {txt}{c |}
      {c LT}{hline 8}{c -}{hline 10}{c -}{hline 10}{c -}{hline 11}{c RT}
-  1. {c |} {res}Hombre    2285.98   2198.547   -3.824764 {txt}{c |}
-  2. {c |} {res} Mujer   1877.008   1854.421   -1.203314 {txt}{c |}
+  1. {c |} {res}Hombre    2285,98   2198,547   -3,824764 {txt}{c |}
+  2. {c |} {res} Mujer   1877,008   1854,421   -1,203314 {txt}{c |}
      {c BLC}{hline 8}{c -}{hline 10}{c -}{hline 10}{c -}{hline 11}{c BRC}
 
 {com}. //_10
@@ -453,7 +453,7 @@ Sorted by: {res}sexo  ano
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 8}sexo {c |}{res}          6         1.5    .5477226          1          2
+{space 8}sexo {c |}{res}          6         1,5    ,5477226          1          2
 {txt}
 {com}. //_13
 . forvalues i=2016(1)2018{c -(}
@@ -462,15 +462,15 @@ Sorted by: {res}sexo  ano
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 2}salariomed {c |}{res}          2    2081.494    289.1874   1877.008    2285.98
+{space 2}salariomed {c |}{res}          2    2081,494    289,1874   1877,008    2285,98
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 2}salariomed {c |}{res}          2    2017.083     259.296   1833.733   2200.433
+{space 2}salariomed {c |}{res}          2    2017,083     259,296   1833,733   2200,433
 
 {txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
 {hline 13}{c +}{hline 57}
-{space 2}salariomed {c |}{res}          2    2026.484    243.3336   1854.421   2198.547
+{space 2}salariomed {c |}{res}          2    2026,484    243,3336   1854,421   2198,547
 {txt}
 {com}. //_14q
 . quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
@@ -480,7 +480,7 @@ Sorted by: {res}sexo  ano
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata2.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 07:39:38
+ {txt}closed on:  {res} 1 Aug 2019, 08:02:30
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -94,11 +94,11 @@ El entorno de `Stata` nos muestra:
 * Menús
 * Barra de tareas $\rightarrow$ **importantes**: explorador y editor de archivos `.do`
 
-![Entorno de trabajo de `Stata'](interface.png){width=75%}
+![Entorno de trabajo de `Stata`](interface.png){width=75%}
 
 Conviene operar, preferentemente, con el editor de archivos `.do`.
 
-![Editor de archivos `.do` de `Stata'](editor.png){width=75%}
+![Editor de archivos `.do` de `Stata`](editor.png){width=75%}
 
 ## 3.3. Recursos de ayuda
 

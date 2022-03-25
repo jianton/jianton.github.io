@@ -259,70 +259,70 @@ all files already exist and are up to date.
 . 
 . eststo total: regress logsalario ib1.sexo edad edad2 ib1.educg
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(5, 11593)     =    577.13
-       Model │  1600.34458         5  320.068916   Prob > F        =    0.0000
-    Residual │  6429.36841    11,593  .554590565   R-squared       =    0.1993
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.1990
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .74471
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
+       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
+    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
         sexo │
-      Mujer  │  -.2365705     .01394   -16.97   0.000    -.2638953   -.2092458
-        edad │   .0721823   .0046198    15.62   0.000     .0631268    .0812378
-       edad2 │  -.0005808   .0000535   -10.86   0.000    -.0006856   -.0004759
+      Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
+        edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
+       edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
              │
        educg │
-Nivel medio  │    .240602   .0185962    12.94   0.000     .2041503    .2770537
- Nivel alto  │    .613554   .0163944    37.42   0.000     .5814181    .6456898
+Nivel medio  │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
+ Nivel alto  │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
              │
-       _cons │   5.145524   .0958254    53.70   0.000      4.95769    5.333357
+       _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . eststo male: regress logsalario edad edad2 ib1.educg if sexo == 1
 
-      Source │       SS           df       MS      Number of obs   =     5,966
-─────────────┼──────────────────────────────────   F(4, 5961)      =    386.62
-       Model │  833.616132         4  208.404033   Prob > F        =    0.0000
-    Residual │  3213.21346     5,961  .539039333   R-squared       =    0.2060
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.2055
-       Total │   4046.8296     5,965  .678429102   Root MSE        =    .73419
+      Source │       SS           df       MS      Number of obs   =     5.966
+─────────────┼──────────────────────────────────   F(4, 5961)      =    386,62
+       Model │  833,616132         4  208,404033   Prob > F        =    0,0000
+    Residual │  3213,21346     5.961  ,539039333   R-squared       =    0,2060
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,2055
+       Total │   4046,8296     5.965  ,678429102   Root MSE        =    ,73419
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   .0758506   .0061639    12.31   0.000     .0637672     .087934
-       edad2 │  -.0005995   .0000715    -8.38   0.000    -.0007397   -.0004593
+        edad │   ,0758506   ,0061639    12,31   0,000     ,0637672     ,087934
+       edad2 │  -,0005995   ,0000715    -8,38   0,000    -,0007397   -,0004593
              │
        educg │
-Nivel medio  │   .2544457   .0246757    10.31   0.000     .2060723    .3028191
- Nivel alto  │   .5653884   .0220473    25.64   0.000     .5221677    .6086091
+Nivel medio  │   ,2544457   ,0246757    10,31   0,000     ,2060723    ,3028191
+ Nivel alto  │   ,5653884   ,0220473    25,64   0,000     ,5221677    ,6086091
              │
-       _cons │   5.037839    .127506    39.51   0.000     4.787881    5.287797
+       _cons │   5,037839    ,127506    39,51   0,000     4,787881    5,287797
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . eststo female: regress logsalario edad edad2 ib1.educg if sexo == 2
 
-      Source │       SS           df       MS      Number of obs   =     5,633
-─────────────┼──────────────────────────────────   F(4, 5628)      =    309.16
-       Model │  703.432328         4  175.858082   Prob > F        =    0.0000
-    Residual │  3201.40011     5,628   .56883442   R-squared       =    0.1801
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.1796
-       Total │  3904.83244     5,632  .693329624   Root MSE        =    .75421
+      Source │       SS           df       MS      Number of obs   =     5.633
+─────────────┼──────────────────────────────────   F(4, 5628)      =    309,16
+       Model │  703,432328         4  175,858082   Prob > F        =    0,0000
+    Residual │  3201,40011     5.628   ,56883442   R-squared       =    0,1801
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,1796
+       Total │  3904,83244     5.632  ,693329624   Root MSE        =    ,75421
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   .0665724     .00695     9.58   0.000     .0529477     .080197
-       edad2 │  -.0005401   .0000803    -6.73   0.000    -.0006974   -.0003827
+        edad │   ,0665724     ,00695     9,58   0,000     ,0529477     ,080197
+       edad2 │  -,0005401   ,0000803    -6,73   0,000    -,0006974   -,0003827
              │
        educg │
-Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
- Nivel alto  │   .6600433   .0245986    26.83   0.000     .6118206    .7082661
+Nivel medio  │   ,2314164   ,0282288     8,20   0,000      ,176077    ,2867557
+ Nivel alto  │   ,6600433   ,0245986    26,83   0,000     ,6118206    ,7082661
              │
-       _cons │    5.05201   .1443795    34.99   0.000     4.768971     5.33505
+       _cons │    5,05201   ,1443795    34,99   0,000     4,768971     5,33505
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -336,10 +336,8 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 <p>Empleando algunas opciones adicionales de <code>estout</code>, podemos mejorar el resultado.</p>
 <pre class='stata'>. esttab total male female using "salarios2aux.rtf", ///
 > b(%04,3fc) se(%04,3fc) /// Presentar coeficientes y errores estándar (con formato)
-> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super }" 2.educg "Educación media
-> " 3.educg "Educación superior") /// Etiquetas
-> stats(N r2_a, fmt(%6,0fc %04,3fc) labels("No. de observaciones" "R{\super 2} ajusta
-> do")) ///
+> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super }" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
+> stats(N r2_a, fmt(%6,0fc %04,3fc) labels("No. de observaciones" "R{\super 2} ajustado")) ///
 > nobaselevels /// No mostrar las categorías de referencia
 > noconstant /// No mostrar la constante
 > varwidth(20) /// Anchura de la columna de la variable
@@ -348,17 +346,14 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 > title(\fs24{\b Tabla 1.} {Regresión salarial por sexo}) /// Título de la tabla
 > nonumbers mtitles("Total" "Hombres" "Mujeres") /// Títulos de las columnas
 > nonotes /// Eliminar las notas por defecto
-> addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. Err
-> ores estándar entre paréntesis. Todos los modelos incluyen una constante. La catego
-> ría de referencia es un hombre con educación media." "Fuente: Elaboración propia a 
-> partir de la ECV 2018.") ///
+> addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante. La categoría de referencia es un hombre con educación media." "Fuente: Elaboración propia a part
+> ir de la ECV 2018.") ///
 > replace
 (note: file salarios2aux.rtf not found)
 (output written to salarios2aux.rtf)
 
 . 
-. unicode convertfile "salarios2aux.rtf" "salarios2.rtf", dstencoding(ISO-8859-1) rep
-> lace // Posibilidad de utilizar caracteres que no son unicode
+. unicode convertfile "salarios2aux.rtf" "salarios2.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
 note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 
 . erase "salarios2aux.rtf" // Borramos el archivo auxiliar creado
@@ -501,7 +496,7 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 <p>Una opción excelente para configurar nuestro flujo de trabajo es utilizar <a href="https://es.wikipedia.org/wiki/LaTeX">LaTeX</a> para escribir nuestros textos. Es un sistema de composición de textos de código abierto que emplea comandos de TeX, un lenguaje de nivel bajo con comandos muy elementales. La principal desventaja de LaTeX es que no se trata de un procesador WYSIWYG (“lo que ves es lo que obtienes”), sino que se basa en instrucciones. Esto implica que el contenido está separado de la forma, lo cual puede ser una ventaja. Como el contenido es básicamente texto plano, podemos integrar output en texto plano que obtengamos de otros programas, como <code>Stata</code>. La gran ventaja de LaTeX es la altísima calidad de los documentos, especialmente apreciable en trabajos que requieran el empleo de fórmulas matemáticas. Por esta razón, es una herramienta de edición profesional. Otras ventajas, no exclusivas de este sistema, se refieren a la gestión de la bibliografía.</p>
 <p>La integración de <code>Stata</code> y LaTeX en nuestro flujo de trabajo es sencilla. Requerimos únicamente una distribución y un editor de TeX y generar resultados e incluso fragmentos de texto que puedan ser directamente incluidos en LaTeX. Las principales distribuciones de TeX son <a href="https://miktex.org/">MiKTeX</a> y <a href="https://www.tug.org/texlive/">TeX Live</a>. Existen muchos editores de TeX gratuitos, como <a href="https://www.texstudio.org/">TeXstudio</a>, <a href="https://www.xm1math.net/texmaker/">Texmaker</a> o <a href="https://www.lyx.org/">LyX</a>. Mediante alguna herramienta como <a href="https://www.dropbox.com">Dropbox</a> o <a href="https://www.google.es/drive/">Google Drive</a> podemos lograr un muy buen sistema de trabajo reproducible colaborativo.</p>
 <p>Otra opción es optar por <a href="https://www.overleaf.com/">Overleaf</a>. Se trata un editor online que incorpora la distribución de TeX Live. No requiere instalar ninguna distribución ni editor en nuestro equipo, permite la colaboración en tiempo real (como Google Docs, al contrario que Dropbox) e incluye control de versiones. Existe una versión gratuita, en la que algunas de sus capacidades no están disponibles. Debido a que no requiere instalación local, lo emplearemos en los siguientes ejemplos, aunque hagan que el flujo de trabajo sea menos fluido que con una instalación local, ya que, además, no disponemos de la versión de pago (que incluye la sincronización con Dropbox y GitHub, un sistema de control de versiones que comentaremos en la siguiente sección).</p>
-<p>Para poner en marcha este tipo de flujo, vamos a emplear el paquete <code>estout</code>, mencionado en la sección anterior, y el paquete paquete <code>texdoc</code> <span class="citation" data-cites="Jann2016">(Jann, 2016)</span>, que nos va a pemitir crear textos planos con resultados de <code>Stata</code> que vamos a poder llevar a nuestro editor de LaTeX. La idea básica es que <code>Stata</code> genere archivos de texto plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando <code>input{}</code> para incluir el archivo generado. La mayor parte del formato resultante del texto incluido será responsabilidad de LaTeX, que habremos configurado previamente. En general, mi consejo es únicamente crear en <code>Stata</code> de las filas con la información estadística y diseñar el resto de la tabla en el editor de LaTeX.</p>
+<p>Para poner en marcha este tipo de flujo, vamos a emplear el paquete <code>estout</code>, mencionado en la sección anterior, y el paquete <code>texdoc</code> <span class="citation" data-cites="Jann2016">(Jann, 2016)</span>, que nos va a pemitir crear textos planos con resultados de <code>Stata</code> que vamos a poder llevar a nuestro editor de LaTeX. La idea básica es que <code>Stata</code> genere archivos de texto plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando <code>input{}</code> para incluir el archivo generado. La mayor parte del formato resultante del texto incluido será responsabilidad de LaTeX, que habremos configurado previamente. En general, mi consejo es únicamente crear en <code>Stata</code> de las filas con la información estadística y diseñar el resto de la tabla en el editor de LaTeX.</p>
 
 <pre class='stata'>. //    Establecemos la coma como decimal
 . 
@@ -510,26 +505,21 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 . 
 . //    Realizamos las regresiones
 . 
-. eststo total: quietly: regress logsalario sexodummy2 edad edad2 educdummy2 educdumm
-> y3
+. eststo total: quietly: regress logsalario sexodummy2 edad edad2 educdummy2 educdummy3
 
-. eststo male: quietly: regress logsalario edad edad2 educdummy2 educdummy3 if sexo =
-> = 1
+. eststo male: quietly: regress logsalario edad edad2 educdummy2 educdummy3 if sexo == 1
 
-. eststo female: quietly: regress logsalario edad edad2 educdummy2 educdummy3 if sexo
->  == 2
+. eststo female: quietly: regress logsalario edad edad2 educdummy2 educdummy3 if sexo == 2
 
 . 
 . //  Exportamos la tabla
 . 
 . estout total male female using "tabla1.tex", replace style(tex) ///
 >   keep(sexodummy2 edad edad2 educdummy2 educdummy3) ///
->   varlabels(sexodummy2 "Mujer" edad "Edad" edad2 "Edad\textsuperscript{2}" educdumm
-> y2 "Educación media" educdummy3 "Educación superior") ///
+>   varlabels(sexodummy2 "Mujer" edad "Edad" edad2 "Edad\textsuperscript{2}" educdummy2 "Educación media" educdummy3 "Educación superior") ///
 >   cells(b(fmt(3) star) se(par fmt(3))) ///
 > starlevels("\sym{*}" 0.10 "\sym{**}" 0.05 "\sym{***}" 0.01) ///
->   stats(N r2_a, fmt(%6.0f %04,3fc) labels("No. de observaciones" "R\textsuperscript
-> {2} ajustado")) ///
+>   stats(N r2_a, fmt(%6.0f %04,3fc) labels("No. de observaciones" "R\textsuperscript{2} ajustado")) ///
 >   prefoot("[2ex]") ///
 >   mlabel(, none) collabels(none)
 (output written to tabla1.tex)
@@ -563,8 +553,7 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 . texdoc init "texto.tex", replace force
 (texdoc output file is texto.tex)
 
-. tex El salario medio de los hombres es \num{`salh'} euros mensuales y el de las muj
-> eres, \num{`salm'}.
+. tex El salario medio de los hombres es \num{`salh'} euros mensuales y el de las mujeres, \num{`salm'}.
 
 . texdoc close
 (texdoc output written to texto.tex)
@@ -605,10 +594,8 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 . twoway ///
 > (kdensity logsalario if sexo == 1 [aweight = peso]) ///
 > (kdensity logsalario if sexo == 2 [aweight = peso]), ///
-> ytitle("Densidad", size(vsmall) margin(sides)) ylabel(, labsize(vsmall) format(%02,
-> 1fc)) ///
-> xtitle("Salario bruto en logaritmos (euros/mes)", size(vsmall) margin(top_bottom)) 
-> xlabel(, labsize(vsmall)) ///
+> ytitle("Densidad", size(vsmall) margin(sides)) ylabel(, labsize(vsmall) format(%02,1fc)) ///
+> xtitle("Salario bruto en logaritmos (euros/mes)", size(vsmall) margin(top_bottom)) xlabel(, labsize(vsmall)) ///
 > legend(on order(1 "Hombres" 2 "Mujeres") cols(1) size(vsmall) position(10) ring(0))
 
 . 
@@ -630,7 +617,7 @@ note: file "salarios2aux.rtf" converted to file "salarios2.rtf"
 <p>Una de las últimas novedades en el uso de <code>Stata</code> pasan por la elaboración de documentos dinámicos. Se trata de archivos, normalmente, <code>.docx</code>, <code>.pdf</code> o <code>.html</code> que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, <code>Stata</code> está lejos todavía de las posibilidades que ofrece R con RStudio y knitr <span class="citation" data-cites="Gandrud2020 Xie2015">(Gandrud, 2020; Xie, 2015)</span>.</p>
 <p>En el caso de <code>Stata</code>, existen varias opciones para elaborar documentos dinámicos. La versión 15 de <code>Stata</code> incorpora esta posibilidad dentro del paquete <code>dyndoc</code>. Sin embargo, hay otras alternativas creadas por los usuarios. Para generar todas las páginas web en las que se ha organizado este curso, por ejemplo, hemos utilizado el paquete <code>markstat</code> <span class="citation" data-cites="Rodriguez2017">(Rodríguez, 2017)</span>. En mi opinión, esta opción es preferible al paquete oficial porque es mucho más parecido al lenguage <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a>. En su página <a href="https://data.princeton.edu/stata/markdown/">web</a>, el creador de <code>markstat</code>, Germán Rodríguez, nos orienta de las posibilidades de este paquete, con abundantes ejemplos.</p>
 <p>En <code>Stata 17</code>, además, existe la posibilidad de integrar código de <a href="https://www.stata.com/python/">Python en <code>Stata</code></a> y código de <a href="https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd"><code>Stata</code> en Python</a>. Lo mismo aplica a <a href="https://fsolt.org/blog/2018/08/15/switch-to-r.html#:~:text=Running%20R%20from%20Stata,the%20R%20output%20into%20Stata.">R</a></p>
-<p>Por último, una tendencia reciente es el empleo de sistemas control de versiones, como <code>Git</code>, especialmente, a través de la nube con <code>GitHub</code>. La curva de aprendizaje puede reducirse sustancialmente instalando <a href="https://desktop.github.com/"><code>GitHub Desktop</code></a>. Básicamente, este sistema permite trabajar de manera colaborativa en la escritura de código. En el caso de <code>Stata</code>, es aplicable, por lo tanto, a los archivos <code>.do</code> y <code>.ado</code>. Permite que varias personas trabajen de forma simultánea (e incluso cualquier usuario puede solicitar contributir) y todos los cambios son reversibles, pudiendo volver en cualquier momento a la versión que deseemos. Podemos encontrar una buena introducción en <span class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo (2018)</span> y, especialmente, en la web de <a href="https://medium.com/the-stata-guide/stata-and-github-integration-8c87ddf9784a">Asjad Naqvi</a>.</p>
+<p>Por último, una tendencia reciente es el empleo de sistemas control de versiones, como <code>Git</code>, especialmente, a través de la nube con <code>GitHub</code>. La curva de aprendizaje puede reducirse sustancialmente instalando <a href="https://desktop.github.com/"><code>GitHub Desktop</code></a>. Básicamente, este sistema permite trabajar de manera colaborativa en la escritura de código. En el caso de <code>Stata</code>, es aplicable, por lo tanto, a los archivos <code>.do</code> y <code>.ado</code>. Permite que varias personas trabajen de forma simultánea (e incluso cualquier usuario puede solicitar contributir) y todos los cambios son reversibles, pudiendo volver en cualquier momento a la versión que deseemos. Podemos encontrar una buena introducción en <span class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo (2018)</span> y, especialmente, en la guía de <a href="https://medium.com/the-stata-guide/stata-and-github-integration-8c87ddf9784a">Asjad Naqvi</a>.</p>
 <figure>
 <img src="github.png" style="width:70.0%" alt="Flujo de trabajo propuesto por Pellegrina &amp; Fajardo (2018)" /><figcaption aria-hidden="true">Flujo de trabajo propuesto por <span class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo (2018)</span></figcaption>
 </figure>

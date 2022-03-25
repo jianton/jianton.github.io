@@ -1,5 +1,7 @@
 cd "D:\Dropbox\curso_stata\jianton.github.io\"
 
+set linesize 255
+
 markstat using "curso_stata.stmd", strict mathjax bibliography
 
 markstat using "stata1.stmd", strict mathjax bibliography

@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 07:39:38
+ {txt}opened on:  {res}25 Mar 2022, 09:10:07
 {txt}
 {com}. //_1
 . clear all
@@ -40,7 +40,11 @@
 {txt}
 {com}. //_7
 . save "ecv18r.dta", replace
-{txt}file ecv18r.dta saved
+{txt}{p 0 4 2}
+file {bf}
+ecv18r.dta{rm}
+saved
+{p_end}
 
 {com}. //_8
 . use "ecv18r.dta", clear
@@ -52,17 +56,17 @@
 {res}rb210{right:RB210}
 {txt}{hline}
 
-{col 19}type:  numeric ({res}byte{txt})
+{col 19}Type: Numeric ({res}byte{txt})
 
-{col 18}range:  [{res}1{txt},{res}4{txt}]{col 55}units:  {res}1
-{col 10}{txt}unique values:  {res}4{col 51}{txt}missing .:  {res}1{txt}/{res}33,734
+{col 18}Range: [{res}1{txt},{res}4{txt}]{col 55}Units: {res}1
+{col 10}{txt}Unique values: {res}4{col 51}{txt}Missing .: {res}1{txt}/{res}33,734
 
-{txt}{col 13}tabulation:  Freq.  Value
-{col 21}{res}    13,021{col 33}1
-{col 21}     2,990{col 33}2
-{col 21}     6,183{col 33}3
-{col 21}    11,539{col 33}4
-{col 21}         1{col 33}.
+{txt}{col 13}Tabulation: Freq.  Value
+{col 20}{res}    13,021{col 32}1
+{col 20}     2,990{col 32}2
+{col 20}     6,183{col 32}3
+{col 20}    11,539{col 32}4
+{col 20}         1{col 32}.
 {txt}
 {com}. //_10
 . tabulate rb210
@@ -144,7 +148,7 @@
 . 
 . summarize edad
 
-{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
 {hline 13}{c +}{hline 57}
 {space 8}edad {c |}{res}     33,734     44.8642    23.21889          0         86
 {txt}
@@ -184,7 +188,7 @@ Menor que 30 años {c |}{res}      9,510       28.19       28.19
 {txt}
 {com}. //_22
 . recode gedad (1 2 = 1) (3 4 = 2)
-{txt}(gedad: 24224 changes made)
+{txt}(24224 changes made to {bf:gedad})
 
 {com}. 
 . // Etiquetamos la nueva variable y sus valores
@@ -234,14 +238,14 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 {txt}
 {com}. //_26
 . recode p78a_u (-2 -1 = .)
-{txt}(p78a_u: 22053 changes made)
+{txt}(22053 changes made to {bf:p78a_u})
 
 {com}. //_27
 . net search poverty
 {txt}(contacting http://www.stata.com)
 
 {s6hlp}
-46 packages found (Stata Journal and STB listed first)
+50 packages found (Stata Journal and STB listed first)
 ------------------------------------------------------
 
 @net:describe st0492, from(http://www.stata-journal.com/software/sj17-3)!st0492 from http://www.stata-journal.com/software/sj17-3@
@@ -350,6 +354,12 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     Expenditures / The package contains two commands (fpcata and fpimpov) to /
     compute indicators of financial protection for health / expenditures.
     fpcata computes the incidence of 'catastrophic' / health spending (the %
+
+@net:describe getcensus, from(http://fmwww.bc.edu/RePEc/bocode/g)!getcensus from http://fmwww.bc.edu/RePEc/bocode/g@
+    'GETCENSUS': module to load American Community Survey data from the U.S.
+    Census Bureau API into Stata / getcensus is a Stata package for loading
+    American Community / Survey (ACS) data from the U.S. Census Bureau API
+    into Stata. It / also allows users to search the API data dictionaries for
 
 @net:describe glcurve, from(http://fmwww.bc.edu/RePEc/bocode/g)!glcurve from http://fmwww.bc.edu/RePEc/bocode/g@
     'GLCURVE': module to derive generalised Lorenz curve ordinates / Given
@@ -495,6 +505,24 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     making / replacements that are specified in an external dataset, the /
     replacements file.  / KW: data management / KW: data entry / KW: replace /
 
+@net:describe sae, from(http://fmwww.bc.edu/RePEc/bocode/s)!sae from http://fmwww.bc.edu/RePEc/bocode/s@
+    'SAE': module to provide commands and mata functions devoted to unit level
+    small area estimation / sae is a Stata family of functions for small area
+    estimation, / using the methodology from Elbers, Lanjouw, and Lanjouw
+    (2003). / The package introduces new mata functions and a plugin used to /
+
+@net:describe skdecomp, from(http://fmwww.bc.edu/RePEc/bocode/s)!skdecomp from http://fmwww.bc.edu/RePEc/bocode/s@
+    'SKDECOMP': module to estimate Shapley value of growth, price, and
+    distribution components on changes in poverty indicators / skdecomp
+    implements the shapley value of Kolenikov and / Shorrocks (2003)
+    decomposition of changes in a welfare indicator / into growth,
+
+@net:describe specialexp, from(http://fmwww.bc.edu/RePEc/bocode/s)!specialexp from http://fmwww.bc.edu/RePEc/bocode/s@
+    'SPECIALEXP': module to obtain expression that evaluates to specified
+    string / specialexp returns an expression that evaluates to a specified /
+    string, including strings that cannot be enclosed in double / quotes.  /
+    KW: expressions / KW: quotes / KW: Mata / Requires: Stata version 9 /
+
 @net:describe tex3pt, from(http://fmwww.bc.edu/RePEc/bocode/t)!tex3pt from http://fmwww.bc.edu/RePEc/bocode/t@
     'TEX3PT': module to produce LaTeX documents from estout with
     threeparttable / tex3pt takes .tex output from esttab and writes it into a
@@ -520,7 +548,7 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     implements Wooldridge / simple solution to the initial condition problem
 
 
-10 references found in tables of contents
+11 references found in tables of contents
 -----------------------------------------
 
 @net:from http://www.stata-journal.com/software/sj17-3/!http://www.stata-journal.com/software/sj17-3/@
@@ -549,9 +577,9 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/c/!http://fmwww.bc.edu/RePEc/bocode/c/@
     module to implement machine learning classification in Stata / module to
-    generate calendar / module to estimate proportions and means after survey
-    data have been calibrated to population totals / module for inverse
-    regression and calibration / module to calibrate survey datasets to
+    implement machine learning classification in Stata / module to generate
+    calendar / module to estimate proportions and means after survey data have
+    been calibrated to population totals / module for inverse regression and
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/d/!http://fmwww.bc.edu/RePEc/bocode/d/@
     module to create network visualizations using D3.js to view in browser /
@@ -562,26 +590,32 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 @net:from http://fmwww.bc.edu/RePEc/bocode/e/!http://fmwww.bc.edu/RePEc/bocode/e/@
     module to estimate endogenous attribute attendance models / module to
     perform extreme bound analysis / module to perform Entropy reweighting to
-    create balanced samples / module to perform entropy reweighting to create
-    balanced samples for continuous treatments / module to to display
+    create balanced samples / module to perform entropy balancing / module to
+    perform entropy reweighting to create balanced samples for continuous
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/i/!http://fmwww.bc.edu/RePEc/bocode/i/@
     module to import International Aid Transparency Initiative data / module
     to compute measures of interaction contrast (biological interaction) /
-    module that computes models 2 and 3 of the intra-class correlation /
-    module to compute a confidence interval for an intraclass correlation
+    module to compute Interaction Effects in Linear and Generalized Linear
+    Models / module that computes models 2 and 3 of the intra-class
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/m/!http://fmwww.bc.edu/RePEc/bocode/m/@
     module to implement interpoint distance distribution analysis / module to
-    unabbreviate Global Macro Lists / module to perform Dickey-Fuller test on
-    panel data / module to calculate Median Absolute Deviations / module to
-    select matching observations based on a Mahalanobis distance measure /
+    unabbreviate Global Macro Lists / module to compute the macroF evaluation
+    criterion for multi-class outcomes / module to perform Dickey-Fuller test
+    on panel data / module to create dot plot for summarizing pooled estimates
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/p/!http://fmwww.bc.edu/RePEc/bocode/p/@
     module to calculate confidence limits of a regression coefficient from the
     p-value / module to perform Page's L trend test for ordered alternatives /
     module to create paired datasets from individual-per-row data / module for
     plots of paired observations / module to import network data in Pajek's
+
+@net:from http://fmwww.bc.edu/RePEc/bocode/s/!http://fmwww.bc.edu/RePEc/bocode/s/@
+    module to compute Sequence Analysis Distance Measures / module to provide
+    commands and mata functions devoted to unit level small area estimation /
+    module to compute sample size for an intra-class correlation (ICC) /
+    module to draw a random sample with probabilities proportional to size /
 
 {smcl}
 
@@ -597,7 +631,7 @@ all files already exist and are up to date.
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 07:39:38
+ {txt}closed on:  {res}25 Mar 2022, 09:10:37
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

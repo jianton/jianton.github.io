@@ -243,11 +243,11 @@ D:\Dropbox\curso_stata\sesión3
 
  Educación (agrupada) │      Freq.     Percent        Cum.
 ──────────────────────┼───────────────────────────────────
- Nivel educativo bajo │      7,841       38.64       38.64
-Nivel educativo medio │      5,429       26.75       65.40
- Nivel educativo alto │      7,022       34.60      100.00
+ Nivel educativo bajo │       7841       38,64       38,64
+Nivel educativo medio │       5429       26,75       65,40
+ Nivel educativo alto │       7022       34,60      100,00
 ──────────────────────┼───────────────────────────────────
-                Total │     20,292      100.00
+                Total │      20292      100,00
 </pre>
 <p>Asimismo, podemos crear una tabla que recoja la distribución de la educación por sexo.</p>
 <pre class='stata'>. //  Tabla de frecuencias absolutas
@@ -257,11 +257,11 @@ Nivel educativo medio │      5,429       26.75       65.40
                       │         Sexo
  Educación (agrupada) │    Hombre      Mujer │     Total
 ──────────────────────┼──────────────────────┼──────────
- Nivel educativo bajo │     4,109      3,732 │     7,841 
-Nivel educativo medio │     2,710      2,719 │     5,429 
- Nivel educativo alto │     3,162      3,860 │     7,022 
+ Nivel educativo bajo │      4109       3732 │      7841 
+Nivel educativo medio │      2710       2719 │      5429 
+ Nivel educativo alto │      3162       3860 │      7022 
 ──────────────────────┼──────────────────────┼──────────
-                Total │     9,981     10,311 │    20,292 
+                Total │      9981      10311 │     20292 
 
 . 
 . //  Distribución por sexo por nivel educativo (porcentaje por filas).
@@ -271,11 +271,11 @@ Nivel educativo medio │     2,710      2,719 │     5,429
                       │         Sexo
  Educación (agrupada) │    Hombre      Mujer │     Total
 ──────────────────────┼──────────────────────┼──────────
- Nivel educativo bajo │     52.40      47.60 │    100.00 
-Nivel educativo medio │     49.92      50.08 │    100.00 
- Nivel educativo alto │     45.03      54.97 │    100.00 
+ Nivel educativo bajo │     52,40      47,60 │    100,00 
+Nivel educativo medio │     49,92      50,08 │    100,00 
+ Nivel educativo alto │     45,03      54,97 │    100,00 
 ──────────────────────┼──────────────────────┼──────────
-                Total │     49.19      50.81 │    100.00 
+                Total │     49,19      50,81 │    100,00 
 
 . 
 . //  Distribución del nivel educativo por sexo (porcentaje por columnas).
@@ -285,11 +285,11 @@ Nivel educativo medio │     49.92      50.08 │    100.00
                       │         Sexo
  Educación (agrupada) │    Hombre      Mujer │     Total
 ──────────────────────┼──────────────────────┼──────────
- Nivel educativo bajo │     41.17      36.19 │     38.64 
-Nivel educativo medio │     27.15      26.37 │     26.75 
- Nivel educativo alto │     31.68      37.44 │     34.60 
+ Nivel educativo bajo │     41,17      36,19 │     38,64 
+Nivel educativo medio │     27,15      26,37 │     26,75 
+ Nivel educativo alto │     31,68      37,44 │     34,60 
 ──────────────────────┼──────────────────────┼──────────
-                Total │    100.00     100.00 │    100.00 
+                Total │    100,00     100,00 │    100,00 
 
 . 
 . //  Porcentaje de observaciones en cada celda.
@@ -299,11 +299,11 @@ Nivel educativo medio │     27.15      26.37 │     26.75
                       │         Sexo
  Educación (agrupada) │    Hombre      Mujer │     Total
 ──────────────────────┼──────────────────────┼──────────
- Nivel educativo bajo │     20.25      18.39 │     38.64 
-Nivel educativo medio │     13.36      13.40 │     26.75 
- Nivel educativo alto │     15.58      19.02 │     34.60 
+ Nivel educativo bajo │     20,25      18,39 │     38,64 
+Nivel educativo medio │     13,36      13,40 │     26,75 
+ Nivel educativo alto │     15,58      19,02 │     34,60 
 ──────────────────────┼──────────────────────┼──────────
-                Total │     49.19      50.81 │    100.00 
+                Total │     49,19      50,81 │    100,00 
 </pre>
 <p>Adicionalmente, <code>Stata</code> nos permite realizar algunos tests estadísticos para contrastar si las dos variables se distribuyen de forma independiente, como el test de la <span class="math inline">\(\chi^2\)</span> de Pearson (opción <code>chi2</code>), entre otros muchos.</p>
 <h2 id="tablas-con-estadísticos-descriptivos">Tablas con estadísticos descriptivos</h2>
@@ -317,11 +317,11 @@ Nivel educativo medio │     13.36      13.40 │     26.75
   Educación │  Summary of Salario bruto mensual
  (agrupada) │        Mean   Std. Dev.       Freq.
 ────────────┼────────────────────────────────────
-  Nivel edu │   1429.6244   954.13983       3,751
-  Nivel edu │    1770.063     1851.12       2,911
-  Nivel edu │   2556.1645   2084.1949       5,082
+  Nivel edu │   1429,6244   954,13983        3751
+  Nivel edu │    1770,063     1851,12        2911
+  Nivel edu │   2556,1645   2084,1949        5082
 ────────────┼────────────────────────────────────
-      Total │   2001.4988   1808.3896      11,744
+      Total │   2001,4988   1808,3896       11744
 
 . 
 . tabulate educg sexo, summarize(salario)
@@ -331,20 +331,20 @@ Nivel educativo medio │     13.36      13.40 │     26.75
  Educación │        Sexo
 (agrupada) │    Hombre      Mujer │     Total
 ───────────┼──────────────────────┼──────────
- Nivel edu │ 1555.3305  1246.9435 │ 1429.6244
-           │ 983.26205  878.97375 │ 954.13983
+ Nivel edu │ 1555,3305  1246,9435 │ 1429,6244
+           │ 983,26205  878,97375 │ 954,13983
            │      2222       1529 │      3751
 ───────────┼──────────────────────┼──────────
- Nivel edu │ 1979.7629   1544.048 │  1770.063
-           │ 1528.6274  2122.5805 │   1851.12
+ Nivel edu │ 1979,7629   1544,048 │  1770,063
+           │ 1528,6274  2122,5805 │   1851,12
            │      1510       1401 │      2911
 ───────────┼──────────────────────┼──────────
- Nivel edu │ 2869.5636  2296.2395 │ 2556.1645
-           │ 2527.3422  1581.6394 │ 2084.1949
+ Nivel edu │ 2869,5636  2296,2395 │ 2556,1645
+           │ 2527,3422  1581,6394 │ 2084,1949
            │      2304       2778 │      5082
 ───────────┼──────────────────────┼──────────
-     Total │ 2163.1645  1830.5433 │ 2001.4988
-           │  1926.792  1657.1965 │ 1808.3896
+     Total │ 2163,1645  1830,5433 │ 2001,4988
+           │  1926,792  1657,1965 │ 1808,3896
            │      6036       5708 │     11744
 </pre>
 <p>Además, disponemos del comando <code>table</code> para construir tablas con estadísticos descriptivos de forma más flexible.</p>
@@ -357,9 +357,9 @@ Nivel educativo medio │     13.36      13.40 │     26.75
                       │ - Contrato fijo  -    - Contrato tempo -
  Educación (agrupada) │   Hombre     Mujer      Hombre     Mujer
 ──────────────────────┼─────────────────────────────────────────
- Nivel educativo bajo │ 1791.071  1403.295    1145.353  1039.947
-Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
- Nivel educativo alto │ 3187.971  2517.448    1594.592  1644.344
+ Nivel educativo bajo │ 1791,071  1403,295    1145,353  1039,947
+Nivel educativo medio │ 2259,453  1716,245    1258,596  1157,733
+ Nivel educativo alto │ 3187,971  2517,448    1594,592  1644,344
 ──────────────────────┴─────────────────────────────────────────
 </pre>
 <h1 id="análisis-de-varianza-anova">2. Análisis de varianza (ANOVA)</h1>
@@ -368,18 +368,18 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
 <p>Para contrastar si el salario promedio es diferente por nivel educativo, emplearíamos la siguiente instrucción:</p>
 <pre class='stata'>. anova salario educg
 
-                         Number of obs =     11,744    R-squared     =  0.0767
-                         Root MSE      =    1737.79    Adj R-squared =  0.0766
+                         Number of obs =     11.744    R-squared     =  0,0767
+                         Root MSE      =    1737,79    Adj R-squared =  0,0766
 
                   Source │ Partial SS         df         MS        F    Prob>F
               ───────────┼────────────────────────────────────────────────────
-                   Model │  2.946e+09          2   1.473e+09    487.79  0.0000
+                   Model │  2,946e+09          2   1,473e+09    487,79  0,0000
                          │
-                   educg │  2.946e+09          2   1.473e+09    487.79  0.0000
+                   educg │  2,946e+09          2   1,473e+09    487,79  0,0000
                          │
-                Residual │  3.546e+10     11,741   3019901.9  
+                Residual │  3,546e+10     11.741   3019901,9  
               ───────────┼────────────────────────────────────────────────────
-                   Total │  3.840e+10     11,743     3270273  
+                   Total │  3,840e+10     11.743     3270273  
 </pre>
 <p>Podemos ver que, efectivamente, se rechaza la hipótesis nula de igualdad de medias. Sobre la implementación del ANOVA, podemos recurrir, nuevamente, a <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> y <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
 <h1 id="análisis-de-regresión">3. Análisis de regresión</h1>
@@ -397,19 +397,19 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
 <p>Calculamos, en primer lugar, una regresión del logaritmo del salario sobre la edad y la edad al cuadrado.</p>
 <pre class='stata'>. regress logsalario edad edad2
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(2, 11596)     =    561.47
-       Model │  708.930894         2  354.465447   Prob > F        =    0.0000
-    Residual │   7320.7821    11,596  .631319602   R-squared       =    0.0883
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.0881
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .79456
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(2, 11596)     =    561,47
+       Model │  708,930894         2  354,465447   Prob > F        =    0,0000
+    Residual │   7320,7821    11.596  ,631319602   R-squared       =    0,0883
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,0881
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,79456
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   .0855968   .0049066    17.45   0.000      .075979    .0952147
-       edad2 │  -.0007608   .0000568   -13.41   0.000    -.0008721   -.0006496
-       _cons │   5.137219   .1016253    50.55   0.000     4.938016    5.336422
+        edad │   ,0855968   ,0049066    17,45   0,000      ,075979    ,0952147
+       edad2 │  -,0007608   ,0000568   -13,41   0,000    -,0008721   -,0006496
+       _cons │   5,137219   ,1016253    50,55   0,000     4,938016    5,336422
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <p><code>Stata</code> es capaz de acomodar fácilmente variables categóricas en los análisis econométricos. En el comando <code>regress</code>, en particular, es especialmente sencillo. Recordemos que para incluir variables categóricas en un análisis, empleamos variables ficticias o <em>dummies</em>, variables que toman el valor 1 si la observación toma un determinado valor de la variable y 0 en otro caso. Para evitar la multicolinealidad perfecta, para cada variable categórica, incluimos una variable <em>dummy</em> para todas las categorías excepto una, que actúa como referencia. <code>Stata</code> implementa esta estrategia automáticamente. Por defecto, selecciona como referencia la primera categoría, pero podemos modificar esta opción. Por ejemplo, con la variable <code>sexo</code>, tendríamos:</p>
@@ -417,22 +417,22 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
 . 
 . regress logsalario edad edad2 i.sexo
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(3, 11595)     =    425.49
-       Model │  796.314217         3  265.438072   Prob > F        =    0.0000
-    Residual │  7233.39878    11,595  .623837756   R-squared       =    0.0992
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.0989
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .78983
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(3, 11595)     =    425,49
+       Model │  796,314217         3  265,438072   Prob > F        =    0,0000
+    Residual │  7233,39878    11.595  ,623837756   R-squared       =    0,0992
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,0989
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,78983
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   .0870787   .0048791    17.85   0.000     .0775149    .0966426
-       edad2 │  -.0007772   .0000564   -13.77   0.000    -.0008878   -.0006666
+        edad │   ,0870787   ,0048791    17,85   0,000     ,0775149    ,0966426
+       edad2 │  -,0007772   ,0000564   -13,77   0,000    -,0008878   -,0006666
              │
         sexo │
-      Mujer  │  -.1737265   .0146787   -11.84   0.000    -.2024992   -.1449538
-       _cons │   5.190086     .10112    51.33   0.000     4.991874    5.388299
+      Mujer  │  -,1737265   ,0146787   -11,84   0,000    -,2024992   -,1449538
+       _cons │   5,190086     ,10112    51,33   0,000     4,991874    5,388299
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -440,23 +440,23 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
 . 
 . regress logsalario edad edad2 ib2.sexo
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(3, 11595)     =    425.49
-       Model │  796.314217         3  265.438072   Prob > F        =    0.0000
-    Residual │  7233.39878    11,595  .623837756   R-squared       =    0.0992
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.0989
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .78983
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(3, 11595)     =    425,49
+       Model │  796,314217         3  265,438072   Prob > F        =    0,0000
+    Residual │  7233,39878    11.595  ,623837756   R-squared       =    0,0992
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,0989
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,78983
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   .0870787   .0048791    17.85   0.000     .0775149    .0966426
-       edad2 │  -.0007772   .0000564   -13.77   0.000    -.0008878   -.0006666
+        edad │   ,0870787   ,0048791    17,85   0,000     ,0775149    ,0966426
+       edad2 │  -,0007772   ,0000564   -13,77   0,000    -,0008878   -,0006666
              │
         sexo │
-     Hombre  │   .1737265   .0146787    11.84   0.000     .1449538    .2024992
+     Hombre  │   ,1737265   ,0146787    11,84   0,000     ,1449538    ,2024992
              │
-       _cons │    5.01636   .1015361    49.40   0.000     4.817332    5.215388
+       _cons │    5,01636   ,1015361    49,40   0,000     4,817332    5,215388
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -464,22 +464,22 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
 . 
 . regress logsalario edad edad2 ib(freq).sexo
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(3, 11595)     =    425.49
-       Model │  796.314217         3  265.438072   Prob > F        =    0.0000
-    Residual │  7233.39878    11,595  .623837756   R-squared       =    0.0992
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.0989
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .78983
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(3, 11595)     =    425,49
+       Model │  796,314217         3  265,438072   Prob > F        =    0,0000
+    Residual │  7233,39878    11.595  ,623837756   R-squared       =    0,0992
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,0989
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,78983
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   .0870787   .0048791    17.85   0.000     .0775149    .0966426
-       edad2 │  -.0007772   .0000564   -13.77   0.000    -.0008878   -.0006666
+        edad │   ,0870787   ,0048791    17,85   0,000     ,0775149    ,0966426
+       edad2 │  -,0007772   ,0000564   -13,77   0,000    -,0008878   -,0006666
              │
         sexo │
-      Mujer  │  -.1737265   .0146787   -11.84   0.000    -.2024992   -.1449538
-       _cons │   5.190086     .10112    51.33   0.000     4.991874    5.388299
+      Mujer  │  -,1737265   ,0146787   -11,84   0,000    -,2024992   -,1449538
+       _cons │   5,190086     ,10112    51,33   0,000     4,991874    5,388299
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <p>En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan <code>i.varname</code> algo a lo que <code>Stata</code> puede ayudarnos con la instrucción siguiente:</p>
@@ -487,130 +487,126 @@ Nivel educativo medio │ 2259.453  1716.245    1258.596  1157.733
 
  Educación (agrupada) │      Freq.     Percent        Cum.
 ──────────────────────┼───────────────────────────────────
- Nivel educativo bajo │      7,841       38.64       38.64
-Nivel educativo medio │      5,429       26.75       65.40
- Nivel educativo alto │      7,022       34.60      100.00
+ Nivel educativo bajo │       7841       38,64       38,64
+Nivel educativo medio │       5429       26,75       65,40
+ Nivel educativo alto │       7022       34,60      100,00
 ──────────────────────┼───────────────────────────────────
-                Total │     20,292      100.00
+                Total │      20292      100,00
 
 . 
 . regress logsalario i.sexo edad edad2 educdummy2 educdummy3
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(5, 11593)     =    577.13
-       Model │  1600.34458         5  320.068916   Prob > F        =    0.0000
-    Residual │  6429.36841    11,593  .554590565   R-squared       =    0.1993
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.1990
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .74471
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
+       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
+    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
         sexo │
-      Mujer  │  -.2365705     .01394   -16.97   0.000    -.2638953   -.2092458
-        edad │   .0721823   .0046198    15.62   0.000     .0631268    .0812378
-       edad2 │  -.0005808   .0000535   -10.86   0.000    -.0006856   -.0004759
-  educdummy2 │    .240602   .0185962    12.94   0.000     .2041503    .2770537
-  educdummy3 │    .613554   .0163944    37.42   0.000     .5814181    .6456898
-       _cons │   5.145524   .0958254    53.70   0.000      4.95769    5.333357
+      Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
+        edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
+       edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
+  educdummy2 │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
+  educdummy3 │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
+       _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . 
 . regress logsalario i.sexo edad edad2 ib1.educg
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(5, 11593)     =    577.13
-       Model │  1600.34458         5  320.068916   Prob > F        =    0.0000
-    Residual │  6429.36841    11,593  .554590565   R-squared       =    0.1993
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.1990
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .74471
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
+       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
+    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
 
-───────────────────┬────────────────────────────────────────────────────────────────
-        logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              sexo │
-            Mujer  │  -.2365705     .01394   -16.97   0.000    -.2638953   -.2092458
-              edad │   .0721823   .0046198    15.62   0.000     .0631268    .0812378
-             edad2 │  -.0005808   .0000535   -10.86   0.000    -.0006856   -.0004759
-                   │
-             educg │
-Nivel educativo..  │    .240602   .0185962    12.94   0.000     .2041503    .2770537
-Nivel educativo..  │    .613554   .0163944    37.42   0.000     .5814181    .6456898
-                   │
-             _cons │   5.145524   .0958254    53.70   0.000      4.95769    5.333357
-───────────────────┴────────────────────────────────────────────────────────────────
+───────────────────────┬────────────────────────────────────────────────────────────────
+            logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+───────────────────────┼────────────────────────────────────────────────────────────────
+                  sexo │
+                Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
+                  edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
+                 edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
+                       │
+                 educg │
+Nivel educativo medio  │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
+ Nivel educativo alto  │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
+                       │
+                 _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
+───────────────────────┴────────────────────────────────────────────────────────────────
 
 . 
 </pre>
 <p>Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de <code>Stata</code>. Para el cálculo de las mismas, podemos emplear los caracteres <code>#</code> o <code>##</code>. El primero de ellos (<code>#</code>) incluye en la ecuación únicamente las interacciones, mientras que <code>##</code> incluye las variables por separado y su interacción.</p>
 <pre class='stata'>. regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#educg
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(8, 11590)     =    364.72
-       Model │  1614.92975         8  201.866218   Prob > F        =    0.0000
-    Residual │  6414.78325    11,590   .55347569   R-squared       =    0.2011
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.2006
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .74396
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(8, 11590)     =    364,72
+       Model │  1614,92975         8  201,866218   Prob > F        =    0,0000
+    Residual │  6414,78325    11.590   ,55347569   R-squared       =    0,2011
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,2006
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74396
 
-───────────────────┬────────────────────────────────────────────────────────────────
-        logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              sexo │
-            Mujer  │  -.0864934    .062616    -1.38   0.167    -.2092312    .0362445
-              edad │   .0735382   .0046441    15.83   0.000      .064435    .0826414
-                   │
-     c.edad#c.edad │  -.0005724   .0000535   -10.71   0.000    -.0006772   -.0004676
-                   │
-             educg │
-Nivel educativo..  │   .2543874   .0250038    10.17   0.000     .2053758    .3033991
-Nivel educativo..  │   .5659028   .0223213    25.35   0.000     .5221494    .6096563
-                   │
-       sexo#c.edad │
-            Mujer  │  -.0041906   .0012553    -3.34   0.001    -.0066513     -.00173
-                   │
-        sexo#educg │
-            Mujer #│
-Nivel educativo..  │  -.0232393    .037422    -0.62   0.535    -.0965927    .0501142
-            Mujer #│
-Nivel educativo..  │   .0929502   .0328386     2.83   0.005      .028581    .1573195
-                   │
-             _cons │   5.083543    .099395    51.14   0.000     4.888712    5.278374
-───────────────────┴────────────────────────────────────────────────────────────────
+─────────────────────────────┬────────────────────────────────────────────────────────────────
+                  logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+─────────────────────────────┼────────────────────────────────────────────────────────────────
+                        sexo │
+                      Mujer  │  -,0864934    ,062616    -1,38   0,167    -,2092312    ,0362445
+                        edad │   ,0735382   ,0046441    15,83   0,000      ,064435    ,0826414
+                             │
+               c.edad#c.edad │  -,0005724   ,0000535   -10,71   0,000    -,0006772   -,0004676
+                             │
+                       educg │
+      Nivel educativo medio  │   ,2543874   ,0250038    10,17   0,000     ,2053758    ,3033991
+       Nivel educativo alto  │   ,5659028   ,0223213    25,35   0,000     ,5221494    ,6096563
+                             │
+                 sexo#c.edad │
+                      Mujer  │  -,0041906   ,0012553    -3,34   0,001    -,0066513     -,00173
+                             │
+                  sexo#educg │
+Mujer#Nivel educativo medio  │  -,0232393    ,037422    -0,62   0,535    -,0965927    ,0501142
+ Mujer#Nivel educativo alto  │   ,0929502   ,0328386     2,83   0,005      ,028581    ,1573195
+                             │
+                       _cons │   5,083543    ,099395    51,14   0,000     4,888712    5,278374
+─────────────────────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <pre class='stata'>. regress logsalario c.edad##c.edad i.sexo#c.edad i.sexo##educg
 
-      Source │       SS           df       MS      Number of obs   =    11,599
-─────────────┼──────────────────────────────────   F(8, 11590)     =    364.72
-       Model │  1614.92975         8  201.866218   Prob > F        =    0.0000
-    Residual │  6414.78325    11,590   .55347569   R-squared       =    0.2011
-─────────────┼──────────────────────────────────   Adj R-squared   =    0.2006
-       Total │    8029.713    11,598  .692336006   Root MSE        =    .74396
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(8, 11590)     =    364,72
+       Model │  1614,92975         8  201,866218   Prob > F        =    0,0000
+    Residual │  6414,78325    11.590   ,55347569   R-squared       =    0,2011
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,2006
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74396
 
-───────────────────┬────────────────────────────────────────────────────────────────
-        logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              edad │   .0735382   .0046441    15.83   0.000      .064435    .0826414
-                   │
-     c.edad#c.edad │  -.0005724   .0000535   -10.71   0.000    -.0006772   -.0004676
-                   │
-       sexo#c.edad │
-            Mujer  │  -.0041906   .0012553    -3.34   0.001    -.0066513     -.00173
-                   │
-              sexo │
-            Mujer  │  -.0864934    .062616    -1.38   0.167    -.2092312    .0362445
-                   │
-             educg │
-Nivel educativo..  │   .2543874   .0250038    10.17   0.000     .2053758    .3033991
-Nivel educativo..  │   .5659028   .0223213    25.35   0.000     .5221494    .6096563
-                   │
-        sexo#educg │
-            Mujer #│
-Nivel educativo..  │  -.0232393    .037422    -0.62   0.535    -.0965927    .0501142
-            Mujer #│
-Nivel educativo..  │   .0929502   .0328386     2.83   0.005      .028581    .1573195
-                   │
-             _cons │   5.083543    .099395    51.14   0.000     4.888712    5.278374
-───────────────────┴────────────────────────────────────────────────────────────────
+─────────────────────────────┬────────────────────────────────────────────────────────────────
+                  logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+─────────────────────────────┼────────────────────────────────────────────────────────────────
+                        edad │   ,0735382   ,0046441    15,83   0,000      ,064435    ,0826414
+                             │
+               c.edad#c.edad │  -,0005724   ,0000535   -10,71   0,000    -,0006772   -,0004676
+                             │
+                 sexo#c.edad │
+                      Mujer  │  -,0041906   ,0012553    -3,34   0,001    -,0066513     -,00173
+                             │
+                        sexo │
+                      Mujer  │  -,0864934    ,062616    -1,38   0,167    -,2092312    ,0362445
+                             │
+                       educg │
+      Nivel educativo medio  │   ,2543874   ,0250038    10,17   0,000     ,2053758    ,3033991
+       Nivel educativo alto  │   ,5659028   ,0223213    25,35   0,000     ,5221494    ,6096563
+                             │
+                  sexo#educg │
+Mujer#Nivel educativo medio  │  -,0232393    ,037422    -0,62   0,535    -,0965927    ,0501142
+ Mujer#Nivel educativo alto  │   ,0929502   ,0328386     2,83   0,005      ,028581    ,1573195
+                             │
+                       _cons │   5,083543    ,099395    51,14   0,000     4,888712    5,278374
+─────────────────────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <h1 id="otros-modelos-econométricos-de-uso-común">4. Otros modelos econométricos de uso común</h1>
 <p><code>Stata</code> es un paquete estadístico que puede emplearse para implementar una impresionante variedad de modelos. En muchas ocasiones, aunque es muy conveniente conocer los fundamentos estadísticos de nuestros análisis, podemos realizar los ejercicios econométricos sin necesidad de un conocimiento profundo de estadística. Los modelos estimados por máxima verosimilitud, por ejemplo, requieren operaciones matemáticas de cierta dificultad y, de hecho, la resolución de estos modelos se hace por iteración (en este caso, se deriva una función de máxima verosimilitud y se busca su máximo mediante un procedimiento iterativo, sin encontrar una solución cerrada). Ejemplos de este tipo de modelos ampliamente utilizados en todo tipo de disciplinas son los modelos <em>logit</em> o <em>probit</em>, donde la variable de interés es de tipo binario. En la práctica, codificamos dicha variable en dos categorías, 0 y 1.</p>
@@ -619,27 +615,27 @@ Nivel educativo..  │   .0929502   .0328386     2.83   0.005      .028581    .1
 . 
 . logit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11536.258  
-Iteration 2:   log likelihood =  -11525.64  
-Iteration 3:   log likelihood = -11525.637  
-Iteration 4:   log likelihood = -11525.637  
+Iteration 0:   log likelihood =   -13385,8  
+Iteration 1:   log likelihood = -11536,258  
+Iteration 2:   log likelihood =  -11525,64  
+Iteration 3:   log likelihood = -11525,637  
+Iteration 4:   log likelihood = -11525,637  
 
-Logistic regression                             Number of obs     =     20,292
-                                                LR chi2(3)        =    3720.33
-                                                Prob > chi2       =     0.0000
-Log likelihood = -11525.637                     Pseudo R2         =     0.1390
+Logistic regression                             Number of obs     =     20.292
+                                                LR chi2(3)        =    3720,33
+                                                Prob > chi2       =     0,0000
+Log likelihood = -11525,637                     Pseudo R2         =     0,1390
 
 ──────────────┬────────────────────────────────────────────────────────────────
        empleo │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ──────────────┼────────────────────────────────────────────────────────────────
          sexo │
-       Mujer  │  -.6262264   .0324629   -19.29   0.000    -.6898526   -.5626003
-         edad │    .470378     .00884    53.21   0.000     .4530519    .4877041
+       Mujer  │  -,6262264   ,0324629   -19,29   0,000    -,6898526   -,5626003
+         edad │    ,470378     ,00884    53,21   0,000     ,4530519    ,4877041
               │
-c.edad#c.edad │  -.0054409   .0001038   -52.41   0.000    -.0056443   -.0052374
+c.edad#c.edad │  -,0054409   ,0001038   -52,41   0,000    -,0056443   -,0052374
               │
-        _cons │  -8.332817   .1732183   -48.11   0.000    -8.672319   -7.993316
+        _cons │  -8,332817   ,1732183   -48,11   0,000    -8,672319   -7,993316
 ──────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -647,26 +643,26 @@ c.edad#c.edad │  -.0054409   .0001038   -52.41   0.000    -.0056443   -.005237
 . 
 . probit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11523.923  
-Iteration 2:   log likelihood = -11522.197  
-Iteration 3:   log likelihood = -11522.197  
+Iteration 0:   log likelihood =   -13385,8  
+Iteration 1:   log likelihood = -11523,923  
+Iteration 2:   log likelihood = -11522,197  
+Iteration 3:   log likelihood = -11522,197  
 
-Probit regression                               Number of obs     =     20,292
-                                                LR chi2(3)        =    3727.21
-                                                Prob > chi2       =     0.0000
-Log likelihood = -11522.197                     Pseudo R2         =     0.1392
+Probit regression                               Number of obs     =     20.292
+                                                LR chi2(3)        =    3727,21
+                                                Prob > chi2       =     0,0000
+Log likelihood = -11522,197                     Pseudo R2         =     0,1392
 
 ──────────────┬────────────────────────────────────────────────────────────────
        empleo │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ──────────────┼────────────────────────────────────────────────────────────────
          sexo │
-       Mujer  │  -.3754802   .0192187   -19.54   0.000    -.4131482   -.3378121
-         edad │   .2868713    .005185    55.33   0.000     .2767088    .2970338
+       Mujer  │  -,3754802   ,0192187   -19,54   0,000    -,4131482   -,3378121
+         edad │   ,2868713    ,005185    55,33   0,000     ,2767088    ,2970338
               │
-c.edad#c.edad │  -.0033169    .000061   -54.35   0.000    -.0034366   -.0031973
+c.edad#c.edad │  -,0033169    ,000061   -54,35   0,000    -,0034366   -,0031973
               │
-        _cons │  -5.091976   .1023362   -49.76   0.000    -5.292551   -4.891401
+        _cons │  -5,091976   ,1023362   -49,76   0,000    -5,292551   -4,891401
 ──────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <p>Es muy posible que recordemos que los coeficientes estimados de muchos modelos no lineales no son directamente interpretables. Por eso, habitualmente, presentamos, por ejemplo, los efectos marginales. <code>Stata</code> permite abordar esta tarea a través del uso del comando <code>margins</code> después de la estimación del modelo correspondiente:</p>
@@ -676,27 +672,27 @@ c.edad#c.edad │  -.0033169    .000061   -54.35   0.000    -.0034366   -.003197
 . 
 . logit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11536.258  
-Iteration 2:   log likelihood =  -11525.64  
-Iteration 3:   log likelihood = -11525.637  
-Iteration 4:   log likelihood = -11525.637  
+Iteration 0:   log likelihood =   -13385,8  
+Iteration 1:   log likelihood = -11536,258  
+Iteration 2:   log likelihood =  -11525,64  
+Iteration 3:   log likelihood = -11525,637  
+Iteration 4:   log likelihood = -11525,637  
 
-Logistic regression                             Number of obs     =     20,292
-                                                LR chi2(3)        =    3720.33
-                                                Prob > chi2       =     0.0000
-Log likelihood = -11525.637                     Pseudo R2         =     0.1390
+Logistic regression                             Number of obs     =     20.292
+                                                LR chi2(3)        =    3720,33
+                                                Prob > chi2       =     0,0000
+Log likelihood = -11525,637                     Pseudo R2         =     0,1390
 
 ──────────────┬────────────────────────────────────────────────────────────────
        empleo │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ──────────────┼────────────────────────────────────────────────────────────────
          sexo │
-       Mujer  │  -.6262264   .0324629   -19.29   0.000    -.6898526   -.5626003
-         edad │    .470378     .00884    53.21   0.000     .4530519    .4877041
+       Mujer  │  -,6262264   ,0324629   -19,29   0,000    -,6898526   -,5626003
+         edad │    ,470378     ,00884    53,21   0,000     ,4530519    ,4877041
               │
-c.edad#c.edad │  -.0054409   .0001038   -52.41   0.000    -.0056443   -.0052374
+c.edad#c.edad │  -,0054409   ,0001038   -52,41   0,000    -,0056443   -,0052374
               │
-        _cons │  -8.332817   .1732183   -48.11   0.000    -8.672319   -7.993316
+        _cons │  -8,332817   ,1732183   -48,11   0,000    -8,672319   -7,993316
 ──────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -704,22 +700,22 @@ c.edad#c.edad │  -.0054409   .0001038   -52.41   0.000    -.0056443   -.005237
 . 
 . margins, dydx(edad sexo) atmeans
 
-Conditional marginal effects                    Number of obs     =     20,292
+Conditional marginal effects                    Number of obs     =     20.292
 Model VCE    : OIM
 
 Expression   : Pr(empleo), predict()
 dy/dx w.r.t. : 2.sexo edad
-at           : 1.sexo          =    .4918687 (mean)
-               2.sexo          =    .5081313 (mean)
-               edad            =    43.66652 (mean)
+at           : 1.sexo          =    ,4918687 (mean)
+               2.sexo          =    ,5081313 (mean)
+               edad            =    43,66652 (mean)
 
 ─────────────┬────────────────────────────────────────────────────────────────
              │            Delta-method
              │      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
         sexo │
-      Mujer  │  -.0924193   .0048088   -19.22   0.000    -.1018444   -.0829942
-        edad │  -.0007077   .0001803    -3.92   0.000    -.0010611   -.0003543
+      Mujer  │  -,0924193   ,0048088   -19,22   0,000    -,1018444   -,0829942
+        edad │  -,0007077   ,0001803    -3,92   0,000    -,0010611   -,0003543
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
@@ -728,26 +724,26 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 . 
 . probit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11523.923  
-Iteration 2:   log likelihood = -11522.197  
-Iteration 3:   log likelihood = -11522.197  
+Iteration 0:   log likelihood =   -13385,8  
+Iteration 1:   log likelihood = -11523,923  
+Iteration 2:   log likelihood = -11522,197  
+Iteration 3:   log likelihood = -11522,197  
 
-Probit regression                               Number of obs     =     20,292
-                                                LR chi2(3)        =    3727.21
-                                                Prob > chi2       =     0.0000
-Log likelihood = -11522.197                     Pseudo R2         =     0.1392
+Probit regression                               Number of obs     =     20.292
+                                                LR chi2(3)        =    3727,21
+                                                Prob > chi2       =     0,0000
+Log likelihood = -11522,197                     Pseudo R2         =     0,1392
 
 ──────────────┬────────────────────────────────────────────────────────────────
        empleo │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ──────────────┼────────────────────────────────────────────────────────────────
          sexo │
-       Mujer  │  -.3754802   .0192187   -19.54   0.000    -.4131482   -.3378121
-         edad │   .2868713    .005185    55.33   0.000     .2767088    .2970338
+       Mujer  │  -,3754802   ,0192187   -19,54   0,000    -,4131482   -,3378121
+         edad │   ,2868713    ,005185    55,33   0,000     ,2767088    ,2970338
               │
-c.edad#c.edad │  -.0033169    .000061   -54.35   0.000    -.0034366   -.0031973
+c.edad#c.edad │  -,0033169    ,000061   -54,35   0,000    -,0034366   -,0031973
               │
-        _cons │  -5.091976   .1023362   -49.76   0.000    -5.292551   -4.891401
+        _cons │  -5,091976   ,1023362   -49,76   0,000    -5,292551   -4,891401
 ──────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -755,7 +751,7 @@ c.edad#c.edad │  -.0033169    .000061   -54.35   0.000    -.0034366   -.003197
 . 
 . margins, dydx(edad sexo)
 
-Average marginal effects                        Number of obs     =     20,292
+Average marginal effects                        Number of obs     =     20.292
 Model VCE    : OIM
 
 Expression   : Pr(empleo), predict()
@@ -766,25 +762,25 @@ dy/dx w.r.t. : 2.sexo edad
              │      dy/dx   Std. Err.      z    P>|z|     [95% Conf. Interval]
 ─────────────┼────────────────────────────────────────────────────────────────
         sexo │
-      Mujer  │   -.121321   .0061259   -19.80   0.000    -.1333275   -.1093145
-        edad │  -.0022312   .0002354    -9.48   0.000    -.0026926   -.0017697
+      Mujer  │   -,121321   ,0061259   -19,80   0,000    -,1333275   -,1093145
+        edad │  -,0022312   ,0002354    -9,48   0,000    -,0026926   -,0017697
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
 <p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).</p>
 <pre class='stata'>. codebook aportacionesg
 
-─────────────────────────────────────────────────────────────────────────────────────
-aportacionesg       Aportaciones a planes privados de pensiones individuales (brutas)
-─────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+aportacionesg                                                                                                                                                                                 Aportaciones a planes privados de pensiones individuales (brutas)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   type:  numeric (float)
 
-                 range:  [0,24000]                    units:  .01
-         unique values:  220                      missing .:  0/20,292
+                 range:  [0,24000]                    units:  ,01
+         unique values:  220                      missing .:  0/20.292
 
-                  mean:   118.997
-              std. dev:   673.086
+                  mean:   118,997
+              std. dev:   673,086
 
            percentiles:        10%       25%       50%       75%       90%
                                  0         0         0         0         0
@@ -794,56 +790,56 @@ aportacionesg       Aportaciones a planes privados de pensiones individuales (br
 . 
 . tobit aportacionesg i.sexo c.edad c.edad#c.edad i.educg, ll(0)
 
-Tobit regression                                Number of obs     =     20,292
-                                                   Uncensored     =      1,555
-Limits: lower = 0                                  Left-censored  =     18,737
+Tobit regression                                Number of obs     =     20.292
+                                                   Uncensored     =      1.555
+Limits: lower = 0                                  Left-censored  =     18.737
         upper = +inf                               Right-censored =          0
 
-                                                LR chi2(5)        =    1395.55
-                                                Prob > chi2       =     0.0000
-Log likelihood = -17863.536                     Pseudo R2         =     0.0376
+                                                LR chi2(5)        =    1395,55
+                                                Prob > chi2       =     0,0000
+Log likelihood = -17863,536                     Pseudo R2         =     0,0376
 
-───────────────────┬────────────────────────────────────────────────────────────────
-     aportacionesg │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              sexo │
-            Mujer  │  -498.8578    94.7571    -5.26   0.000    -684.5894   -313.1263
-              edad │   544.6668   48.05013    11.34   0.000     450.4846    638.8489
-                   │
-     c.edad#c.edad │  -4.479357   .4949234    -9.05   0.000    -5.449447   -3.509267
-                   │
-             educg │
-Nivel educativo..  │   984.3967   135.6877     7.25   0.000     718.4379    1250.356
-Nivel educativo..  │   2495.094   121.1938    20.59   0.000     2257.544    2732.643
-                   │
-             _cons │  -21310.24   1189.214   -17.92   0.000     -23641.2   -18979.29
-───────────────────┼────────────────────────────────────────────────────────────────
-            /sigma │    3431.72   72.54803                      3289.519     3573.92
-───────────────────┴────────────────────────────────────────────────────────────────
+───────────────────────┬────────────────────────────────────────────────────────────────
+         aportacionesg │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+───────────────────────┼────────────────────────────────────────────────────────────────
+                  sexo │
+                Mujer  │  -498,8578    94,7571    -5,26   0,000    -684,5894   -313,1263
+                  edad │   544,6668   48,05013    11,34   0,000     450,4846    638,8489
+                       │
+         c.edad#c.edad │  -4,479357   ,4949234    -9,05   0,000    -5,449447   -3,509267
+                       │
+                 educg │
+Nivel educativo medio  │   984,3967   135,6877     7,25   0,000     718,4379    1250,356
+ Nivel educativo alto  │   2495,094   121,1938    20,59   0,000     2257,544    2732,643
+                       │
+                 _cons │  -21310,24   1189,214   -17,92   0,000     -23641,2   -18979,29
+───────────────────────┼────────────────────────────────────────────────────────────────
+                /sigma │    3431,72   72,54803                      3289,519     3573,92
+───────────────────────┴────────────────────────────────────────────────────────────────
 
 . 
 . //  Efectos marginales
 . 
 . margins, dydx(sexo edad educg)
 
-Average marginal effects                        Number of obs     =     20,292
+Average marginal effects                        Number of obs     =     20.292
 Model VCE    : OIM
 
 Expression   : Linear prediction, predict()
 dy/dx w.r.t. : 2.sexo edad 2.educg 3.educg
 
-───────────────────┬────────────────────────────────────────────────────────────────
-                   │            Delta-method
-                   │      dy/dx   Std. Err.      t    P>|t|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              sexo │
-            Mujer  │  -498.8578    94.7571    -5.26   0.000    -684.5894   -313.1263
-              edad │   153.4709   7.290909    21.05   0.000     139.1801    167.7616
-                   │
-             educg │
-Nivel educativo..  │   984.3967   135.6877     7.25   0.000     718.4379    1250.356
-Nivel educativo..  │   2495.094   121.1938    20.59   0.000     2257.544    2732.643
-───────────────────┴────────────────────────────────────────────────────────────────
+───────────────────────┬────────────────────────────────────────────────────────────────
+                       │            Delta-method
+                       │      dy/dx   Std. Err.      t    P>|t|     [95% Conf. Interval]
+───────────────────────┼────────────────────────────────────────────────────────────────
+                  sexo │
+                Mujer  │  -498,8578    94,7571    -5,26   0,000    -684,5894   -313,1263
+                  edad │   153,4709   7,290909    21,05   0,000     139,1801    167,7616
+                       │
+                 educg │
+Nivel educativo medio  │   984,3967   135,6877     7,25   0,000     718,4379    1250,356
+ Nivel educativo alto  │   2495,094   121,1938    20,59   0,000     2257,544    2732,643
+───────────────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
 <p>Otro ejemplo sencillo sería un <em>logit</em> ordenado, donde la variable dependiente es categórica, pero ordinal. Por ejemplo, en nuestra base de datos, tenemos la variable <code>salud</code>. Podemos explorar el efecto del sexo, la edad y el nivel educativo en el nivel de salud autopercibido.</p>
@@ -855,13 +851,13 @@ Note: dy/dx for factor levels is the discrete change from the base level.
  general de │
       salud │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-  Muy bueno │      5,177       25.51       25.51
-      Bueno │     11,426       56.31       81.82
-    Regular │      2,885       14.22       96.04
-       Malo │        643        3.17       99.21
-   Muy malo │        161        0.79      100.00
+  Muy bueno │       5177       25,51       25,51
+      Bueno │      11426       56,31       81,82
+    Regular │       2885       14,22       96,04
+       Malo │        643        3,17       99,21
+   Muy malo │        161        0,79      100,00
 ────────────┼───────────────────────────────────
-      Total │     20,292      100.00
+      Total │      20292      100,00
 
 . tab salud, nolabel
 
@@ -869,55 +865,55 @@ Note: dy/dx for factor levels is the discrete change from the base level.
  general de │
       salud │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          1 │      5,177       25.51       25.51
-          2 │     11,426       56.31       81.82
-          3 │      2,885       14.22       96.04
-          4 │        643        3.17       99.21
-          5 │        161        0.79      100.00
+          1 │       5177       25,51       25,51
+          2 │      11426       56,31       81,82
+          3 │       2885       14,22       96,04
+          4 │        643        3,17       99,21
+          5 │        161        0,79      100,00
 ────────────┼───────────────────────────────────
-      Total │     20,292      100.00
+      Total │      20292      100,00
 
 . 
 . //  Estimación del modelo logit ordenado
 . 
 . ologit salud i.sexo c.edad c.edad#c.edad i.educg
 
-Iteration 0:   log likelihood = -22260.137  
-Iteration 1:   log likelihood = -20489.407  
-Iteration 2:   log likelihood = -20436.713  
-Iteration 3:   log likelihood = -20436.618  
-Iteration 4:   log likelihood = -20436.618  
+Iteration 0:   log likelihood = -22260,137  
+Iteration 1:   log likelihood = -20489,407  
+Iteration 2:   log likelihood = -20436,713  
+Iteration 3:   log likelihood = -20436,618  
+Iteration 4:   log likelihood = -20436,618  
 
-Ordered logistic regression                     Number of obs     =     20,292
-                                                LR chi2(5)        =    3647.04
-                                                Prob > chi2       =     0.0000
-Log likelihood = -20436.618                     Pseudo R2         =     0.0819
+Ordered logistic regression                     Number of obs     =     20.292
+                                                LR chi2(5)        =    3647,04
+                                                Prob > chi2       =     0,0000
+Log likelihood = -20436,618                     Pseudo R2         =     0,0819
 
-───────────────────┬────────────────────────────────────────────────────────────────
-             salud │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              sexo │
-            Mujer  │   .1641013   .0278271     5.90   0.000     .1095612    .2186414
-              edad │   .0761111   .0073223    10.39   0.000     .0617597    .0904624
-                   │
-     c.edad#c.edad │  -.0002204    .000087    -2.53   0.011    -.0003909   -.0000498
-                   │
-             educg │
-Nivel educativo..  │  -.4981022    .035834   -13.90   0.000    -.5683356   -.4278688
-Nivel educativo..  │  -.8882005   .0339326   -26.18   0.000    -.9547071   -.8216938
-───────────────────┼────────────────────────────────────────────────────────────────
-             /cut1 │   1.253581   .1448187                       .969742    1.537421
-             /cut2 │   4.234112   .1474867                      3.945043    4.523181
-             /cut3 │    6.02135   .1502783                       5.72681     6.31589
-             /cut4 │   7.686682     .16584                      7.361642    8.011723
-───────────────────┴────────────────────────────────────────────────────────────────
+───────────────────────┬────────────────────────────────────────────────────────────────
+                 salud │      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+───────────────────────┼────────────────────────────────────────────────────────────────
+                  sexo │
+                Mujer  │   ,1641013   ,0278271     5,90   0,000     ,1095612    ,2186414
+                  edad │   ,0761111   ,0073223    10,39   0,000     ,0617597    ,0904624
+                       │
+         c.edad#c.edad │  -,0002204    ,000087    -2,53   0,011    -,0003909   -,0000498
+                       │
+                 educg │
+Nivel educativo medio  │  -,4981022    ,035834   -13,90   0,000    -,5683356   -,4278688
+ Nivel educativo alto  │  -,8882005   ,0339326   -26,18   0,000    -,9547071   -,8216938
+───────────────────────┼────────────────────────────────────────────────────────────────
+                 /cut1 │   1,253581   ,1448187                       ,969742    1,537421
+                 /cut2 │   4,234112   ,1474867                      3,945043    4,523181
+                 /cut3 │    6,02135   ,1502783                       5,72681     6,31589
+                 /cut4 │   7,686682     ,16584                      7,361642    8,011723
+───────────────────────┴────────────────────────────────────────────────────────────────
 
 . 
 . //  Efectos marginales
 . 
 . margins, dydx(sexo edad educg)
 
-Average marginal effects                        Number of obs     =     20,292
+Average marginal effects                        Number of obs     =     20.292
 Model VCE    : OIM
 
 dy/dx w.r.t. : 2.sexo edad 2.educg 3.educg
@@ -935,37 +931,37 @@ dy/dx w.r.t. : 2.sexo edad 2.educg 3.educg
 ─────────────┼────────────────────────────────────────────────────────────────
 2.sexo       │
     _predict │
-          1  │  -.0271248      .0046    -5.90   0.000    -.0361406    -.018109
-          2  │   .0048701   .0008921     5.46   0.000     .0031215    .0066186
-          3  │   .0161653   .0027451     5.89   0.000      .010785    .0215456
-          4  │   .0048092    .000832     5.78   0.000     .0031786    .0064398
-          5  │   .0012803    .000238     5.38   0.000     .0008138    .0017468
+          1  │  -,0271248      ,0046    -5,90   0,000    -,0361406    -,018109
+          2  │   ,0048701   ,0008921     5,46   0,000     ,0031215    ,0066186
+          3  │   ,0161653   ,0027451     5,89   0,000      ,010785    ,0215456
+          4  │   ,0048092    ,000832     5,78   0,000     ,0031786    ,0064398
+          5  │   ,0012803    ,000238     5,38   0,000     ,0008138    ,0017468
 ─────────────┼────────────────────────────────────────────────────────────────
 edad         │
     _predict │
-          1  │  -.0097156   .0001787   -54.37   0.000    -.0100658   -.0093653
-          2  │   .0023436   .0002435     9.62   0.000     .0018662    .0028209
-          3  │   .0053864    .000166    32.44   0.000      .005061    .0057118
-          4  │   .0015694   .0000829    18.93   0.000     .0014069     .001732
-          5  │   .0004162   .0000364    11.43   0.000     .0003449    .0004876
+          1  │  -,0097156   ,0001787   -54,37   0,000    -,0100658   -,0093653
+          2  │   ,0023436   ,0002435     9,62   0,000     ,0018662    ,0028209
+          3  │   ,0053864    ,000166    32,44   0,000      ,005061    ,0057118
+          4  │   ,0015694   ,0000829    18,93   0,000     ,0014069     ,001732
+          5  │   ,0004162   ,0000364    11,43   0,000     ,0003449    ,0004876
 ─────────────┼────────────────────────────────────────────────────────────────
 1.educg      │  (base outcome)
 ─────────────┼────────────────────────────────────────────────────────────────
 2.educg      │
     _predict │
-          1  │   .0757867   .0055962    13.54   0.000     .0648183    .0867552
-          2  │  -.0008902   .0013859    -0.64   0.521    -.0036065    .0018261
-          3  │  -.0543804   .0039026   -13.93   0.000    -.0620293   -.0467315
-          4  │  -.0162191    .001246   -13.02   0.000    -.0186612    -.013777
-          5  │   -.004297   .0004393    -9.78   0.000     -.005158   -.0034361
+          1  │   ,0757867   ,0055962    13,54   0,000     ,0648183    ,0867552
+          2  │  -,0008902   ,0013859    -0,64   0,521    -,0036065    ,0018261
+          3  │  -,0543804   ,0039026   -13,93   0,000    -,0620293   -,0467315
+          4  │  -,0162191    ,001246   -13,02   0,000    -,0186612    -,013777
+          5  │   -,004297   ,0004393    -9,78   0,000     -,005158   -,0034361
 ─────────────┼────────────────────────────────────────────────────────────────
 3.educg      │
     _predict │
-          1  │   .1468749   .0055928    26.26   0.000     .1359131    .1578366
-          2  │  -.0265237   .0023665   -11.21   0.000    -.0311619   -.0218855
-          3  │  -.0890979    .003535   -25.20   0.000    -.0960264   -.0821694
-          4  │  -.0247866   .0012741   -19.45   0.000    -.0272838   -.0222895
-          5  │  -.0064666   .0005513   -11.73   0.000    -.0075471   -.0053862
+          1  │   ,1468749   ,0055928    26,26   0,000     ,1359131    ,1578366
+          2  │  -,0265237   ,0023665   -11,21   0,000    -,0311619   -,0218855
+          3  │  -,0890979    ,003535   -25,20   0,000    -,0960264   -,0821694
+          4  │  -,0247866   ,0012741   -19,45   0,000    -,0272838   -,0222895
+          5  │  -,0064666   ,0005513   -11,73   0,000    -,0075471   -,0053862
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
@@ -988,39 +984,37 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 
 Survey: Linear regression
 
-Number of strata   =        19                 Number of obs     =      11,599
-Number of PSUs     =     2,133                 Population size   =  17,156,324
-                                               Design df         =       2,114
-                                               F(   8,   2107)   =      147.65
-                                               Prob > F          =      0.0000
-                                               R-squared         =      0.2038
+Number of strata   =        19                 Number of obs     =      11.599
+Number of PSUs     =     2.133                 Population size   =  17.156.324
+                                               Design df         =       2.114
+                                               F(   8,   2107)   =      147,65
+                                               Prob > F          =      0,0000
+                                               R-squared         =      0,2038
 
-───────────────────┬────────────────────────────────────────────────────────────────
-                   │             Linearized
-        logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
-───────────────────┼────────────────────────────────────────────────────────────────
-              edad │    .071094   .0068759    10.34   0.000     .0576099    .0845782
-                   │
-     c.edad#c.edad │  -.0005521   .0000774    -7.14   0.000    -.0007038   -.0004004
-                   │
-       sexo#c.edad │
-            Mujer  │  -.0035596   .0016238    -2.19   0.028     -.006744   -.0003752
-                   │
-              sexo │
-            Mujer  │  -.0951359   .0826891    -1.15   0.250    -.2572964    .0670247
-                   │
-             educg │
-Nivel educativo..  │   .2449096   .0334514     7.32   0.000     .1793085    .3105106
-Nivel educativo..  │   .5647163   .0316199    17.86   0.000      .502707    .6267256
-                   │
-        sexo#educg │
-            Mujer #│
-Nivel educativo..  │   -.068334   .0537433    -1.27   0.204    -.1737293    .0370613
-            Mujer #│
-Nivel educativo..  │   .1002394   .0428483     2.34   0.019     .0162103    .1842686
-                   │
-             _cons │   5.140099   .1488365    34.54   0.000     4.848217     5.43198
-───────────────────┴────────────────────────────────────────────────────────────────
+─────────────────────────────┬────────────────────────────────────────────────────────────────
+                             │             Linearized
+                  logsalario │      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+─────────────────────────────┼────────────────────────────────────────────────────────────────
+                        edad │    ,071094   ,0068759    10,34   0,000     ,0576099    ,0845782
+                             │
+               c.edad#c.edad │  -,0005521   ,0000774    -7,14   0,000    -,0007038   -,0004004
+                             │
+                 sexo#c.edad │
+                      Mujer  │  -,0035596   ,0016238    -2,19   0,028     -,006744   -,0003752
+                             │
+                        sexo │
+                      Mujer  │  -,0951359   ,0826891    -1,15   0,250    -,2572964    ,0670247
+                             │
+                       educg │
+      Nivel educativo medio  │   ,2449096   ,0334514     7,32   0,000     ,1793085    ,3105106
+       Nivel educativo alto  │   ,5647163   ,0316199    17,86   0,000      ,502707    ,6267256
+                             │
+                  sexo#educg │
+Mujer#Nivel educativo medio  │   -,068334   ,0537433    -1,27   0,204    -,1737293    ,0370613
+ Mujer#Nivel educativo alto  │   ,1002394   ,0428483     2,34   0,019     ,0162103    ,1842686
+                             │
+                       _cons │   5,140099   ,1488365    34,54   0,000     4,848217     5,43198
+─────────────────────────────┴────────────────────────────────────────────────────────────────
 </pre>
 <p>Además, muchos comandos en <code>Stata</code> admiten el empleo de ponderaciones. En el caso de los encuestas, estas reflejan el inverso de la probabilidad de cada observación ser seleccionada y deben introducirse como <code>pweight</code> (pesos probabilísticos). Hay muchas especificades asociadas al empleo de ponderaciones y no todos los comandos admiten el empleo de pesos.</p>
 <p>El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: a través de <code>xtset</code>, <code>Stata</code> permite especificar cuáles son las unidades del panel (<em><code>panelvar</code></em>) y cuál es la variable temporal (<em><code>timevar</code></em>) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).</p>
@@ -1048,19 +1042,19 @@ Nivel educativo..  │   .1002394   .0428483     2.34   0.019     .0162103    .1
 . 
 . pca htelef htv hpc hlavadora hcoche
 
-Principal components/correlation                 Number of obs    =     33,710
+Principal components/correlation                 Number of obs    =     33.710
                                                  Number of comp.  =          5
                                                  Trace            =          5
-    Rotation: (unrotated = principal)            Rho              =     1.0000
+    Rotation: (unrotated = principal)            Rho              =     1,0000
 
     ─────────────┬────────────────────────────────────────────────────────────
        Component │   Eigenvalue   Difference         Proportion   Cumulative
     ─────────────┼────────────────────────────────────────────────────────────
-           Comp1 │      1.47187      .414747             0.2944       0.2944
-           Comp2 │      1.05712      .103425             0.2114       0.5058
-           Comp3 │      .953694      .053114             0.1907       0.6965
-           Comp4 │       .90058      .283837             0.1801       0.8767
-           Comp5 │      .616743            .             0.1233       1.0000
+           Comp1 │      1,47187      ,414747             0,2944       0,2944
+           Comp2 │      1,05712      ,103425             0,2114       0,5058
+           Comp3 │      ,953694      ,053114             0,1907       0,6965
+           Comp4 │       ,90058      ,283837             0,1801       0,8767
+           Comp5 │      ,616743            .             0,1233       1,0000
     ─────────────┴────────────────────────────────────────────────────────────
 
 Principal components (eigenvectors) 
@@ -1068,11 +1062,11 @@ Principal components (eigenvectors)
     ──────────────────────────────────────────────────────────────────────────────
         Variable │    Comp1     Comp2     Comp3     Comp4     Comp5 │ Unexplained 
     ─────────────+──────────────────────────────────────────────────+─────────────
-          htelef │   0.3090    0.1566    0.8789    0.3280   -0.0017 │           0 
-             htv │   0.1488    0.7171   -0.3870    0.5548    0.0770 │           0 
-             hpc │   0.6264   -0.2952   -0.1663    0.0001    0.7020 │           0 
-       hlavadora │   0.2887    0.5734    0.0809   -0.7625    0.0029 │           0 
-          hcoche │   0.6377   -0.2128   -0.2088    0.0566   -0.7080 │           0 
+          htelef │   0,3090    0,1566    0,8789    0,3280   -0,0017 │           0 
+             htv │   0,1488    0,7171   -0,3870    0,5548    0,0770 │           0 
+             hpc │   0,6264   -0,2952   -0,1663    0,0001    0,7020 │           0 
+       hlavadora │   0,2887    0,5734    0,0809   -0,7625    0,0029 │           0 
+          hcoche │   0,6377   -0,2128   -0,2088    0,0566   -0,7080 │           0 
     ──────────────────────────────────────────────────────────────────────────────
 
 . 
@@ -1088,11 +1082,11 @@ Scoring coefficients
     ────────────────────────────────────────────────────────────────
         Variable │    Comp1     Comp2     Comp3     Comp4     Comp5 
     ─────────────+──────────────────────────────────────────────────
-          htelef │   0.3090    0.1566    0.8789    0.3280   -0.0017 
-             htv │   0.1488    0.7171   -0.3870    0.5548    0.0770 
-             hpc │   0.6264   -0.2952   -0.1663    0.0001    0.7020 
-       hlavadora │   0.2887    0.5734    0.0809   -0.7625    0.0029 
-          hcoche │   0.6377   -0.2128   -0.2088    0.0566   -0.7080 
+          htelef │   0,3090    0,1566    0,8789    0,3280   -0,0017 
+             htv │   0,1488    0,7171   -0,3870    0,5548    0,0770 
+             hpc │   0,6264   -0,2952   -0,1663    0,0001    0,7020 
+       hlavadora │   0,2887    0,5734    0,0809   -0,7625    0,0029 
+          hcoche │   0,6377   -0,2128   -0,2088    0,0566   -0,7080 
     ────────────────────────────────────────────────────────────────
 
 . 
@@ -1100,67 +1094,43 @@ Scoring coefficients
 . 
 . mca htelef htv hpc hlavadora hcoche
 
-Multiple/Joint correspondence analysis         Number of obs     =     33,710
-                                               Total inertia     =  .01924168
+Multiple/Joint correspondence analysis         Number of obs     =     33.710
+                                               Total inertia     =  ,01924168
     Method: Burt/adjusted inertias             Number of axes    =          2
 
                 │   principal               cumul 
       Dimension │    inertia     percent   percent
     ────────────┼──────────────────────────────────
-          dim 1 │     .013916     72.32      72.32
-          dim 2 │    .0002039      1.06      73.38
+          dim 1 │     ,013916     72,32      72,32
+          dim 2 │    ,0002039      1,06      73,38
     ────────────┼──────────────────────────────────
-          Total │    .0192417    100.00
+          Total │    ,0192417    100,00
 
 Statistics for column categories in standard normalization
 
-                 │          overall          │        dimension_1        
-      Categories │    mass  quality   %inert │   coord   sqcorr  contrib 
-    ─────────────+───────────────────────────+───────────────────────────
-    htelef       │                           │                           
-              No │   0.001    1.109    0.062 │   8.878    1.105    0.095 
-              Sí │   0.199    1.109    0.000 │  -0.054    1.105    0.001 
-    ─────────────+───────────────────────────+───────────────────────────
-    htv          │                           │                           
-              No │   0.001    0.762    0.028 │   5.306    0.568    0.022 
-              Sí │   0.199    0.762    0.000 │  -0.021    0.568    0.000 
-    ─────────────+───────────────────────────+───────────────────────────
-    hpc          │                           │                           
-              No │   0.047    0.684    0.319 │   2.543    0.682    0.301 
-              Sí │   0.153    0.684    0.097 │  -0.772    0.682    0.091 
-    ─────────────+───────────────────────────+───────────────────────────
-    hlavadora    │                           │                           
-              No │   0.001    0.966    0.066 │  11.181    0.914    0.083 
-              Sí │   0.199    0.966    0.000 │  -0.037    0.914    0.000 
-    ─────────────+───────────────────────────+───────────────────────────
-    hcoche       │                           │                           
-              No │   0.031    0.689    0.360 │   3.309    0.688    0.343 
-              Sí │   0.169    0.689    0.067 │  -0.614    0.688    0.064 
-    ─────────────────────────────────────────────────────────────────────
-
-                 │        dimension_2        
-      Categories │   coord   sqcorr  contrib 
-    ─────────────+───────────────────────────
-    htelef       │                           
-              No │   4.499    0.004    0.024 
-              Sí │  -0.027    0.004    0.000 
-    ─────────────+───────────────────────────
-    htv          │                           
-              No │  25.576    0.193    0.512 
-              Sí │  -0.101    0.193    0.002 
-    ─────────────+───────────────────────────
-    hpc          │                           
-              No │  -1.198    0.002    0.067 
-              Sí │   0.364    0.002    0.020 
-    ─────────────+───────────────────────────
-    hlavadora    │                           
-              No │  22.206    0.053    0.328 
-              Sí │  -0.074    0.053    0.001 
-    ─────────────+───────────────────────────
-    hcoche       │                           
-              No │  -1.104    0.001    0.038 
-              Sí │   0.205    0.001    0.007 
-    ─────────────────────────────────────────
+                 │          overall          │        dimension_1        │        dimension_2        
+      Categories │    mass  quality   %inert │   coord   sqcorr  contrib │   coord   sqcorr  contrib 
+    ─────────────+───────────────────────────+───────────────────────────+───────────────────────────
+    htelef       │                           │                           │                           
+              No │   0,001    1,109    0,062 │   8,878    1,105    0,095 │   4,499    0,004    0,024 
+              Sí │   0,199    1,109    0,000 │  -0,054    1,105    0,001 │  -0,027    0,004    0,000 
+    ─────────────+───────────────────────────+───────────────────────────+───────────────────────────
+    htv          │                           │                           │                           
+              No │   0,001    0,762    0,028 │   5,306    0,568    0,022 │  25,576    0,193    0,512 
+              Sí │   0,199    0,762    0,000 │  -0,021    0,568    0,000 │  -0,101    0,193    0,002 
+    ─────────────+───────────────────────────+───────────────────────────+───────────────────────────
+    hpc          │                           │                           │                           
+              No │   0,047    0,684    0,319 │   2,543    0,682    0,301 │  -1,198    0,002    0,067 
+              Sí │   0,153    0,684    0,097 │  -0,772    0,682    0,091 │   0,364    0,002    0,020 
+    ─────────────+───────────────────────────+───────────────────────────+───────────────────────────
+    hlavadora    │                           │                           │                           
+              No │   0,001    0,966    0,066 │  11,181    0,914    0,083 │  22,206    0,053    0,328 
+              Sí │   0,199    0,966    0,000 │  -0,037    0,914    0,000 │  -0,074    0,053    0,001 
+    ─────────────+───────────────────────────+───────────────────────────+───────────────────────────
+    hcoche       │                           │                           │                           
+              No │   0,031    0,689    0,360 │   3,309    0,688    0,343 │  -1,104    0,001    0,038 
+              Sí │   0,169    0,689    0,067 │  -0,614    0,688    0,064 │   0,205    0,001    0,007 
+    ─────────────────────────────────────────────────────────────────────────────────────────────────
 
 
 . 
@@ -1173,36 +1143,36 @@ Statistics for column categories in standard normalization
 . //  Podemos calcular la correlación con la renta del hogar
 . 
 . correlate hrenta1 pc1
-(obs=33,710)
+(obs=33.710)
 
              │  hrenta1      pc1
 ─────────────┼──────────────────
-     hrenta1 │   1.0000
-         pc1 │   0.3369   1.0000
+     hrenta1 │   1,0000
+         pc1 │   0,3369   1,0000
 
 
 . correlate hrenta1 mc1
-(obs=33,734)
+(obs=33.734)
 
              │  hrenta1      mc1
 ─────────────┼──────────────────
-     hrenta1 │   1.0000
-         mc1 │  -0.3368   1.0000
+     hrenta1 │   1,0000
+         mc1 │  -0,3368   1,0000
 
 
 . 
 . //  Podemos cambiar el signo de la componente (solo indica una dirección)
 . 
 . replace mc1 = -mc1
-(33,734 real changes made)
+(33.734 real changes made)
 
 . correlate hrenta1 mc1
-(obs=33,734)
+(obs=33.734)
 
              │  hrenta1      mc1
 ─────────────┼──────────────────
-     hrenta1 │   1.0000
-         mc1 │   0.3368   1.0000
+     hrenta1 │   1,0000
+         mc1 │   0,3368   1,0000
 </pre>
 <h1 id="references">References</h1>
 

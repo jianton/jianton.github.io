@@ -220,7 +220,7 @@ Podemos plantear un tercer ejemplo con un modelo *tobit*, empleado en ocasiones 
 codebook aportacionesg
 ```
 
-En nuestro caso, la estimación del modelo será la siguiente (en este caso, los efectos marginales coinciden con los coeficientes):
+En nuestro caso, la estimación del modelo será la siguiente (como en el caso anterior, los efectos marginales no coinciden con los coeficientes):
 
 ```{s}
 //  Estimación del modelo tobit
@@ -229,7 +229,7 @@ tobit aportacionesg i.sexo c.edad c.edad#c.edad i.educg, ll(0)
 
 //  Efectos marginales
 
-margins, dydx(sexo edad educg)
+margins, dydx(sexo edad educg) predict(ystar(0,.))
 ```
 
 Otro ejemplo sencillo sería un *logit* ordenado, donde la variable dependiente es categórica, pero ordinal. Por ejemplo, en nuestra base de datos, tenemos la variable `salud`. Podemos explorar el efecto del sexo, la edad y el nivel educativo en el nivel de salud autopercibido.
