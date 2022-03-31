@@ -340,6 +340,7 @@ D:\Dropbox\curso_stata\sesión1
 <p><code>import <u>delim</u>ited [using] <i>filename</i> [, <i>import_delimited_options</i>]</code></p>
 <p>En mi caso,</p>
 <pre class='stata'>. import delimited using "esudb18r.csv", clear delimiter(",")
+(encoding automatically selected: ISO-8859-1)
 (37 vars, 33,734 obs)
 </pre>
 <p>Existen otros muchos formatos, y podemos conocer cómo acceder a ellos simplemente a través de la ayuda <code>help import</code>.</p>
@@ -445,12 +446,11 @@ log using curso1, replace</code></pre>
 <p>Ordenar la base de datos por una o varias variables</p>
 <p><code><u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code></p>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (<code>rb210</code>).</p>
-
 <pre class='stata'>. codebook rb210
 
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-rb210                                                                                                                                                                                                                                                     RB210
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────
+rb210                                                                           RB210
+─────────────────────────────────────────────────────────────────────────────────────
 
                   Type: Numeric (byte)
 
@@ -464,7 +464,6 @@ rb210                                                                           
                        11,539  4
                             1  .
 </pre>
-
 <p>Fácilmente, podemos ver la distribución de la misma.</p>
 <pre class='stata'>. tabulate rb210
 
