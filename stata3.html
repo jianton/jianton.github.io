@@ -787,9 +787,9 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 <p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).</p>
 <pre class='stata'>. codebook aportacionesg
 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────
-aportacionesg                               Aportaciones a planes privados de pensiones individuales (brutas)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+aportacionesg                                                                                    Aportaciones a planes privados de pensiones individuales (brutas)
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   Type: Numeric (float)
 
@@ -999,7 +999,7 @@ edad         │
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
-<p><code>Stata</code> es especialmente adecuado para manejar datos con diseños muestrales complejos y datos de panel. Para los primeros, <code>Stata</code> cuenta con los comandos de la familia <code>svy</code>, que nos permiten tener en cuenta la existencia de ponderaciones, estratos y muestreo en varias etapas. Básicamente, debemos fijar las características del muestreo de forma previa y, posteriormente, emplear el comando adecuado. No todos los comandos tienen versión compatible con diseños muestrales complejos. Por ejemplo, nuestra encuesta utiliza como estratos las CCAA. Dentro de estos estratos, selecciona aleatoriamente unidades primarias de muestreo consistentes en secciones censales. Posteriormente, entrevista todos los hogares dentro de cada sección y todas las personas dentro de cada hogar. Cada persona tiene un peso probabístico, que viene dado por la probabilidad de que una persona de sus características sea seleccionada.</p>
+<p><code>Stata</code> es especialmente adecuado para manejar datos con diseños muestrales complejos y datos de panel. Para los primeros, <code>Stata</code> cuenta con los comandos de la familia <code>svy</code>, que nos permiten tener en cuenta la existencia de ponderaciones, estratos y muestreo en varias etapas. Básicamente, debemos fijar las características del muestreo de forma previa y, posteriormente, emplear el comando adecuado. No todos los comandos tienen versión compatible con diseños muestrales complejos. Por ejemplo, nuestra encuesta utiliza como estratos las CCAA. Dentro de estos estratos, selecciona aleatoriamente unidades primarias de muestreo consistentes en secciones censales. Posteriormente, entrevista todos los hogares dentro de cada sección y todas las personas dentro de cada hogar. Cada persona tiene un peso probabilístico, que viene dado por la probabilidad de que una persona de sus características sea seleccionada.</p>
 <p>En primar lugar, fijamos el tipo de muestreo en <code>Stata</code>:</p>
 <p><code>svyset [<i>psu</i>] [<i>weight</i>] [, <i>design_options</i> <i>options</i>]</code></p>
 <p><code>svyset</code> es una de las pocas instrucciones que resulta más fácil de implementar a través de las ventanas. Una buena estrategia es emplear el menú de ventanas, generar la instrucción y copiarla en nuestro archivo <code>do</code>.</p>
