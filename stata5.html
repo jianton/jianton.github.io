@@ -259,70 +259,70 @@ all files already exist and are up to date.
 . 
 . eststo total: regress logsalario ib1.sexo edad edad2 ib1.educg
 
-      Source │       SS           df       MS      Number of obs   =    11.599
-─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
-       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
-    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
-       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
+      Source │       SS           df       MS      Number of obs   =    11,599
+─────────────┼──────────────────────────────────   F(5, 11593)     =    577.13
+       Model │  1600.34458         5  320.068916   Prob > F        =    0.0000
+    Residual │  6429.36841    11,593  .554590565   R-squared       =    0.1993
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.1990
+       Total │    8029.713    11,598  .692336006   Root MSE        =    .74471
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
         sexo │
-      Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
-        edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
-       edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
+      Mujer  │  -.2365705     .01394   -16.97   0.000    -.2638953   -.2092458
+        edad │   .0721823   .0046198    15.62   0.000     .0631268    .0812378
+       edad2 │  -.0005808   .0000535   -10.86   0.000    -.0006856   -.0004759
              │
        educg │
-Nivel medio  │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
- Nivel alto  │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
+Nivel medio  │    .240602   .0185962    12.94   0.000     .2041503    .2770537
+ Nivel alto  │    .613554   .0163944    37.42   0.000     .5814181    .6456898
              │
-       _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
+       _cons │   5.145524   .0958254    53.70   0.000      4.95769    5.333357
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . eststo male: regress logsalario edad edad2 ib1.educg if sexo == 1
 
-      Source │       SS           df       MS      Number of obs   =     5.966
-─────────────┼──────────────────────────────────   F(4, 5961)      =    386,62
-       Model │  833,616132         4  208,404033   Prob > F        =    0,0000
-    Residual │  3213,21346     5.961  ,539039333   R-squared       =    0,2060
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,2055
-       Total │   4046,8296     5.965  ,678429102   Root MSE        =    ,73419
+      Source │       SS           df       MS      Number of obs   =     5,966
+─────────────┼──────────────────────────────────   F(4, 5961)      =    386.62
+       Model │  833.616132         4  208.404033   Prob > F        =    0.0000
+    Residual │  3213.21346     5,961  .539039333   R-squared       =    0.2060
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.2055
+       Total │   4046.8296     5,965  .678429102   Root MSE        =    .73419
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   ,0758506   ,0061639    12,31   0,000     ,0637672     ,087934
-       edad2 │  -,0005995   ,0000715    -8,38   0,000    -,0007397   -,0004593
+        edad │   .0758506   .0061639    12.31   0.000     .0637672     .087934
+       edad2 │  -.0005995   .0000715    -8.38   0.000    -.0007397   -.0004593
              │
        educg │
-Nivel medio  │   ,2544457   ,0246757    10,31   0,000     ,2060723    ,3028191
- Nivel alto  │   ,5653884   ,0220473    25,64   0,000     ,5221677    ,6086091
+Nivel medio  │   .2544457   .0246757    10.31   0.000     .2060723    .3028191
+ Nivel alto  │   .5653884   .0220473    25.64   0.000     .5221677    .6086091
              │
-       _cons │   5,037839    ,127506    39,51   0,000     4,787881    5,287797
+       _cons │   5.037839    .127506    39.51   0.000     4.787881    5.287797
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . eststo female: regress logsalario edad edad2 ib1.educg if sexo == 2
 
-      Source │       SS           df       MS      Number of obs   =     5.633
-─────────────┼──────────────────────────────────   F(4, 5628)      =    309,16
-       Model │  703,432328         4  175,858082   Prob > F        =    0,0000
-    Residual │  3201,40011     5.628   ,56883442   R-squared       =    0,1801
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,1796
-       Total │  3904,83244     5.632  ,693329624   Root MSE        =    ,75421
+      Source │       SS           df       MS      Number of obs   =     5,633
+─────────────┼──────────────────────────────────   F(4, 5628)      =    309.16
+       Model │  703.432328         4  175.858082   Prob > F        =    0.0000
+    Residual │  3201.40011     5,628   .56883442   R-squared       =    0.1801
+─────────────┼──────────────────────────────────   Adj R-squared   =    0.1796
+       Total │  3904.83244     5,632  .693329624   Root MSE        =    .75421
 
 ─────────────┬────────────────────────────────────────────────────────────────
   logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
 ─────────────┼────────────────────────────────────────────────────────────────
-        edad │   ,0665724     ,00695     9,58   0,000     ,0529477     ,080197
-       edad2 │  -,0005401   ,0000803    -6,73   0,000    -,0006974   -,0003827
+        edad │   .0665724     .00695     9.58   0.000     .0529477     .080197
+       edad2 │  -.0005401   .0000803    -6.73   0.000    -.0006974   -.0003827
              │
        educg │
-Nivel medio  │   ,2314164   ,0282288     8,20   0,000      ,176077    ,2867557
- Nivel alto  │   ,6600433   ,0245986    26,83   0,000     ,6118206    ,7082661
+Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
+ Nivel alto  │   .6600433   .0245986    26.83   0.000     .6118206    .7082661
              │
-       _cons │    5,05201   ,1443795    34,99   0,000     4,768971     5,33505
+       _cons │    5.05201   .1443795    34.99   0.000     4.768971     5.33505
 ─────────────┴────────────────────────────────────────────────────────────────
 
 . 
@@ -616,7 +616,7 @@ file figura1.pdf saved as PDF format
 </figure>
 <p>Por último, cabe mencionar la facilidad de gestión de referencias bibliográficas con programas gratuitos como <a href="https://www.jabref.org/">JabRef</a>, <a href="https://www.mendeley.com/">Mendeley</a> o <a href="https://www.zotero.org/">Zotero</a>, que pueden utilizarse, además, con otro tipo de aplicaciones para procesar textos. Los recursos disponibles en la red para el aprendizaje de LaTeX, que es, fundamentalmente, un proceso <em>learning by doing</em>, son realmente inabarcables. Una buena referencia inicial para Ciencias Sociales podría ser <span class="citation" data-cites="Frain2014">Frain (2014)</span>.</p>
 <h1 id="tablas-personalizadas-en-stata-17">4. Tablas personalizadas en <code>Stata 17</code></h1>
-<p>La versión 17 de Stata permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos <code>.docx</code>, <code>.xlsx</code> o <code>.tex</code>). Para llevar a cabo esta tarea, empleamos el comando <code>collect</code>. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas.</p>
+<p>La versión 17 de Stata permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos <code>.docx</code>, <code>.xlsx</code> o <code>.tex</code>). Para llevar a cabo esta tarea, empleamos el comando <code>collect</code>. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas. Al margen de este consejo sobre la forma de elaborar las tablas, en el <a href="https://blog.stata.com/category/reporting/">blog oficial de Stata</a> se ofrecen buenos consejos sobre el tema basados en la línea de comandos.</p>
 <p>Así, en primer lugar, podemos almacenar la información de los modelos con <code>collect</code>.</p>
 <pre><code>. //    Creación de tablas con la herramienta Tables Builder de Stata
 
