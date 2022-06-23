@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata5.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 4 May 2022, 00:00:25
+ {txt}opened on:  {res} 4 May 2022, 00:00:23
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -109,7 +109,7 @@ Nivel medio  {c |}{col 14}{res}{space 2} .2314164{col 26}{space 2} .0282288{col 
 {com}. //_2
 . esttab total male female using "salarios2.rtf", ///
 > b(%04,3fc) se(%04,3fc) /// Presentar coeficientes y errores estándar (con formato)
-> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{c -(}\super {c )-}" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
+> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{c -(}\super 2{c )-}" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
 > stats(N r2_a, fmt(%6,0fc %04,3fc) labels("No. de observaciones" "R{c -(}\super 2{c )-} ajustado")) ///
 > nobaselevels /// No mostrar las categorías de referencia
 > noconstant /// No mostrar la constante
@@ -250,7 +250,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata5.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 4 May 2022, 00:00:42
+ {txt}closed on:  {res} 4 May 2022, 00:00:56
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

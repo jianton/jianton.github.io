@@ -336,7 +336,7 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 <p>Empleando algunas opciones adicionales de <code>estout</code>, podemos mejorar el resultado.</p>
 <pre class='stata'>. esttab total male female using "salarios2.rtf", ///
 > b(%04,3fc) se(%04,3fc) /// Presentar coeficientes y errores estándar (con formato)
-> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super }" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
+> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super 2}" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
 > stats(N r2_a, fmt(%6,0fc %04,3fc) labels("No. de observaciones" "R{\super 2} ajustado")) ///
 > nobaselevels /// No mostrar las categorías de referencia
 > noconstant /// No mostrar la constante
