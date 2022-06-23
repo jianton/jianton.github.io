@@ -62,7 +62,7 @@ Obtenemos la siguiente tabla en Microsoft Word:
 Empleando algunas opciones adicionales de `estout`, podemos mejorar el resultado.
 
 ```{s}
-esttab total male female using "salarios2aux.rtf", ///
+esttab total male female using "salarios2.rtf", ///
 b(%04,3fc) se(%04,3fc) /// Presentar coeficientes y errores estándar (con formato)
 varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super }" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
 stats(N r2_a, fmt(%6,0fc %04,3fc) labels("No. de observaciones" "R{\super 2} ajustado")) ///
@@ -74,12 +74,13 @@ fonttbl(\f0\fnil Times New Roman;\f1\fnil Times New Roman;) /// Tamaño de la fu
 title(\fs24{\b Tabla 1.} {Regresión salarial por sexo}) /// Título de la tabla
 nonumbers mtitles("Total" "Hombres" "Mujeres") /// Títulos de las columnas
 nonotes /// Eliminar las notas por defecto
-addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante. La categoría de referencia es un hombre con educación media." "Fuente: Elaboración propia a partir de la ECV 2018.") ///
+addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante." ///
+"Fuente: Elaboración propia a partir de la ECV 2018.") ///
 replace
-
-unicode convertfile "salarios2aux.rtf" "salarios2.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
-erase "salarios2aux.rtf" // Borramos el archivo auxiliar creado
 ```
+La versión 17 de `Stata` acepta caracteres Unicode. Para versiones anterioes a la 17, convertir el archivo `.docx` para que este aparezca con los caracteres Unicode.
+
+unicode convertfile "salarios2.rtf" "salarios2_unicode.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
 
 ![Tabla de resultados de regresión con `estout` para MS Word con formato](table5_2.png){width=50%}
 
@@ -263,6 +264,10 @@ Podemos ver que la tabla de LaTeX generada es extremadamente simple.
 A continuación, calculamos unos estadísticos descriptivos, los almacenamos en macros y exportamos un texto que las contiene al archivo `texto.tex`
 
 ```{s}
+//  Instalamos el paquete texdoc
+
+ssc install texdoc, replace
+
 //	Creamos algunas macros con estadísticos descriptivos
 
 summarize salario if sexo == 1
@@ -317,7 +322,7 @@ quietly{
 }
 ```
 
-![Texto generada por `Stata` para insertar en LaTeX](figure.png){width=30%}
+![Texto generado por `Stata` para insertar en LaTeX](figure.png){width=30%}
 
 A continuación, en nuestro editor de LaTeX, donde habremos preparado el espacio para incluir los elementos generados, incluimos los archivos anteriores con el comando `\input{}` para la tabla y el texto e `\includegraphics{}` para la figura en `.pdf`. Como en este ejemplo estamos usando Overleaf (y no disponemos de sus características de pago), tenemos que subir los archivos a la carpeta correspondiente en la aplicación. Si utilizásemos un editor instalado localmente, simplemente, en el archivo `.tex` nos referiríamos a su ruta local de la tabla, el texto y los gráficos. El archivo principal que representan nuestro documento se llama `main.tex`.
 
@@ -325,7 +330,64 @@ A continuación, en nuestro editor de LaTeX, donde habremos preparado el espacio
 
 Por último, cabe mencionar la facilidad de gestión de referencias bibliográficas con programas gratuitos como [JabRef](https://www.jabref.org/), [Mendeley](https://www.mendeley.com/) o [Zotero](https://www.zotero.org/), que pueden utilizarse, además, con otro tipo de aplicaciones para procesar textos. Los recursos disponibles en la red para el aprendizaje de LaTeX, que es, fundamentalmente, un proceso *learning by doing*, son realmente inabarcables. Una buena referencia inicial para Ciencias Sociales podría ser @Frain2014.
 
-# 4. Documentos dinámicos y otras posibilidades
+# 4. Tablas personalizadas en `Stata 17`
+
+La versión 17 de Stata permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos `.docx`, `.xlsx` o `.tex`). Para llevar a cabo esta tarea, empleamos el comando `collect`. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas. Al margen de este consejo sobre la forma de elaborar las tablas, en el [blog oficial de Stata](https://blog.stata.com/category/reporting/) se ofrecen buenos consejos sobre el tema basados en la línea de comandos.
+
+Así, en primer lugar, podemos almacenar la información de los modelos con `collect`.
+
+    . //	Creación de tablas con la herramienta Tables Builder de Stata
+
+    . collect clear
+    . collect create Salarios
+
+    . collect _r_b _r_se, tag(model[Total]): regress logsalario ib1.sexo edad edad2 ib1.educg
+    . collect _r_b _r_se, tag(model[Hombres]): regress logsalario edad edad2 ib1.educg if sexo == 1
+    . collect _r_b _r_se, tag(model[Mujeres]): regress logsalario edad edad2 ib1.educg if sexo == 2
+
+Posteriormente, empleamos el sistema de ventanas para personalizar la tabla.
+
+![Herramienta del sistema de ventanas para elaborar tablas personalizadas de resultados](tablebuilder.png){width=70%}
+
+Posteriormente, fundamentalmente, mediante ensayo-error, vamos personalizando nuestra tabla. Cada modificación resulta en un comando, que podremos copiar a nuestro archivo `.do` para reproducir el gráfico cuando queramos.
+
+    . collect stars _r_p 0.010 `"***"' 0.050 `"**"' 0.100 `"*"', attach(_r_b)
+    . collect label levels result N "No. de observaciones" r2_a "R cuadrado ajustado", modify
+    . collect style header result[_r_b], level(hide)
+    . collect style header result[_r_se], level(hide)
+    . collect style cell result[_r_b]#result[_r_se]#result[r2_a], warn nformat(%04,3f) halign(center) valign(center)
+    . collect style cell result[_r_se], warn sformat((%s))
+    . collect style cell result[N], warn nformat(%6,0fc)
+    . collect style cell result[N]#result[r2_a], warn halign(left) valign(center)
+    . collect style cell cell_type[item], warn halign(center) valign(center) margin( right, width(15pt) ) margin( left, width(15pt) )
+    . collect label levels educg 2 "Educación secundaria" 3 "Educación superior", modify
+    . collect style cell model[Total]#model[Hombres]#model[Mujeres], warn halign(center) valign(center)
+    . collect style cell result[N], warn margin( top, width(15) )
+    . collect notes, clear
+    . collect notes `"*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante."'
+    . collect notes `"Fuente: Elaboración propia a partir de la ECV 2018"'
+    . collect style cell, border( all,  pattern(nil) )
+    . collect style cell cell_type[column-header]#cell_type[corner], warn border(top, width(0.5) pattern(single)) border(bottom, width(0.5) pattern(single)) margin(top, width(5)) margin( bottom, width(5) )
+    . collect style cell result[r2_a], warn border( bottom, width(0.5) pattern(single) )
+    . collect style cell, basestyle font("Times New Roman", size(10pt))
+    . collect style title, font("Times New Roman", size(10pt))
+    . collect style notes, font("Times New Roman", size(10pt))
+
+Una vez que la tabla se adecúa a nuestras preferencias, podemos exportarla en distintos formatos.
+
+Por ejemplo, podemos exportarla en MS Word.
+
+    . collect style putdocx, halign(center) width(70%)
+    . collect export "salarios3.docx", as(docx) replace
+
+También puede exportarse en `.tex`.
+
+    . collect style tex, nobegintable centering
+    . collect export "salarios3", as(docx) dofile("instrucciones_putdocx", replace) replace
+
+La herramienta de personalización de tablas es sin duda útil y mejora el programa, pero, actualmente, los flujos anteriores basados en `putexcel` en el caso de MS Word y `estout` resultan más flexibles.
+
+# 5. Documentos dinámicos y otras posibilidades
 
 Una de las últimas novedades en el uso de `Stata` pasan por la elaboración de documentos dinámicos. Se trata de archivos, normalmente, `.docx`, `.pdf` o `.html` que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, `Stata` está lejos todavía de las posibilidades que ofrece R con RStudio y knitr [@Gandrud2020;@Xie2015].
 
