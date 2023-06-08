@@ -8,9 +8,6 @@
   <title>Sesión 5. Reproducibilidad, flujos de trabajo e integración con otro software</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -22,17 +19,23 @@
       padding-top: 50px;
       padding-bottom: 50px;
       hyphens: auto;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -82,9 +85,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -93,6 +97,7 @@
     pre code {
       padding: 0;
       overflow: visible;
+      overflow-wrap: normal;
     }
     .sourceCode {
      background-color: transparent;
@@ -134,20 +139,32 @@
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -161,9 +178,10 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+    }  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -207,28 +225,80 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Sesión 5. Reproducibilidad, flujos de trabajo e integración con otro software</h1>
+<h1 class="title">Sesión 5. Reproducibilidad, flujos de trabajo e
+integración con otro software</h1>
 <p class="author">José-Ignacio Antón</p>
 </header>
 <hr />
 <p style="text-align: center;">
-<a href="https://jianton.github.io/curso_stata.html"><span style="color:red"><font size="4">Inicio</font></span></a>      <a href="https://jianton.github.io/stata1.html"><span style="color:red"><font size="4">Sesión 1</font></span></a>      <a href="https://jianton.github.io/stata2.html"><span style="color:red"><font size="4">Sesión 2</font></span></a>      <a href="https://jianton.github.io/stata3.html"><span style="color:red"><font size="4">Sesión 3</font></span></a>      <a href="https://jianton.github.io/stata4.html"><span style="color:red"><font size="4">Sesión 4</font></span></a>      <a href="https://jianton.github.io/stata5.html"><span style="color:red"><font size="4">Sesión 5</font></span></a>      <a href="https://jianton.github.io/stata_ejercicios.html"><span style="color:red"><font size="4">Ejercicios</font></span></a>
+<a href="https://jianton.github.io/curso_stata.html"><span
+style="color:red"><font size="4">Inicio</font></span></a>      <a
+href="https://jianton.github.io/stata1.html"><span
+style="color:red"><font size="4">Sesión 1</font></span></a>      <a
+href="https://jianton.github.io/stata2.html"><span
+style="color:red"><font size="4">Sesión 2</font></span></a>      <a
+href="https://jianton.github.io/stata3.html"><span
+style="color:red"><font size="4">Sesión 3</font></span></a>      <a
+href="https://jianton.github.io/stata4.html"><span
+style="color:red"><font size="4">Sesión 4</font></span></a>      <a
+href="https://jianton.github.io/stata5.html"><span
+style="color:red"><font size="4">Sesión 5</font></span></a>      <a
+href="https://jianton.github.io/stata_ejercicios.html"><span
+style="color:red"><font size="4">Ejercicios</font></span></a>
 </p>
 <hr />
 <h1 id="reproducibilidad">1. Reproducibilidad</h1>
-<p>En la actualidad, la reproducibilidad de nuestros resultados ocupa un lugar cada vez más importante por tres razones:</p>
+<p>En la actualidad, la reproducibilidad de nuestros resultados ocupa un
+lugar cada vez más importante por tres razones:</p>
 <ul>
-<li>En cada vez más revistas y disciplinas, se exige que se proporcione todo el material que permita obtener los resultados presentados en los artículos. En algunas publicaciones, como <em>American Economic Review</em>, se dispone incluso de recursos humanos que garantizarán esta reproducibilidad (es decir, comprueban que, con los materiales provistos por los autores, se pueda llegar a sus resultados).</li>
-<li>Tener la capacidad de reproducir nuestros resultados con un flujo de trabajo adecuado puede suponer un cierto esfuerzo en el corto plazo, pero el ahorro de tiempo a largo plazo es muy superior.</li>
-<li>Al margen de ser un proceso intensivo en tiempo, copiar y pegar nuestros resultados desde el programa estadístico que utilicemos es una práctica de riesgo en términos de errores.</li>
+<li>En cada vez más revistas y disciplinas, se exige que se proporcione
+todo el material que permita obtener los resultados presentados en los
+artículos. En algunas publicaciones, como <em>American Economic
+Review</em>, se dispone incluso de recursos humanos que garantizarán
+esta reproducibilidad (es decir, comprueban que, con los materiales
+provistos por los autores, se pueda llegar a sus resultados).</li>
+<li>Tener la capacidad de reproducir nuestros resultados con un flujo de
+trabajo adecuado puede suponer un cierto esfuerzo en el corto plazo,
+pero el ahorro de tiempo a largo plazo es muy superior.</li>
+<li>Al margen de ser un proceso intensivo en tiempo, copiar y pegar
+nuestros resultados desde el programa estadístico que utilicemos es una
+práctica de riesgo en términos de errores.</li>
 </ul>
-<p>Naturalmente, el estilo adoptado en el establecimiento de un flujo de trabajo tiene mucho de personal. No obstante, existen buenas prácticas y propuestas muy sólidas que podemos adoptar y de las que podemos aprender y, por qué no, incluso tratar de mejorar.</p>
-<p>A continuación, nos centraremos en dos flujos de trabajo, uno de ellos, para aquellos que emplean Microsoft Word y otro, más avanzado y con un grado mucho mayor de automatización, para los que prefieren LaTeX. Como referencias generales sobre el tema podemos citar los trabajos de <span class="citation" data-cites="Christensen2018">Christensen &amp; Miguel (2018)</span> y <span class="citation" data-cites="Orozco2018">Orozco et al. (2018)</span>.</p>
-<h1 id="stata-microsof-excel-microsoft-word">2. <code>Stata</code> + Microsof Excel + Microsoft Word</h1>
+<p>Naturalmente, el estilo adoptado en el establecimiento de un flujo de
+trabajo tiene mucho de personal. No obstante, existen buenas prácticas y
+propuestas muy sólidas que podemos adoptar y de las que podemos aprender
+y, por qué no, incluso tratar de mejorar.</p>
+<p>A continuación, nos centraremos en dos flujos de trabajo, uno de
+ellos, para aquellos que emplean Microsoft Word y otro, más avanzado y
+con un grado mucho mayor de automatización, para los que prefieren
+LaTeX. Como referencias generales sobre el tema podemos citar los
+trabajos de <span class="citation"
+data-cites="Christensen2018">Christensen &amp; Miguel (2018)</span> y
+<span class="citation" data-cites="Orozco2018">Orozco et al.
+(2018)</span>.</p>
+<h1 id="stata-microsof-excel-microsoft-word">2. <code>Stata</code> +
+Microsof Excel + Microsoft Word</h1>
 <figure>
-<img src="flow1.png" style="width:50.0%" alt="Propuesta de flujo de trabajo (I)" /><figcaption aria-hidden="true">Propuesta de flujo de trabajo (I)</figcaption>
+<img src="flow1.png" style="width:50.0%"
+alt="Propuesta de flujo de trabajo (I)" />
+<figcaption aria-hidden="true">Propuesta de flujo de trabajo
+(I)</figcaption>
 </figure>
-<p>Existen varios comandos y paquetes que nos permiten exportar nuestros resultados a Microsoft Word (o Microsoft Excel). Algunos ejemplos son <code>estout</code> (que emplearemos posteriormente) y <code>outreg</code>. Sin embargo, el formato en el que obtenemos estos resultados, aunque puede ser adecuado para explorar los resultados preliminares de nuestro trabajo, no se acerca a los estándares de forma necesarios para la publicación. En otras palabras, nos va a obligar a un trabajo adicional importante. Si tenemos que repetir el análisis con alguna modificación, vamos a tener que realizar ese esfuerzo nuevamente. Podemos encontrar información detallada sobre <code>estout</code> en varios artículos de su autor <span class="citation" data-cites="Jann2005 Jann2016">(Jann, 2005, 2016)</span> y en la <a href="http://repec.sowi.unibe.ch/stata/estout/">página web</a> dedicada al paquete por este. En particular, para esta tarea vamos a emplear el comando <code>esttab</code> que incluye este paquete.</p>
+<p>Existen varios comandos y paquetes que nos permiten exportar nuestros
+resultados a Microsoft Word (o Microsoft Excel). Algunos ejemplos son
+<code>estout</code> (que emplearemos posteriormente) y
+<code>outreg</code>. Sin embargo, el formato en el que obtenemos estos
+resultados, aunque puede ser adecuado para explorar los resultados
+preliminares de nuestro trabajo, no se acerca a los estándares de forma
+necesarios para la publicación. En otras palabras, nos va a obligar a un
+trabajo adicional importante. Si tenemos que repetir el análisis con
+alguna modificación, vamos a tener que realizar ese esfuerzo nuevamente.
+Podemos encontrar información detallada sobre <code>estout</code> en
+varios artículos de su autor <span class="citation"
+data-cites="Jann2005 Jann2016">(Jann, 2005, 2016)</span> y en la <a
+href="http://repec.sowi.unibe.ch/stata/estout/">página web</a> dedicada
+al paquete por este académico. En particular, para esta tarea vamos a
+emplear el comando <code>esttab</code> que incluye este paquete.</p>
 <pre class='stata'>. //  Fijamos el directorio de trabajo
 . 
 . cd "D:\Dropbox\curso_stata\sesión5"
@@ -331,9 +401,13 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 </pre>
 <p>Obtenemos la siguiente tabla en Microsoft Word:</p>
 <figure>
-<img src="table5_1.png" style="width:50.0%" alt="Tabla de resultados de regresión con estout para MS Word" /><figcaption aria-hidden="true">Tabla de resultados de regresión con <code>estout</code> para MS Word</figcaption>
+<img src="table5_1.png" style="width:50.0%"
+alt="Tabla de resultados de regresión con estout para MS Word" />
+<figcaption aria-hidden="true">Tabla de resultados de regresión con
+<code>estout</code> para MS Word</figcaption>
 </figure>
-<p>Empleando algunas opciones adicionales de <code>estout</code>, podemos mejorar el resultado.</p>
+<p>Empleando algunas opciones adicionales de <code>estout</code>,
+podemos mejorar el resultado.</p>
 <pre class='stata'>. esttab total male female using "salarios2.rtf", ///
 > b(%04,3fc) se(%04,3fc) /// Presentar coeficientes y errores estándar (con formato)
 > varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super 2}" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
@@ -351,13 +425,33 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 > replace
 (output written to salarios2.rtf)
 </pre>
-<p>La versión 17 de <code>Stata</code> acepta caracteres Unicode. Para versiones anterioes a la 17, convertir el archivo <code>.docx</code> para que este aparezca con los caracteres Unicode.</p>
-<p>unicode convertfile “salarios2.rtf” “salarios2_unicode.rtf,” dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode</p>
+<p>La versión 17 de <code>Stata</code> acepta caracteres Unicode. Para
+versiones anterioes a la 17, podemos convertir el archivo
+<code>.docx</code> para que este aparezca con los caracteres Unicode de
+la siguiente forma:</p>
+<pre class='stata'>. unicode convertfile "salarios2.rtf" "salarios2_unicode.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
+note: file "salarios2.rtf" converted to file "salarios2_unicode.rtf"
+</pre>
 <figure>
-<img src="table5_2.png" style="width:50.0%" alt="Tabla de resultados de regresión con estout para MS Word con formato" /><figcaption aria-hidden="true">Tabla de resultados de regresión con <code>estout</code> para MS Word con formato</figcaption>
+<img src="table5_2.png" style="width:50.0%"
+alt="Tabla de resultados de regresión con estout para MS Word con formato" />
+<figcaption aria-hidden="true">Tabla de resultados de regresión con
+<code>estout</code> para MS Word con formato</figcaption>
 </figure>
-<p>Desafortunadamente, existen todavía varias opciones sobre las que no tenemos control. De esta forma, si hay un cambio en la tabla, tenemos que copiar la tabla desde el documento <code>.rtf</code> y pegar la tabla en el documento donde estemos escribiendo el artículo (<code>.docx</code>). Si, por ejemplo, necesitamos cambiar el tamaño de la fuente, añadir o suprimir líneas horizontales o cambiar la alineación de las celdas, tendremos que hacerlo manualmente cada vez que hagamos esta operación.</p>
-<p>Una forma de mejorar ligeramente el flujo de trabajo es exportar la tabla, con muchas más opciones de formato en Microsft Excel y, posteriomente, copiar y pegar en el documento. A través del comando <code>putexcel</code>, <code>Stata</code> puede cambiar el formato de las celdas de la hoja de cálculo. El proceso es más lento y “artesanal,” pero, en el medio plazo, ahorraremos tiempo.</p>
+<p>Desafortunadamente, existen todavía varias opciones sobre las que no
+tenemos control. De esta forma, si hay un cambio en la tabla, tenemos
+que copiar la tabla desde el documento <code>.rtf</code> y pegar la
+tabla en el documento donde estemos escribiendo el artículo
+(<code>.docx</code>). Si, por ejemplo, necesitamos cambiar el tamaño de
+la fuente, añadir o suprimir líneas horizontales o cambiar la alineación
+de las celdas, tendremos que hacerlo manualmente cada vez que hagamos
+esta operación.</p>
+<p>Una forma de mejorar ligeramente el flujo de trabajo es exportar la
+tabla, con muchas más opciones de formato en Microsft Excel y,
+posteriomente, copiar y pegar en el documento. A través del comando
+<code>putexcel</code>, <code>Stata</code> puede cambiar el formato de
+las celdas de la hoja de cálculo. El proceso es más lento y “artesanal”,
+pero, en el medio plazo, ahorraremos tiempo.</p>
 <pre><code>//  Creamos las dummies manualmente
 
 . tabulate educg, generate(educdummy)
@@ -480,18 +574,81 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 //  Cerramos la sesión de putexcel
 
 . putexcel close</code></pre>
-<p>Para implementar esta estrategia, primero, creamos en nuestro documento de MS Word el esqueleto de la tabla. En segundo lugar, copiamos las celdas con la información estadística del archivo de MS Excel. Por últimpo, pegamos las celdas copiadas en el documento de MS Word mediante la opción del menú <code>Pegado especial</code> <span class="math inline">\(\rightarrow\)</span> <code>Formato RTF</code>. Es un método lento, pero muy flexible, que puede ser ideal para proporcionar los resultados a los evaluadores y la reproducibilidad total.</p>
+<p>Para implementar esta estrategia, primero, creamos en nuestro
+documento de MS Word el esqueleto de la tabla. En segundo lugar,
+copiamos las celdas con la información estadística del archivo de MS
+Excel. Por último, pegamos las celdas copiadas en el documento de MS
+Word mediante la opción del menú <code>Pegado especial</code> <span
+class="math inline">\(\rightarrow\)</span> <code>Formato RTF</code>. Es
+un método lento, pero muy flexible, que puede ser ideal para
+proporcionar los resultados a los evaluadores y conseguir la
+reproducibilidad total.</p>
 <figure>
-<img src="putexcel.png" style="width:90.0%" alt="Ejemplo de uso de putexcel con MS Word" /><figcaption aria-hidden="true">Ejemplo de uso de <code>putexcel</code> con MS Word</figcaption>
+<img src="putexcel.png" style="width:90.0%"
+alt="Ejemplo de uso de putexcel con MS Word" />
+<figcaption aria-hidden="true">Ejemplo de uso de <code>putexcel</code>
+con MS Word</figcaption>
 </figure>
 <h1 id="stata-latex">3. <code>Stata</code> + LaTeX</h1>
 <figure>
-<img src="flow2.png" style="width:50.0%" alt="Propuesta de flujo de trabajo (II)" /><figcaption aria-hidden="true">Propuesta de flujo de trabajo (II)</figcaption>
+<img src="flow2.png" style="width:50.0%"
+alt="Propuesta de flujo de trabajo (II)" />
+<figcaption aria-hidden="true">Propuesta de flujo de trabajo
+(II)</figcaption>
 </figure>
-<p>Una opción excelente para configurar nuestro flujo de trabajo es utilizar <a href="https://es.wikipedia.org/wiki/LaTeX">LaTeX</a> para escribir nuestros textos. Es un sistema de composición de textos de código abierto que emplea comandos de TeX, un lenguaje de nivel bajo con comandos muy elementales. La principal desventaja de LaTeX es que no se trata de un procesador WYSIWYG (“lo que ves es lo que obtienes”), sino que se basa en instrucciones. Esto implica que el contenido está separado de la forma, lo cual puede ser una ventaja. Como el contenido es básicamente texto plano, podemos integrar output en texto plano que obtengamos de otros programas, como <code>Stata</code>. La gran ventaja de LaTeX es la altísima calidad de los documentos, especialmente apreciable en trabajos que requieran el empleo de fórmulas matemáticas. Por esta razón, es una herramienta de edición profesional. Otras ventajas, no exclusivas de este sistema, se refieren a la gestión de la bibliografía.</p>
-<p>La integración de <code>Stata</code> y LaTeX en nuestro flujo de trabajo es sencilla. Requerimos únicamente una distribución y un editor de TeX y generar resultados e incluso fragmentos de texto que puedan ser directamente incluidos en LaTeX. Las principales distribuciones de TeX son <a href="https://miktex.org/">MiKTeX</a> y <a href="https://www.tug.org/texlive/">TeX Live</a>. Existen muchos editores de TeX gratuitos, como <a href="https://www.texstudio.org/">TeXstudio</a>, <a href="https://www.xm1math.net/texmaker/">Texmaker</a> o <a href="https://www.lyx.org/">LyX</a>. Mediante alguna herramienta como <a href="https://www.dropbox.com">Dropbox</a> o <a href="https://www.google.es/drive/">Google Drive</a> podemos lograr un muy buen sistema de trabajo reproducible colaborativo.</p>
-<p>Otra opción es optar por <a href="https://www.overleaf.com/">Overleaf</a>. Se trata un editor online que incorpora la distribución de TeX Live. No requiere instalar ninguna distribución ni editor en nuestro equipo, permite la colaboración en tiempo real (como Google Docs, al contrario que Dropbox) e incluye control de versiones. Existe una versión gratuita, en la que algunas de sus capacidades no están disponibles. Debido a que no requiere instalación local, lo emplearemos en los siguientes ejemplos, aunque hagan que el flujo de trabajo sea menos fluido que con una instalación local, ya que, además, no disponemos de la versión de pago (que incluye la sincronización con Dropbox y GitHub, un sistema de control de versiones que comentaremos en la siguiente sección).</p>
-<p>Para poner en marcha este tipo de flujo, vamos a emplear el paquete <code>estout</code>, mencionado en la sección anterior, y el paquete <code>texdoc</code> <span class="citation" data-cites="Jann2016">(Jann, 2016)</span>, que nos va a pemitir crear textos planos con resultados de <code>Stata</code> que vamos a poder llevar a nuestro editor de LaTeX. La idea básica es que <code>Stata</code> genere archivos de texto plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando <code>input{}</code> para incluir el archivo generado. La mayor parte del formato resultante del texto incluido será responsabilidad de LaTeX, que habremos configurado previamente. En general, mi consejo es únicamente crear en <code>Stata</code> de las filas con la información estadística y diseñar el resto de la tabla en el editor de LaTeX.</p>
+<p>Una opción excelente para configurar nuestro flujo de trabajo es
+utilizar <a href="https://es.wikipedia.org/wiki/LaTeX">LaTeX</a> para
+escribir nuestros textos. Es un sistema de composición de textos de
+código abierto que emplea comandos de TeX, un lenguaje de nivel bajo con
+comandos muy elementales. La principal desventaja de LaTeX es que no se
+trata de un procesador WYSIWYG (“lo que ves es lo que obtienes”), sino
+que se basa en instrucciones. Esto implica que el contenido está
+separado de la forma, lo cual puede ser una ventaja. Como el contenido
+es básicamente texto plano, podemos integrar output en texto plano que
+obtengamos de otros programas, como <code>Stata</code>. La gran ventaja
+de LaTeX es la altísima calidad de los documentos, especialmente
+apreciable en trabajos que requieran el empleo de fórmulas matemáticas.
+Por esta razón, es una herramienta de edición profesional. Otras
+ventajas, no exclusivas de este sistema, se refieren a la gestión de la
+bibliografía.</p>
+<p>La integración de <code>Stata</code> y LaTeX en nuestro flujo de
+trabajo es sencilla. Requerimos únicamente una distribución y un editor
+de TeX y generar resultados e incluso fragmentos de texto que puedan ser
+directamente incluidos en LaTeX. Las principales distribuciones de TeX
+son <a href="https://miktex.org/">MiKTeX</a> y <a
+href="https://www.tug.org/texlive/">TeX Live</a>. Existen muchos
+editores de TeX gratuitos, como <a
+href="https://www.texstudio.org/">TeXstudio</a>, <a
+href="https://www.xm1math.net/texmaker/">Texmaker</a> o <a
+href="https://www.lyx.org/">LyX</a>. Mediante alguna herramienta como <a
+href="https://www.dropbox.com">Dropbox</a> o <a
+href="https://www.google.es/drive/">Google Drive</a> podemos lograr un
+muy buen sistema de trabajo reproducible colaborativo.</p>
+<p>Otra opción es optar por <a
+href="https://www.overleaf.com/">Overleaf</a>. Se trata un editor online
+que incorpora la distribución de TeX Live. No requiere instalar ninguna
+distribución ni editor en nuestro equipo, permite la colaboración en
+tiempo real (como Google Docs, al contrario que Dropbox) e incluye
+control de versiones. Existe una versión gratuita, en la que algunas de
+sus capacidades no están disponibles. Debido a que no requiere
+instalación local, lo emplearemos en los siguientes ejemplos, aunque
+hagan que el flujo de trabajo sea menos fluido que con una instalación
+local, ya que, además, no disponemos de la versión de pago (que incluye
+la sincronización con Dropbox y GitHub, un sistema de control de
+versiones que comentaremos en la siguiente sección).</p>
+<p>Para poner en marcha este tipo de flujo, vamos a emplear el paquete
+<code>estout</code>, mencionado en la sección anterior, y el paquete
+<code>texdoc</code> <span class="citation" data-cites="Jann2016">(Jann,
+2016)</span>, que nos va a permitir crear textos planos con resultados
+de <code>Stata</code> que vamos a poder llevar a nuestro editor de
+LaTeX. La idea básica es que <code>Stata</code> genere archivos de texto
+plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro
+proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando
+<code>input{}</code> para incluir el archivo generado. La mayor parte
+del formato resultante del texto incluido será responsabilidad de LaTeX,
+que habremos configurado previamente. En general, mi consejo es
+únicamente crear en <code>Stata</code> de las filas con la información
+estadística y diseñar el resto de la tabla en el editor de LaTeX.</p>
 
 <pre class='stata'>. //    Establecemos la coma como decimal
 . 
@@ -519,11 +676,17 @@ Nivel medio  │   .2314164   .0282288     8.20   0.000      .176077    .2867557
 >   mlabel(, none) collabels(none)
 (output written to tabla1.tex)
 </pre>
-<p>Podemos ver que la tabla de LaTeX generada es extremadamente simple.</p>
+<p>Podemos ver que la tabla de LaTeX generada es extremadamente
+simple.</p>
 <figure>
-<img src="tableplain.png" style="width:50.0%" alt="Tabla generada por Stata con estout" /><figcaption aria-hidden="true">Tabla generada por <code>Stata</code> con <code>estout</code></figcaption>
+<img src="tableplain.png" style="width:50.0%"
+alt="Tabla generada por Stata con estout" />
+<figcaption aria-hidden="true">Tabla generada por <code>Stata</code> con
+<code>estout</code></figcaption>
 </figure>
-<p>A continuación, calculamos unos estadísticos descriptivos, los almacenamos en macros y exportamos un texto que las contiene al archivo <code>texto.tex</code></p>
+<p>A continuación, calculamos unos estadísticos descriptivos, los
+almacenamos en macros y exportamos un texto que las contiene al archivo
+<code>texto.tex</code></p>
 <pre class='stata'>. //  Instalamos el paquete texdoc
 . 
 . ssc install texdoc, replace
@@ -563,14 +726,21 @@ all files already exist and are up to date.
 . 
 </pre>
 <figure>
-<img src="textplain.png" style="width:50.0%" alt="Texto generada por Stata con texdoc" /><figcaption aria-hidden="true">Texto generada por <code>Stata</code> con <code>texdoc</code></figcaption>
+<img src="textplain.png" style="width:50.0%"
+alt="Texto generada por Stata con texdoc" />
+<figcaption aria-hidden="true">Texto generada por <code>Stata</code> con
+<code>texdoc</code></figcaption>
 </figure>
-<p>Por último, podemos generar un gráfico en formato <code>.pdf</code>, que es muy apropiado para exportar a LaTeX.</p>
+<p>Por último, podemos generar un gráfico en formato <code>.pdf</code>,
+que es muy apropiado para exportar a LaTeX.</p>
 <pre class='stata'>. //  Configuramos el gráfico
 . 
 . grstyle clear
 
 . grstyle init
+Scheme _GRSTYLE_ already active although grstyle is not running
+Press any key to reset default scheme to s2color and overwrite scheme _GRSTYLE_, or Break to abort
+(set scheme preference recorded)
 
 . grstyle set plain
 
@@ -608,16 +778,54 @@ file figura1.pdf saved as PDF format
 </pre>
 
 <figure>
-<img src="figure.png" style="width:30.0%" alt="Texto generado por Stata para insertar en LaTeX" /><figcaption aria-hidden="true">Texto generado por <code>Stata</code> para insertar en LaTeX</figcaption>
+<img src="figure.png" style="width:30.0%"
+alt="Texto generado por Stata para insertar en LaTeX" />
+<figcaption aria-hidden="true">Texto generado por <code>Stata</code>
+para insertar en LaTeX</figcaption>
 </figure>
-<p>A continuación, en nuestro editor de LaTeX, donde habremos preparado el espacio para incluir los elementos generados, incluimos los archivos anteriores con el comando <code>\input{}</code> para la tabla y el texto e <code>\includegraphics{}</code> para la figura en <code>.pdf</code>. Como en este ejemplo estamos usando Overleaf (y no disponemos de sus características de pago), tenemos que subir los archivos a la carpeta correspondiente en la aplicación. Si utilizásemos un editor instalado localmente, simplemente, en el archivo <code>.tex</code> nos referiríamos a su ruta local de la tabla, el texto y los gráficos. El archivo principal que representan nuestro documento se llama <code>main.tex</code>.</p>
+<p>A continuación, en nuestro editor de LaTeX, donde habremos preparado
+el espacio para incluir los elementos generados, incluimos los archivos
+anteriores con el comando <code>\input{}</code> para la tabla y el texto
+e <code>\includegraphics{}</code> para la figura en <code>.pdf</code>.
+Como en este ejemplo estamos usando Overleaf (y no disponemos de sus
+características de pago), tenemos que subir los archivos a la carpeta
+correspondiente en la aplicación. Si utilizásemos un editor instalado
+localmente, simplemente, en el archivo <code>.tex</code> nos
+referiríamos a su ruta local de la tabla, el texto y los gráficos. El
+archivo principal, que representa contiene nuestro documento, se llama
+<code>main.tex</code>.</p>
 <figure>
-<img src="tabletex.png" style="width:70.0%" alt="Documento LaTeX en Overleaf con resultados de Stata" /><figcaption aria-hidden="true">Documento LaTeX en Overleaf con resultados de <code>Stata</code></figcaption>
+<img src="tabletex.png" style="width:70.0%"
+alt="Documento LaTeX en Overleaf con resultados de Stata" />
+<figcaption aria-hidden="true">Documento LaTeX en Overleaf con
+resultados de <code>Stata</code></figcaption>
 </figure>
-<p>Por último, cabe mencionar la facilidad de gestión de referencias bibliográficas con programas gratuitos como <a href="https://www.jabref.org/">JabRef</a>, <a href="https://www.mendeley.com/">Mendeley</a> o <a href="https://www.zotero.org/">Zotero</a>, que pueden utilizarse, además, con otro tipo de aplicaciones para procesar textos. Los recursos disponibles en la red para el aprendizaje de LaTeX, que es, fundamentalmente, un proceso <em>learning by doing</em>, son realmente inabarcables. Una buena referencia inicial para Ciencias Sociales podría ser <span class="citation" data-cites="Frain2014">Frain (2014)</span>.</p>
-<h1 id="tablas-personalizadas-en-stata-17">4. Tablas personalizadas en <code>Stata 17</code></h1>
-<p>La versión 17 de Stata permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos <code>.docx</code>, <code>.xlsx</code> o <code>.tex</code>). Para llevar a cabo esta tarea, empleamos el comando <code>collect</code>. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas. Al margen de este consejo sobre la forma de elaborar las tablas, en el <a href="https://blog.stata.com/category/reporting/">blog oficial de Stata</a> se ofrecen buenos consejos sobre el tema basados en la línea de comandos.</p>
-<p>Así, en primer lugar, podemos almacenar la información de los modelos con <code>collect</code>.</p>
+<p>Por último, cabe mencionar la facilidad de gestión de referencias
+bibliográficas con programas gratuitos como <a
+href="https://www.jabref.org/">JabRef</a>, <a
+href="https://www.mendeley.com/">Mendeley</a> o <a
+href="https://www.zotero.org/">Zotero</a>, que pueden utilizarse,
+además, con otro tipo de aplicaciones para procesar textos. Los recursos
+disponibles en la red para el aprendizaje de LaTeX, que es,
+fundamentalmente, un proceso <em>learning by doing</em>, son realmente
+inabarcables. Una buena referencia inicial para Ciencias Sociales podría
+ser <span class="citation" data-cites="Frain2014">Frain
+(2014)</span>.</p>
+<h1 id="tablas-personalizadas-en-stata-17">4. Tablas personalizadas en
+<code>Stata 17</code></h1>
+<p>La versión 17 de <code>Stata</code> permite crear tablas
+personalizadas de resultados y exportarlas posteriormente en distintos
+formatos (e.g., archivos <code>.docx</code>, <code>.xlsx</code> o
+<code>.tex</code>). Para llevar a cabo esta tarea, empleamos el comando
+<code>collect</code>. Dado que resulta bastante complejo, como en el
+caso de los gráficos, una forma de trabajo interesante de elaborar este
+tipo de tablas consiste en combinar los comandos con el sistema de
+ventanas. Al margen de este consejo sobre la forma de elaborar las
+tablas, en el <a href="https://blog.stata.com/category/reporting/">blog
+oficial de <code>Stata</code></a> se ofrecen buenos consejos sobre el
+tema basados en la línea de comandos.</p>
+<p>Así, en primer lugar, podemos almacenar la información de los modelos
+con <code>collect</code>.</p>
 <pre><code>. //    Creación de tablas con la herramienta Tables Builder de Stata
 
 . collect clear
@@ -626,11 +834,18 @@ file figura1.pdf saved as PDF format
 . collect _r_b _r_se, tag(model[Total]): regress logsalario ib1.sexo edad edad2 ib1.educg
 . collect _r_b _r_se, tag(model[Hombres]): regress logsalario edad edad2 ib1.educg if sexo == 1
 . collect _r_b _r_se, tag(model[Mujeres]): regress logsalario edad edad2 ib1.educg if sexo == 2</code></pre>
-<p>Posteriormente, empleamos el sistema de ventanas para personalizar la tabla.</p>
+<p>Posteriormente, empleamos el sistema de ventanas para personalizar la
+tabla.</p>
 <figure>
-<img src="tablebuilder.png" style="width:70.0%" alt="Herramienta del sistema de ventanas para elaborar tablas personalizadas de resultados" /><figcaption aria-hidden="true">Herramienta del sistema de ventanas para elaborar tablas personalizadas de resultados</figcaption>
+<img src="tablebuilder.png" style="width:70.0%"
+alt="Herramienta del sistema de ventanas para elaborar tablas personalizadas de resultados" />
+<figcaption aria-hidden="true">Herramienta del sistema de ventanas para
+elaborar tablas personalizadas de resultados</figcaption>
 </figure>
-<p>Posteriormente, fundamentalmente, mediante ensayo-error, vamos personalizando nuestra tabla. Cada modificación resulta en un comando, que podremos copiar a nuestro archivo <code>.do</code> para reproducir el gráfico cuando queramos.</p>
+<p>Mediante el método ensayo-error, vamos adecuando la tabla a nuestras
+preferencias. Cada modificación resulta en un comando, que podremos
+copiar a nuestro archivo <code>.do</code> para reproducir el gráfico
+cuando queramos.</p>
 <pre><code>. collect stars _r_p 0.010 `&quot;***&quot;&#39; 0.050 `&quot;**&quot;&#39; 0.100 `&quot;*&quot;&#39;, attach(_r_b)
 . collect label levels result N &quot;No. de observaciones&quot; r2_a &quot;R cuadrado ajustado&quot;, modify
 . collect style header result[_r_b], level(hide)
@@ -652,51 +867,130 @@ file figura1.pdf saved as PDF format
 . collect style cell, basestyle font(&quot;Times New Roman&quot;, size(10pt))
 . collect style title, font(&quot;Times New Roman&quot;, size(10pt))
 . collect style notes, font(&quot;Times New Roman&quot;, size(10pt))</code></pre>
-<p>Una vez que la tabla se adecúa a nuestras preferencias, podemos exportarla en distintos formatos.</p>
+<p>Una vez que la tabla se adecua a nuestras preferencias, podemos
+exportarla en distintos formatos.</p>
 <p>Por ejemplo, podemos exportarla en MS Word.</p>
 <pre><code>. collect style putdocx, halign(center) width(70%)
 . collect export &quot;salarios3.docx&quot;, as(docx) replace</code></pre>
 <p>También puede exportarse en <code>.tex</code>.</p>
 <pre><code>. collect style tex, nobegintable centering
 . collect export &quot;salarios3&quot;, as(docx) dofile(&quot;instrucciones_putdocx&quot;, replace) replace</code></pre>
-<p>La herramienta de personalización de tablas es sin duda útil y mejora el programa, pero, actualmente, los flujos anteriores basados en <code>putexcel</code> en el caso de MS Word y <code>estout</code> resultan más flexibles.</p>
-<h1 id="documentos-dinámicos-y-otras-posibilidades">5. Documentos dinámicos y otras posibilidades</h1>
-<p>Una de las últimas novedades en el uso de <code>Stata</code> pasan por la elaboración de documentos dinámicos. Se trata de archivos, normalmente, <code>.docx</code>, <code>.pdf</code> o <code>.html</code> que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, <code>Stata</code> está lejos todavía de las posibilidades que ofrece R con RStudio y knitr <span class="citation" data-cites="Gandrud2020 Xie2015">(Gandrud, 2020; Xie, 2015)</span>.</p>
-<p>En el caso de <code>Stata</code>, existen varias opciones para elaborar documentos dinámicos. La versión 15 de <code>Stata</code> incorpora esta posibilidad dentro del paquete <code>dyndoc</code>. Sin embargo, hay otras alternativas creadas por los usuarios. Para generar todas las páginas web en las que se ha organizado este curso, por ejemplo, hemos utilizado el paquete <code>markstat</code> <span class="citation" data-cites="Rodriguez2017">(Rodríguez, 2017)</span>. En mi opinión, esta opción es preferible al paquete oficial porque es mucho más parecido al lenguage <a href="https://es.wikipedia.org/wiki/Markdown">Markdown</a>. En su página <a href="https://data.princeton.edu/stata/markdown/">web</a>, el creador de <code>markstat</code>, Germán Rodríguez, nos orienta de las posibilidades de este paquete, con abundantes ejemplos.</p>
-<p>En <code>Stata 17</code>, además, existe la posibilidad de integrar código de <a href="https://www.stata.com/python/">Python en <code>Stata</code></a> y código de <a href="https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd"><code>Stata</code> en Python</a>. Lo mismo aplica a <a href="https://fsolt.org/blog/2018/08/15/switch-to-r.html#:~:text=Running%20R%20from%20Stata,the%20R%20output%20into%20Stata.">R</a></p>
-<p>Por último, una tendencia reciente es el empleo de sistemas control de versiones, como <code>Git</code>, especialmente, a través de la nube con <code>GitHub</code>. La curva de aprendizaje puede reducirse sustancialmente instalando <a href="https://desktop.github.com/"><code>GitHub Desktop</code></a>. Básicamente, este sistema permite trabajar de manera colaborativa en la escritura de código. En el caso de <code>Stata</code>, es aplicable, por lo tanto, a los archivos <code>.do</code> y <code>.ado</code>. Permite que varias personas trabajen de forma simultánea (e incluso cualquier usuario puede solicitar contributir) y todos los cambios son reversibles, pudiendo volver en cualquier momento a la versión que deseemos. Podemos encontrar una buena introducción en <span class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo (2018)</span> y, especialmente, en la guía de <a href="https://medium.com/the-stata-guide/stata-and-github-integration-8c87ddf9784a">Asjad Naqvi</a>.</p>
+<p>La herramienta de personalización de tablas es sin duda útil y mejora
+el programa, pero, actualmente, los flujos anteriores basados en
+<code>putexcel</code> en el caso de MS Word y <code>estout</code>
+resultan más flexibles.</p>
+<h1 id="documentos-dinámicos-y-otras-posibilidades">5. Documentos
+dinámicos y otras posibilidades</h1>
+<p>Una de las últimas novedades en el uso de <code>Stata</code> consiste
+en la posibilidad de la elaborar de documentos dinámicos. Se trata de
+archivos, normalmente, <code>.docx</code>, <code>.pdf</code> o
+<code>.html</code>, que incluyen texto, comandos y resultados. Su
+carácter dinámico se explica porque, cuando modificamos los comandos, el
+documento resultante refleja los cambios en los resultados. Su principal
+utilidad puede ser crear informes preliminares de resultados,
+presentaciones, páginas webs sencillas o, incluso, algunas personas lo
+utilizan para escribir trabajos de investigación completos. No obstante,
+en relación con esta última opción, <code>Stata</code> está lejos
+todavía de las posibilidades que ofrece <code>R</code> con
+<code>RStudio</code> y <code>knitr</code> <span class="citation"
+data-cites="Gandrud2020 Xie2015">(Gandrud, 2020; Xie, 2015)</span>.</p>
+<p>En el caso de <code>Stata</code>, existen varias opciones para
+elaborar documentos dinámicos. La versión 15 de <code>Stata</code>
+incorpora esta posibilidad dentro del paquete <code>dyndoc</code>. Sin
+embargo, hay otras alternativas creadas por los usuarios. Para generar
+todas las páginas webs en las que se ha organizado este curso, por
+ejemplo, hemos utilizado el paquete <code>markstat</code> <span
+class="citation" data-cites="Rodriguez2017">(Rodríguez, 2017)</span>. En
+mi opinión, esta opción es preferible al paquete oficial porque es mucho
+más parecido al lenguaje <a
+href="https://es.wikipedia.org/wiki/Markdown">Markdown</a>. En su página
+<a href="https://data.princeton.edu/stata/markdown/">web</a>, el creador
+de <code>markstat</code>, Germán Rodríguez, nos orienta de las
+posibilidades de este paquete, con abundantes ejemplos.</p>
+<p>En <code>Stata 17</code>, además, existe la posibilidad de integrar
+código de <a href="https://www.stata.com/python/">Python en
+<code>Stata</code></a> y código de <a
+href="https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd"><code>Stata</code>
+en Python</a>. Lo mismo aplica a <a
+href="https://fsolt.org/blog/2018/08/15/switch-to-r.html#:~:text=Running%20R%20from%20Stata,the%20R%20output%20into%20Stata">R</a>.</p>
+<p>Por último, una tendencia reciente es el empleo de sistemas control
+de versiones, como <code>Git</code>, especialmente, a través de la nube
+con <code>GitHub</code>. La curva de aprendizaje puede reducirse
+sustancialmente instalando <a
+href="https://desktop.github.com/"><code>GitHub Desktop</code></a>.
+Básicamente, este sistema permite trabajar de manera colaborativa en la
+escritura de código. En el caso de <code>Stata</code>, es aplicable, por
+lo tanto, a los archivos <code>.do</code> y <code>.ado</code>. Permite
+que varias personas trabajen de forma simultánea (e incluso cualquier
+usuario puede solicitar contributir) y todos los cambios son
+reversibles, pudiendo volver en cualquier momento a la versión que
+deseemos. Podemos encontrar una buena introducción en <span
+class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo
+(2018)</span> y, especialmente, en la guía de <a
+href="https://medium.com/the-stata-guide/stata-and-github-integration-8c87ddf9784a">Asjad
+Naqvi</a>.</p>
 <figure>
-<img src="github.png" style="width:70.0%" alt="Flujo de trabajo propuesto por Pellegrina &amp; Fajardo (2018)" /><figcaption aria-hidden="true">Flujo de trabajo propuesto por <span class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo (2018)</span></figcaption>
+<img src="github.png" style="width:70.0%"
+alt="Flujo de trabajo propuesto por Pellegrina &amp; Fajardo (2018)" />
+<figcaption aria-hidden="true">Flujo de trabajo propuesto por <span
+class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo
+(2018)</span></figcaption>
 </figure>
 <h1 id="references">References</h1>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-Christensen2018" class="csl-entry" role="doc-biblioentry">
-Christensen, G., &amp; Miguel, E. (2018). Transparency, reproducibility, and the credibility of <span>E</span>conomics research. <em>Journal of Economic Literature</em>, <em>56</em>(3), 920–980. <a href="https://doi.org/10.1257/jel.20171350">https://doi.org/10.1257/jel.20171350</a>
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-line-spacing="2" role="list">
+<div id="ref-Christensen2018" class="csl-entry" role="listitem">
+Christensen, G., &amp; Miguel, E. (2018). Transparency, reproducibility,
+and the credibility of <span>E</span>conomics research. <em>Journal of
+Economic Literature</em>, <em>56</em>(3), 920–980. <a
+href="https://doi.org/10.1257/jel.20171350">https://doi.org/10.1257/jel.20171350</a>
 </div>
-<div id="ref-Frain2014" class="csl-entry" role="doc-biblioentry">
-Frain, J. C. (2014). <em><span>A</span>pplied <span>L</span>a<span>T</span>e<span>X</span> for <span>E</span>conomists, <span>S</span>ocial <span>S</span>cientists and others</em> ({T}rinity {E}conomics {P}aper No. 214). <span>T</span>rinity <span>C</span>ollege <span>D</span>ublin, <span>D</span>epartment of <span>E</span>conomics. <a href="https://www.tcd.ie/Economics/TEP/2014/TEP0214.pdf">https://www.tcd.ie/Economics/TEP/2014/TEP0214.pdf</a>
+<div id="ref-Frain2014" class="csl-entry" role="listitem">
+Frain, J. C. (2014). <em><span>A</span>pplied
+<span>L</span>a<span>T</span>e<span>X</span> for
+<span>E</span>conomists, <span>S</span>ocial <span>S</span>cientists and
+others</em> ({T}rinity {E}conomics {P}aper No. 214).
+<span>T</span>rinity <span>C</span>ollege <span>D</span>ublin,
+<span>D</span>epartment of <span>E</span>conomics. <a
+href="https://www.tcd.ie/Economics/TEP/2014/TEP0214.pdf">https://www.tcd.ie/Economics/TEP/2014/TEP0214.pdf</a>
 </div>
-<div id="ref-Gandrud2020" class="csl-entry" role="doc-biblioentry">
-Gandrud, C. (2020). <em>Reproducible research with <span>R</span> and <span>RS</span>tudio</em> (3rd ed.). <span>CRC</span> <span>P</span>ress.
+<div id="ref-Gandrud2020" class="csl-entry" role="listitem">
+Gandrud, C. (2020). <em>Reproducible research with <span>R</span> and
+<span>RS</span>tudio</em> (3rd ed.). <span>CRC</span>
+<span>P</span>ress.
 </div>
-<div id="ref-Jann2005" class="csl-entry" role="doc-biblioentry">
-Jann, B. (2005). Making regression tables from stored estimates. <em>Stata Journal</em>, <em>3</em>(5), 288–308.
+<div id="ref-Jann2005" class="csl-entry" role="listitem">
+Jann, B. (2005). Making regression tables from stored estimates.
+<em>Stata Journal</em>, <em>3</em>(5), 288–308.
 </div>
-<div id="ref-Jann2016" class="csl-entry" role="doc-biblioentry">
-Jann, B. (2016). Creating <span>L</span>a<span>T</span>e<span>X</span> documents from within <span>S</span>tata using texdoc. <em>Stata Journal</em>, <em>2</em>(16), 245–266.
+<div id="ref-Jann2016" class="csl-entry" role="listitem">
+Jann, B. (2016). Creating <span>L</span>a<span>T</span>e<span>X</span>
+documents from within <span>S</span>tata using texdoc. <em>Stata
+Journal</em>, <em>2</em>(16), 245–266.
 </div>
-<div id="ref-Orozco2018" class="csl-entry" role="doc-biblioentry">
-Orozco, V., Bontemps, C., Maigné, E., Piguet, V., Hofstetter, A., Lacroix, A., Levert, F., &amp; Rousselle, J.-M. (2018). <em>How to make a pie: Reproducible research for empirical <span>E</span>conomics &amp; <span>E</span>conometrics</em> ({T}oulouse {S}chool of {E}conomics {W}orking {P}aper No. 933). <span>T</span>ouluse <span>S</span>chool of <span>E</span>conomics; TSE Working Paper.
+<div id="ref-Orozco2018" class="csl-entry" role="listitem">
+Orozco, V., Bontemps, C., Maigné, E., Piguet, V., Hofstetter, A.,
+Lacroix, A., Levert, F., &amp; Rousselle, J.-M. (2018). <em>How to make
+a pie: Reproducible research for empirical <span>E</span>conomics &amp;
+<span>E</span>conometrics</em> ({T}oulouse {S}chool of {E}conomics
+{W}orking {P}aper No. 933). <span>T</span>ouluse <span>S</span>chool of
+<span>E</span>conomics; TSE Working Paper.
 </div>
-<div id="ref-Pellegrina2018" class="csl-entry" role="doc-biblioentry">
-Pellegrina, H. S., &amp; Fajardo, A. F. (2018). <em>A brief introduction to <span>G</span>it<span>H</span>ub for <span>S</span>ocial <span>S</span>cientists using <span>S</span>tata and <span>D</span>ropbox</em>. <a href="https://github.com/hpellegrina/hello-world-econ/blob/master/documentation/github-manual.pdf">https://github.com/hpellegrina/hello-world-econ/blob/master/documentation/github-manual.pdf</a>
+<div id="ref-Pellegrina2018" class="csl-entry" role="listitem">
+Pellegrina, H. S., &amp; Fajardo, A. F. (2018). <em>A brief introduction
+to <span>G</span>it<span>H</span>ub for <span>S</span>ocial
+<span>S</span>cientists using <span>S</span>tata and
+<span>D</span>ropbox</em>. <a
+href="https://github.com/hpellegrina/hello-world-econ/blob/master/documentation/github-manual.pdf">https://github.com/hpellegrina/hello-world-econ/blob/master/documentation/github-manual.pdf</a>
 </div>
-<div id="ref-Rodriguez2017" class="csl-entry" role="doc-biblioentry">
-Rodríguez, G. (2017). Literate data analysis with <span>S</span>tata and <span>M</span>arkdown. <em>Stata Journal</em>, <em>3</em>(17), 600–618.
+<div id="ref-Rodriguez2017" class="csl-entry" role="listitem">
+Rodríguez, G. (2017). Literate data analysis with <span>S</span>tata and
+<span>M</span>arkdown. <em>Stata Journal</em>, <em>3</em>(17), 600–618.
 </div>
-<div id="ref-Xie2015" class="csl-entry" role="doc-biblioentry">
-Xie, Y. (2015). <em>Dynamic documents with <span>R</span> and knitr</em> (2nd ed.). <span>CRC</span> <span>P</span>ress.
+<div id="ref-Xie2015" class="csl-entry" role="listitem">
+Xie, Y. (2015). <em>Dynamic documents with <span>R</span> and knitr</em>
+(2nd ed.). <span>CRC</span> <span>P</span>ress.
 </div>
 </div>
 </body>
