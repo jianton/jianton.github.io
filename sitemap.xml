@@ -1,45 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://jianton.github.io/home/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/authors/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/author/jose-ignacio-anton/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/publication_types/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/research/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/tags/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/teaching/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://jianton.github.io/author/%E5%90%B3%E6%81%A9%E9%81%94/</loc>
   </url>
-  
 </urlset>
