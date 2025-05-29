@@ -89,7 +89,7 @@ Además, disponemos del comando `table` para construir tablas con estadísticos 
 El salario promedio por educación, sexo y tipo de contrato se calcularía como sigue:
 
 ```{s}
-table educg sexo contrato, contents(mean salario)
+table educg sexo contrato, statistic(mean salario)
 ```
 
 # 2. Análisis de varianza (ANOVA)
@@ -110,11 +110,11 @@ Podemos ver que, efectivamente, se rechaza la hipótesis nula de igualdad de med
 
 Sin duda, es la técnica de análisis multivariantes más popular. En `Stata`, las regresiones lineales se implementan a través del comando `regress`:
 
-  <code>regress <i>depvar</i> [<i>indepvars</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+  <code><u>reg</u>ress <i>depvar</i> [<i>indepvars</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
 
 El abanico de opciones que nos ofrece un comando como `regress` es enorme. Algunos ejemplos de manuales muy recomendables son @Adkins2010, @Baum2006 y @Cameron2010. Un buen libro que conecta teoría y práctica es el de @Wooldridge2019.
 
-Vamos a realizar un ejercicio simple, consistente en una regresión a la @Mincer1958, consistente en tratar de explicar/predecir el salario de una persona en función de su sexo, edad, edad al cuadrado y escolaridad. El modelo a estimar sería el siguiente:
+Vamos a realizar un ejercicio simple, una regresión a la @Mincer1958, consistente en tratar de explicar/predecir el salario de una persona en función de su sexo, edad, edad al cuadrado y escolaridad. El modelo a estimar sería el siguiente:
 
 $$  \log \text{salario}_i = \beta_0 + \beta_1 X_i + \epsilon_i $$
 
@@ -149,7 +149,7 @@ regress logsalario edad edad2 ib2.sexo
 regress logsalario edad edad2 ib(freq).sexo
 ```
 
-En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan `i.varname` algo a lo que `Stata` puede ayudarnos con la instrucción siguiente:
+En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan `i.varname`, algo a lo que `Stata` puede ayudarnos con la instrucción siguiente:
 
 ```{s}
 tabulate educg, generate(educdummy)
@@ -163,11 +163,11 @@ regress logsalario i.sexo edad edad2 ib1.educg
 Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de `Stata`. Para el cálculo de las mismas, podemos emplear los caracteres `#` o `##`. El primero de ellos (`#`) incluye en la ecuación únicamente las interacciones, mientras que `##` incluye las variables por separado y su interacción.
 
 ```{s}
-regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#educg
+regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#i.educg
 ```
 
 ```{s}
-regress logsalario c.edad##c.edad i.sexo#c.edad i.sexo##educg
+regress logsalario c.edad##c.edad i.sexo#c.edad i.sexo##i.educg
 ```
 
 # 4. Otros modelos econométricos de uso común
@@ -249,7 +249,7 @@ ologit salud i.sexo c.edad c.edad#c.edad i.educg
 margins, dydx(sexo edad educg)
 ```
 
-`Stata` es especialmente adecuado para manejar datos con diseños muestrales complejos y datos de panel. Para los primeros, `Stata` cuenta con los comandos de la familia `svy`, que nos permiten tener en cuenta la existencia de ponderaciones, estratos y muestreo en varias etapas. Básicamente, debemos fijar las características del muestreo de forma previa y, posteriormente, emplear el comando adecuado. No todos los comandos tienen versión compatible con diseños muestrales complejos. Por ejemplo, nuestra encuesta utiliza como estratos las CCAA. Dentro de estos estratos, selecciona aleatoriamente unidades primarias de muestreo consistentes en secciones censales. Posteriormente, entrevista todos los hogares dentro de cada sección y todas las personas dentro de cada hogar. Cada persona tiene un peso probabístico, que viene dado por la probabilidad de que una persona de sus características sea seleccionada.
+`Stata` es especialmente adecuado para manejar datos con diseños muestrales complejos y datos de panel. Para los primeros, `Stata` cuenta con los comandos de la familia `svy`, que nos permiten tener en cuenta la existencia de ponderaciones, estratos y muestreo en varias etapas. Básicamente, debemos fijar las características del muestreo de forma previa y, posteriormente, emplear el comando adecuado. No todos los comandos tienen versión compatible con diseños muestrales complejos. Por ejemplo, nuestra encuesta utiliza como estratos las CCAA. Dentro de estos estratos, selecciona aleatoriamente unidades primarias de muestreo consistentes en secciones censales. Posteriormente, entrevista todos los hogares dentro de cada sección y todas las personas dentro de cada hogar. Cada persona tiene un peso probabilístico, que viene dado por la probabilidad de que una persona de sus características sea seleccionada.
 
 En primar lugar, fijamos el tipo de muestreo en `Stata`:
 
@@ -264,7 +264,7 @@ svyset psu [pweight=peso], strata(region) vce(linearized) singleunit(missing)
 Ahora, utilizamos la contraparte para este tipo de datos de `Stata`, `svy: regress`:
 
 ```{s}
-svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##educg
+svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##i.educg
 ```
 
 Además, muchos comandos en `Stata` admiten el empleo de ponderaciones. En el caso de los encuestas, estas reflejan el inverso de la probabilidad de cada observación ser seleccionada y deben introducirse como `pweight` (pesos probabilísticos). Hay muchas especificades asociadas al empleo de ponderaciones y no todos los comandos admiten el empleo de pesos.
@@ -293,7 +293,7 @@ La instrucción para el análisis de correspondencias múltiple es
 
   <code>mca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
 
-Para calculas las componentes, usamos
+Para calcular las componentes, usamos
 
   <code>predict [<i>type</i>] <i>newvar</i> [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>#)</i>]</code>
 

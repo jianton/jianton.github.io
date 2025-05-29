@@ -11,7 +11,7 @@ _ _ _
 
 # 1. ¿Qué es Stata?
 
-* Stata es un programa de análisis estadístico que permite manejar bases de datos de gran tamaño. Resulta especialmente apropiado para tareas relacionadas con la Microeconometría aplicada. Es especialmente bueno con datos de encuestas.
+* `Stata` es un programa de análisis estadístico que permite manejar bases de datos de gran tamaño. Resulta especialmente apropiado para tareas relacionadas con la Microeconometría aplicada. Es especialmente bueno con datos de encuestas.
 * Procede de Bioestadística, pero es de amplio empleo en Ciencias Sociales (especialmente, en Economía y Ciencia Política) y Psicología.
 * La curva de aprendizaje es poco pronunciada. El sistema de ventanas no es demasiado bueno, pero, salvo algunos casos, es preferible usar comandos.
 * Programación aceptable y bastante flexible.
@@ -19,7 +19,7 @@ _ _ _
 * [Licencia](https://www.stata.com/order/dl/) razonablemente asequible (*versus* SPSS o SAS).
 * Muchísimos recursos de aprendizaje y extensión (paquetes, *Stata Journal*) y, si no existe, puedes preguntar ([Statalist](https://www.statalist.org/) o [Stack Overflow](https://stackoverflow.com/)).
 * Una parte importante de los libros de estadística proporcionan la sintaxis de `Stata` para ilustrar ejemplos y resolver ejercicios.
-* Buena integración con otros programas y lenguajes (Word, Excel, Markdown, Python, PDF, GitHub o LaTeX). Esta página, por ejemplo, esta elaborada con el paquete `markstat`.
+* Buena integración con otros programas y lenguajes (Word, Excel, Markdown, Python, PDF, GitHub o LaTeX). Esta página, por ejemplo, está elaborada con el paquete `markstat`.
 
 Una alternativa muy razonable es `R`: potente, flexible, gratuito, con una comunidad de usuarios impresionante, un lenguaje de programación muy potente y muchas cosas más... pero con una curva de aprendizaje muchísimo más pronunciada.
 
@@ -41,7 +41,7 @@ Existen varias formas de trabajar con `Stata`:
 
 Existe un importante número de libros de introducción a Stata, entre los que se pueden destacar los de @Acock2018 y, en español, @Escobar2012.
 
-## 3.2. Tipos de archivos en Stata
+## 3.2. Tipos de archivos en `Stata`
 
 ### Archivos *.dta*
 
@@ -62,7 +62,7 @@ Además, es posible generar los gráficos directamente en formatos de imagen o p
 
 ### Archivos *.ado*
 
-Son macros de Stata, algo más sofisticados que los archivos *.do* que contienen comandos programados, rutinas. Hay un impresionante arsenal
+Son macros de `Stata`, algo más sofisticados que los archivos *.do* que contienen comandos programados, rutinas. Hay un impresionante arsenal
 de estos archivos creados por usuarios.
 
 ### Archivos *.sthlp*
@@ -83,7 +83,7 @@ Archivos Markdown de `Stata`, similares a los archivos *.do*, que se emplean por
 
 En la práctica, los archivos que más vamos a utilizar son los archivos `.do` y `.dta`.
 
-## 3.2. El entorno de `Stata`
+## 3.3. El entorno de `Stata`
 
 El entorno de `Stata` nos muestra:
 
@@ -100,7 +100,7 @@ Conviene operar, preferentemente, con el editor de archivos `.do`.
 
 ![Editor de archivos `.do` de `Stata`](editor.png){width=75%}
 
-## 3.3. Recursos de ayuda
+## 3.4. Recursos de ayuda
 
 La ayuda de `Stata` es bastante buena y, además, nos permite acceder directamente a los manuales en formato `.pdf` del programa, que contienen breves explicaciones estadísticas, ejemplos e incluso referencias. Es muy sencillo acudir a la ayuda.
 
@@ -129,6 +129,10 @@ El tercer tipo de recursos son los tutoriales *online*. Hay tres de especial int
 * El curso para manejo de datos de encuestas de hogares de la [Southern Africa Labour and Development Research Unit](https://www.saldru.uct.ac.za/training/online-stata-course-the-analysis-of-south-african-household-survey-data/).
 
 Además, los diferentes tipos de cursos que ofrece [StataCorp](https://www.stata.com/learn/) son una opción interesante, en particular, los [NetCourses](https://www.stata.com/netcourse/). Posiblemente, en estos días, podemos encontrar muchos MOOCs interesantes con `Stata`.
+
+En la actualidad, una buena parte de los recursos de ayuda se ha quedado obsoleto por la aparición de la inteligencia artificial. [ChatGPT](https://chatgpt.com/) o [Gemini](https://gemini.google.com/) pueden programar en `Stata` (aunque no tan bien como en `Python` o `R`) y podemos preguntarles dudas de todo tipo e incluso pedirnos que nos realice los análisis tras proporcionarle los datos.
+
+![Ejemplo de utilización de ChatGPT para consultas sobre programación en `Stata`](ChatGPT.jpg){width=75%}
 
 # 4. Primeros pasos en `Stata`
 
@@ -324,7 +328,7 @@ Para eliminar variables y observaciones de la base de datos podemos emplear tant
 
   <code>keep if <i>exp</i></code>
 
-  <code>keep if <i>range</i> [if <i>exp</i>]</code>
+  <code>keep in <i>range</i> [if <i>exp</i>]</code>
 
 Así, por ejemplo, podemos eliminar el mes de nacimiento de la persona
 
@@ -352,7 +356,7 @@ Para etiquetar la base de datos empleamos
 
   <code><u>la</u>bel <u>da</u>ta ["<i>label</i>"]</code>
 
-Por ejemplo, podemos llamar a nuestra base de datos "ECV-Datos básicos de la persona"
+Por ejemplo, podemos llamar a nuestra base de datos "ECV-Datos básicos de la persona":
 
 ```{s}
 label data "ECV-Datos básicos de la persona"
@@ -360,7 +364,7 @@ label data "ECV-Datos básicos de la persona"
 
 El etiquetado de variables se realiza a través de la instrucción
 
-  <code><u>la</u>bel <u>var</u>iable varname ["<i>label</i>"]</code>
+  <code><u>la</u>bel <u>var</u>iable <i>varname</i> ["<i>label</i>"]</code>
 
 En nuestro caso, por ejemplo,
 
@@ -471,7 +475,7 @@ tabulate gedad
 
 El comando `egen` nos permite realizar muchas operaciones a partir de una o varias variables (conteo, medias, etc.)
 
-  <code>egen [<i>type</i>] <i>newvar</i> = <i>fcn</i>(<i>arguments</i>) [<i>if</i>] [<i>in</i>)] [, <i>options</i>]</code>
+  <code>egen [<i>type</i>] <i>newvar</i> = <i>fcn</i>(<i>arguments</i>) [<i>if</i>] [<i>in</i>] [, <i>options</i>]</code>
 
 Por ejemplo, podemos calcular la edad promedio y almacenarla como una nueva variable.
 
@@ -522,7 +526,7 @@ En algunos casos, esto puede ser mucho más relevante y no corregirlo es problem
 
 # 5. La comunidad de usuarios
 
-Una de las ventajas fundamentales del uso de `Stata`, quizás solo compartida (y superada) por el programa R, es la gran comunidad de usuarios con los que cuenta. Esto se plasma en varias herramientas:
+Una de las ventajas fundamentales del uso de `Stata`, quizás solo compartida (y superada) por el programa `R`, es la gran comunidad de usuarios con los que cuenta. Esto se plasma en varias herramientas:
 
 **Los paquetes creados por los usuarios**. Existen una gran cantidad de paquetes que han sido creados por los usuarios de `Stata`. Normalmente, están adecuadamente documentados. En términos generales, podemos buscar paquetes de `Stata` con la siguiente instrucción:
 
@@ -541,9 +545,9 @@ ssc install povdeco
 
 Además, es frecuente que otros autores ofrezcan sus programas con más o menos sofisticación y mejor o peor presentación.
 
-**[Stata Journal](https://www.stata.com/learn/)**. Se trata de una revista de StataCorp, indexada en el Journal Citation Reports, donde se publican estrategias de uso de `Stata` y se proponen nuevos comandos  y se ponen a disposición de los usuarios. El [artículo](https://www.stata-journal.com/sjpdf.html?articlenum=st0151) de @Jann2008 representa un ejemplo típico: introduce el paquete `oaxaca`, proporcionando unas nociones estadísticas mínimas y explicando el funcionamiento del mismo, ilustrado con ejemplos.
+**[Stata Journal](https://www.stata-journal.com/)**. Se trata de una revista de StataCorp, indexada en el Journal Citation Reports, donde se publican estrategias de uso de `Stata` y se proponen nuevos comandos  y se ponen a disposición de los usuarios. El [artículo](https://www.stata-journal.com/sjpdf.html?articlenum=st0151) de @Jann2008 representa un ejemplo típico: introduce el paquete `oaxaca`, proporcionando unas nociones estadísticas mínimas y explicando el funcionamiento del mismo, ilustrado con ejemplos.
 
-![Stata Journal](sjcover.png){width=15%}
+![*Stata Journal*](sjcover.png){width=15%}
 
 **[Statalist](https://www.statalist.org/)**. Inicialmente, fue una lista de correo. En la actualidad, se trata de un foro de usuarios orientado, fundamentalmente, a resolver dudas. Antes de preguntar es importante asegurarse de que el tema no ha sido discutido con anterioridad y, en nuestra duda, incluir un *minimum working example* en el que se acote el problema.
 

@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata5.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 4 May 2022, 00:00:23
+ {txt}opened on:  {res}29 May 2025, 06:20:19
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -124,10 +124,15 @@ Nivel medio  {c |}{col 14}{res}{space 2} .2314164{col 26}{space 2} .0282288{col 
 > replace
 {res}{txt}(output written to {browse  `"salarios2.rtf"'})
 
-{com}. //_3q
+{com}. //_3
+. unicode convertfile "salarios2.rtf" "salarios2_unicode.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
+{res}{txt}{p 0 6 2}
+note: file {bf:"salarios2.rtf"} converted to file {bf:"salarios2_unicode.rtf"}
+
+{com}. //_4q
 . quietly{c -(}
 {txt}
-{com}. //_4
+{com}. //_5
 . //    Establecemos la coma como decimal
 . 
 . set dp comma
@@ -154,7 +159,7 @@ Nivel medio  {c |}{col 14}{res}{space 2} .2314164{col 26}{space 2} .0282288{col 
 >   mlabel(, none) collabels(none)
 {res}{txt}(output written to {browse  `"tabla1.tex"'})
 
-{com}. //_5
+{com}. //_6
 . //  Instalamos el paquete texdoc
 . 
 . ssc install texdoc, replace
@@ -192,7 +197,7 @@ all files already exist and are up to date.
 {txt}(texdoc output written to {browse `"D:\Dropbox\curso_stata\sesión5\texto.tex"':texto.tex})
 {res}{txt}
 {com}. 
-. //_6
+. //_7
 . //  Configuramos el gráfico
 . 
 . grstyle clear
@@ -239,10 +244,10 @@ PDF
 format
 {p_end}
 
-{com}. //_7q
+{com}. //_8q
 . quietly{c -(}
 {txt}
-{com}. //_8q
+{com}. //_9q
 . quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
 {txt}
 {com}. //_^
@@ -250,7 +255,7 @@ format
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata5.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 4 May 2022, 00:00:56
+ {txt}closed on:  {res}29 May 2025, 06:20:28
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

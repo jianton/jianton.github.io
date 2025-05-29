@@ -33,7 +33,7 @@ Profesor en el Departamento de Economía Aplicada de la Universidad de Salamanca
 ## Organización del curso
 :::::::::::::: {.columns}
 ::: {.column width="20%"}
-![](stata17fair.jpg){width=90%}
+![](stata19.png){width=80%}
 :::
 ::: {.column width="80%"}
 El objetivo de este curso es proporcionar al estudiante una introducción al software de análisis estadístico `Stata`. En particular, se emplea la versión 17 del programa, aunque la inmensa mayoría de los códigos deben funcionar en versiones anteriores.
@@ -52,7 +52,7 @@ El curso se divide en cinco sesiones con los siguientes contenidos:
 
   **<span style="color:red">4.</span>** Primeros pasos en `Stata`
 
-  **<span style="color:red">5.</span>** La comunidad de usuarios
+  **<span style="color:red">5.</span>** La comunidad de usuarios y la inteligencia artificial
 
 **<span style="color:red">Sesión 2:</span>** [Manipulación de datos y archivos](https://jianton.github.io/stata2.html)
 
@@ -95,6 +95,8 @@ El curso se divide en cinco sesiones con los siguientes contenidos:
   **<span style="color:red">2.</span>** `Stata` + Microsof Excel + Microsoft Word
 
   **<span style="color:red">3.</span>** `Stata` + LaTeX
+
+  **<span style="color:red">3.</span>** Tablas personalizadas en versiones recientes de `Stata`
 
   **<span style="color:red">4.</span>** Documentos dinámicos y otras posibilidades
 

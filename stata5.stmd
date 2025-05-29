@@ -26,7 +26,7 @@ A continuación, nos centraremos en dos flujos de trabajo, uno de ellos, para aq
 
 ![Propuesta de flujo de trabajo (I)](flow1.png){width=50%}
 
-Existen varios comandos y paquetes que nos permiten exportar nuestros resultados a Microsoft Word (o Microsoft Excel). Algunos ejemplos son `estout` (que emplearemos posteriormente) y `outreg`. Sin embargo, el formato en el que obtenemos estos resultados, aunque puede ser adecuado para explorar los resultados preliminares de nuestro trabajo, no se acerca a los estándares de forma necesarios para la publicación. En otras palabras, nos va a obligar a un trabajo adicional importante. Si tenemos que repetir el análisis con alguna modificación, vamos a tener que realizar ese esfuerzo nuevamente. Podemos encontrar información detallada sobre `estout` en varios artículos de su autor [@Jann2005;@Jann2016] y en la [página web](http://repec.sowi.unibe.ch/stata/estout/) dedicada al paquete por este. En particular, para esta tarea vamos a emplear el comando `esttab` que incluye este paquete.
+Existen varios comandos y paquetes que nos permiten exportar nuestros resultados a Microsoft Word (o Microsoft Excel). Algunos ejemplos son `estout` (que emplearemos posteriormente) y `outreg`. Sin embargo, el formato en el que obtenemos estos resultados, aunque puede ser adecuado para explorar los resultados preliminares de nuestro trabajo, no se acerca a los estándares de forma necesarios para la publicación. En otras palabras, nos va a obligar a un trabajo adicional importante. Si tenemos que repetir el análisis con alguna modificación, vamos a tener que realizar ese esfuerzo nuevamente. Podemos encontrar información detallada sobre `estout` en varios artículos de su autor [@Jann2005;@Jann2016] y en la [página web](http://repec.sowi.unibe.ch/stata/estout/) dedicada al paquete por este académico. En particular, para esta tarea vamos a emplear el comando `esttab` que incluye este paquete.
 
 ```{s}
 //  Fijamos el directorio de trabajo
@@ -78,9 +78,11 @@ addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. 
 "Fuente: Elaboración propia a partir de la ECV 2018.") ///
 replace
 ```
-La versión 17 de `Stata` acepta caracteres Unicode. Para versiones anterioes a la 17, convertir el archivo `.docx` para que este aparezca con los caracteres Unicode.
+La versión 17 de `Stata` acepta caracteres Unicode. Para versiones anterioes a la 17, podemos convertir el archivo `.docx` para que este aparezca con los caracteres Unicode de la siguiente forma:
 
+```{s}
 unicode convertfile "salarios2.rtf" "salarios2_unicode.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
+```
 
 ![Tabla de resultados de regresión con `estout` para MS Word con formato](table5_2.png){width=50%}
 
@@ -211,7 +213,7 @@ Una forma de mejorar ligeramente el flujo de trabajo es exportar la tabla, con m
 
     . putexcel close
 
- Para implementar esta estrategia, primero, creamos en nuestro documento de MS Word el esqueleto de la tabla. En segundo lugar, copiamos las celdas con la información estadística del archivo de MS Excel. Por últimpo, pegamos las celdas copiadas en el documento de MS Word mediante la opción del menú `Pegado especial` $\rightarrow$ `Formato RTF`. Es un método lento, pero muy flexible, que puede ser ideal para proporcionar los resultados a los evaluadores y la reproducibilidad total.
+ Para implementar esta estrategia, primero, creamos en nuestro documento de MS Word el esqueleto de la tabla. En segundo lugar, copiamos las celdas con la información estadística del archivo de MS Excel. Por último, pegamos las celdas copiadas en el documento de MS Word mediante la opción del menú `Pegado especial` $\rightarrow$ `Formato RTF`. Es un método lento, pero muy flexible, que puede ser ideal para proporcionar los resultados a los evaluadores y conseguir la reproducibilidad total.
 
 ![Ejemplo de uso de `putexcel` con MS Word](putexcel.png){width=90%}
 
@@ -225,7 +227,7 @@ La integración de `Stata` y LaTeX en nuestro flujo de trabajo es sencilla. Requ
 
 Otra opción es optar por [Overleaf](https://www.overleaf.com/). Se trata un editor online que incorpora la distribución de TeX Live. No requiere instalar ninguna distribución ni editor en nuestro equipo, permite la colaboración en tiempo real (como Google Docs, al contrario que Dropbox) e incluye control de versiones. Existe una versión gratuita, en la que algunas de sus capacidades no están disponibles. Debido a que no requiere instalación local, lo emplearemos en los siguientes ejemplos, aunque hagan que el flujo de trabajo sea menos fluido que con una instalación local, ya que, además, no disponemos de la versión de pago (que incluye la sincronización con Dropbox y GitHub, un sistema de control de versiones que comentaremos en la siguiente sección).
 
-Para poner en marcha este tipo de flujo, vamos a emplear el paquete `estout`, mencionado en la sección anterior, y el paquete `texdoc` [@Jann2016], que nos va a pemitir crear textos planos con resultados de `Stata` que vamos a poder llevar a nuestro editor de LaTeX. La idea básica es que `Stata` genere archivos de texto plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando `input{}` para incluir el archivo generado. La mayor parte del formato resultante del texto incluido será responsabilidad de LaTeX, que habremos configurado previamente. En general, mi consejo es únicamente crear en `Stata` de las filas con la información estadística y diseñar el resto de la tabla en el editor de LaTeX.
+Para poner en marcha este tipo de flujo, vamos a emplear el paquete `estout`, mencionado en la sección anterior, y el paquete `texdoc` [@Jann2016], que nos va a permitir crear textos planos con resultados de `Stata` que vamos a poder llevar a nuestro editor de LaTeX. La idea básica es que `Stata` genere archivos de texto plano reconocibles por LaTeX y almacenarlos en una carpeta de nuestro proyecto. Posteriormente, en el editor de LaTeX, utilizaremos el comando `input{}` para incluir el archivo generado. La mayor parte del formato resultante del texto incluido será responsabilidad de LaTeX, que habremos configurado previamente. En general, mi consejo es únicamente crear en `Stata` de las filas con la información estadística y diseñar el resto de la tabla en el editor de LaTeX.
 
 ```{s/}
 quietly{
@@ -324,15 +326,15 @@ quietly{
 
 ![Texto generado por `Stata` para insertar en LaTeX](figure.png){width=30%}
 
-A continuación, en nuestro editor de LaTeX, donde habremos preparado el espacio para incluir los elementos generados, incluimos los archivos anteriores con el comando `\input{}` para la tabla y el texto e `\includegraphics{}` para la figura en `.pdf`. Como en este ejemplo estamos usando Overleaf (y no disponemos de sus características de pago), tenemos que subir los archivos a la carpeta correspondiente en la aplicación. Si utilizásemos un editor instalado localmente, simplemente, en el archivo `.tex` nos referiríamos a su ruta local de la tabla, el texto y los gráficos. El archivo principal que representan nuestro documento se llama `main.tex`.
+A continuación, en nuestro editor de LaTeX, donde habremos preparado el espacio para incluir los elementos generados, incluimos los archivos anteriores con el comando `\input{}` para la tabla y el texto e `\includegraphics{}` para la figura en `.pdf`. Como en este ejemplo estamos usando Overleaf (y no disponemos de sus características de pago), tenemos que subir los archivos a la carpeta correspondiente en la aplicación. Si utilizásemos un editor instalado localmente, simplemente, en el archivo `.tex` nos referiríamos a su ruta local de la tabla, el texto y los gráficos. El archivo principal, que representa contiene nuestro documento, se llama `main.tex`.
 
 ![Documento LaTeX en Overleaf con resultados de `Stata`](tabletex.png){width=70%}
 
 Por último, cabe mencionar la facilidad de gestión de referencias bibliográficas con programas gratuitos como [JabRef](https://www.jabref.org/), [Mendeley](https://www.mendeley.com/) o [Zotero](https://www.zotero.org/), que pueden utilizarse, además, con otro tipo de aplicaciones para procesar textos. Los recursos disponibles en la red para el aprendizaje de LaTeX, que es, fundamentalmente, un proceso *learning by doing*, son realmente inabarcables. Una buena referencia inicial para Ciencias Sociales podría ser @Frain2014.
 
-# 4. Tablas personalizadas en `Stata 17`
+# 4. Tablas personalizadas en las versiones recientes de `Stata`
 
-La versión 17 de Stata permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos `.docx`, `.xlsx` o `.tex`). Para llevar a cabo esta tarea, empleamos el comando `collect`. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas. Al margen de este consejo sobre la forma de elaborar las tablas, en el [blog oficial de Stata](https://blog.stata.com/category/reporting/) se ofrecen buenos consejos sobre el tema basados en la línea de comandos.
+Desde la versión 17, de `Stata` permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos `.docx`, `.xlsx` o `.tex`). Para llevar a cabo esta tarea, empleamos el comando `collect`. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas. Al margen de este consejo sobre la forma de elaborar las tablas, en el [blog oficial de `Stata`](https://blog.stata.com/category/reporting/) se ofrecen buenos consejos sobre el tema basados en la línea de comandos.
 
 Así, en primer lugar, podemos almacenar la información de los modelos con `collect`.
 
@@ -349,7 +351,7 @@ Posteriormente, empleamos el sistema de ventanas para personalizar la tabla.
 
 ![Herramienta del sistema de ventanas para elaborar tablas personalizadas de resultados](tablebuilder.png){width=70%}
 
-Posteriormente, fundamentalmente, mediante ensayo-error, vamos personalizando nuestra tabla. Cada modificación resulta en un comando, que podremos copiar a nuestro archivo `.do` para reproducir el gráfico cuando queramos.
+Mediante el método ensayo-error, vamos adecuando la tabla a nuestras preferencias. Cada modificación resulta en un comando, que podremos copiar a nuestro archivo `.do` para reproducir el gráfico cuando queramos.
 
     . collect stars _r_p 0.010 `"***"' 0.050 `"**"' 0.100 `"*"', attach(_r_b)
     . collect label levels result N "No. de observaciones" r2_a "R cuadrado ajustado", modify
@@ -373,7 +375,7 @@ Posteriormente, fundamentalmente, mediante ensayo-error, vamos personalizando nu
     . collect style title, font("Times New Roman", size(10pt))
     . collect style notes, font("Times New Roman", size(10pt))
 
-Una vez que la tabla se adecúa a nuestras preferencias, podemos exportarla en distintos formatos.
+Una vez que la tabla se adecua a nuestras preferencias, podemos exportarla en distintos formatos.
 
 Por ejemplo, podemos exportarla en MS Word.
 
@@ -389,11 +391,11 @@ La herramienta de personalización de tablas es sin duda útil y mejora el progr
 
 # 5. Documentos dinámicos y otras posibilidades
 
-Una de las últimas novedades en el uso de `Stata` pasan por la elaboración de documentos dinámicos. Se trata de archivos, normalmente, `.docx`, `.pdf` o `.html` que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, `Stata` está lejos todavía de las posibilidades que ofrece R con RStudio y knitr [@Gandrud2020;@Xie2015].
+Una de las últimas novedades en el uso de `Stata` consiste en la posibilidad de la elaborar de documentos dinámicos. Se trata de archivos, normalmente, `.docx`, `.pdf` o `.html`, que incluyen texto, comandos y resultados. Su carácter dinámico se explica porque, cuando modificamos los comandos, el documento resultante refleja los cambios en los resultados. Su principal utilidad puede ser crear informes preliminares de resultados, presentaciones, páginas webs sencillas o, incluso, algunas personas lo utilizan para escribir trabajos de investigación completos. No obstante, en relación con esta última opción, `Stata` está lejos todavía de las posibilidades que ofrece `R` con `RStudio` y `knitr` [@Gandrud2020;@Xie2015].
 
-En el caso de `Stata`, existen varias opciones para elaborar documentos dinámicos. La versión 15 de `Stata` incorpora esta posibilidad dentro del paquete `dyndoc`. Sin embargo, hay otras alternativas creadas por los usuarios. Para generar todas las páginas web en las que se ha organizado este curso, por ejemplo, hemos utilizado el paquete `markstat` [@Rodriguez2017]. En mi opinión, esta opción es preferible al paquete oficial porque es mucho más parecido al lenguage [Markdown](https://es.wikipedia.org/wiki/Markdown). En su página [web](https://data.princeton.edu/stata/markdown/), el creador de `markstat`, Germán Rodríguez, nos orienta de las posibilidades de este paquete, con abundantes ejemplos.
+En el caso de `Stata`, existen varias opciones para elaborar documentos dinámicos. La versión 15 de `Stata` incorpora esta posibilidad dentro del paquete `dyndoc`. Sin embargo, hay otras alternativas creadas por los usuarios. Para generar todas las páginas webs en las que se ha organizado este curso, por ejemplo, hemos utilizado el paquete `markstat` [@Rodriguez2017]. En mi opinión, esta opción es preferible al paquete oficial porque es mucho más parecido al lenguaje [Markdown](https://es.wikipedia.org/wiki/Markdown). En su página [web](https://data.princeton.edu/stata/markdown/), el creador de `markstat`, Germán Rodríguez, nos orienta de las posibilidades de este paquete, con abundantes ejemplos.
 
-En `Stata 17`, además, existe la posibilidad de integrar código de [Python en `Stata`](https://www.stata.com/python/) y código de [`Stata` en Python](https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd). Lo mismo aplica a [R](https://fsolt.org/blog/2018/08/15/switch-to-r.html#:~:text=Running%20R%20from%20Stata,the%20R%20output%20into%20Stata.)
+En `Stata 17`, además, existe la posibilidad de integrar código de [`Python` en `Stata`](https://www.stata.com/python/) y código de [`Stata` en `Python`](https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd). Lo mismo aplica a [R](https://fsolt.org/blog/2018/08/15/switch-to-r.html#:~:text=Running%20R%20from%20Stata,the%20R%20output%20into%20Stata).
 
 Por último, una tendencia reciente es el empleo de sistemas control de versiones, como `Git`, especialmente, a través de la nube con `GitHub`. La curva de aprendizaje puede reducirse sustancialmente instalando [`GitHub Desktop`](https://desktop.github.com/). Básicamente, este sistema permite trabajar de manera colaborativa en la escritura de código. En el caso de `Stata`, es aplicable, por lo tanto, a los archivos `.do` y `.ado`. Permite que varias personas trabajen de forma simultánea (e incluso cualquier usuario puede solicitar contributir) y todos los cambios son reversibles, pudiendo volver en cualquier momento a la versión que deseemos. Podemos encontrar una buena introducción en @Pellegrina2018 y, especialmente, en la guía de [Asjad Naqvi](https://medium.com/the-stata-guide/stata-and-github-integration-8c87ddf9784a).
 

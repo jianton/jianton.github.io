@@ -61,6 +61,10 @@
     img {
       max-width: 100%;
     }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
     h1, h2, h3, h4, h5, h6 {
       margin-top: 1.4em;
     }
@@ -153,8 +157,11 @@
     div.columns{display: flex; gap: min(4vw, 1.5em);}
     div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
     ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
       width: 0.8em;
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
@@ -163,6 +170,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
     .hanging-indent div.csl-entry {
       margin-left:2em;
@@ -182,9 +190,6 @@
   <script
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
   type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
 body{padding:14px 28px;}
@@ -738,9 +743,6 @@ que es muy apropiado para exportar a LaTeX.</p>
 . grstyle clear
 
 . grstyle init
-Scheme _GRSTYLE_ already active although grstyle is not running
-Press any key to reset default scheme to s2color and overwrite scheme _GRSTYLE_, or Break to abort
-(set scheme preference recorded)
 
 . grstyle set plain
 
@@ -811,9 +813,10 @@ fundamentalmente, un proceso <em>learning by doing</em>, son realmente
 inabarcables. Una buena referencia inicial para Ciencias Sociales podría
 ser <span class="citation" data-cites="Frain2014">Frain
 (2014)</span>.</p>
-<h1 id="tablas-personalizadas-en-stata-17">4. Tablas personalizadas en
-<code>Stata 17</code></h1>
-<p>La versión 17 de <code>Stata</code> permite crear tablas
+<h1 id="tablas-personalizadas-en-las-versiones-recientes-de-stata">4.
+Tablas personalizadas en las versiones recientes de
+<code>Stata</code></h1>
+<p>Desde la versión 17, de <code>Stata</code> permite crear tablas
 personalizadas de resultados y exportarlas posteriormente en distintos
 formatos (e.g., archivos <code>.docx</code>, <code>.xlsx</code> o
 <code>.tex</code>). Para llevar a cabo esta tarea, empleamos el comando
@@ -908,10 +911,10 @@ href="https://es.wikipedia.org/wiki/Markdown">Markdown</a>. En su página
 de <code>markstat</code>, Germán Rodríguez, nos orienta de las
 posibilidades de este paquete, con abundantes ejemplos.</p>
 <p>En <code>Stata 17</code>, además, existe la posibilidad de integrar
-código de <a href="https://www.stata.com/python/">Python en
+código de <a href="https://www.stata.com/python/"><code>Python</code> en
 <code>Stata</code></a> y código de <a
 href="https://medium.com/@my7eciel/stata-within-python-4cc3172b1ccd"><code>Stata</code>
-en Python</a>. Lo mismo aplica a <a
+en <code>Python</code></a>. Lo mismo aplica a <a
 href="https://fsolt.org/blog/2018/08/15/switch-to-r.html#:~:text=Running%20R%20from%20Stata,the%20R%20output%20into%20Stata">R</a>.</p>
 <p>Por último, una tendencia reciente es el empleo de sistemas control
 de versiones, como <code>Git</code>, especialmente, a través de la nube
@@ -939,7 +942,7 @@ class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo
 <h1 id="references">References</h1>
 
 <div id="refs" class="references csl-bib-body hanging-indent"
-data-line-spacing="2" role="list">
+data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Christensen2018" class="csl-entry" role="listitem">
 Christensen, G., &amp; Miguel, E. (2018). Transparency, reproducibility,
 and the credibility of <span>E</span>conomics research. <em>Journal of

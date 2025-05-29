@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res}25 Mar 2022, 09:10:07
+ {txt}opened on:  {res}29 May 2025, 06:19:47
 {txt}
 {com}. //_1
 . clear all
@@ -30,6 +30,7 @@
 {txt}
 {com}. //_4
 . import delimited using "esudb18r.csv", clear delimiter(",")
+{res}{txt}(encoding automatically selected: ISO-8859-1)
 {res}{text}(37 vars, 33,734 obs)
 
 {com}. //_5
@@ -188,7 +189,7 @@ Menor que 30 años {c |}{res}      9,510       28.19       28.19
 {txt}
 {com}. //_22
 . recode gedad (1 2 = 1) (3 4 = 2)
-{txt}(24224 changes made to {bf:gedad})
+{txt}(24,224 changes made to {bf:gedad})
 
 {com}. 
 . // Etiquetamos la nueva variable y sus valores
@@ -229,7 +230,7 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 {txt}          3 {c |}{res}      1,968        6.99       98.21
 {txt}          4 {c |}{res}         44        0.16       98.37
 {txt}          5 {c |}{res}        252        0.89       99.26
-{txt}          6 {c |}{res}        176        0.63       99.89
+{txt}          6 {c |}{res}        176        0.62       99.89
 {txt}          7 {c |}{res}          3        0.01       99.90
 {txt}          8 {c |}{res}         25        0.09       99.99
 {txt}          9 {c |}{res}          3        0.01      100.00
@@ -238,15 +239,21 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 {txt}
 {com}. //_26
 . recode p78a_u (-2 -1 = .)
-{txt}(22053 changes made to {bf:p78a_u})
+{txt}(22,053 changes made to {bf:p78a_u})
 
 {com}. //_27
 . net search poverty
 {txt}(contacting http://www.stata.com)
 
 {s6hlp}
-50 packages found (Stata Journal and STB listed first)
-------------------------------------------------------
+53 packages found (Stata Journal listed first)
+----------------------------------------------
+
+@net:describe st0723, from(http://www.stata-journal.com/software/sj23-3)!st0723 from http://www.stata-journal.com/software/sj23-3@
+    SJ23-3 st0723. Toolbox to estimate and analyze ... / Toolbox to estimate
+    and analyze multidimensional / poverty indices / by Nicolai Suppa, /
+    Support:  nsuppa@ced.uab.es / After installation, type help {cmd:mptib}, /
+    {cmd:mpitb_assoc}, {cmd:mpitb_ctyselect}, / {cmd:mpitb_estcot},
 
 @net:describe st0492, from(http://www.stata-journal.com/software/sj17-3)!st0492 from http://www.stata-journal.com/software/sj17-3@
     SJ17-3 st0492. Estimate the entire parametric class of Alkire-Foster
@@ -270,6 +277,12 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     STB-48 sg108.  Computing poverty indices. / STB insert by Philippe Van
     Kerm, GREBE, University of Namur, Belgium. / Support:
     philippe.vankerm@@fundp.ac.be / After installation, see help ^poverty^.
+
+@net:describe shapley, from(https://staskolenikov.net/stata)!shapley from https://staskolenikov.net/stata@
+    shapley -- module to perform Shapley decomposition / Author: Stas
+    Kolenikov, skolenik@@yahoo.com / This program performs, in some rather
+    general form, Shapley value / decomposition. The goal is to analyze
+    indices that do not possess / natural decomposition properties. The early
 
 @net:describe shapley, from(http://staskolenikov.net/stata)!shapley from http://staskolenikov.net/stata@
     shapley -- module to perform Shapley decomposition / Author: Stas
@@ -421,6 +434,12 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     sub-groups / MPI estimates the Adjusted Multidimensional Headcount Ratio /
     developed by Alkire and Foster (2011), also known as the /
 
+@net:describe mpitb, from(http://fmwww.bc.edu/RePEc/bocode/m)!mpitb from http://fmwww.bc.edu/RePEc/bocode/m@
+    'MPITB': module to estimate and analyze multidimensional poverty indices
+    (MPI) / mpitb is a toolbox that offers several commands to facilitate /
+    specification, estimation, and analysis of multidimensional / poverty
+    indices (MPI) and supports the popular Alkire-Foster (AF) / framework to
+
 @net:describe mpovline, from(http://fmwww.bc.edu/RePEc/bocode/m)!mpovline from http://fmwww.bc.edu/RePEc/bocode/m@
     'MPOVLINE': module to calculate FGT0, FGT1 and FGT2 by intervals of
     multiple thresholds / mpovline calculates FGT0, FGT1 and FGT2 by intervals
@@ -434,10 +453,16 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     multiple groups, particularly the balance of baseline / characteristics
 
 @net:describe outdetect, from(http://fmwww.bc.edu/RePEc/bocode/o)!outdetect from http://fmwww.bc.edu/RePEc/bocode/o@
-    'OUTDETECT': module to perform outlier detection and diagnostics for
-    welfare analysts / outdetect identifies outliers (extreme values) in the /
+    'OUTDETECT': module to perform Outlier Detection for Inequality and
+    Poverty Analysis / outdetect identifies outliers (extreme values) in the /
     distribution of a variable, and assesses their impact on a / selection of
     popular inequality and poverty measures. The / procedure by which outliers
+
+@net:describe pip, from(http://fmwww.bc.edu/RePEc/bocode/p)!pip from http://fmwww.bc.edu/RePEc/bocode/p@
+    'PIP': module to access poverty and inequality data from the World Bank's
+    Poverty and Inequality Platform (PIP) / The pip command allows Stata users
+    to compute poverty and / inequality indicators for more than 160 countries
+    and regions / included in the World Bank’s database of household
 
 @net:describe pobrezaecu, from(http://fmwww.bc.edu/RePEc/bocode/p)!pobrezaecu from http://fmwww.bc.edu/RePEc/bocode/p@
     'POBREZAECU': module to predict poverty in Ecuador / pobrezaECU predicts
@@ -468,6 +493,12 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     given family size and year / This generates the official Poverty Guideline
     value as / established by the United States Department of Health and Human
     / Services. This is one of two official poverty levels, the other / being
+
+@net:describe povguide2, from(http://fmwww.bc.edu/RePEc/bocode/p)!povguide2 from http://fmwww.bc.edu/RePEc/bocode/p@
+    'POVGUIDE2': module to compute Federal Poverty Guidelines by family size
+    and year, 1973-2025 / This is an extension of the original Stata module
+    POVGUIDE by / David Kantor written to include guideline data from
+    1973-2025, / whereas the original module stopped at 2008. Moreover, I have
 
 @net:describe povimp, from(http://fmwww.bc.edu/RePEc/bocode/p)!povimp from http://fmwww.bc.edu/RePEc/bocode/p@
     'POVIMP': module to provide poverty estimates in the absence of actual
@@ -505,23 +536,11 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     making / replacements that are specified in an external dataset, the /
     replacements file.  / KW: data management / KW: data entry / KW: replace /
 
-@net:describe sae, from(http://fmwww.bc.edu/RePEc/bocode/s)!sae from http://fmwww.bc.edu/RePEc/bocode/s@
-    'SAE': module to provide commands and mata functions devoted to unit level
-    small area estimation / sae is a Stata family of functions for small area
-    estimation, / using the methodology from Elbers, Lanjouw, and Lanjouw
-    (2003). / The package introduces new mata functions and a plugin used to /
-
-@net:describe skdecomp, from(http://fmwww.bc.edu/RePEc/bocode/s)!skdecomp from http://fmwww.bc.edu/RePEc/bocode/s@
-    'SKDECOMP': module to estimate Shapley value of growth, price, and
-    distribution components on changes in poverty indicators / skdecomp
-    implements the shapley value of Kolenikov and / Shorrocks (2003)
-    decomposition of changes in a welfare indicator / into growth,
-
-@net:describe specialexp, from(http://fmwww.bc.edu/RePEc/bocode/s)!specialexp from http://fmwww.bc.edu/RePEc/bocode/s@
-    'SPECIALEXP': module to obtain expression that evaluates to specified
-    string / specialexp returns an expression that evaluates to a specified /
-    string, including strings that cannot be enclosed in double / quotes.  /
-    KW: expressions / KW: quotes / KW: Mata / Requires: Stata version 9 /
+@net:describe s2s, from(http://fmwww.bc.edu/RePEc/bocode/s)!s2s from http://fmwww.bc.edu/RePEc/bocode/s@
+    'S2S': module to provide survey to survey imputation tool / Obtaining
+    consistent estimates on poverty over time as well / as monitoring poverty
+    trends on a timely basis is essential for / poverty reduction. However,
+    these objectives are not readily / achieved in practice where household
 
 @net:describe tex3pt, from(http://fmwww.bc.edu/RePEc/bocode/t)!tex3pt from http://fmwww.bc.edu/RePEc/bocode/t@
     'TEX3PT': module to produce LaTeX documents from estout with
@@ -548,8 +567,14 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     implements Wooldridge / simple solution to the initial condition problem
 
 
-11 references found in tables of contents
+12 references found in tables of contents
 -----------------------------------------
+
+@net:from http://www.stata-journal.com/software/sj23-3/!http://www.stata-journal.com/software/sj23-3/@
+    Stata Journal volume 23, issue 3 / Update: iefieldkit: Commands for
+    primary / data collection and cleaning / Extract the travel distance and
+    travel time / between two locations from the Baidu Maps / API
+    (http://api.map.baidu.com) / Training text regression models in Stata /
 
 @net:from http://www.stata-journal.com/software/sj17-3/!http://www.stata-journal.com/software/sj17-3/@
     Stata Journal volume 17, issue 3 / Update: A set of utilities for managing
@@ -572,14 +597,14 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 @net:from http://fmwww.bc.edu/RePEc/bocode/a/!http://fmwww.bc.edu/RePEc/bocode/a/@
     module to estimate models with two fixed effects / module to compute
     unbiased IV regression / module for scatter plot with linear and/or
-    quadratic fit, automatically annotated / module to perform Arellano-Bond
-    test for autocorrelation / module to implement the Alpha-Beta-Gamma Method
+    quadratic fit, automatically annotated / module to provide Gradient Solver
+    for Ahlfeldt & Barr (2022): The economics of skyscrapers / module to
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/c/!http://fmwww.bc.edu/RePEc/bocode/c/@
     module to implement machine learning classification in Stata / module to
-    implement machine learning classification in Stata / module to generate
-    calendar / module to estimate proportions and means after survey data have
-    been calibrated to population totals / module for inverse regression and
+    implement machine learning classification in Stata / module to cache all
+    other Stata commands / module to generate calendar / module to estimate
+    proportions and means after survey data have been calibrated to population
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/d/!http://fmwww.bc.edu/RePEc/bocode/d/@
     module to create network visualizations using D3.js to view in browser /
@@ -589,15 +614,15 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/e/!http://fmwww.bc.edu/RePEc/bocode/e/@
     module to estimate endogenous attribute attendance models / module to
-    perform extreme bound analysis / module to perform Entropy reweighting to
-    create balanced samples / module to perform entropy balancing / module to
-    perform entropy reweighting to create balanced samples for continuous
+    compute Extended Sample Autocorrelation Function / module to perform
+    extreme bound analysis / module to perform Entropy reweighting to create
+    balanced samples / module to perform entropy balancing / module to perform
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/i/!http://fmwww.bc.edu/RePEc/bocode/i/@
     module to import International Aid Transparency Initiative data / module
     to compute measures of interaction contrast (biological interaction) /
     module to compute Interaction Effects in Linear and Generalized Linear
-    Models / module that computes models 2 and 3 of the intra-class
+    Models / module to compute Intraclass correlation coefficients based on
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/m/!http://fmwww.bc.edu/RePEc/bocode/m/@
     module to implement interpoint distance distribution analysis / module to
@@ -605,17 +630,17 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
     criterion for multi-class outcomes / module to perform Dickey-Fuller test
     on panel data / module to create dot plot for summarizing pooled estimates
 
+@net:from http://fmwww.bc.edu/RePEc/bocode/o/!http://fmwww.bc.edu/RePEc/bocode/o/@
+    module to compute the Blinder-Oaxaca decomposition / module to compute
+    decompositions of outcome differentials / module to compute the
+    Blinder-Oaxaca decomposition / module to identify differences in values
+    across observations for a variable / module to display observations of
+
 @net:from http://fmwww.bc.edu/RePEc/bocode/p/!http://fmwww.bc.edu/RePEc/bocode/p/@
     module to calculate confidence limits of a regression coefficient from the
-    p-value / module to perform Page's L trend test for ordered alternatives /
-    module to create paired datasets from individual-per-row data / module for
-    plots of paired observations / module to import network data in Pajek's
-
-@net:from http://fmwww.bc.edu/RePEc/bocode/s/!http://fmwww.bc.edu/RePEc/bocode/s/@
-    module to compute Sequence Analysis Distance Measures / module to provide
-    commands and mata functions devoted to unit level small area estimation /
-    module to compute sample size for an intra-class correlation (ICC) /
-    module to draw a random sample with probabilities proportional to size /
+    p-value / module to convert between minutes per mile and miles per hour /
+    module to perform Page's L trend test for ordered alternatives / module to
+    create paired datasets from individual-per-row data / module for plots of
 
 {smcl}
 
@@ -631,7 +656,7 @@ all files already exist and are up to date.
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res}25 Mar 2022, 09:10:37
+ {txt}closed on:  {res}29 May 2025, 06:19:55
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

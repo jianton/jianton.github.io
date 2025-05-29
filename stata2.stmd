@@ -12,9 +12,9 @@ _ _ _
 
 # 1. Operaciones de fusión horizontal de archivos
 
-Una de las operaciones más utilizadas en `Stata` para manipular archivos es la instrucción `merge`, que permite fusionar dos archivos a partir de ciertas variables comunes. Ejemplos típicos son la fusión de distintas bases de datos con características de los inviduos o una base de datos con características de los invidividuos que queremos fusionar con una bases de datos con características de los hogares.
+Una de las operaciones más utilizadas en `Stata` para manipular archivos es la instrucción `merge`, que permite fusionar dos archivos a partir de ciertas variables comunes. Ejemplos típicos son la fusión de distintas bases de datos con características de los inviduos o una base de datos con características de los individuos que queremos fusionar con una bases de datos con características de los hogares.
 
-Para ilustrar estos comandos, vamos a emplear los archivos de la ECV 2018, en concreto, el archivo básico de personas (`ecv18r.dta`), el archivo básico de hogares (`ecv18d.dta`), el archivo detallado de personas (`ecv18p.dta`) y el archivo detallado de hogares (`ecv18h.dta`), que se encuentran en la carpeta `sesión2`. Lo primer de todo, por lo tanto, es seleccionar el directorio de trabajo
+Para ilustrar estos comandos, vamos a emplear los archivos de la ECV 2018, en concreto, el archivo básico de personas (`ecv18r.dta`), el archivo básico de hogares (`ecv18d.dta`), el archivo detallado de personas (`ecv18p.dta`) y el archivo detallado de hogares (`ecv18h.dta`), que se encuentran en la carpeta `sesión2`. Lo primero de todo, por lo tanto, es seleccionar el directorio de trabajo
 
 ```{s}
 cd "D:\Dropbox\curso_stata\sesión2"
@@ -143,7 +143,7 @@ tabulate ano
 
 # 3. Crear una base de datos con estadísticos descriptivos
 
-Esta tarea, si bien se puede realizar combinando otros comandos (`egen`, `merge` y `append`) es mucho más sencilla a través de la potente instrucción `collapse`:
+Esta tarea, si bien se puede realizar combinando otros comandos (`egen`, `merge` y `append`), es mucho más sencilla a través de la potente instrucción `collapse`:
 
   <code>collapse <i>clist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
 
@@ -208,7 +208,7 @@ En muchas ocasiones, especialmente cuando trabajamos con datos de panel, resulta
 sort sexo ano
 list sexo ano salariomed
 ```
-Para calcular cuál es la evolución del salario medio por sexo, para ello, sería más fácil disponer de tres variables que recojan el salario, una para cada año (formato `wide`). El comando `reshape` funciona de la siguiente forma:
+Para calcular cuál es la evolución del salario medio por sexo, sería más fácil disponer de tres variables que recojan el salario, una para cada año (formato `wide`). El comando `reshape` funciona de la siguiente forma:
 
   <code>reshape wide <i>stub</i>, i(<i>i</i>) j(<j>j</j>)</code>
 
@@ -277,10 +277,10 @@ describe
 
 `tempfile` funciona de forma análoga para nombres de archivos.
 
-Así, por ejemplo, podemos crear una macro global que incluya la variable `sexo`, podemos llamarla `var1` y calcular los estadísticos descriptivos de `var1`.
+Así, por ejemplo, podemos crear una macro global que incluya la variable `salariomed`, podemos llamarla `var1` y calcular los estadísticos descriptivos de `var1`.
 
 ```{s}
-global var1 "sexo"
+global var1 "salariomed"
 
 summarize $var1
 ```

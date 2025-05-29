@@ -8,9 +8,6 @@
   <title>Sesión 3. Tablas de contingencia y análisis multivariante</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -22,17 +19,23 @@
       padding-top: 50px;
       padding-bottom: 50px;
       hyphens: auto;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -56,6 +59,10 @@
       color: #1a1a1a;
     }
     img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
       max-width: 100%;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -82,9 +89,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -93,6 +101,7 @@
     pre code {
       padding: 0;
       overflow: visible;
+      overflow-wrap: normal;
     }
     .sourceCode {
      background-color: transparent;
@@ -134,20 +143,36 @@
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -161,12 +186,10 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+    }  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
 body{padding:14px 28px;}
@@ -207,24 +230,52 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Sesión 3. Tablas de contingencia y análisis multivariante</h1>
+<h1 class="title">Sesión 3. Tablas de contingencia y análisis
+multivariante</h1>
 <p class="author">José-Ignacio Antón</p>
 </header>
 <hr />
 <p style="text-align: center;">
-<a href="https://jianton.github.io/curso_stata.html"><span style="color:red"><font size="4">Inicio</font></span></a>      <a href="https://jianton.github.io/stata1.html"><span style="color:red"><font size="4">Sesión 1</font></span></a>      <a href="https://jianton.github.io/stata2.html"><span style="color:red"><font size="4">Sesión 2</font></span></a>      <a href="https://jianton.github.io/stata3.html"><span style="color:red"><font size="4">Sesión 3</font></span></a>      <a href="https://jianton.github.io/stata4.html"><span style="color:red"><font size="4">Sesión 4</font></span></a>      <a href="https://jianton.github.io/stata5.html"><span style="color:red"><font size="4">Sesión 5</font></span></a>      <a href="https://jianton.github.io/stata_ejercicios.html"><span style="color:red"><font size="4">Ejercicios</font></span></a>
+<a href="https://jianton.github.io/curso_stata.html"><span
+style="color:red"><font size="4">Inicio</font></span></a>      <a
+href="https://jianton.github.io/stata1.html"><span
+style="color:red"><font size="4">Sesión 1</font></span></a>      <a
+href="https://jianton.github.io/stata2.html"><span
+style="color:red"><font size="4">Sesión 2</font></span></a>      <a
+href="https://jianton.github.io/stata3.html"><span
+style="color:red"><font size="4">Sesión 3</font></span></a>      <a
+href="https://jianton.github.io/stata4.html"><span
+style="color:red"><font size="4">Sesión 4</font></span></a>      <a
+href="https://jianton.github.io/stata5.html"><span
+style="color:red"><font size="4">Sesión 5</font></span></a>      <a
+href="https://jianton.github.io/stata_ejercicios.html"><span
+style="color:red"><font size="4">Ejercicios</font></span></a>
 </p>
 <hr />
 <h1 id="tablas-de-contingencia">1. Tablas de contingencia</h1>
-<p><code>Stata</code> es un software muy apropiado para elaborar tablas de contingencia simples y complejas. Para ilustrar el empleo de estos comandos, utilizaremos la base de datos <code>ecv18t</code>, que se encuentra en la carpeta <code>sesión3</code> e incluye una serie de variables que permiten analizar algunos aspectos del mercado de trabajo. Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> o el de <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
-<h2 id="tablas-de-frecuencia-con-una-o-dos-variables-tabulate">Tablas de frecuencia con una o dos variables (<code>tabulate</code>)</h2>
-<p>Es uno de los comandos más utilizados de <code>Stata</code>, esencial para explorar las bases de datos. La sintaxis es la siguiente:</p>
+<p><code>Stata</code> es un software muy apropiado para elaborar tablas
+de contingencia simples y complejas. Para ilustrar el empleo de estos
+comandos, utilizaremos la base de datos <code>ecv18t</code>, que se
+encuentra en la carpeta <code>sesión3</code> e incluye una serie de
+variables que permiten analizar algunos aspectos del mercado de trabajo.
+Podemos encontrar explicaciones detalladas, por ejemplo, en el libro de
+<span class="citation" data-cites="Escobar2012">Escobar et al.
+(2012)</span> o el de <span class="citation"
+data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
+<h2 id="tablas-de-frecuencia-con-una-o-dos-variables-tabulate">Tablas de
+frecuencia con una o dos variables (<code>tabulate</code>)</h2>
+<p>Es uno de los comandos más utilizados de <code>Stata</code>, esencial
+para explorar las bases de datos. La sintaxis es la siguiente:</p>
 <p>Tabla de una variable (<em>one-way table</em>)</p>
-<p><code><u>tab</u>ulate <i>varname</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>tabulate1_options</i>]</code></p>
+<p><code><u>tab</u>ulate <i>varname</i> [<i>if</i>] [<i>in</i>]
+[<i>weight</i>] [, <i>tabulate1_options</i>]</code></p>
 <p>Tabla de dos variables (<em>two-way table</em>)</p>
-<p><code><u>tab</u>ulate <i>varname1</i> <i>varname2</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
-<p>Las opciones para crear las tablas son numerosas: número de observaciones, frecuencias de celdas, filas o columnas, etc.</p>
-<p>En nuestra base de datos, por ejemplo, podemos crear una tabla con la distribución de la educación en la población.</p>
+<p><code><u>tab</u>ulate <i>varname1</i> <i>varname2</i> [<i>if</i>]
+[<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
+<p>Las opciones para crear las tablas son numerosas: número de
+observaciones, frecuencias de celdas, filas o columnas, etc.</p>
+<p>En nuestra base de datos, por ejemplo, podemos crear una tabla con la
+distribución de la educación en la población.</p>
 <pre class='stata'>. //  Fijamos el directorio de trabajo
 . 
 . cd "D:\Dropbox\curso_stata\sesión3"
@@ -249,7 +300,8 @@ Nivel educativo medio │      5,429       26.75       65.40
 ──────────────────────┼───────────────────────────────────
                 Total │     20,292      100.00
 </pre>
-<p>Asimismo, podemos crear una tabla que recoja la distribución de la educación por sexo.</p>
+<p>Asimismo, podemos crear una tabla que recoja la distribución de la
+educación por sexo.</p>
 <pre class='stata'>. //  Tabla de frecuencias absolutas
 . 
 . tabulate educg sexo
@@ -305,11 +357,20 @@ Nivel educativo medio │     13.36      13.40 │     26.75
 ──────────────────────┼──────────────────────┼──────────
                 Total │     49.19      50.81 │    100.00 
 </pre>
-<p>Adicionalmente, <code>Stata</code> nos permite realizar algunos tests estadísticos para contrastar si las dos variables se distribuyen de forma independiente, como el test de la <span class="math inline">\(\chi^2\)</span> de Pearson (opción <code>chi2</code>), entre otros muchos.</p>
-<h2 id="tablas-con-estadísticos-descriptivos">Tablas con estadísticos descriptivos</h2>
-<p>Podemos crear tablas de una o dos variables con los estadísticos descriptivos de otras variables mediante la instrucción <code>tabulate, summarize()</code>.</p>
-<p><code><u>tab</u>ulate <i>varname1</i> [<i>varname2</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, options]</code></p>
-<p>Por ejemplo, podemos calcular los estadísticos descriptivos del salario promedio por nivel educativo o por nivel educativo y sexo.</p>
+<p>Adicionalmente, <code>Stata</code> nos permite realizar algunos tests
+estadísticos para contrastar si las dos variables se distribuyen de
+forma independiente, como el test de la <span
+class="math inline">\(\chi^2\)</span> de Pearson (opción
+<code>chi2</code>), entre otros muchos.</p>
+<h2 id="tablas-con-estadísticos-descriptivos">Tablas con estadísticos
+descriptivos</h2>
+<p>Podemos crear tablas de una o dos variables con los estadísticos
+descriptivos de otras variables mediante la instrucción
+<code>tabulate, summarize()</code>.</p>
+<p><code><u>tab</u>ulate <i>varname1</i> [<i>varname2</i>] [<i>if</i>]
+[<i>in</i>] [<i>weight</i>] [, options]</code></p>
+<p>Por ejemplo, podemos calcular los estadísticos descriptivos del
+salario promedio por nivel educativo o por nivel educativo y sexo.</p>
 <pre class='stata'>. //  Tabla con estadísticos descriptivos para valores de una o más variables
 . 
 . tabulate educg, summarize(salario)
@@ -347,9 +408,12 @@ Nivel educativo medio │     13.36      13.40 │     26.75
            │  1926.792  1657.1965 │ 1808.3896
            │      6036       5708 │     11744
 </pre>
-<p>Además, disponemos del comando <code>table</code> para construir tablas con estadísticos descriptivos de forma más flexible.</p>
-<p><code>table <i>rowvar</i> [<i>colvar</i> [<i>supercolvar</i>]] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
-<p>El salario promedio por educación, sexo y tipo de contrato se calcularía como sigue:</p>
+<p>Además, disponemos del comando <code>table</code> para construir
+tablas con estadísticos descriptivos de forma más flexible.</p>
+<p><code>table <i>rowvar</i> [<i>colvar</i> [<i>supercolvar</i>]]
+[<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
+<p>El salario promedio por educación, sexo y tipo de contrato se
+calcularía como sigue:</p>
 <pre class='stata'>. table educg sexo contrato, statistic(mean salario)
 
 ────────────────────────┬─────────────────────────────────────────────────────────────────────────────────────────────
@@ -380,9 +444,14 @@ Educación (agrupada)    │
 ────────────────────────┴─────────────────────────────────────────────────────────────────────────────────────────────
 </pre>
 <h1 id="análisis-de-varianza-anova">2. Análisis de varianza (ANOVA)</h1>
-<p>Como es sabido, este tipo de análisis se emplea para contrastar si la media de una variable en dos o más poblaciones es diferente. En <code>Stata</code>, se implementa con facilidad con el comando <code>anova</code>:</p>
-<p><code>anova <i>varname</i> [<i>termlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
-<p>Para contrastar si el salario promedio es diferente por nivel educativo, emplearíamos la siguiente instrucción:</p>
+<p>Como es sabido, este tipo de análisis se emplea para contrastar si la
+media de una variable en dos o más poblaciones es diferente. En
+<code>Stata</code>, se implementa con facilidad con el comando
+<code>anova</code>:</p>
+<p><code>anova <i>varname</i> [<i>termlist</i>] [<i>if</i>] [<i>in</i>]
+[<i>weight</i>] [, <i>options</i>]</code></p>
+<p>Para contrastar si el salario promedio es diferente por nivel
+educativo, emplearíamos la siguiente instrucción:</p>
 <pre class='stata'>. anova salario educg
 
                          Number of obs =     11,744    R-squared     =  0.0767
@@ -398,20 +467,45 @@ Educación (agrupada)    │
               ───────────┼────────────────────────────────────────────────────
                    Total │  3.840e+10     11,743     3270273  
 </pre>
-<p>Podemos ver que, efectivamente, se rechaza la hipótesis nula de igualdad de medias. Sobre la implementación del ANOVA, podemos recurrir, nuevamente, a <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> y <span class="citation" data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
+<p>Podemos ver que, efectivamente, se rechaza la hipótesis nula de
+igualdad de medias. Sobre la implementación del ANOVA, podemos recurrir,
+nuevamente, a <span class="citation" data-cites="Escobar2012">Escobar et
+al. (2012)</span> y <span class="citation"
+data-cites="Kohler2012">Kohler &amp; Kreuter (2012)</span>.</p>
 <h1 id="análisis-de-regresión">3. Análisis de regresión</h1>
-<p>Sin duda, es la técnica de análisis multivariantes más popular. En <code>Stata</code>, las regresiones lineales se implementan a través del comando <code>regress</code>:</p>
-<p><code><u>reg</u>ress <i>depvar</i> [<i>indepvars</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
-<p>El abanico de opciones que nos ofrece un comando como <code>regress</code> es enorme. Algunos ejemplos de manuales muy recomendables son <span class="citation" data-cites="Adkins2010">Adkins &amp; Hill (2010)</span>, <span class="citation" data-cites="Baum2006">Baum (2006)</span> y <span class="citation" data-cites="Cameron2010">Cameron &amp; Trivedi (2010)</span>. Un buen libro que conecta teoría y práctica es el de <span class="citation" data-cites="Wooldridge2019">Wooldridge (2019)</span>.</p>
-<p>Vamos a realizar un ejercicio simple, consistente en una regresión a la <span class="citation" data-cites="Mincer1958">Mincer (1958)</span>, consistente en tratar de explicar/predecir el salario de una persona en función de su sexo, edad, edad al cuadrado y escolaridad. El modelo a estimar sería el siguiente:</p>
-<p><span class="math display">\[  \log \text{salario}_i = \beta_0 + \beta_1 X_i + \epsilon_i \]</span></p>
-<p>En primer lugar, vamos a crear una nueva variable, la edad al cuadrado.</p>
+<p>Sin duda, es la técnica de análisis multivariantes más popular. En
+<code>Stata</code>, las regresiones lineales se implementan a través del
+comando <code>regress</code>:</p>
+<p><code><u>reg</u>ress <i>depvar</i> [<i>indepvars</i>] [<i>if</i>]
+[<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
+<p>El abanico de opciones que nos ofrece un comando como
+<code>regress</code> es enorme. Algunos ejemplos de manuales muy
+recomendables son <span class="citation" data-cites="Adkins2010">Adkins
+&amp; Hill (2010)</span>, <span class="citation"
+data-cites="Baum2006">Baum (2006)</span> y <span class="citation"
+data-cites="Cameron2010">Cameron &amp; Trivedi (2010)</span>. Un buen
+libro que conecta teoría y práctica es el de <span class="citation"
+data-cites="Wooldridge2019">Wooldridge (2019)</span>.</p>
+<p>Vamos a realizar un ejercicio simple, una regresión a la <span
+class="citation" data-cites="Mincer1958">Mincer (1958)</span>,
+consistente en tratar de explicar/predecir el salario de una persona en
+función de su sexo, edad, edad al cuadrado y escolaridad. El modelo a
+estimar sería el siguiente:</p>
+<p><span class="math display">\[  \log \text{salario}_i = \beta_0 +
+\beta_1 X_i + \epsilon_i \]</span></p>
+<p>En primer lugar, vamos a crear una nueva variable, la edad al
+cuadrado.</p>
 <pre class='stata'>. generate edad2 = edad^2
 
 . label variable edad2 "Edad al cuadrado"
 </pre>
-<p>Habitualmente, se emplea el salario en logaritmos, porque sabemos que la distribución del logaritmo del salario es aproximadamente normal y facilita la interpretación (el coeficiente de cada regresor indica aproximadamente la variaciación porcentual de la variable en logaritmos cuando se produce un incremento de una unidad en el regresor).</p>
-<p>Calculamos, en primer lugar, una regresión del logaritmo del salario sobre la edad y la edad al cuadrado.</p>
+<p>Habitualmente, se emplea el salario en logaritmos, porque sabemos que
+la distribución del logaritmo del salario es aproximadamente normal y
+facilita la interpretación (el coeficiente de cada regresor indica
+aproximadamente la variaciación porcentual de la variable en logaritmos
+cuando se produce un incremento de una unidad en el regresor).</p>
+<p>Calculamos, en primer lugar, una regresión del logaritmo del salario
+sobre la edad y la edad al cuadrado.</p>
 <pre class='stata'>. regress logsalario edad edad2
 
       Source │       SS           df       MS      Number of obs   =    11,599
@@ -429,7 +523,19 @@ Educación (agrupada)    │
        _cons │   5.137219   .1016253    50.55   0.000     4.938016    5.336422
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
-<p><code>Stata</code> es capaz de acomodar fácilmente variables categóricas en los análisis econométricos. En el comando <code>regress</code>, en particular, es especialmente sencillo. Recordemos que para incluir variables categóricas en un análisis, empleamos variables ficticias o <em>dummies</em>, variables que toman el valor 1 si la observación toma un determinado valor de la variable y 0 en otro caso. Para evitar la multicolinealidad perfecta, para cada variable categórica, incluimos una variable <em>dummy</em> para todas las categorías excepto una, que actúa como referencia. <code>Stata</code> implementa esta estrategia automáticamente. Por defecto, selecciona como referencia la primera categoría, pero podemos modificar esta opción. Por ejemplo, con la variable <code>sexo</code>, tendríamos:</p>
+<p><code>Stata</code> es capaz de acomodar fácilmente variables
+categóricas en los análisis econométricos. En el comando
+<code>regress</code>, en particular, es especialmente sencillo.
+Recordemos que para incluir variables categóricas en un análisis,
+empleamos variables ficticias o <em>dummies</em>, variables que toman el
+valor 1 si la observación toma un determinado valor de la variable y 0
+en otro caso. Para evitar la multicolinealidad perfecta, para cada
+variable categórica, incluimos una variable <em>dummy</em> para todas
+las categorías excepto una, que actúa como referencia.
+<code>Stata</code> implementa esta estrategia automáticamente. Por
+defecto, selecciona como referencia la primera categoría, pero podemos
+modificar esta opción. Por ejemplo, con la variable <code>sexo</code>,
+tendríamos:</p>
 <pre class='stata'>. //  Con la categoría por defecto (hombre)
 . 
 . regress logsalario edad edad2 i.sexo
@@ -499,7 +605,10 @@ Educación (agrupada)    │
        _cons │   5.190086     .10112    51.33   0.000     4.991874    5.388299
 ─────────────┴────────────────────────────────────────────────────────────────
 </pre>
-<p>En ocasiones, no obstante, puede convenir realizar la creación de variables ficticias manualmente, especialmente con comandos que no soportan <code>i.varname</code> algo a lo que <code>Stata</code> puede ayudarnos con la instrucción siguiente:</p>
+<p>En ocasiones, no obstante, puede convenir realizar la creación de
+variables ficticias manualmente, especialmente con comandos que no
+soportan <code>i.varname</code>, algo a lo que <code>Stata</code> puede
+ayudarnos con la instrucción siguiente:</p>
 <pre class='stata'>. tabulate educg, generate(educdummy)
 
  Educación (agrupada) │      Freq.     Percent        Cum.
@@ -559,7 +668,12 @@ Nivel educativo medio  │    .240602   .0185962    12.94   0.000     .2041503  
 
 . 
 </pre>
-<p>Lo mismo ocurre con las interacciones entre variables, que podemos calcular manualmente o empleando las capacidades de <code>Stata</code>. Para el cálculo de las mismas, podemos emplear los caracteres <code>#</code> o <code>##</code>. El primero de ellos (<code>#</code>) incluye en la ecuación únicamente las interacciones, mientras que <code>##</code> incluye las variables por separado y su interacción.</p>
+<p>Lo mismo ocurre con las interacciones entre variables, que podemos
+calcular manualmente o empleando las capacidades de <code>Stata</code>.
+Para el cálculo de las mismas, podemos emplear los caracteres
+<code>#</code> o <code>##</code>. El primero de ellos (<code>#</code>)
+incluye en la ecuación únicamente las interacciones, mientras que
+<code>##</code> incluye las variables por separado y su interacción.</p>
 <pre class='stata'>. regress logsalario i.sexo c.edad c.edad#c.edad i.educg i.sexo#c.edad i.sexo#i.educg
 
       Source │       SS           df       MS      Number of obs   =    11,599
@@ -625,18 +739,38 @@ Mujer#Nivel educativo medio  │  -.0232393    .037422    -0.62   0.535    -.096
                        _cons │   5.083543    .099395    51.14   0.000     4.888712    5.278374
 ─────────────────────────────┴────────────────────────────────────────────────────────────────
 </pre>
-<h1 id="otros-modelos-econométricos-de-uso-común">4. Otros modelos econométricos de uso común</h1>
-<p><code>Stata</code> es un paquete estadístico que puede emplearse para implementar una impresionante variedad de modelos. En muchas ocasiones, aunque es muy conveniente conocer los fundamentos estadísticos de nuestros análisis, podemos realizar los ejercicios econométricos sin necesidad de un conocimiento profundo de estadística. Los modelos estimados por máxima verosimilitud, por ejemplo, requieren operaciones matemáticas de cierta dificultad y, de hecho, la resolución de estos modelos se hace por iteración (en este caso, se deriva una función de máxima verosimilitud y se busca su máximo mediante un procedimiento iterativo, sin encontrar una solución cerrada). Ejemplos de este tipo de modelos ampliamente utilizados en todo tipo de disciplinas son los modelos <em>logit</em> o <em>probit</em>, donde la variable de interés es de tipo binario. En la práctica, codificamos dicha variable en dos categorías, 0 y 1.</p>
-<p>En este ejemplo, vamos a analizar cuál es la influencia del sexo, la edad, la edad al cuadrado y el nivel educativo en la probabilidad de que una persona se encuentre empleada. Para ello, en nuestra base de datos, hemos creado la variable <code>empleo</code>, que es una variable que toma el valor 1 si la persona se encuentra ocupada en el momento de la encuesta y 0 en otro caso. La implementación de un modelo <em>logit</em> o un modelo <em>probit</em> es muy sencilla:</p>
+<h1 id="otros-modelos-econométricos-de-uso-común">4. Otros modelos
+econométricos de uso común</h1>
+<p><code>Stata</code> es un paquete estadístico que puede emplearse para
+implementar una impresionante variedad de modelos. En muchas ocasiones,
+aunque es muy conveniente conocer los fundamentos estadísticos de
+nuestros análisis, podemos realizar los ejercicios econométricos sin
+necesidad de un conocimiento profundo de estadística. Los modelos
+estimados por máxima verosimilitud, por ejemplo, requieren operaciones
+matemáticas de cierta dificultad y, de hecho, la resolución de estos
+modelos se hace por iteración (en este caso, se deriva una función de
+máxima verosimilitud y se busca su máximo mediante un procedimiento
+iterativo, sin encontrar una solución cerrada). Ejemplos de este tipo de
+modelos ampliamente utilizados en todo tipo de disciplinas son los
+modelos <em>logit</em> o <em>probit</em>, donde la variable de interés
+es de tipo binario. En la práctica, codificamos dicha variable en dos
+categorías, 0 y 1.</p>
+<p>En este ejemplo, vamos a analizar cuál es la influencia del sexo, la
+edad, la edad al cuadrado y el nivel educativo en la probabilidad de que
+una persona se encuentre empleada. Para ello, en nuestra base de datos,
+hemos creado la variable <code>empleo</code>, que es una variable que
+toma el valor 1 si la persona se encuentra ocupada en el momento de la
+encuesta y 0 en otro caso. La implementación de un modelo <em>logit</em>
+o un modelo <em>probit</em> es muy sencilla:</p>
 <pre class='stata'>. //  Estimación del modelo logit
 . 
 . logit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11536.258  
-Iteration 2:   log likelihood =  -11525.64  
-Iteration 3:   log likelihood = -11525.637  
-Iteration 4:   log likelihood = -11525.637  
+Iteration 0:  Log likelihood =   -13385.8  
+Iteration 1:  Log likelihood = -11536.258  
+Iteration 2:  Log likelihood =  -11525.64  
+Iteration 3:  Log likelihood = -11525.637  
+Iteration 4:  Log likelihood = -11525.637  
 
 Logistic regression                                    Number of obs =  20,292
                                                        LR chi2(3)    = 3720.33
@@ -660,10 +794,10 @@ c.edad#c.edad │  -.0054409   .0001038   -52.41   0.000    -.0056443   -.005237
 . 
 . probit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11523.923  
-Iteration 2:   log likelihood = -11522.197  
-Iteration 3:   log likelihood = -11522.197  
+Iteration 0:  Log likelihood =   -13385.8  
+Iteration 1:  Log likelihood = -11523.923  
+Iteration 2:  Log likelihood = -11522.197  
+Iteration 3:  Log likelihood = -11522.197  
 
 Probit regression                                      Number of obs =  20,292
                                                        LR chi2(3)    = 3727.21
@@ -682,18 +816,28 @@ c.edad#c.edad │  -.0033169    .000061   -54.35   0.000    -.0034366   -.003197
         _cons │  -5.091976   .1023362   -49.76   0.000    -5.292551   -4.891401
 ──────────────┴────────────────────────────────────────────────────────────────
 </pre>
-<p>Es muy posible que recordemos que los coeficientes estimados de muchos modelos no lineales no son directamente interpretables. Por eso, habitualmente, presentamos, por ejemplo, los efectos marginales. <code>Stata</code> permite abordar esta tarea a través del uso del comando <code>margins</code> después de la estimación del modelo correspondiente:</p>
-<p><code>margins [<i>marginlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>response_options</i> <i>options</i>]</code></p>
-<p>En este tipo de modelos, los efectos marginales (el efecto de un incremento de unidad en un regresor en la variable dependiente) es diferente para cada observación. Una opción habitual es calcular los efectos marginales en para una observación que tomase como valores el promedio de cada variable.</p>
+<p>Es muy posible que recordemos que los coeficientes estimados de
+muchos modelos no lineales no son directamente interpretables. Por eso,
+habitualmente, presentamos, por ejemplo, los efectos marginales.
+<code>Stata</code> permite abordar esta tarea a través del uso del
+comando <code>margins</code> después de la estimación del modelo
+correspondiente:</p>
+<p><code>margins [<i>marginlist</i>] [<i>if</i>] [<i>in</i>]
+[<i>weight</i>] [, <i>response_options</i> <i>options</i>]</code></p>
+<p>En este tipo de modelos, los efectos marginales (el efecto de un
+incremento de unidad en un regresor en la variable dependiente) es
+diferente para cada observación. Una opción habitual es calcular los
+efectos marginales en para una observación que tomase como valores el
+promedio de cada variable.</p>
 <pre class='stata'>. //  Estimación del modelo logit
 . 
 . logit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11536.258  
-Iteration 2:   log likelihood =  -11525.64  
-Iteration 3:   log likelihood = -11525.637  
-Iteration 4:   log likelihood = -11525.637  
+Iteration 0:  Log likelihood =   -13385.8  
+Iteration 1:  Log likelihood = -11536.258  
+Iteration 2:  Log likelihood =  -11525.64  
+Iteration 3:  Log likelihood = -11525.637  
+Iteration 4:  Log likelihood = -11525.637  
 
 Logistic regression                                    Number of obs =  20,292
                                                        LR chi2(3)    = 3720.33
@@ -736,15 +880,16 @@ At: 1.sexo = .4918687 (mean)
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
-<p>Otra opción habitual es calcular efectos marginales para cada observación y presentar la media de los mismos:</p>
+<p>Otra opción habitual es calcular efectos marginales para cada
+observación y presentar la media de los mismos:</p>
 <pre class='stata'>. //  Estimación del modelo probit
 . 
 . probit empleo i.sexo c.edad c.edad#c.edad
 
-Iteration 0:   log likelihood =   -13385.8  
-Iteration 1:   log likelihood = -11523.923  
-Iteration 2:   log likelihood = -11522.197  
-Iteration 3:   log likelihood = -11522.197  
+Iteration 0:  Log likelihood =   -13385.8  
+Iteration 1:  Log likelihood = -11523.923  
+Iteration 2:  Log likelihood = -11522.197  
+Iteration 3:  Log likelihood = -11522.197  
 
 Probit regression                                      Number of obs =  20,292
                                                        LR chi2(3)    = 3727.21
@@ -784,12 +929,15 @@ dy/dx wrt:  2.sexo edad
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
-<p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).</p>
+<p>Podemos plantear un tercer ejemplo con un modelo <em>tobit</em>,
+empleado en ocasiones para variables que se encuentran censuradas. Por
+ejemplo, las aportaciones a planes de pensiones privados son una
+variable censurada en 0 (no puede ser negativa).</p>
 <pre class='stata'>. codebook aportacionesg
 
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-aportacionesg                                                                                    Aportaciones a planes privados de pensiones individuales (brutas)
-─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+aportacionesg                                                                                                                                                                                 Aportaciones a planes privados de pensiones individuales (brutas)
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
                   Type: Numeric (float)
 
@@ -802,26 +950,28 @@ aportacionesg                                                                   
            Percentiles:     10%       25%       50%       75%       90%
                               0         0         0         0         0
 </pre>
-<p>En nuestro caso, la estimación del modelo será la siguiente (como en el caso anterior, los efectos marginales no coinciden con los coeficientes):</p>
+<p>En nuestro caso, la estimación del modelo será la siguiente (como en
+el caso anterior, los efectos marginales no coinciden con los
+coeficientes):</p>
 <pre class='stata'>. //  Estimación del modelo tobit
 . 
 . tobit aportacionesg i.sexo c.edad c.edad#c.edad i.educg, ll(0)
 
 Refining starting values:
 
-Grid node 0:   log likelihood =  -36961.92
+Grid node 0:  Log likelihood =  -36961.92
 
 Fitting full model:
 
-Iteration 0:   log likelihood =  -36961.92  
-Iteration 1:   log likelihood = -25308.935  
-Iteration 2:   log likelihood = -18951.519  
-Iteration 3:   log likelihood = -18316.994  
-Iteration 4:   log likelihood = -17927.012  
-Iteration 5:   log likelihood = -17870.282  
-Iteration 6:   log likelihood = -17863.636  
-Iteration 7:   log likelihood = -17863.537  
-Iteration 8:   log likelihood = -17863.536  
+Iteration 0:  Log likelihood =  -36961.92  
+Iteration 1:  Log likelihood = -25308.935  
+Iteration 2:  Log likelihood = -18951.519  
+Iteration 3:  Log likelihood = -18316.994  
+Iteration 4:  Log likelihood = -17927.012  
+Iteration 5:  Log likelihood = -17870.282  
+Iteration 6:  Log likelihood = -17863.636  
+Iteration 7:  Log likelihood = -17863.537  
+Iteration 8:  Log likelihood = -17863.536  
 
 Tobit regression                                   Number of obs     =  20,292
                                                           Uncensored =   1,555
@@ -875,7 +1025,11 @@ Nivel educativo medio  │   49.01989   7.330332     6.69   0.000     34.65271  
 ───────────────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
-<p>Otro ejemplo sencillo sería un <em>logit</em> ordenado, donde la variable dependiente es categórica, pero ordinal. Por ejemplo, en nuestra base de datos, tenemos la variable <code>salud</code>. Podemos explorar el efecto del sexo, la edad y el nivel educativo en el nivel de salud autopercibido.</p>
+<p>Otro ejemplo sencillo sería un <em>logit</em> ordenado, donde la
+variable dependiente es categórica, pero ordinal. Por ejemplo, en
+nuestra base de datos, tenemos la variable <code>salud</code>. Podemos
+explorar el efecto del sexo, la edad y el nivel educativo en el nivel de
+salud autopercibido.</p>
 <pre class='stata'>. //  Exploramos la variable salud
 . 
 . tab salud
@@ -911,11 +1065,11 @@ Note: dy/dx for factor levels is the discrete change from the base level.
 . 
 . ologit salud i.sexo c.edad c.edad#c.edad i.educg
 
-Iteration 0:   log likelihood = -22260.137  
-Iteration 1:   log likelihood = -20489.407  
-Iteration 2:   log likelihood = -20436.713  
-Iteration 3:   log likelihood = -20436.618  
-Iteration 4:   log likelihood = -20436.618  
+Iteration 0:  Log likelihood = -22260.137  
+Iteration 1:  Log likelihood = -20489.407  
+Iteration 2:  Log likelihood = -20436.713  
+Iteration 3:  Log likelihood = -20436.618  
+Iteration 4:  Log likelihood = -20436.618  
 
 Ordered logistic regression                            Number of obs =  20,292
                                                        LR chi2(5)    = 3647.04
@@ -999,10 +1153,29 @@ edad         │
 ─────────────┴────────────────────────────────────────────────────────────────
 Note: dy/dx for factor levels is the discrete change from the base level.
 </pre>
-<p><code>Stata</code> es especialmente adecuado para manejar datos con diseños muestrales complejos y datos de panel. Para los primeros, <code>Stata</code> cuenta con los comandos de la familia <code>svy</code>, que nos permiten tener en cuenta la existencia de ponderaciones, estratos y muestreo en varias etapas. Básicamente, debemos fijar las características del muestreo de forma previa y, posteriormente, emplear el comando adecuado. No todos los comandos tienen versión compatible con diseños muestrales complejos. Por ejemplo, nuestra encuesta utiliza como estratos las CCAA. Dentro de estos estratos, selecciona aleatoriamente unidades primarias de muestreo consistentes en secciones censales. Posteriormente, entrevista todos los hogares dentro de cada sección y todas las personas dentro de cada hogar. Cada persona tiene un peso probabilístico, que viene dado por la probabilidad de que una persona de sus características sea seleccionada.</p>
-<p>En primar lugar, fijamos el tipo de muestreo en <code>Stata</code>:</p>
-<p><code>svyset [<i>psu</i>] [<i>weight</i>] [, <i>design_options</i> <i>options</i>]</code></p>
-<p><code>svyset</code> es una de las pocas instrucciones que resulta más fácil de implementar a través de las ventanas. Una buena estrategia es emplear el menú de ventanas, generar la instrucción y copiarla en nuestro archivo <code>do</code>.</p>
+<p><code>Stata</code> es especialmente adecuado para manejar datos con
+diseños muestrales complejos y datos de panel. Para los primeros,
+<code>Stata</code> cuenta con los comandos de la familia
+<code>svy</code>, que nos permiten tener en cuenta la existencia de
+ponderaciones, estratos y muestreo en varias etapas. Básicamente,
+debemos fijar las características del muestreo de forma previa y,
+posteriormente, emplear el comando adecuado. No todos los comandos
+tienen versión compatible con diseños muestrales complejos. Por ejemplo,
+nuestra encuesta utiliza como estratos las CCAA. Dentro de estos
+estratos, selecciona aleatoriamente unidades primarias de muestreo
+consistentes en secciones censales. Posteriormente, entrevista todos los
+hogares dentro de cada sección y todas las personas dentro de cada
+hogar. Cada persona tiene un peso probabilístico, que viene dado por la
+probabilidad de que una persona de sus características sea
+seleccionada.</p>
+<p>En primar lugar, fijamos el tipo de muestreo en
+<code>Stata</code>:</p>
+<p><code>svyset [<i>psu</i>] [<i>weight</i>] [, <i>design_options</i>
+<i>options</i>]</code></p>
+<p><code>svyset</code> es una de las pocas instrucciones que resulta más
+fácil de implementar a través de las ventanas. Una buena estrategia es
+emplear el menú de ventanas, generar la instrucción y copiarla en
+nuestro archivo <code>do</code>.</p>
 <pre class='stata'>. svyset psu [pweight=peso], strata(region) vce(linearized) singleunit(missing)
 
 Sampling weights: peso
@@ -1012,7 +1185,8 @@ Sampling weights: peso
  Sampling unit 1: psu
            FPC 1: &lt;zero>
 </pre>
-<p>Ahora, utilizamos la contraparte para este tipo de datos de <code>Stata</code>, <code>svy: regress</code>:</p>
+<p>Ahora, utilizamos la contraparte para este tipo de datos de
+<code>Stata</code>, <code>svy: regress</code>:</p>
 <pre class='stata'>. svy: regress logsalario c.edad c.edad#c.edad i.sexo#c.edad i.sexo##i.educg
 (running regress on estimation sample)
 
@@ -1050,22 +1224,60 @@ Mujer#Nivel educativo medio  │   -.068334   .0537433    -1.27   0.204    -.173
                        _cons │   5.140099   .1488365    34.54   0.000     4.848217     5.43198
 ─────────────────────────────┴────────────────────────────────────────────────────────────────
 </pre>
-<p>Además, muchos comandos en <code>Stata</code> admiten el empleo de ponderaciones. En el caso de los encuestas, estas reflejan el inverso de la probabilidad de cada observación ser seleccionada y deben introducirse como <code>pweight</code> (pesos probabilísticos). Hay muchas especificades asociadas al empleo de ponderaciones y no todos los comandos admiten el empleo de pesos.</p>
-<p>El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: a través de <code>xtset</code>, <code>Stata</code> permite especificar cuáles son las unidades del panel (<em><code>panelvar</code></em>) y cuál es la variable temporal (<em><code>timevar</code></em>) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).</p>
-<p><code>xtset <i>panelvar</i> <i>timevar</i> [, <i>tsoptions</i>]</code></p>
-<p>Al margen de los libros mencionados con anterioridad, especialmente <span class="citation" data-cites="Cameron2010">Cameron &amp; Trivedi (2010)</span>, podemos destacar el libro de <span class="citation" data-cites="Long2014">Long &amp; Freese (2014)</span> para variables categóricas, los manuales de Skrondal y Rabe-Hesketh <span class="citation" data-cites="Skrondal2012a Skrondal2012b">(2012a, 2012b)</span> para modelos de panel y multinivel y <span class="citation" data-cites="Cleves2016">Cleves et al. (2016)</span> para modelos de supervivencia.</p>
-<h1 id="otras-técnicas-de-análisis-multivariante">5. Otras técnicas de análisis multivariante</h1>
-<p><code>Stata</code> es capaz de implementar un elevado rango de técnicas de análisis de multivariantes, ya sea a través de los paquetes que incluye de serie el programa o mediante comandos diseñados por algunos usuarios (hablaremos de esto posteriormente).</p>
-<p>A modo de ilustración, vamos a construir un índice de bienestar de los hogares españoles a partir de indicadores de bienes que posee el hogar a través de un análisis de componentes principales y de un análisis de correspondencias múltiple. Son técnicas que se emplean para reducir la dimensionalidad de los datos, entre otras aplicaciones. Para ello, partimos del archivo <code>ecv2018w.dta</code> en nuestro directorio <code>sesión3</code>.</p>
+<p>Además, muchos comandos en <code>Stata</code> admiten el empleo de
+ponderaciones. En el caso de los encuestas, estas reflejan el inverso de
+la probabilidad de cada observación ser seleccionada y deben
+introducirse como <code>pweight</code> (pesos probabilísticos). Hay
+muchas especificades asociadas al empleo de ponderaciones y no todos los
+comandos admiten el empleo de pesos.</p>
+<p>El manejo de datos de panel merecería un curso específico. No
+obstante, la lógica es similar a la instrucción anterior: a través de
+<code>xtset</code>, <code>Stata</code> permite especificar cuáles son
+las unidades del panel (<em><code>panelvar</code></em>) y cuál es la
+variable temporal (<em><code>timevar</code></em>) y, posteriormente,
+ejecutar comandos especialmente diseñados para implementar modelos con
+este tipo de datos (por ejemplo, modelos de efectos fijos).</p>
+<p><code>xtset <i>panelvar</i> <i>timevar</i> [,
+<i>tsoptions</i>]</code></p>
+<p>Al margen de los libros mencionados con anterioridad, especialmente
+<span class="citation" data-cites="Cameron2010">Cameron &amp; Trivedi
+(2010)</span>, podemos destacar el libro de <span class="citation"
+data-cites="Long2014">Long &amp; Freese (2014)</span> para variables
+categóricas, los manuales de Skrondal y Rabe-Hesketh <span
+class="citation" data-cites="Skrondal2012a Skrondal2012b">(2012a,
+2012b)</span> para modelos de panel y multinivel y <span
+class="citation" data-cites="Cleves2016">Cleves et al. (2016)</span>
+para modelos de supervivencia.</p>
+<h1 id="otras-técnicas-de-análisis-multivariante">5. Otras técnicas de
+análisis multivariante</h1>
+<p><code>Stata</code> es capaz de implementar un elevado rango de
+técnicas de análisis de multivariantes, ya sea a través de los paquetes
+que incluye de serie el programa o mediante comandos diseñados por
+algunos usuarios (hablaremos de esto posteriormente).</p>
+<p>A modo de ilustración, vamos a construir un índice de bienestar de
+los hogares españoles a partir de indicadores de bienes que posee el
+hogar a través de un análisis de componentes principales y de un
+análisis de correspondencias múltiple. Son técnicas que se emplean para
+reducir la dimensionalidad de los datos, entre otras aplicaciones. Para
+ello, partimos del archivo <code>ecv2018w.dta</code> en nuestro
+directorio <code>sesión3</code>.</p>
 <p>La instrucción para el análisis de componentes principales es</p>
-<p><code>pca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
+<p><code>pca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [,
+<i>options</i>]</code></p>
 <p>Para calcular las componentes para cada observación emplearíamos</p>
-<p><code>predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>} [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <i>options</i>]</code></p>
+<p><code>predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>}
+[<i>if</i>] [<i>in</i>] [, <i>statistic</i> <i>options</i>]</code></p>
 <p>La instrucción para el análisis de correspondencias múltiple es</p>
-<p><code>mca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code></p>
-<p>Para calculas las componentes, usamos</p>
-<p><code>predict [<i>type</i>] <i>newvar</i> [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>#)</i>]</code></p>
-<p><code>predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>} [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>numlist</i>)]</code></p>
+<p><code>mca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [,
+<i>options</i>]</code></p>
+<p>Para calcular las componentes, usamos</p>
+<p><code>predict [<i>type</i>] <i>newvar</i> [<i>if</i>] [<i>in</i>] [,
+<i>statistic</i> <u>norm</u>alize(<i>norm</i>)
+<u>dim</u>ensions(<i>#)</i>]</code></p>
+<p><code>predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>}
+[<i>if</i>] [<i>in</i>] [, <i>statistic</i>
+<u>norm</u>alize(<i>norm</i>)
+<u>dim</u>ensions(<i>numlist</i>)]</code></p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
 . use "ecv18w.dta", clear
@@ -1210,39 +1422,60 @@ Statistics for column categories in standard normalization
 </pre>
 <h1 id="references">References</h1>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-Adkins2010" class="csl-entry" role="doc-biblioentry">
-Adkins, L. C., &amp; Hill, R. C. (2010). <em>Using <span>S</span>tata for <span>P</span>rinciples of <span>E</span>conometrics</em> (4th ed.). John Wiley &amp; Sons, Inc.
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Adkins2010" class="csl-entry" role="listitem">
+Adkins, L. C., &amp; Hill, R. C. (2010). <em>Using <span>S</span>tata
+for <span>P</span>rinciples of <span>E</span>conometrics</em> (4th ed.).
+John Wiley &amp; Sons, Inc.
 </div>
-<div id="ref-Baum2006" class="csl-entry" role="doc-biblioentry">
-Baum, C. F. (2006). <em>An introduction to modern <span>E</span>conometrics using <span>S</span>tata</em>. Stata Press.
+<div id="ref-Baum2006" class="csl-entry" role="listitem">
+Baum, C. F. (2006). <em>An introduction to modern
+<span>E</span>conometrics using <span>S</span>tata</em>. Stata Press.
 </div>
-<div id="ref-Cameron2010" class="csl-entry" role="doc-biblioentry">
-Cameron, A. C., &amp; Trivedi, P. K. (2010). <em>Microeconometrics using <span>S</span>tata</em> (2nd ed.). Stata Press.
+<div id="ref-Cameron2010" class="csl-entry" role="listitem">
+Cameron, A. C., &amp; Trivedi, P. K. (2010). <em>Microeconometrics using
+<span>S</span>tata</em> (2nd ed.). Stata Press.
 </div>
-<div id="ref-Cleves2016" class="csl-entry" role="doc-biblioentry">
-Cleves, M., Gould, W. W., &amp; Marchenko, Y. V. (2016). <em>An introduction to survival analysis using <span>S</span>tata</em>. Stata Press.
+<div id="ref-Cleves2016" class="csl-entry" role="listitem">
+Cleves, M., Gould, W. W., &amp; Marchenko, Y. V. (2016). <em>An
+introduction to survival analysis using <span>S</span>tata</em>. Stata
+Press.
 </div>
-<div id="ref-Escobar2012" class="csl-entry" role="doc-biblioentry">
-Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>An<span>á</span>lisis de datos con <span>S</span>tata</em> (2nd ed.). Centro de Investigaciones Soci<span>ó</span>logicas.
+<div id="ref-Escobar2012" class="csl-entry" role="listitem">
+Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012).
+<em>An<span>á</span>lisis de datos con <span>S</span>tata</em> (2nd
+ed.). Centro de Investigaciones Soci<span>ó</span>logicas.
 </div>
-<div id="ref-Kohler2012" class="csl-entry" role="doc-biblioentry">
-Kohler, U., &amp; Kreuter, F. (2012). <em>Data analysis using <span>S</span>tata</em> (3rd ed.). Stata Press.
+<div id="ref-Kohler2012" class="csl-entry" role="listitem">
+Kohler, U., &amp; Kreuter, F. (2012). <em>Data analysis using
+<span>S</span>tata</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Long2014" class="csl-entry" role="doc-biblioentry">
-Long, J. S., &amp; Freese, J. (2014). <em>Regression models for categorical dependent variables using <span>S</span>tata</em> (3rd ed.). Stata Press.
+<div id="ref-Long2014" class="csl-entry" role="listitem">
+Long, J. S., &amp; Freese, J. (2014). <em>Regression models for
+categorical dependent variables using <span>S</span>tata</em> (3rd ed.).
+Stata Press.
 </div>
-<div id="ref-Mincer1958" class="csl-entry" role="doc-biblioentry">
-Mincer, J. (1958). Investment in human capital and personal income distribution. <em>Journal of Political Economy</em>, <em>66</em>(4), 281–302.
+<div id="ref-Mincer1958" class="csl-entry" role="listitem">
+Mincer, J. (1958). Investment in human capital and personal income
+distribution. <em>Journal of Political Economy</em>, <em>66</em>(4),
+281–302.
 </div>
-<div id="ref-Skrondal2012a" class="csl-entry" role="doc-biblioentry">
-Skrondal, A., &amp; Rabe-Heskerth, S. (2012a). <em>Multilevel and longitudinal modeling using <span>S</span>tata. Volume <span>I</span>: <span>C</span>ontinuous responses</em> (3rd ed.). Stata Press.
+<div id="ref-Skrondal2012a" class="csl-entry" role="listitem">
+Skrondal, A., &amp; Rabe-Heskerth, S. (2012a). <em>Multilevel and
+longitudinal modeling using <span>S</span>tata. Volume <span>I</span>:
+<span>C</span>ontinuous responses</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Skrondal2012b" class="csl-entry" role="doc-biblioentry">
-Skrondal, A., &amp; Rabe-Heskerth, S. (2012b). <em>Multilevel and longitudinal modeling using <span>S</span>tata. Volume <span>II</span>: <span>C</span>ategorical responses, counts, and survival</em> (3rd ed.). Stata Press.
+<div id="ref-Skrondal2012b" class="csl-entry" role="listitem">
+Skrondal, A., &amp; Rabe-Heskerth, S. (2012b). <em>Multilevel and
+longitudinal modeling using <span>S</span>tata. Volume <span>II</span>:
+<span>C</span>ategorical responses, counts, and survival</em> (3rd ed.).
+Stata Press.
 </div>
-<div id="ref-Wooldridge2019" class="csl-entry" role="doc-biblioentry">
-Wooldridge, J. M. (2019). <em><span>I</span>ntroductory <span>E</span>conometrics: <span>A</span> modern approach</em> (7th ed.). Cengage Learning.
+<div id="ref-Wooldridge2019" class="csl-entry" role="listitem">
+Wooldridge, J. M. (2019). <em><span>I</span>ntroductory
+<span>E</span>conometrics: <span>A</span> modern approach</em> (7th
+ed.). Cengage Learning.
 </div>
 </div>
 </body>

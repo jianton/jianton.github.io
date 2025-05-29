@@ -8,9 +8,6 @@
   <title>Sesión 4. Análisis gráfico</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -22,17 +19,23 @@
       padding-top: 50px;
       padding-bottom: 50px;
       hyphens: auto;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -56,6 +59,10 @@
       color: #1a1a1a;
     }
     img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
       max-width: 100%;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -82,9 +89,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -93,6 +101,7 @@
     pre code {
       padding: 0;
       overflow: visible;
+      overflow-wrap: normal;
     }
     .sourceCode {
      background-color: transparent;
@@ -134,20 +143,36 @@
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+      margin-bottom: 0em;
     }
-    .hanging div.csl-entry {
+    .hanging-indent div.csl-entry {
       margin-left:2em;
       text-indent:-2em;
     }
@@ -161,12 +186,10 @@
     }
     div.csl-indent {
       margin-left: 2em;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+    }  </style>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
 <style>
 /* CSS for Markstat 2.0 using Pandoc 2.0 */
 body{padding:14px 28px;}
@@ -212,20 +235,69 @@ table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
 </header>
 <hr />
 <p style="text-align: center;">
-<a href="https://jianton.github.io/curso_stata.html"><span style="color:red"><font size="4">Inicio</font></span></a>      <a href="https://jianton.github.io/stata1.html"><span style="color:red"><font size="4">Sesión 1</font></span></a>      <a href="https://jianton.github.io/stata2.html"><span style="color:red"><font size="4">Sesión 2</font></span></a>      <a href="https://jianton.github.io/stata3.html"><span style="color:red"><font size="4">Sesión 3</font></span></a>      <a href="https://jianton.github.io/stata4.html"><span style="color:red"><font size="4">Sesión 4</font></span></a>      <a href="https://jianton.github.io/stata5.html"><span style="color:red"><font size="4">Sesión 5</font></span></a>      <a href="https://jianton.github.io/stata_ejercicios.html"><span style="color:red"><font size="4">Ejercicios</font></span></a>
+<a href="https://jianton.github.io/curso_stata.html"><span
+style="color:red"><font size="4">Inicio</font></span></a>      <a
+href="https://jianton.github.io/stata1.html"><span
+style="color:red"><font size="4">Sesión 1</font></span></a>      <a
+href="https://jianton.github.io/stata2.html"><span
+style="color:red"><font size="4">Sesión 2</font></span></a>      <a
+href="https://jianton.github.io/stata3.html"><span
+style="color:red"><font size="4">Sesión 3</font></span></a>      <a
+href="https://jianton.github.io/stata4.html"><span
+style="color:red"><font size="4">Sesión 4</font></span></a>      <a
+href="https://jianton.github.io/stata5.html"><span
+style="color:red"><font size="4">Sesión 5</font></span></a>      <a
+href="https://jianton.github.io/stata_ejercicios.html"><span
+style="color:red"><font size="4">Ejercicios</font></span></a>
 </p>
 <hr />
 <h1 id="consejos-preliminares">1. Consejos preliminares</h1>
-<h2 id="línea-de-comandos-o-menús-no-tenemos-por-qué-elegir">¿Línea de comandos o menús? No tenemos por qué elegir</h2>
-<p><code>Stata</code> presenta buenas capacidades gráficas y estas han ido mejorando a lo largo del tiempo de forma muy sustancial. En <span class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span> se realiza una aproximación al tema y tres referencias muy recomendables son <span class="citation" data-cites="Cox2014">Cox (2014)</span> y <span class="citation" data-cites="Mitchell2012">Mitchell (2012)</span>, sobre la realización de gráficos con este paquete estadístico, y <span class="citation" data-cites="Schwabish2014">Schwabish (2014)</span>, que proporciona unos consejos generales sobre cómo realizar buenos gráficos.</p>
-<p>En primer lugar, resulta muy sencillo realizar gráficos con <code>Stata</code>. Al mismo tiempo, elaborar figuras totalmente satisfactorias suele requerir bastante tiempo <span class="math inline">\(\rightarrow\)</span> <strong>resulta esencial que nuestros gráficos sean reproducibles</strong>.</p>
-<p>Así, por ejemplo, no es complicado realizar gráficos muy sofisticados con la interfaz de <code>Stata</code>. Su sistema de ventanas es muy intuitivo y nos permite controlar múltiples opciones.</p>
+<h2 id="línea-de-comandos-o-menús-no-tenemos-por-qué-elegir">¿Línea de
+comandos o menús? No tenemos por qué elegir</h2>
+<p><code>Stata</code> presenta buenas capacidades gráficas y estas han
+ido mejorando a lo largo del tiempo de forma muy sustancial. En <span
+class="citation" data-cites="Escobar2012">Escobar et al. (2012)</span>
+se realiza una aproximación al tema y tres referencias muy recomendables
+son <span class="citation" data-cites="Cox2014">Cox (2014)</span> y
+<span class="citation" data-cites="Mitchell2012">Mitchell (2012)</span>,
+sobre la realización de gráficos con este paquete estadístico, y <span
+class="citation" data-cites="Schwabish2014">Schwabish (2014)</span>, que
+proporciona unos consejos generales sobre cómo realizar buenos
+gráficos.</p>
+<p>En primer lugar, resulta muy sencillo realizar gráficos con
+<code>Stata</code>. Al mismo tiempo, elaborar figuras totalmente
+satisfactorias suele requerir bastante tiempo <span
+class="math inline">\(\rightarrow\)</span> <strong>resulta esencial que
+nuestros gráficos sean reproducibles</strong>.</p>
+<p>Así, por ejemplo, no es complicado realizar gráficos muy sofisticados
+con la interfaz de <code>Stata</code>. Su sistema de ventanas es muy
+intuitivo y nos permite controlar múltiples opciones.</p>
 <figure>
-<img src="histogram.png" style="width:30.0%" alt="Ejemplo de uso del sistema de ventanas para elaborar un histograma" /><figcaption aria-hidden="true">Ejemplo de uso del sistema de ventanas para elaborar un histograma</figcaption>
+<img src="histogram.png" style="width:30.0%"
+alt="Ejemplo de uso del sistema de ventanas para elaborar un histograma" />
+<figcaption aria-hidden="true">Ejemplo de uso del sistema de ventanas
+para elaborar un histograma</figcaption>
 </figure>
-<p>El problema radica en la <strong>reproducibilidad</strong>: si reiniciamos el análisis gráfico o salimos del programa, tendremos que acordarnos de todas las opciones seleccionadas y, además, tendremos que repetir los cambios realizados en el editor de gráficos sobre la propia figura. <span class="math inline">\(\rightarrow\)</span> <strong>Opción práctica:</strong> realizamos el gráfico con los menús de ventanas, empleando <code>submit</code> para ver cada cambio realizado y, cuando estemos satisfechos, copiamos el código y podemos reutilizarlo con adaptaciones.</p>
+<p>El problema radica en la <strong>reproducibilidad</strong>: si
+reiniciamos el análisis gráfico o salimos del programa, tendremos que
+acordarnos de todas las opciones seleccionadas y, además, tendremos que
+repetir los cambios realizados en el editor de gráficos sobre la propia
+figura. <span class="math inline">\(\rightarrow\)</span> <strong>Opción
+práctica:</strong> realizamos el gráfico con los menús de ventanas,
+empleando <code>submit</code> para ver cada cambio realizado y, cuando
+estemos satisfechos, copiamos el código y podemos reutilizarlo con
+adaptaciones.</p>
 <h2 id="personalizando-gráficos">Personalizando gráficos</h2>
-<p>Un avance sustancial viene dado por el paquete <code>grstyle</code>, que debe utilizarse conjuntamente <code>palettes</code> y <code>colrspace</code> <span class="citation" data-cites="Jann2018a Jann2018b">(Jann, 2018a, 2018b)</span>. También es muy potente el paquete <code>brewscheme</code>. La idea de estos paquetes es que podemos definir previamente el formato de los gráficos (colores, ancho de las líneas, etc.) y, posteriormente, emplear comandos sencillos para la realización de los gráficos donde no tengamos que especificar muchas opciones.</p>
+<p>Un avance sustancial viene dado por el paquete <code>grstyle</code>,
+que debe utilizarse conjuntamente <code>palettes</code> y
+<code>colrspace</code> <span class="citation"
+data-cites="Jann2018a Jann2018b">(Jann, 2018a, 2018b)</span>. También es
+muy potente el paquete <code>brewscheme</code>. La idea de estos
+paquetes es que podemos definir previamente el formato de los gráficos
+(colores, ancho de las líneas, etc.) y, posteriormente, emplear comandos
+sencillos para la realización de los gráficos donde no tengamos que
+especificar muchas opciones. Podemos instalar estos paquetes con las
+siguientes instrucciones:</p>
 <pre><code>ssc install grstyle, replace
 
 ssc install palettes, replace
@@ -233,14 +305,63 @@ ssc install palettes, replace
 ssc install colrspace, replace
 
 ssc install brewscheme, replace</code></pre>
-<p>Estos paquetes nos facilitan bastante el trabajo, pero es muy posible que queramos, en cada gráfico, añadir opciones específicas de personalización más allá de los parámetros generales.</p>
+<p>Estos paquetes nos facilitan bastante el trabajo, pero es muy posible
+que queramos, en cada gráfico, añadir opciones específicas de
+personalización más allá de los parámetros generales.</p>
 <h2 id="formatos-de-exportación">Formatos de exportación</h2>
-<p><code>Stata</code> cuenta con un formato nativo <code>.gph</code> con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint). Sin embargo, existe un gran número de formatos en los que <code>Stata</code> puede guardar los graficos: <code>.ps</code>, <code>.eps</code>, <code>.svg</code>, <code>.wmf</code>, <code>.emf</code>, <code>.pdf</code>, <code>.png</code>, <code>.tif</code>, <code>.gif</code> y <code>.jpg</code>. Formatos como <code>.wmf</code> y <code>.emf</code> son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (<code>.ps</code>, <code>.eps</code>, <code>.svg</code>, <code>.pdf</code>, <code>.png</code>). La instrucción para exportar gráficos es la siguiente:</p>
-<p><code>graph export <i>newfilename.suffix</i> [, <i>options</i>]</code></p>
-<h1 id="gráficos-más-frecuentes-y-potencialidades-de-los-gráficos-de-stata">2. Gráficos más frecuentes y potencialidades de los gráficos de <code>Stata</code></h1>
-<p>En primer lugar, vamos a configurar el formato de los gráficos para que nos sirva para todas las figuras que elaboraremos con el comando <code>grstyle</code>. Sin embargo, como se mencionaba anteriormente, de forma habitual, necesitaremos implementar opciones adicionales. En esta sección, vamos a tratar de elaborar gráficos de alta calidad aptos para publicaciones científicas siguiendo los formatos sugeridos por <span class="citation" data-cites="Schwabish2014">Schwabish (2014)</span> para Ciencias Sociales. Dado que el número de gráficos que <code>Stata</code> puede realizar no puede ser abarcado (siquiera lejanamente) en un curso de estas características, aquí nos limitamos a presentar una serie de figuras que ilustran su potencial. El proceso de realización de los mismos se fundamenta en procesos de ensayo-error y en emplear las herramientas de ayuda destacadas con anterioridad.</p>
+<p><code>Stata</code> cuenta con un formato nativo <code>.gph</code> con
+bastante calidad y que puede ser una buena opción para guardar las
+figuras elaboradas con la posibilidad de modificarlas luego. Además,
+naturalmente, podemos copiar las figuras producidas en la ventana de
+gráficos y pegarlas en un documento de un procesador de textos (e.g.,
+Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft
+Paint). Sin embargo, existe un gran número de formatos en los que
+<code>Stata</code> puede guardar los graficos: <code>.ps</code>,
+<code>.eps</code>, <code>.svg</code>, <code>.wmf</code>,
+<code>.emf</code>, <code>.pdf</code>, <code>.png</code>,
+<code>.tif</code>, <code>.gif</code> y <code>.jpg</code>. Formatos como
+<code>.wmf</code> y <code>.emf</code> son muy apropiados para
+aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo,
+los formatos de vectores asegura muchísima calidad y son los empleados
+en edición profesional (<code>.ps</code>, <code>.eps</code>,
+<code>.svg</code>, <code>.pdf</code>, <code>.png</code>). La instrucción
+para exportar gráficos es la siguiente:</p>
+<p><code>graph export <i>newfilename.suffix</i> [,
+<i>options</i>]</code></p>
+<h1
+id="gráficos-más-frecuentes-y-potencialidades-de-los-gráficos-de-stata">2.
+Gráficos más frecuentes y potencialidades de los gráficos de
+<code>Stata</code></h1>
+<p>En primer lugar, vamos a configurar el formato de los gráficos para
+que nos sirva para todas las figuras que elaboraremos con el comando
+<code>grstyle</code>. Sin embargo, como se mencionaba anteriormente, de
+forma habitual, necesitaremos implementar opciones adicionales. En esta
+sección, vamos a tratar de elaborar gráficos de alta calidad aptos para
+publicaciones científicas siguiendo los formatos sugeridos por <span
+class="citation" data-cites="Schwabish2014">Schwabish (2014)</span> para
+Ciencias Sociales. Dado que el número de gráficos que <code>Stata</code>
+puede realizar no puede ser abarcado (siquiera lejanamente) en un curso
+de estas características, aquí nos limitamos a presentar una serie de
+figuras que ilustran su potencial. En particular, elaboramos en
+<code>Stata</code> todas las figuras que presenta Schwabish (2014). El
+proceso de realización de los mismos se fundamenta en procesos de
+ensayo-error y en emplear las herramientas de ayuda destacadas con
+anterioridad. Hemos creado las figuras a través del sistema de ventanas
+y hemos exportado la sintaxis obtenida con la instrucción
+<code>submit</code>. El proceso de realización de los mismos se
+fundamenta en procesos de ensayo-error y en emplear las herramientas de
+ayuda destacadas con anterioridad.</p>
 <h2 id="gráfico-de-dispersión">Gráfico de dispersión</h2>
-<p>Comenzamos por un gráfico sencillo, en el que tratamos de ver la relación el salario medio de una Comunidad Autónoma y la proporción de personas pobres (tasa de pobreza). Realizaremos en primer lugar el gráfico sin personalización alguna y, posteriormente, elaboraremos una figura con opciones personalizadas. El proceso es eminentemente <strong><em>learning by doing</em></strong> y la forma habitual de trabajo es elaborar el gráfico con los menús y obtener el código que responde a nuestras preferencias, que llevaremos al archivo <code>.do</code> para poder reproducir el gráfico cuando lo deseemos o reutilizarlo con otras bases de datos.</p>
+<p>Comenzamos por un gráfico sencillo, en el que tratamos de ver la
+relación el salario medio de una Comunidad Autónoma y la proporción de
+personas pobres (tasa de pobreza). Realizaremos en primer lugar el
+gráfico sin personalización alguna y, posteriormente, elaboraremos una
+figura con opciones personalizadas. El proceso es eminentemente
+<strong><em>learning by doing</em></strong> y la forma habitual de
+trabajo es elaborar el gráfico con los menús y obtener el código que
+responde a nuestras preferencias, que llevaremos al archivo
+<code>.do</code> para poder reproducir el gráfico cuando lo deseemos o
+reutilizarlo con otras bases de datos.</p>
 
 <pre class='stata'>. //  Fijamos el directorio de trabajo
 . 
@@ -256,16 +377,16 @@ D:\Dropbox\curso_stata\sesión4
 <pre class='stata'>. //  Calculamos el salario medio y la tasa de pobreza por CCAA
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-(5,362 missing values generated)
+(5.362 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(5,578 missing values generated)
+(5.578 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(19,369 observations deleted)
+(19.369 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(2,585 observations deleted)
+(2.585 observations deleted)
 
 . 
 . generate salario = rentaasa/nmesesasa
@@ -292,9 +413,11 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="example.png" style="width:40.0%" alt="Gráfico por defecto" /><figcaption aria-hidden="true">Gráfico por defecto</figcaption>
+<img src="example.png" style="width:40.0%" alt="Gráfico por defecto" />
+<figcaption aria-hidden="true">Gráfico por defecto</figcaption>
 </figure>
-<p>Ahora vamos a realizar el mismo gráfico de una manera mucho más personalizada.</p>
+<p>Ahora vamos a realizar el mismo gráfico de una manera mucho más
+personalizada.</p>
 <pre class='stata'>. //  Podemos cambiar el tipo de letra
 . 
 . graph set window fontface       "Times New Roman"
@@ -380,10 +503,14 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="scatter.png" style="width:40.0%" alt="Gráfico de dispersión (personalizado)" /><figcaption aria-hidden="true">Gráfico de dispersión (personalizado)</figcaption>
+<img src="scatter.png" style="width:40.0%"
+alt="Gráfico de dispersión (personalizado)" />
+<figcaption aria-hidden="true">Gráfico de dispersión
+(personalizado)</figcaption>
 </figure>
 <h2 id="gráfico-de-líneas">Gráfico de líneas</h2>
-<p>En este ejemplo, vamos a representar el salario por grupos de edad y nivel de estudios.</p>
+<p>En este ejemplo, vamos a representar el salario por grupos de edad y
+nivel de estudios.</p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
@@ -395,16 +522,16 @@ D:\Dropbox\curso_stata\sesión4
 . generate edad = 2018 - anonac
 
 . generate edadg = 1 if edad > 16 &amp; edad &lt;= 29
-(29,586 missing values generated)
+(29.586 missing values generated)
 
 . replace edadg = 2 if edad >= 30 &amp; edad &lt;= 44
-(6,145 real changes made)
+(6.145 real changes made)
 
 . replace edadg = 3 if edad >= 45 &amp; edad &lt;= 54
-(5,361 real changes made)
+(5.361 real changes made)
 
 . replace edadg = 4 if edad >= 55 &amp; edad &lt;= 64
-(5,159 real changes made)
+(5.159 real changes made)
 
 . label variable edadg "Grupos de edad"
 
@@ -416,16 +543,16 @@ D:\Dropbox\curso_stata\sesión4
 . //  Calculamos grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(27,003 missing values generated)
+(27.003 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(8,725 real changes made)
+(8.725 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(4,735 real changes made)
+(4.735 real changes made)
 
 . replace educg = 4 if educ == 500
-(7,969 real changes made)
+(7.969 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -438,16 +565,16 @@ D:\Dropbox\curso_stata\sesión4
 . //  Calculamos el salario
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-(5,362 missing values generated)
+(5.362 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(5,578 missing values generated)
+(5.578 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(19,369 observations deleted)
+(19.369 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(2,585 observations deleted)
+(2.585 observations deleted)
 
 . 
 . generate salario = rentaasa/nmesesasa
@@ -518,10 +645,12 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="lineplot.png" style="width:40.0%" alt="Gráfico de líneas" /><figcaption aria-hidden="true">Gráfico de líneas</figcaption>
+<img src="lineplot.png" style="width:40.0%" alt="Gráfico de líneas" />
+<figcaption aria-hidden="true">Gráfico de líneas</figcaption>
 </figure>
 <h2 id="gráfico-de-puntos">Gráfico de puntos</h2>
-<p>En este subapartado, elaboramos una figura que muestra la tasa de empleo por sexo y nivel educativo en España.</p>
+<p>En este subapartado, elaboramos una figura que muestra la tasa de
+empleo por sexo y nivel educativo en España.</p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
@@ -536,25 +665,25 @@ D:\Dropbox\curso_stata\sesión4
 . //  Calculamos la tasa de empleo
 . 
 . gen empleo = 0 if edad >= 18 &amp; edad &lt;= 64
-(13,265 missing values generated)
+(13.265 missing values generated)
 
 . recode empleo (0 = 1) if sitact == 1
-(12867 changes made to empleo)
+(12.867 changes made to empleo)
 
 . 
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(27,003 missing values generated)
+(27.003 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(8,725 real changes made)
+(8.725 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(4,735 real changes made)
+(4.735 real changes made)
 
 . replace educg = 4 if educ == 500
-(7,969 real changes made)
+(7.969 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -565,7 +694,7 @@ D:\Dropbox\curso_stata\sesión4
 
 . 
 . keep if empleo &lt; . &amp; educg &lt; .
-(13,442 observations deleted)
+(13.442 observations deleted)
 
 . 
 . //  Creamos la base de datos con los estadísticos de interés
@@ -595,10 +724,13 @@ D:\Dropbox\curso_stata\sesión4
 </pre>
 
 <figure>
-<img src="dotplot.png" style="width:40.0%" alt="Gráfico de puntos" /><figcaption aria-hidden="true">Gráfico de puntos</figcaption>
+<img src="dotplot.png" style="width:40.0%" alt="Gráfico de puntos" />
+<figcaption aria-hidden="true">Gráfico de puntos</figcaption>
 </figure>
 <h2 id="gráfico-de-barras">Gráfico de barras</h2>
-<p>A continuación, mostramos la tasa de pobreza por nivel educativo y sexo en España en el año 2018. Además, en este ejemplo, vamos a usar el editor de gráficos de <code>Stata</code>.</p>
+<p>A continuación, mostramos la tasa de pobreza por nivel educativo y
+sexo en España en el año 2018. Además, en este ejemplo, vamos a usar el
+editor de gráficos de <code>Stata</code>.</p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
@@ -608,16 +740,16 @@ D:\Dropbox\curso_stata\sesión4
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(27,003 missing values generated)
+(27.003 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(8,725 real changes made)
+(8.725 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(4,735 real changes made)
+(4.735 real changes made)
 
 . replace educg = 4 if educ == 500
-(7,969 real changes made)
+(7.969 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -628,7 +760,7 @@ D:\Dropbox\curso_stata\sesión4
 
 . 
 . keep if educg &lt; .
-(5,574 observations deleted)
+(5.574 observations deleted)
 
 . 
 . //  Creamos la base de datos con los estadísticos de interés
@@ -771,20 +903,37 @@ xij variables:
 </pre>
 
 <figure>
-<img src="barplot.png" style="width:40.0%" alt="Gráfico de barras" /><figcaption aria-hidden="true">Gráfico de barras</figcaption>
+<img src="barplot.png" style="width:40.0%" alt="Gráfico de barras" />
+<figcaption aria-hidden="true">Gráfico de barras</figcaption>
 </figure>
-<p>La última parte del código corresponde al editor de gráficos de <code>Stata</code>, que permite hacer cambios manualmente. Si queremos asegurar que el gráfico es reproducible podemos seguir estos pasos:</p>
+<p>La última parte del código corresponde al editor de gráficos de
+<code>Stata</code>, que permite hacer cambios manualmente. Si queremos
+asegurar que el gráfico es reproducible podemos seguir estos pasos:</p>
 <p><strong>Paso 1</strong>. Abrimos el gráfico en el editor.</p>
 <p><strong>Paso 2</strong>. Pulsamos <code>Start recording</code>.</p>
-<p><strong>Paso 3</strong>. Realizamos los cambios que queramos (añadir cuadros de texto, flechas, etc.).</p>
-<p><strong>Paso 4</strong>. Finalizamos la grabación pulsando <code>End recording</code>.</p>
-<p><strong>Paso 5</strong>. Abrimos el archivo <code>.grec</code> creado en el blog de notas (o el propio editor de archivos <code>.do</code> de <code>Stata</code>).</p>
-<p><strong>Paso 6</strong>. Copiamos el código y relevante al arhivo <code>.do</code> tras el grafico, eliminamos el <code>.</code> e incluimos antes de cada instrucción <code>gr_edit</code> seguido de un espacio.</p>
+<p><strong>Paso 3</strong>. Realizamos los cambios que queramos (añadir
+cuadros de texto, flechas, etc.).</p>
+<p><strong>Paso 4</strong>. Finalizamos la grabación pulsando
+<code>End recording</code>.</p>
+<p><strong>Paso 5</strong>. Abrimos el archivo <code>.grec</code> creado
+en el blog de notas (o el propio editor de archivos <code>.do</code> de
+<code>Stata</code>).</p>
+<p><strong>Paso 6</strong>. Copiamos el código y relevante al arhivo
+<code>.do</code> tras el grafico, eliminamos el <code>.</code> e
+incluimos antes de cada instrucción <code>gr_edit</code> seguido de un
+espacio.</p>
 <figure>
-<img src="grapheditor.png" style="width:40.0%" alt="Modificación de gráficos con el editor de Stata" /><figcaption aria-hidden="true">Modificación de gráficos con el editor de <code>Stata</code></figcaption>
+<img src="grapheditor.png" style="width:40.0%"
+alt="Modificación de gráficos con el editor de Stata" />
+<figcaption aria-hidden="true">Modificación de gráficos con el editor de
+<code>Stata</code></figcaption>
 </figure>
 <h2 id="funciones-de-densidad">Funciones de densidad</h2>
-<p>Se trata de uno de los fuertes de <code>Stata</code>, que es complicado de abordar con otro tipo de programas (e.g., Microsoft Excel). En este caso, vamos a representar las funciones de densidad del salario mensual de las personas con educación elemental y educación superior.</p>
+<p>Se trata de uno de los fuertes de <code>Stata</code>, que es
+complicado de abordar con otro tipo de programas (e.g., Microsoft
+Excel). En este caso, vamos a representar las funciones de densidad del
+salario mensual de las personas con educación elemental y educación
+superior.</p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
@@ -794,16 +943,16 @@ xij variables:
 . //  Calculamos el salario
 . 
 . generate rentaasa = rentamonasag + rentamonasag
-(5,362 missing values generated)
+(5.362 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(5,578 missing values generated)
+(5.578 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(19,416 observations deleted)
+(19.416 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(2,540 observations deleted)
+(2.540 observations deleted)
 
 . 
 . generate salario = rentaasa/nmesesasa
@@ -821,16 +970,16 @@ xij variables:
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(10,934 missing values generated)
+(10.934 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(3,331 real changes made)
+(3.331 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(2,509 real changes made)
+(2.509 real changes made)
 
 . replace educg = 4 if educ == 500
-(5,094 real changes made)
+(5.094 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -862,23 +1011,91 @@ xij variables:
 </pre>
 
 <figure>
-<img src="kdensity.png" style="width:40.0%" alt="Gráfico de densidad" /><figcaption aria-hidden="true">Gráfico de densidad</figcaption>
+<img src="kdensity.png" style="width:40.0%" alt="Gráfico de densidad" />
+<figcaption aria-hidden="true">Gráfico de densidad</figcaption>
 </figure>
-<h1 id="elaboración-de-mapas">4. Elaboración de mapas</h1>
-<p>No es, desde luego, el mejor software para esta tarea, pero, sin embargo, existen algunos comandos que pueden ser muy útiles para usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para los que los mapas no son centrales). Existen varios paquetes para esta tarea, como <code>spmap</code> o <code>geo2xy</code>. En este curso, emplearemos el primero de ellos, <code>spmap</code>. Podemos encontrar una buena introducción al uso de este paquete en <span class="citation" data-cites="Wiedemann2020">Wiedemann (2020)</span>. La mejor referencia sobre elaboración de mapas en Stata es posiblemente la colección de guías y tutoriales de <a href="https://medium.com/the-stata-guide/tagged/maps">Asjad Naqvi</a>. <code>spmap</code> requiere la instalación adicional de <code>shp2dta</code> y <code>mif2dta</code>. Así, podemos instalar todos los parquetes necesarios de la siguiente forma:</p>
-<pre><code>ssc install spmap, replace
+<h1 id="elaboración-de-mapas">3. Elaboración de mapas</h1>
+<p>No es, desde luego, el mejor software para esta tarea, pero, sin
+embargo, existen algunos comandos que pueden ser muy útiles para
+usuarios poco exigentes (e.g., investigadores en Ciencias Sociales para
+los que los mapas no son centrales). Existen varios paquetes para esta
+tarea, como <code>spmap</code>, <code>geo2xy</code> o
+<code>geoplot</code>. En este curso, emplearemos el más moderno de
+ellos: <code>geoplot</code>. La principal ventaja de
+<code>geoplot</code> sobre otras soluciones previas es que permite
+trabajar con más de una capa sin dificultad.</p>
+<p>Podemos encontrar una buena introducción al uso de este paquete en
+esta <a
+href="https://www.stata.com/meeting/italy24/slides/Italy24_Jann.pdf">presentación</a>
+del autor, Ben Jann. Además, en su web, este autor nos ofrece algunos <a
+href="https://doi.org/10.48350/188248">ejemplos</a> de cursos que
+imparte. Una gran referencia, de carácter general, sobre elaboración de
+mapas en Stata es posiblemente la colección de guías y tutoriales de <a
+href="https://medium.com/the-stata-guide/tagged/maps">Asjad Naqvi</a>.
+En particular, este académico ofrece un tutorial para <a
+href="https://medium.com/the-stata-guide/maps-in-stata-iii-geoplot-a764cf42688a">`geoplot’</a>.</p>
+<p>Un rasgo distintivo de <code>geoplot</code> es su funcionamiento con
+los llamados <code>frames</code> de <code>Stata</code>. Básicamente, se
+trata de una capacidad de <code>Stata</code> para tener en la memoria
+varias bases de datos al mismo tiempo (como, por ejemplo,
+<code>R</code>), Asjad Naqvi ofrece en Medium una excelente <a
+href="https://medium.com/the-stata-guide/the-stata-frames-guide-1149b50864e3">introducción</a>
+a su uso.</p>
+<p><code>geoplot</code> requiere la instalación adicional de algunos
+paquetes: de <code>shp2dta</code> y <code>mif2dta</code>. Así, podemos
+instalar todos los parquetes necesarios de la siguiente forma:</p>
+<pre><code>net install geoplot, replace from(https://raw.githubusercontent.com/benjann/geoplot/main/)
 
-ssc install shp2dta, replace
+ssc install spmap
 
-ssc install mif2dta, replace</code></pre>
-<p>Con <code>spmap</code>, <code>Stata</code> puede manejar dos tipos de formatos gráficos: <strong>ESRI shapefiles</strong> (incluye un archivo <code>.shp</code> de coordenadas, un archivo <code>.shx</code>, un índice, y un archivo <code>.dbf</code>, con códigos) y el <strong>MapInfo Interchange Format files</strong> (que comprende un archivo <code>.mif</code> con las coordenadas y un archivo <code>.mid</code> con los códigos). El manejo del primer tipo de formato es, con frecuencia, más sencillo. Para explorar las capacidades de <code>Stata</code> en esta área, vamos a realizar un mapa de España por Comunidades Autónomas con su tasa de pobreza.</p>
+ssc install shp2dta
+
+ssc install mif2dta
+
+ssc install palettes, replace
+
+ssc install colrspace, replace
+
+ssc install moremata, replace
+
+ssc install geo2xy, replace
+
+ssc install xls2dta, replace</code></pre>
+<p>Con <code>geoplot</code>, <code>Stata</code> puede manejar dos tipos
+de formatos gráficos: <strong>ESRI shapefiles</strong> (incluye un
+archivo <code>.shp</code> de coordenadas, un archivo <code>.shx</code>,
+un índice, y un archivo <code>.dbf</code>, con códigos) y el
+<strong>MapInfo Interchange Format files</strong> (que comprende un
+archivo <code>.mif</code> con las coordenadas y un archivo
+<code>.mid</code> con los códigos). El manejo del primer tipo de formato
+es, con frecuencia, más sencillo. Para explorar las capacidades de
+<code>Stata</code> en esta área, vamos a realizar un mapa de España por
+Comunidades Autónomas con su tasa de pobreza.</p>
 <p>Procedemos en varios pasos.</p>
-<p><strong>Paso 1</strong>. Buscamos los <strong>ESRI shapefiles</strong> que precisamos. En este caso, podemos encontrarlos en muchos lugares. El mapa “oficial” se encuentra en el <a href="http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip">Centro Nacional de Información Geográfica</a>, los copiamos a la carpeta de trabajo y descomprimimos la carpeta. Nuestro interés radica en la carpeta <code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>. Nos vamos a limitar a la península, por simplicidad. Extraemos sus archivos y los situamos en la carpeta de trabajo.</p>
-<p><strong>Paso 2</strong>. Creamos los archivos de atributos y coordenadas con la siguiente instrucción:</p>
-<pre class='stata'>. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta") coord("ccaa_coord.dta") genid(stid) gencentroids(cc) replace
-type: 5
+<p><strong>Paso 1</strong>. Buscamos los <strong>ESRI
+shapefiles</strong> que precisamos. En este caso, podemos encontrarlos
+en muchos lugares. El mapa “oficial” se encuentra en el <a
+href="http://centrodedescargas.cnig.es/CentroDescargas/documentos/atom/au/lineas_limite_gml.zip">Centro
+Nacional de Información Geográfica</a>, los copiamos a la carpeta de
+trabajo y descomprimimos la carpeta. Nuestro interés radica en la
+carpeta
+<code>Recintos autonómicos: poligonos_autonomicas_inspire_peninbal_ etrs89</code>.
+Nos vamos a limitar a la península, por simplicidad. Extraemos sus
+archivos y los situamos en la carpeta de trabajo.</p>
+<p><strong>Paso 2</strong>. Creamos los archivos de atributos y
+coordenadas con la siguiente instrucción de <code>geoplot</code>:</p>
+<pre class='stata'>. geoframe translate ccaa using "recintos_autonomicas_inspire_peninbal_etrs89", replace // Crea los archivos ccaa.dta (atributos) y ccaa_shp.dta (coordenadas)
+(importing shp file) (5 vars, 728,101 obs)
+(importing dbf file) (9 vars, 19 obs)
+(files ccaa.dta and ccaa_shp.dta saved)
+(type geoframe create ccaa to load the data)
 </pre>
-<p><strong>Paso 3</strong>. Con nuestra base de datos, generamos un archivo que podamos unir al de atributos empleando la variable <code>stid</code> del fichero <code>ccaa_attr.dta</code>. Prescindimos, además, de Ceuta y Melilla, por simplicidad.</p>
+<p>El archivo de atributos <code>ccaa.dta</code> contiene las líneas que
+definen las Comunidades Autónomas y se convertirá en nuestra primera
+capa.</p>
+<p><strong>Paso 3</strong>. Creamos dos archivos destinados a crear dos
+capas adicionales: un cifras de pobreza para elaborar un mapa
+coroplético y un archivo con las mismas cifras que serán etiquetas</p>
 <pre class='stata'>. //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
@@ -896,7 +1113,7 @@ type: 5
 (19 real changes made)
 
 . 
-. //  Eliminamos Canarias
+. //  Eliminamos Canarias, Ceuta y Melilla
 . 
 . drop if region == 19
 (1 observation deleted)
@@ -904,114 +1121,149 @@ type: 5
 . 
 . //  Recodificamos las regiones para enlazar con la variable stid de ccaa_attr.dta
 . 
-. recode region (1=10) (2=18) (3=16) (4=6) (5=7) (6=5) (7=19) (8=9) (9=15) (10=14) (11=11) (12=13) (13=12) (14=17) (15=20) (16=8) (17=3) (18=4)
-(17 changes made to region)
+. recode region (1=11) (2=3) (3=5) (4=15) (5=14) (6=16) (7=2) (8=12) (9=6) (10=7) (11=10) (12=8) (13=9) (14=4) (15=1) (16=13) (17=17) (18=18) 
+(16 changes made to region)
 
 . 
-. //  Eliminamos las etiquetas de los valores para evitar confusiones
+. //  Eliminamos las etiquetas de los valores para evitar confusiones y le ponemos los valores nuevos
 . 
 . label drop region_lab
 
 . 
+. label define region_lab 1 "Andalucía" 2 "Aragón" 3 "Principado de Asturias" 4 "Illes Balears" 5 "Cantabria" 6 "Castilla y León" 7 "Castilla-La Mancha" 8 "Cataluña" 9 "Comunidad Valenciana" 10 "Extremadura" ///
+> 11 "Galicia" 12 "Comunidad de Madrid" 13 "Región de Murcia" 14 "Comunidad Foral de Navarra" 15 "País Vasco" 16 "La Rioja" 17 "Ceuta" 18 "Melilla" 
+
+. label values region region_lab
+
+. 
 . //  Cambiamos el nombre de la variable de enlace
 . 
-. rename region stid
+. rename region _ID
 
 . 
-. //  Eliminamos las regiones que no queremos representar
-. 
-. drop if stid &lt;= 4
-(2 observations deleted)
-
+. //    Guardamos el archivo que servirá para crear la segunda capa (destinada a las áreas del mapa coroplético de niveles de pobreza)
 . 
 . save "ccaa_pobreza.dta", replace
 file ccaa_pobreza.dta saved
+
+. 
+. //    Abrimos el archivo de atributos y lo fusionamos con el archivo de datos de pobreza, de forma que tenemos una variable asociada a cada unidad
+. 
+. use "ccaa.dta", clear
+
+. 
+. merge 1:1 _ID using "ccaa_pobreza.dta", keep(match) nogenerate noreport
+
+. 
+. save "ccaa_pobreza_datos.dta", replace
+file ccaa_pobreza_datos.dta saved
+
+. 
+. //  Creamos el archivo destinado a las etiquetas por el mismo procedimiento
+. 
+. use "ccaa.dta", clear
+
+. 
+. merge 1:1 _ID using "ccaa_pobreza.dta", keep(match) nogenerate noreport
+
+. 
+. save "ccaa_pobreza_etiquetas.dta", replace
+file ccaa_pobreza_etiquetas.dta saved
 </pre>
-<p><strong>Paso 4</strong>. De forma opcional, podemos crear un archivo para etiquetar las regiones.</p>
-<pre class='stata'>. //  Creamos un archivo con etiquetas.
-. 
-. use "ccaa_attr.dta", clear
+<p><strong>Paso 4</strong>. Creamos los <code>frames</code>
+correspondiente</p>
+<pre class='stata'>. geoframe create ccaa using "ccaa.dta", shp("ccaa_shp.dta") replace
+(creating frame ccaa from ccaa.dta)
+(creating frame ccaa_shp from ccaa_shp.dta)
 
-. merge 1:1 stid using "ccaa_pobreza.dta", keep(match)
+            Frame name: ccaa [make current]
+            Frame type: attribute
+          Feature type: &lt;none>
+         Number of obs: 19
+               Unit ID: _ID
+           Coordinates: _CX _CY
+    Linked shape frame: ccaa_shp
 
-    Result                      Number of obs
-    ─────────────────────────────────────────
-    Not matched                             0
-    Matched                                16  (_merge==3)
-    ─────────────────────────────────────────
+. geoframe create ccaa_pobreza_datos using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
+(creating frame ccaa_pobreza_datos from ccaa_pobreza_datos.dta)
+(creating frame ccaa_pobreza_datos_shp from ccaa_shp.dta)
+(dropped 1.962 unmatched observations in frame ccaa_pobreza_datos_shp)
 
-. keep stid hpobreza x_cc y_cc
+            Frame name: ccaa_pobreza_datos [make current]
+            Frame type: attribute
+          Feature type: &lt;none>
+         Number of obs: 18
+               Unit ID: _ID
+           Coordinates: _CX _CY
+    Linked shape frame: ccaa_pobreza_datos_shp
 
-. format hpobreza %02,1fc
+. geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
+(creating frame ccaa_pobreza_etiquetas from ccaa_pobreza_datos.dta)
+(creating frame ccaa_pobreza_etiquetas_shp from ccaa_shp.dta)
+(dropped 1.962 unmatched observations in frame ccaa_pobreza_etiquetas_shp)
 
-. save "ccaa_labels.dta", replace
-file ccaa_labels.dta saved
+            Frame name: ccaa_pobreza_etiquetas [make current]
+            Frame type: attribute
+          Feature type: &lt;none>
+         Number of obs: 18
+               Unit ID: _ID
+           Coordinates: _CX _CY
+    Linked shape frame: ccaa_pobreza_etiquetas_shp
 </pre>
-<p><strong>Paso 5</strong>. Realizamos una fusión de nuestro archivo <code>ccaa_pobreza.dta</code> con el archivo <code>ccaa_attr.dta</code> empleando como enlace la variable <code>stid</code>.</p>
-<pre class='stata'>. //  Abrimos el archivo ccaa_attr.dta
-. 
-. use "ccaa_attr.dta", clear
+<p><strong>Paso 5</strong>. Generamos el gráfico</p>
+<pre class='stata'>. geoplot ///
+>     (area ccaa_pobreza_etiquetas hpobreza, color(Reds) cuts(0 10 20 30 40) label("@lb - @ub",  format(%09.0fc))) ///
+>     (label ccaa_pobreza_datos hpobreza, size(small) format(%09.1fc) color(black) ) ///        
+>     (line ccaa, lcolor(black) lwidth(0.1))    ///
+>     , tight xsize(7) project legend(position(5) layout(- "Tasa de pobreza" 1) size(vsmall) col(1) reverse)
+(applying webmercator projection)
 
 . 
-. //  Realizamos la fusión con merge
-. 
-. merge 1:1 stid using "ccaa_pobreza.dta", keep(match)
-
-    Result                      Number of obs
-    ─────────────────────────────────────────
-    Not matched                             0
-    Matched                                16  (_merge==3)
-    ─────────────────────────────────────────
-
-. 
-</pre>
-<p><strong>Paso 6</strong>. Creamos el gráfico con <code>spmap</code>.</p>
-<pre class='stata'>. //  Creamos el mapa
-. 
-. spmap hpobreza using "ccaa_coord.dta", ///
-> id(stid) fcolor(Reds) ///
-> ocolor(black ..) osize(thin ..)  ///
-> legend(size(vsmall) position(5) label(2 "0-10") label(3 "10-20") label(4 "20-30") label(5 "30-40")) ///
-> clmethod(custom)  clbreaks(0 10 20 30 40) ///
-> legtitle("Tasa de pobreza (%)") ///
-> title("Tasa de pobreza en España por CCAA (2018)", size(small)) name("pobreza2018", replace) ///
-> label(data("ccaa_labels.dta") label(hpobreza) xcoord(x_cc) ycoord(y_cc) color(black) size(vsmall) length(4)) ///
-> freestyle yscale(off) xscale(off)
-
-. 
-. //    Usamos el editor de Stata para ajustar el tamaño
-. 
-. gr_edit style.editstyle declared_ysize(5) editcopy
-
-. gr_edit style.editstyle declared_xsize(7) editcopy
 </pre>
 
 <figure>
-<img src="map.png" style="width:70.0%" alt="Mapa con el paquete spmap" /><figcaption aria-hidden="true">Mapa con el paquete <code>spmap</code></figcaption>
+<img src="map.png" style="width:70.0%"
+alt="Mapa con el paquete geoplot" />
+<figcaption aria-hidden="true">Mapa con el paquete
+<code>geoplot</code></figcaption>
+</figure>
+<p>Obviamente, es posible realizar mapas mucho más elaborados y
+complicados.</p>
+<figure>
+<img src="map_europe.png" style="width:70.0%"
+alt="Ejemplo de mapa elaborado por Asjad Naqvi" />
+<figcaption aria-hidden="true">Ejemplo de mapa elaborado por Asjad
+Naqvi</figcaption>
 </figure>
 <h1 id="references">References</h1>
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="doc-bibliography">
-<div id="ref-Cox2014" class="csl-entry" role="doc-biblioentry">
-Cox, N. J. (2014). <em>Speaking <span>S</span>tata graphics</em>. Stata Press.
+<div id="refs" class="references csl-bib-body hanging-indent"
+data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-Cox2014" class="csl-entry" role="listitem">
+Cox, N. J. (2014). <em>Speaking <span>S</span>tata graphics</em>. Stata
+Press.
 </div>
-<div id="ref-Escobar2012" class="csl-entry" role="doc-biblioentry">
-Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012). <em>An<span>á</span>lisis de datos con <span>S</span>tata</em> (2nd ed.). Centro de Investigaciones Soci<span>ó</span>logicas.
+<div id="ref-Escobar2012" class="csl-entry" role="listitem">
+Escobar, M., Fernández-Macías, E., &amp; Bernardi, F. (2012).
+<em>An<span>á</span>lisis de datos con <span>S</span>tata</em> (2nd
+ed.). Centro de Investigaciones Soci<span>ó</span>logicas.
 </div>
-<div id="ref-Jann2018a" class="csl-entry" role="doc-biblioentry">
-Jann, B. (2018a). Customizing <span>S</span>tata graphs made easy (part 1). <em>Stata Journal</em>, <em>3</em>(18), 491–502.
+<div id="ref-Jann2018a" class="csl-entry" role="listitem">
+Jann, B. (2018a). Customizing <span>S</span>tata graphs made easy (part
+1). <em>Stata Journal</em>, <em>3</em>(18), 491–502.
 </div>
-<div id="ref-Jann2018b" class="csl-entry" role="doc-biblioentry">
-Jann, B. (2018b). Customizing <span>S</span>tata graphs made easy (part 2). <em>Stata Journal</em>, <em>4</em>(19), 786–802.
+<div id="ref-Jann2018b" class="csl-entry" role="listitem">
+Jann, B. (2018b). Customizing <span>S</span>tata graphs made easy (part
+2). <em>Stata Journal</em>, <em>4</em>(19), 786–802.
 </div>
-<div id="ref-Mitchell2012" class="csl-entry" role="doc-biblioentry">
-Mitchell, M. N. (2012). <em>A visual guide to <span>S</span>tata graphics</em> (3rd ed.). Stata Press.
+<div id="ref-Mitchell2012" class="csl-entry" role="listitem">
+Mitchell, M. N. (2012). <em>A visual guide to <span>S</span>tata
+graphics</em> (3rd ed.). Stata Press.
 </div>
-<div id="ref-Schwabish2014" class="csl-entry" role="doc-biblioentry">
-Schwabish, J. A. (2014). An economist<span></span>s guide to visualizing data. <em>Journal of Economic Perspectives</em>, <em>28</em>(1), 209–234.
-</div>
-<div id="ref-Wiedemann2020" class="csl-entry" role="doc-biblioentry">
-Wiedemann, V. (2020). <em>Creating maps in <span>S</span>tata</em> [Coder's corner]. <span>C</span>entre for the <span>S</span>tudy of <span>A</span>frican <span>E</span>conomy. <a href="https://www.csae.ox.ac.uk/materials/coderscorner/1037/coderscornerht20week2fm.pdf">https://www.csae.ox.ac.uk/materials/coderscorner/1037/coderscornerht20week2fm.pdf</a>
+<div id="ref-Schwabish2014" class="csl-entry" role="listitem">
+Schwabish, J. A. (2014). An economist<span></span>s guide to visualizing
+data. <em>Journal of Economic Perspectives</em>, <em>28</em>(1),
+209–234.
 </div>
 </div>
 </body>

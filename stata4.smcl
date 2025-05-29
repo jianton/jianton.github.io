@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Aug 2019, 08:02:30
+ {txt}opened on:  {res}29 May 2025, 06:22:01
 {txt}
 {com}. //_1q
 . quietly{c -(}
@@ -18,7 +18,7 @@
 . //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
-{txt}(ECV 2016-2018)
+{txt}(ECV 2018)
 
 {com}. //_3
 . //  Calculamos el salario medio y la tasa de pobreza por CCAA
@@ -44,7 +44,7 @@
 . //  Creamos la base de datos con los estadísticos de interés
 . 
 . collapse (mean) salario hpobreza (count) nper = pid [pweight=peso], by(region)
-{txt}
+{res}{txt}
 {com}. 
 . //  Expresamos la variable pobreza en tanto por 100
 . 
@@ -153,7 +153,7 @@
 . //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
-{txt}(ECV 2016-2018)
+{txt}(ECV 2018)
 
 {com}. 
 . //  Calculamos la edad y los grupos de edad
@@ -230,7 +230,7 @@
 . //  Creamos la base de datos con los estadísticos de interés
 . 
 . collapse (mean) salario [pweight=peso], by(edadg educg)
-{txt}
+{res}{txt}
 {com}. 
 . //  Realizamos algunas manipulaciones para representar los datos
 . 
@@ -289,7 +289,7 @@
 . //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
-{txt}(ECV 2016-2018)
+{txt}(ECV 2018)
 
 {com}. 
 . //  Calculamos la edad
@@ -303,7 +303,7 @@
 {txt}(13.265 missing values generated)
 
 {com}. recode empleo (0 = 1) if sitact == 1
-{txt}(empleo: 12867 changes made)
+{txt}(12.867 changes made to {bf:empleo})
 
 {com}. 
 . //  Calculamos los grupos de niveles educativos
@@ -335,7 +335,7 @@
 . //  Creamos la base de datos con los estadísticos de interés
 . 
 . collapse (mean) empleo [pweight=peso], by(sexo educg)
-{txt}
+{res}{txt}
 {com}. 
 . //  Expresamos la tasa de empleo en tanto por 100
 . 
@@ -350,7 +350,7 @@
 > (line educg empleo if educg == 2, lcolor(black)) ///
 > (line educg empleo if educg == 3, lcolor(black)) ///
 > (line educg empleo if educg == 4, lcolor(black)) ///
-> (scatter educg empleo if sex == 1, mcolor(navy) msize(4-pt) msymbol(circle) mlabcolor()) ///
+> (scatter educg empleo if sexo == 1, mcolor(navy) msize(4-pt) msymbol(circle) mlabcolor()) ///
 > (scatter educg empleo if sexo == 2, mcolor(orange) msize(4-pt) msymbol(circle) mlabel(educg) mlabsize(small) mlabcolor(black) mlabposition(9) mlabgap(small)), ///
 > title("Tasa de empleo por sexo y nivel educativo en España (2018)", size(medsmall) margin(small)) ///
 > yscale(off) ylabel(0(1)4) ///
@@ -364,7 +364,7 @@
 . //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
-{txt}(ECV 2016-2018)
+{txt}(ECV 2018)
 
 {com}. 
 . //  Calculamos los grupos de niveles educativos
@@ -396,7 +396,7 @@
 . //  Creamos la base de datos con los estadísticos de interés
 . 
 . collapse (mean) hpobreza [pweight=peso], by(sexo educg)
-{txt}
+{res}{txt}
 {com}. 
 . //  Expresamos la tasa de pobreza en tanto por 100
 . 
@@ -407,12 +407,12 @@
 . //  Reordenamos los datos para representarlos
 . 
 . reshape wide hpobreza, i(educg) j(sexo)
-{txt}(note: j = 1 2)
+{txt}(j = 1 2)
 
-Data{col 36}long{col 43}->{col 48}wide
+Data{col 36}Long{col 43}->{col 48}Wide
 {hline 77}
-Number of obs.                 {res}       8   {txt}->{res}       4
-{txt}Number of variables            {res}       3   {txt}->{res}       3
+Number of observations     {res}           8   {txt}->   {res}4           
+{txt}Number of variables        {res}           3   {txt}->   {res}3           
 {txt}j variable (2 values)              {res}sexo   {txt}->   (dropped)
 xij variables:
                                {res}hpobreza   {txt}->   {res}hpobreza1 hpobreza2
@@ -436,7 +436,14 @@ xij variables:
 {res}{txt}
 {com}. gr_edit plotregion1.added_text_rec = 1
 {res}{txt}
-{com}. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
+{com}. gr_edit plotregion1.added_text[1].style.editstyle  angle(default) size( sztype(points) val(2) allow_pct(1)) ///
+> color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) ///
+> gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) ///
+> gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) ///
+> drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) ///
+> gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) ///
+> gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) ///
+> linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
 {res}{txt}
 {com}. gr_edit plotregion1.added_text[1].style.editstyle size(vsmall) editcopy
 {res}{txt}
@@ -451,7 +458,14 @@ xij variables:
 {res}{txt}
 {com}. gr_edit plotregion1.added_text_rec = 2
 {res}{txt}
-{com}. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
+{com}. gr_edit plotregion1.added_text[2].style.editstyle  angle(default) size( sztype(relative) val(4.1667) allow_pct(1)) ///
+> color(navy) horizontal(left) vertical(middle) margin( gleft( sztype(relative) val(0) allow_pct(1)) ///
+> gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) ///
+> gbottom( sztype(relative) val(0) allow_pct(1))) ///
+> linegap( sztype(relative) val(0) allow_pct(1)) drawbox(no) boxmargin( gleft( sztype(relative) val(0) allow_pct(1)) ///
+> gright( sztype(relative) val(0) allow_pct(1)) gtop( sztype(relative) val(0) allow_pct(1)) ///
+> gbottom( sztype(relative) val(0) allow_pct(1))) fillcolor(bluishgray) ///
+> linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) box_alignment(east) editcopy
 {res}{txt}
 {com}. gr_edit plotregion1.added_text[2].style.editstyle size(vsmall) editcopy
 {res}{txt}
@@ -468,7 +482,12 @@ xij variables:
 {res}{txt}
 {com}. gr_edit plotregion1.added_lines_rec = 1
 {res}{txt}
-{com}. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+{com}. gr_edit plotregion1.added_lines[1].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) ///
+> angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(navy) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) ///
+> backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
 {res}{txt}
 {com}. 
 . gr_edit plotregion1.AddLine added_lines editor 6.412853740751393 35.56545925471323 9.872859791068407 35.56545925471323
@@ -477,7 +496,12 @@ xij variables:
 {res}{txt}
 {com}. gr_edit plotregion1.added_lines_rec = 2
 {res}{txt}
-{com}. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+{com}. gr_edit plotregion1.added_lines[2].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(navy) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(navy) pattern(solid) align(inside)) fillcolor(navy) size( sztype(relative) val(1.04166) allow_pct(1)) ///
+> angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) ///
+> backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
 {res}{txt}
 {com}. 
 . gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 27.44753863498822 15.89026161770668 32.2854913275516
@@ -486,7 +510,12 @@ xij variables:
 {res}{txt}
 {com}. gr_edit plotregion1.added_lines_rec = 3
 {res}{txt}
-{com}. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
+{com}. gr_edit plotregion1.added_lines[3].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) ///
+> angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(black) pattern(solid) align(inside)) backcolor(navy) backsize( sztype(relative) val(0) allow_pct(1)) ///
+> backangle(stdarrow) backsymangle(zero)) headpos(neither) editcopy
 {res}{txt}
 {com}. 
 . gr_edit plotregion1.AddLine added_lines editor 15.89026161770668 32.28549132755161 18.74852748535989 32.28549132755161
@@ -495,7 +524,12 @@ xij variables:
 {res}{txt}
 {com}. gr_edit plotregion1.added_lines_rec = 4
 {res}{txt}
-{com}. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
+{com}. gr_edit plotregion1.added_lines[4].style.editstyle  linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(orange) pattern(solid) align(inside)) headstyle( symbol(circle) linestyle( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(orange) pattern(solid) align(inside)) fillcolor(orange) size( sztype(relative) val(1.04166) allow_pct(1)) ///
+> angle(stdarrow) symangle(zero) backsymbol(none) backline( width( sztype(relative) val(.2) allow_pct(1)) ///
+> color(black) pattern(solid) align(inside)) backcolor(black) backsize( sztype(relative) val(0) allow_pct(1)) ///
+> backangle(stdarrow) backsymangle(zero)) headpos(head) editcopy
 {res}{txt}
 {com}. //_12q
 . quietly{c -(}
@@ -504,7 +538,7 @@ xij variables:
 . //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
-{txt}(ECV 2016-2018)
+{txt}(ECV 2018)
 
 {com}. 
 . //  Calculamos el salario
@@ -580,20 +614,23 @@ xij variables:
 . quietly{c -(}
 {txt}
 {com}. //_15
-. shp2dta using "recintos_autonomicas_inspire_peninbal_etrs89", data("ccaa_attr.dta") coord("ccaa_coord.dta") genid(stid) gencentroids(cc) replace
-{res}type: 5
-{txt}
+. geoframe translate ccaa using "recintos_autonomicas_inspire_peninbal_etrs89", replace // Crea los archivos ccaa.dta (atributos) y ccaa_shp.dta (coordenadas)
+{res}{txt}(importing shp file) {res}{text}(5 vars, 728,101 obs)
+{res}{txt}(importing dbf file) {res}{text}(9 vars, 19 obs)
+{res}{txt}(files {bf:ccaa.dta} and {bf:ccaa_shp.dta} saved)
+(type {bf:{stata geoframe create ccaa}} to load the data)
+
 {com}. //_16
 . //  Abrimos el archivo
 . 
 . use "ecv18.dta", clear
-{txt}(ECV 2016-2018)
+{txt}(ECV 2018)
 
 {com}. 
 . //  Calculamos los estadísticos de interés
 . 
 . collapse (mean) hpobreza [pweight = peso], by(region)
-{txt}
+{res}{txt}
 {com}. 
 . //  Expresamos la tasa de pobreza en tanto por 100
 . 
@@ -601,7 +638,7 @@ xij variables:
 {txt}(19 real changes made)
 
 {com}. 
-. //  Eliminamos Canarias
+. //  Eliminamos Canarias, Ceuta y Melilla
 . 
 . drop if region == 19
 {txt}(1 observation deleted)
@@ -609,90 +646,119 @@ xij variables:
 {com}. 
 . //  Recodificamos las regiones para enlazar con la variable stid de ccaa_attr.dta
 . 
-. recode region (1=10) (2=18) (3=16) (4=6) (5=7) (6=5) (7=19) (8=9) (9=15) (10=14) (11=11) (12=13) (13=12) (14=17) (15=20) (16=8) (17=3) (18=4)
-{txt}(region: 17 changes made)
+. recode region (1=11) (2=3) (3=5) (4=15) (5=14) (6=16) (7=2) (8=12) (9=6) (10=7) (11=10) (12=8) (13=9) (14=4) (15=1) (16=13) (17=17) (18=18) 
+{txt}(16 changes made to {bf:region})
 
 {com}. 
-. //  Eliminamos las etiquetas de los valores para evitar confusiones
+. //  Eliminamos las etiquetas de los valores para evitar confusiones y le ponemos los valores nuevos
 . 
 . label drop region_lab
 {txt}
 {com}. 
+. label define region_lab 1 "Andalucía" 2 "Aragón" 3 "Principado de Asturias" 4 "Illes Balears" 5 "Cantabria" 6 "Castilla y León" 7 "Castilla-La Mancha" 8 "Cataluña" 9 "Comunidad Valenciana" 10 "Extremadura" ///
+> 11 "Galicia" 12 "Comunidad de Madrid" 13 "Región de Murcia" 14 "Comunidad Foral de Navarra" 15 "País Vasco" 16 "La Rioja" 17 "Ceuta" 18 "Melilla" 
+{txt}
+{com}. label values region region_lab
+{txt}
+{com}. 
 . //  Cambiamos el nombre de la variable de enlace
 . 
-. rename region stid
+. rename region _ID
 {res}{txt}
 {com}. 
-. //  Eliminamos las regiones que no queremos representar
+. //    Guardamos el archivo que servirá para crear la segunda capa (destinada a las áreas del mapa coroplético de niveles de pobreza)
 . 
-. drop if stid <= 4
-{txt}(2 observations deleted)
+. save "ccaa_pobreza.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+ccaa_pobreza.dta{rm}
+saved
+{p_end}
 
 {com}. 
-. save "ccaa_pobreza.dta", replace
-{txt}file ccaa_pobreza.dta saved
+. //    Abrimos el archivo de atributos y lo fusionamos con el archivo de datos de pobreza, de forma que tenemos una variable asociada a cada unidad
+. 
+. use "ccaa.dta", clear
+{txt}
+{com}. 
+. merge 1:1 _ID using "ccaa_pobreza.dta", keep(match) nogenerate noreport
+{res}{txt}
+{com}. 
+. save "ccaa_pobreza_datos.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+ccaa_pobreza_datos.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. //  Creamos el archivo destinado a las etiquetas por el mismo procedimiento
+. 
+. use "ccaa.dta", clear
+{txt}
+{com}. 
+. merge 1:1 _ID using "ccaa_pobreza.dta", keep(match) nogenerate noreport
+{res}{txt}
+{com}. 
+. save "ccaa_pobreza_etiquetas.dta", replace
+{txt}{p 0 4 2}
+file {bf}
+ccaa_pobreza_etiquetas.dta{rm}
+saved
+{p_end}
 
 {com}. //_17
-. //  Creamos un archivo con etiquetas.
-. 
-. use "ccaa_attr.dta", clear
-{txt}
-{com}. merge 1:1 stid using "ccaa_pobreza.dta", keep(match)
+. geoframe create ccaa using "ccaa.dta", shp("ccaa_shp.dta") replace
+{res}{txt}(creating frame {stata geoframe describe ccaa:{bf:ccaa}} from ccaa.dta)
+(creating frame {stata geoframe describe ccaa_shp:{bf:ccaa_shp}} from ccaa_shp.dta)
 {res}
-{txt}{col 5}Result{col 38}# of obs.
-{col 5}{hline 41}
-{col 5}not matched{col 30}{res}               0
-{txt}{col 5}matched{col 30}{res}              16{txt}  (_merge==3)
-{col 5}{hline 41}
+            {txt}Frame name: {bf:ccaa} [{stata frame change ccaa:make current}]
+            Frame type: {bf:attribute}
+          Feature type: <none>
+         Number of obs: {bf:19}
+               Unit ID: {bf:_ID}
+           Coordinates: {bf:_CX _CY}
+    Linked shape frame: {stata geoframe describe ccaa_shp:{bf:ccaa_shp}}
 
-{com}. keep stid hpobreza x_cc y_cc
-{txt}
-{com}. format hpobreza %02,1fc
-{txt}
-{com}. save "ccaa_labels.dta", replace
-{txt}file ccaa_labels.dta saved
+{com}. geoframe create ccaa_pobreza_datos using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
+{res}{txt}(creating frame {stata geoframe describe ccaa_pobreza_datos:{bf:ccaa_pobreza_datos}} from ccaa_pobreza_datos.dta)
+(creating frame {stata geoframe describe ccaa_pobreza_datos_shp:{bf:ccaa_pobreza_datos_shp}} from ccaa_shp.dta)
+{res}{txt}(dropped 1.962 unmatched observations in frame {stata geoframe describe ccaa_pobreza_datos_shp:{bf:ccaa_pobreza_datos_shp}})
+
+            Frame name: {bf:ccaa_pobreza_datos} [{stata frame change ccaa_pobreza_datos:make current}]
+            Frame type: {bf:attribute}
+          Feature type: <none>
+         Number of obs: {bf:18}
+               Unit ID: {bf:_ID}
+           Coordinates: {bf:_CX _CY}
+    Linked shape frame: {stata geoframe describe ccaa_pobreza_datos_shp:{bf:ccaa_pobreza_datos_shp}}
+
+{com}. geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
+{res}{txt}(creating frame {stata geoframe describe ccaa_pobreza_etiquetas:{bf:ccaa_pobreza_etiquetas}} from ccaa_pobreza_datos.dta)
+(creating frame {stata geoframe describe ccaa_pobreza_etiquetas_shp:{bf:ccaa_pobreza_etiquetas_shp}} from ccaa_shp.dta)
+{res}{txt}(dropped 1.962 unmatched observations in frame {stata geoframe describe ccaa_pobreza_etiquetas_shp:{bf:ccaa_pobreza_etiquetas_shp}})
+
+            Frame name: {bf:ccaa_pobreza_etiquetas} [{stata frame change ccaa_pobreza_etiquetas:make current}]
+            Frame type: {bf:attribute}
+          Feature type: <none>
+         Number of obs: {bf:18}
+               Unit ID: {bf:_ID}
+           Coordinates: {bf:_CX _CY}
+    Linked shape frame: {stata geoframe describe ccaa_pobreza_etiquetas_shp:{bf:ccaa_pobreza_etiquetas_shp}}
 
 {com}. //_18
-. //  Abrimos el archivo ccaa_attr.dta
-. 
-. use "ccaa_attr.dta", clear
-{txt}
-{com}. 
-. //  Realizamos la fusión con merge
-. 
-. merge 1:1 stid using "ccaa_pobreza.dta", keep(match)
-{res}
-{txt}{col 5}Result{col 38}# of obs.
-{col 5}{hline 41}
-{col 5}not matched{col 30}{res}               0
-{txt}{col 5}matched{col 30}{res}              16{txt}  (_merge==3)
-{col 5}{hline 41}
-
-{com}. 
-. //_19
-. //  Creamos el mapa
-. 
-. spmap hpobreza using "ccaa_coord.dta", ///
-> id(stid) fcolor(Reds) ///
-> ocolor(black ..) osize(thin ..)  ///
-> legend(size(vsmall) position(5) label(2 "0-10") label(3 "10-20") label(4 "20-30") label(5 "30-40")) ///
-> clmethod(custom)  clbreaks(0 10 20 30 40) ///
-> legtitle("Tasa de pobreza (%)") ///
-> title("Tasa de pobreza en España por CCAA (2018)", size(small)) name("pobreza2018", replace) ///
-> label(data("ccaa_labels.dta") label(hpobreza) xcoord(x_cc) ycoord(y_cc) color(black) size(vsmall) length(4)) ///
-> freestyle yscale(off) xscale(off)
+. geoplot ///
+>     (area ccaa_pobreza_etiquetas hpobreza, color(Reds) cuts(0 10 20 30 40) label("@lb - @ub",  format(%09.0fc))) ///
+>     (label ccaa_pobreza_datos hpobreza, size(small) format(%09.1fc) color(black) ) ///        
+>     (line ccaa, lcolor(black) lwidth(0.1))    ///
+>     , tight xsize(7) project legend(position(5) layout(- "Tasa de pobreza" 1) size(vsmall) col(1) reverse)
+{res}{txt}(applying {bf:webmercator} projection)
 {res}{txt}
 {com}. 
-. //    Usamos el editor de Stata para ajustar el tamaño
-. 
-. gr_edit style.editstyle declared_ysize(5) editcopy
-{res}{txt}
-{com}. gr_edit style.editstyle declared_xsize(7) editcopy
-{res}{txt}
-{com}. //_20q
+. //_19q
 . quietly{c -(}
 {txt}
-{com}. //_21q
+{com}. //_20q
 . quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
 {txt}
 {com}. //_^
@@ -700,7 +766,7 @@ xij variables:
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Aug 2019, 08:02:30
+ {txt}closed on:  {res}29 May 2025, 06:22:11
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
