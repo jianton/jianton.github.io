@@ -332,7 +332,7 @@ A continuación, en nuestro editor de LaTeX, donde habremos preparado el espacio
 
 Por último, cabe mencionar la facilidad de gestión de referencias bibliográficas con programas gratuitos como [JabRef](https://www.jabref.org/), [Mendeley](https://www.mendeley.com/) o [Zotero](https://www.zotero.org/), que pueden utilizarse, además, con otro tipo de aplicaciones para procesar textos. Los recursos disponibles en la red para el aprendizaje de LaTeX, que es, fundamentalmente, un proceso *learning by doing*, son realmente inabarcables. Una buena referencia inicial para Ciencias Sociales podría ser @Frain2014.
 
-# 4. Tablas personalizadas en las versiones recientes de `Stata`
+# 4. Tablas personalizadas en `Stata`
 
 Desde la versión 17, de `Stata` permite crear tablas personalizadas de resultados y exportarlas posteriormente en distintos formatos (e.g., archivos `.docx`, `.xlsx` o `.tex`). Para llevar a cabo esta tarea, empleamos el comando `collect`. Dado que resulta bastante complejo, como en el caso de los gráficos, una forma de trabajo interesante de elaborar este tipo de tablas consiste en combinar los comandos con el sistema de ventanas. Al margen de este consejo sobre la forma de elaborar las tablas, en el [blog oficial de `Stata`](https://blog.stata.com/category/reporting/) se ofrecen buenos consejos sobre el tema basados en la línea de comandos.
 
