@@ -43,43 +43,47 @@ Existe un importante número de libros de introducción a Stata, entre los que s
 
 ## 3.2. Tipos de archivos en `Stata`
 
-### Archivos *.dta*
+### Archivos `.dta`
 
 Son los archivos de datos de `Stata`, equivalentes a los archivos `.xlsx` en Excel o `.sav` en SPSS. Es el formato al que debemos convertir los datos con los que queramos trabajar.
 
-### Archivos *.do*
+### Archivos `.do`
 
 Archivos de sintaxis de comandos, equivalentes a los `.sps` en SPSS. Resultan absolutamente básicos, para ahorrar tiempo (`Stata` no cuenta con la función *deshacer*) y garantizar la reproducibilidad. En realidad, son archivos de texto plano, idénticos a los `.txt`.
 
-### Archivos *.smcl* o *.log*
+### Archivos `.smcl` o `.log`
 
 Son archivos de registro, que recogen las operaciones y resultados en nuestro espacio de trabajo, similares a los archivos `.log` en SPSS. Representan una forma razonable de presentar resultados preliminares a co-autores o una forma de entrega de ejercicios de los estudiantes. Actualmente, gracias a la integración de `Stata` con otros lenguajes y softwares (pdf o html), existen mejores alternativas.
 
-### Archivos *.gph*
+### Archivos `.gph`
 
 Son los archivos nativos para las figuras en `Stata`. En las últimas versiones, se pueden editar y la flexibilidad se ha incrementado mucho.
 Además, es posible generar los gráficos directamente en formatos de imagen o pdf.
 
-### Archivos *.ado*
+### Archivos `.ado`
 
 Son macros de `Stata`, algo más sofisticados que los archivos *.do* que contienen comandos programados, rutinas. Hay un impresionante arsenal
 de estos archivos creados por usuarios.
 
-### Archivos *.sthlp*
+### Archivos `.sthlp`
 
 Los archivos de ayuda de Stata.
 
-### Archivos *.stsem*
+### Archivos `.stsem`
 
 Diagramas de ecuaciones estructurales.
 
-### Archivos *.stpr*
+### Archivos `.stpr`
 
 Archivos de proyectos de `Stata`. Agrupan jerárquicamente los archivos anteriores.
 
-### Archivos *.stmd*
+### Archivos `.stmd`
 
 Archivos Markdown de `Stata`, similares a los archivos *.do*, que se emplean por comandos como `markstat` para la creación de documentos dinámicos reproducibles.
+
+### Archivos `.dtas`
+
+Archivos que contienen `frames` (varias bases de datos).
 
 En la práctica, los archivos que más vamos a utilizar son los archivos `.do` y `.dta`.
 
