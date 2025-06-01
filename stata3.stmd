@@ -20,11 +20,15 @@ Es uno de los comandos más utilizados de `Stata`, esencial para explorar las ba
 
 Tabla de una variable (*one-way table*)
 
-  <code><u>tab</u>ulate <i>varname</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>tabulate1_options</i>]</code>
+<pre>
+<u>tab</u>ulate <i>varname</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>tabulate1_options</i>]
+</pre>
 
 Tabla de dos variables (*two-way table*)
 
-  <code><u>tab</u>ulate <i>varname1</i> <i>varname2</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+<u>tab</u>ulate <i>varname1</i> <i>varname2</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 Las opciones para crear las tablas son numerosas: número de observaciones, frecuencias de celdas, filas o columnas, etc.
 
@@ -70,7 +74,9 @@ Adicionalmente, `Stata` nos permite realizar algunos tests estadísticos para co
 
 Podemos crear tablas de una o dos variables con los estadísticos descriptivos de otras variables mediante la instrucción `tabulate, summarize()`.
 
-  <code><u>tab</u>ulate <i>varname1</i> [<i>varname2</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, options]</code>
+<pre>
+<u>tab</u>ulate <i>varname1</i> [<i>varname2</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, options]
+</pre>
 
 Por ejemplo, podemos calcular los estadísticos descriptivos del salario promedio por nivel educativo o por nivel educativo y sexo.
 
@@ -84,7 +90,9 @@ tabulate educg sexo, summarize(salario)
 
 Además, disponemos del comando `table` para construir tablas con estadísticos descriptivos de forma más flexible.
 
-  <code>table <i>rowvar</i> [<i>colvar</i> [<i>supercolvar</i>]] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+table <i>rowvar</i> [<i>colvar</i> [<i>supercolvar</i>]] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 El salario promedio por educación, sexo y tipo de contrato se calcularía como sigue:
 
@@ -96,7 +104,9 @@ table educg sexo contrato, statistic(mean salario)
 
 Como es sabido, este tipo de análisis se emplea para contrastar si la media de una variable en dos o más poblaciones es diferente. En `Stata`, se implementa con facilidad con el comando `anova`:
 
-  <code>anova <i>varname</i> [<i>termlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+anova <i>varname</i> [<i>termlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 Para contrastar si el salario promedio es diferente por nivel educativo, emplearíamos la siguiente instrucción:
 
@@ -110,7 +120,9 @@ Podemos ver que, efectivamente, se rechaza la hipótesis nula de igualdad de med
 
 Sin duda, es la técnica de análisis multivariantes más popular. En `Stata`, las regresiones lineales se implementan a través del comando `regress`:
 
-  <code><u>reg</u>ress <i>depvar</i> [<i>indepvars</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+<u>reg</u>ress <i>depvar</i> [<i>indepvars</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 El abanico de opciones que nos ofrece un comando como `regress` es enorme. Algunos ejemplos de manuales muy recomendables son @Adkins2010, @Baum2006 y @Cameron2010. Un buen libro que conecta teoría y práctica es el de @Wooldridge2019.
 
@@ -188,7 +200,9 @@ probit empleo i.sexo c.edad c.edad#c.edad
 
 Es muy posible que recordemos que los coeficientes estimados de muchos modelos no lineales no son directamente interpretables. Por eso, habitualmente, presentamos, por ejemplo, los efectos marginales. `Stata` permite abordar esta tarea a través del uso del comando `margins` después de la estimación del modelo correspondiente:
 
-  <code>margins [<i>marginlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>response_options</i> <i>options</i>]</code>
+<pre>
+margins [<i>marginlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>response_options</i> <i>options</i>]
+</pre>
 
 En este tipo de modelos, los efectos marginales (el efecto de un incremento de unidad en un regresor en la variable dependiente) es diferente para cada observación. Una opción habitual es calcular los efectos marginales en para una observación que tomase como valores el promedio de cada variable.
 
@@ -217,7 +231,7 @@ margins, dydx(edad sexo)
 Podemos plantear un tercer ejemplo con un modelo *tobit*, empleado en ocasiones para variables que se encuentran censuradas. Por ejemplo, las aportaciones a planes de pensiones privados son una variable censurada en 0 (no puede ser negativa).
 
 ```{s}
-codebook aportacionesg
+summarize aportacionesg, detail
 ```
 
 En nuestro caso, la estimación del modelo será la siguiente (como en el caso anterior, los efectos marginales no coinciden con los coeficientes):
@@ -253,7 +267,9 @@ margins, dydx(sexo edad educg)
 
 En primar lugar, fijamos el tipo de muestreo en `Stata`:
 
-  <code>svyset [<i>psu</i>] [<i>weight</i>] [, <i>design_options</i> <i>options</i>]</code>
+<pre>
+svyset [<i>psu</i>] [<i>weight</i>] [, <i>design_options</i> <i>options</i>]
+</pre>
 
 `svyset` es una de las pocas instrucciones que resulta más fácil de implementar a través de las ventanas. Una buena estrategia es emplear el menú de ventanas, generar la instrucción y copiarla en nuestro archivo `do`.
 
@@ -271,7 +287,9 @@ Además, muchos comandos en `Stata` admiten el empleo de ponderaciones. En el ca
 
 El manejo de datos de panel merecería un curso específico. No obstante, la lógica es similar a la instrucción anterior: a través de `xtset`, `Stata` permite especificar cuáles son las unidades del panel (*`panelvar`*) y cuál es la variable temporal (*`timevar`*) y, posteriormente, ejecutar comandos especialmente diseñados para implementar modelos con este tipo de datos (por ejemplo, modelos de efectos fijos).
 
-  <code>xtset <i>panelvar</i> <i>timevar</i> [, <i>tsoptions</i>]</code>
+<pre>
+xtset <i>panelvar</i> <i>timevar</i> [, <i>tsoptions</i>]
+</pre>
 
 Al margen de los libros mencionados con anterioridad, especialmente @Cameron2010, podemos destacar el libro de @Long2014 para variables categóricas, los manuales de Skrondal y Rabe-Hesketh [-@Skrondal2012a;-@Skrondal2012b] para modelos de panel y multinivel y @Cleves2016 para modelos de supervivencia.
 
@@ -283,21 +301,31 @@ A modo de ilustración, vamos a construir un índice de bienestar de los hogares
 
 La instrucción para el análisis de componentes principales es
 
-  <code>pca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+pca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 Para calcular las componentes para cada observación emplearíamos
 
-  <code>predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>} [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <i>options</i>]</code>
+<pre>
+predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>} [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <i>options</i>]
+</pre>
 
 La instrucción para el análisis de correspondencias múltiple es
 
-  <code>mca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+mca <i>varlist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 Para calcular las componentes, usamos
 
-  <code>predict [<i>type</i>] <i>newvar</i> [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>#)</i>]</code>
+<pre>
+predict [<i>type</i>] <i>newvar</i> [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>#)</i>]
 
-  <code>predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>} [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>numlist</i>)]</code>
+predict [<i>type</i>] {<i>stub</i>* | <i>newvarlist</i>} [<i>if</i>] [<i>in</i>] [, <i>statistic</i> <u>norm</u>alize(<i>norm</i>) <u>dim</u>ensions(<i>numlist</i>)]
+</pre>
+
+Lo aplicamos a nuestra base de datos:
 
 ```{s}
 //  Abrimos el archivo

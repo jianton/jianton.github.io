@@ -36,7 +36,7 @@ Profesor en el Departamento de Economía Aplicada de la Universidad de Salamanca
 ![](stata19.png){width=80%}
 :::
 ::: {.column width="80%"}
-El objetivo de este curso es proporcionar al estudiante una introducción al software de análisis estadístico `Stata`. En particular, se emplea la versión 17 del programa, aunque la inmensa mayoría de los códigos deben funcionar en versiones anteriores.
+El objetivo de este curso es proporcionar al estudiante una introducción al software de análisis estadístico `Stata`. En particular, se emplea la versión 19 del programa, aunque la inmensa mayoría de los códigos deben funcionar en versiones anteriores.
 
 El curso cuenta con una duración de 10 horas. Su finalidad es poner a disposición de los asistentes las herramientas para que cualquier persona interesada pueda comenzar a trabajar con este programa (por ejemplo, realizando una transición desde otro software). No se pretende profundizar en conceptos estadísticos o cubrir exhaustivamente cada uno de los elementos que se abordan en el curso, sino que, por la duración del curso, se persigue mostrar las potencialidades del programa y orientar a los estudiantes sobre los recursos que pueden emplear para convertirse en usuarios del programa en su actividad académica o profesional. El hilo conductor del curso es que la mejor forma de aprender a emplear `Stata` es, precisamente, practicando su empleo en nuestro trabajo.
 
@@ -65,6 +65,8 @@ El curso se divide en cinco sesiones con los siguientes contenidos:
   **<span style="color:red">4.</span>** Cambiar la disposición de los datos
 
   **<span style="color:red">5.</span>** Nociones básicas de programación: `preserve`, `restore` y el uso de macros y bucles
+
+  **<span style="color:red">6.</span>** El uso de `frames`
 
 **<span style="color:red">Sesión 3:</span>** [Tablas de contingencia y análisis multivariante](https://jianton.github.io/stata3.html)
 

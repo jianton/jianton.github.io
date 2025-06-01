@@ -104,11 +104,15 @@ Conviene operar, preferentemente, con el editor de archivos `.do`.
 
 La ayuda de `Stata` es bastante buena y, además, nos permite acceder directamente a los manuales en formato `.pdf` del programa, que contienen breves explicaciones estadísticas, ejemplos e incluso referencias. Es muy sencillo acudir a la ayuda.
 
-  <code><u>h</u>elp [<i>command_or_topic_name</i>] [, <u>non</u>ew name(viewername) <u>mark</u>er(<i>markername</i>)]</code>
+<pre>
+<u>h</u>elp [<i>command_or_topic_name</i>] [, <u>non</u>ew name(viewername) <u>mark</u>er(<i>markername</i>)]
+</pre>
 
 De forma más genérica, podemos emplear
 
-  <code>search <i>word</i> [<i>word</i> ...] [, <i>search_options</i>]</code>
+<pre>
+search <i>word</i> [<i>word</i> ...] [, <i>search_options</i>]
+</pre>
 
 En segundo término, las [*cheatsheets*](https://www.stata.com/bookstore/statacheatsheets.pdf) de `Stata` son un magnífico recurso a considerar.
 
@@ -124,7 +128,7 @@ Algunas opciones de manuales introductorios son @Acock2018 y @Kohler2012. En esp
 
 El tercer tipo de recursos son los tutoriales *online*. Hay tres de especial interés:
 
-* La web de [Germán Rodríguez](https://data.princeton.edu/stata) en la Universidad de Princeton.
+* La web de [Germán Rodríguez](https://grodri.github.io/stata) en la Universidad de Princeton.
 * La web del [Institute for Digital Research and Education de la UCLA](https://stats.idre.ucla.edu/stata/). Especialmente útiles es la replicación de los ejemplos de muchos libros (aunque, en la actualidad, los propios manuales ya suelen proporcionar la sintaxis y datos empleados en los ejemplos).
 * El curso para manejo de datos de encuestas de hogares de la [Southern Africa Labour and Development Research Unit](https://www.saldru.uct.ac.za/training/online-stata-course-the-analysis-of-south-african-household-survey-data/).
 
@@ -132,7 +136,7 @@ Además, los diferentes tipos de cursos que ofrece [StataCorp](https://www.stata
 
 En la actualidad, una buena parte de los recursos de ayuda se ha quedado obsoleto por la aparición de la inteligencia artificial. [ChatGPT](https://chatgpt.com/) o [Gemini](https://gemini.google.com/) pueden programar en `Stata` (aunque no tan bien como en `Python` o `R`) y podemos preguntarles dudas de todo tipo e incluso pedirnos que nos realice los análisis tras proporcionarle los datos.
 
-![Ejemplo de utilización de ChatGPT para consultas sobre programación en `Stata`](ChatGPT.jpg){width=75%}
+![Ejemplo de utilización de ChatGPT para consultas sobre programación en `Stata`](ChatGPT.jpg){width=50%}
 
 # 4. Primeros pasos en `Stata`
 
@@ -166,7 +170,9 @@ clear all
 ```
 En segundo lugar, habitualmente, indicamos cuál es el directorio de trabajo.
 
-  <code>cd ["]<i>directory_name</i>["]</code>
+<pre>
+cd ["]<i>directory_name</i>["]
+</pre>
 
 En mi caso,
 
@@ -178,7 +184,9 @@ Vamos a utilizar los datos de la *Encuesta de Condiciones de Vida* que lleva a c
 
 Los archivos se encuentran en formato `.csv`. Son archivos de texto delimitados por un separador, en este caso, una coma (","). Vamos a comenzar por un archivo de personas con algunas características básicas (`esudb18r.csv`).
 
-  <code>import <u>delim</u>ited [using] <i>filename</i> [, <i>import_delimited_options</i>]</code>
+<pre>
+import <u>delim</u>ited [using] <i>filename</i> [, <i>import_delimited_options</i>]
+</pre>
 
 En mi caso,
 
@@ -199,7 +207,9 @@ Veremos que algunas variables se encuentran en formato numérico y otras, como c
 
 Podemos solventar eso con el comando `destring` que convierte todas las variables en formato texto a formato numérico sin perder información (si hay pérdida de información, no lo hace). Existe, asimismo, un comando para realizar la operación contraria (`help tostring`).
 
-  <code>destring [<i>varlist</i>] , {generate(<i>newvarlist</i>)|replace} [<i>destring_options</i>]</code>
+<pre>
+destring [<i>varlist</i>] , {generate(<i>newvarlist</i>)|replace} [<i>destring_options</i>]
+</pre>
 
 En nuestro caso, aplicamos el comando como sigue
 
@@ -213,7 +223,9 @@ quietly{
 
 Podemos guardarlo mediante la instrucción `save`:
 
-  <code><u>sa</u>ve [<i>filename</i>] [, <i>save_options</i>]</code>
+<pre>
+<u>sa</u>ve [<i>filename</i>] [, <i>save_options</i>]
+</pre>
 
 En mi caso, procedería como sigue para crear mi primer archivo `.dta`.
 
@@ -222,7 +234,9 @@ save "ecv18r.dta", replace
 ```
 Para abrir un archivo `.dta`, la instrucción es muy sencilla.
 
-  <code><u>u</u>se <i>filename</i> [, clear <u>nol</u>abel]</code>
+<pre>
+<u>u</u>se <i>filename</i> [, clear <u>nol</u>abel]
+</pre>
 
 En mi caso,
 
@@ -232,11 +246,15 @@ use "ecv18r.dta", clear
 
 Por último, vamos a crear archivos logs. Son apropiados para documentar de manera muy informal los resultados (e.g., para enviarlos a un co-autor o echar un primer vistazo a los análisis estadísticos). Al comienzo de la parte que queremos "grabar", añadimos
 
-  <code>log using <i>filename</i> [, append replace [<u>t</u>ext|<u>s</u>mcl] name(<i>logname</i>) nomsg]</code>
+<pre>
+log using <i>filename</i> [, append replace [<u>t</u>ext|<u>s</u>mcl] name(<i>logname</i>) nomsg]
+</pre>
 
 Al final de la parte que deseamos reportar, empleamos
 
-  <code>log close [<i>logname</i> | _all]</code>
+<pre>
+log close [<i>logname</i> | _all]
+</pre>
 
 En nuestro caso, podríamos añadir al principio
 
@@ -267,31 +285,45 @@ Estos comandos se escriben como se expresa a continuación:
 
 Descripción de los datos en la memoria
 
-  <code><u>d</u>escribe [<i>varlist</i>] [, <i>memory_options</i>]</code>
+<pre>
+<u>d</u>escribe [<i>varlist</i>] [, <i>memory_options</i>]
+</pre>
 
 Descripción del contenido de los datos
 
-  <code>codebook [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <i>options</i>]</code>
+<pre>
+codebook [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <i>options</i>]
+</pre>
 
 Explorar los datos en la memoria
 
-  <code><u>br</u>owse [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <u>nol</u>abel]</code>
+<pre>
+<u>br</u>owse [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <u>nol</u>abel]
+</pre>
 
 Mostrar valores de las variables
 
-  <code><u>l</u>ist [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <i>options</i>]</code>
+<pre>
+<u>l</u>ist [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <i>options</i>]
+</pre>
 
 Estadísticos descriptivos
 
-  <code><u>su</u>mmarize [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+<u>su</u>mmarize [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 Correlación entre variables
 
-  <code><u>cor</u>relate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]</code>
+<pre>
+<u>cor</u>relate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]
+</pre>
 
 Ordenar la base de datos por una o varias variables
 
-  <code><u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code>
+<pre>
+<u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]
+</pre>
 
 Así, por ejemplo, podemos explorar la variable que recoge la situación laboral de los españoles (`rb210`).
 
@@ -318,17 +350,19 @@ list rb090 in 1/10
 
 Para eliminar variables y observaciones de la base de datos podemos emplear tanto `drop` como `keep`.
 
-  <code>drop <i>varlist</i></code>
+<pre>
+drop <i>varlist</i>
 
-  <code>drop if <i>exp</i></code>
+drop if <i>exp</i>
 
-  <code>drop in <i>range</i> [if <i>exp</i>]</code>
+drop in <i>range</i> [if <i>exp</i>]
 
-  <code>keep <i>varlist</i></code>
+keep <i>varlist</i>
 
-  <code>keep if <i>exp</i></code>
+keep if <i>exp</i>
 
-  <code>keep in <i>range</i> [if <i>exp</i>]</code>
+keep in <i>range</i> [if <i>exp</i>]
+</pre>
 
 Así, por ejemplo, podemos eliminar el mes de nacimiento de la persona
 
@@ -354,7 +388,9 @@ Obviamente, resulta muy tedioso operar con estos nombres, por lo que lo habitual
 
 Para etiquetar la base de datos empleamos
 
-  <code><u>la</u>bel <u>da</u>ta ["<i>label</i>"]</code>
+<pre>
+<u>la</u>bel <u>da</u>ta ["<i>label</i>"]
+</pre>
 
 Por ejemplo, podemos llamar a nuestra base de datos "ECV-Datos básicos de la persona":
 
@@ -364,7 +400,9 @@ label data "ECV-Datos básicos de la persona"
 
 El etiquetado de variables se realiza a través de la instrucción
 
-  <code><u>la</u>bel <u>var</u>iable <i>varname</i> ["<i>label</i>"]</code>
+<pre>
+<u>la</u>bel <u>var</u>iable <i>varname</i> ["<i>label</i>"]
+</pre>
 
 En nuestro caso, por ejemplo,
 
@@ -376,11 +414,15 @@ El etiqueda de las variables requiere, primero, definir una etiqueta para los va
 
 Definición de etiqueta
 
-  <code><u>la</u>bel <u>de</u>fine <i>lblname</i> <i>#</i> "<i>label</i>" [<i>#</i> "<i>label</i>" ...] [, <u>a</u>dd modify replace nofix]</code>
+<pre>
+<u>la</u>bel <u>de</u>fine <i>lblname</i> <i>#</i> "<i>label</i>" [<i>#</i> "<i>label</i>" ...] [, <u>a</u>dd modify replace nofix]
+</pre>
 
 Asignación de etiqueta
 
-  <code><u>la</u>bel <u>val</u>ues <i>varlist</i> <i>lblname</i> [, nofix]</code>
+<pre>
+<u>la</u>bel <u>val</u>ues <i>varlist</i> <i>lblname</i> [, nofix]
+</pre>
 
 En nuestro caso, por ejemplo,
 
@@ -397,7 +439,9 @@ Además, existen algunas otras instrucciones para, por ejemplo, eliminar etiquet
 
 En primer lugar, podemos cambiar el nombre de las variables con la instrucción `rename`.
 
-  <code><u>ren</u>ame <i>old_varname</i> <i>new_varname</i></code>
+<pre>
+<u>ren</u>ame <i>old_varname</i> <i>new_varname</i>
+</pre>
 
 En nuestro caso,
 
@@ -407,9 +451,11 @@ rename rb090 sexo
 
 Para estas tareas empleamos los comandos `generate` y `replace`. El segundo de ellos es para variables ya existentes.
 
-  <code><u>gen</u>erate [<i>type</i>] <i>newvar</i>[:<i>lblname</i>] =<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>b</u>efore(<i>varname</i>) | <u>a</u>fter(<i>varname</i>)]</code>
+<pre>
+<u>gen</u>erate [<i>type</i>] <i>newvar</i>[:<i>lblname</i>] =<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>b</u>efore(<i>varname</i>) | <u>a</u>fter(<i>varname</i>)]
 
-  <code>replace <i>oldvar</i> =<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>nop</u>romote]</code>
+replace <i>oldvar</i> =<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>nop</u>romote]
+</pre>
 
 A partir del año de nacimiento, `rb080`, vamos a generar una nueva variable que recoja la edad.
 
@@ -456,7 +502,9 @@ A través del comando `recode` podemos recodificar variables.
 
 En términos generales,
 
-  <code>recode <i>varlist</i> (<i>rule</i>) [(<i>rule</i>) ...] [, generate(<i>newvar</i>)]</code>
+<pre>
+recode <i>varlist</i> (<i>rule</i>) [(<i>rule</i>) ...] [, generate(<i>newvar</i>)]
+</pre>
 
 En nuestro caso, podemos recodificar la variable `gedad` en un menor número de categorías.
 
@@ -475,7 +523,9 @@ tabulate gedad
 
 El comando `egen` nos permite realizar muchas operaciones a partir de una o varias variables (conteo, medias, etc.)
 
-  <code>egen [<i>type</i>] <i>newvar</i> = <i>fcn</i>(<i>arguments</i>) [<i>if</i>] [<i>in</i>] [, <i>options</i>]</code>
+<pre>
+egen [<i>type</i>] <i>newvar</i> = <i>fcn</i>(<i>arguments</i>) [<i>if</i>] [<i>in</i>] [, <i>options</i>]
+</pre>
 
 Por ejemplo, podemos calcular la edad promedio y almacenarla como una nueva variable.
 
@@ -530,11 +580,15 @@ Una de las ventajas fundamentales del uso de `Stata`, quizás solo compartida (y
 
 **Los paquetes creados por los usuarios**. Existen una gran cantidad de paquetes que han sido creados por los usuarios de `Stata`. Normalmente, están adecuadamente documentados. En términos generales, podemos buscar paquetes de `Stata` con la siguiente instrucción:
 
-  <code>net search <i>word</i> [<i>word</i> ...] [, options]</code>
+<pre>
+net search <i>word</i> [<i>word</i> ...] [, options]
+</pre>
 
 Si sabemos el nombre del paquete, podemos emplearse
 
-  <code>ssc install <i>pkgname</i> [, all replace]</code>
+<pre>
+ssc install <i>pkgname</i> [, all replace]
+</pre>
 
 Así, por ejemplo, podemos buscar paquetes que permitan realizar mediciones de pobreza con la siguiente instrucción
 

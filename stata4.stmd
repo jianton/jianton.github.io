@@ -42,7 +42,9 @@ Estos paquetes nos facilitan bastante el trabajo, pero es muy posible que queram
 
 `Stata` cuenta con un formato nativo `.gph` con bastante calidad y que puede ser una buena opción para guardar las figuras elaboradas con la posibilidad de modificarlas luego. Además, naturalmente, podemos copiar las figuras producidas en la ventana de gráficos y pegarlas en un documento de un procesador de textos (e.g., Microsoft Word) o un programa de edición de imágenes (e.g., Microsoft Paint). Sin embargo, existe un gran número de formatos en los que `Stata` puede guardar los graficos: `.ps`, `.eps`, `.svg`, `.wmf`, `.emf`, `.pdf`, `.png`, `.tif`, `.gif` y `.jpg`. Formatos como `.wmf` y `.emf` son muy apropiados para aplicaciones de Microsoft Office (e.g., Microsoft Word). Sin embargo, los formatos de vectores asegura muchísima calidad y son los empleados en edición profesional (`.ps`, `.eps`, `.svg`, `.pdf`, `.png`). La instrucción para exportar gráficos es la siguiente:
 
-  <code>graph export <i>newfilename.suffix</i> [, <i>options</i>]</code>
+<pre>
+graph export <i>newfilename.suffix</i> [, <i>options</i>]
+</pre>
 
 # 2. Gráficos más frecuentes y potencialidades de los gráficos de `Stata`
 

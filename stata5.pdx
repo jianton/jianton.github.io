@@ -190,43 +190,6 @@
   <script
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
   type="text/javascript"></script>
-<style>
-/* CSS for Markstat 2.0 using Pandoc 2.0 */
-body{padding:14px 28px;}
-body, table {font-family: Helvetica, Arial, Sans-serif; font-size: 14px; width: 95%; max-width: unset;}
-h1, h2, h3, h4 {font-weight: normal; color: #3366cc}
-h1 {font-size: 200%;}
-h2 {font-size: 150%;}
-h3 {font-size: 120%;}
-h4 {font-size: 100%; font-weight:bold}
-img.center {display:block; margin-left:auto; margin-right:auto}
-.small{font-size:8pt;}
-a {color: black;}
-a:visited {color: #808080;}
-a.plain {text-decoration:none;}
-a.plain:hover {text-decoration:underline;}
-.em {font-weight:bold;}
-pre, code {font-family: "lucida console", monospace;}
-pre.stata {font-size:13px; line-height:13px;}
-pre {padding:8px; border:1px solid #c0c0c0; border-radius:8px; background-color:#fdfdfd;}
-code {color:#3366cc; background-color:#fafafa;}
-pre code { color:black; background-color:white}
-/* Added for Pandoc */
-figure > img, div.figure > img {display:block; margin:auto}
-figcaption, p.caption {text-align:center; font-weight:bold; color:#3366cc;}
-h1.title {text-align:center; margin-bottom:0}
-p.author, h2.author {font-style:italic; text-align:center;margin-top:12px;margin-bottom:-25px}
-p.date, h3.date {text-align:center;margin-top:4px; margin-bottom:0}
-/* Tables*/
-table { margin:auto; border-collapse:collapse; }
-table caption { margin-bottom:1ex;}
-th, td { padding:4px 6px;}
-thead tr:first-child th {border-top:1px solid black; padding-top:6px}
-thead tr:last-child  th {padding-bottom:6px}
-tbody tr:first-child td {border-top:1px solid black; padding-top:6px}
-tbody tr:last-child  td {padding-bottom:6px;}
-table tbody:last-child tr:last-child td {border-bottom:1px solid black;}
-</style>
 </head>
 <body>
 <header id="title-block-header">
@@ -304,106 +267,7 @@ data-cites="Jann2005 Jann2016">(Jann, 2005, 2016)</span> y en la <a
 href="http://repec.sowi.unibe.ch/stata/estout/">página web</a> dedicada
 al paquete por este académico. En particular, para esta tarea vamos a
 emplear el comando <code>esttab</code> que incluye este paquete.</p>
-<pre class='stata'>. //  Fijamos el directorio de trabajo
-. 
-. cd "D:\Dropbox\curso_stata\sesión5"
-D:\Dropbox\curso_stata\sesión5
-
-. 
-. //  Instalamos el paquete estout
-. 
-. ssc install estout, replace
-checking estout consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. 
-. //  Abrimos el archivo
-. 
-. use "ecv18t.dta", clear
-(ECV 2018 (mercado de trabajo))
-
-. 
-. //  Creamos las variables necesarias
-. 
-. generate edad2 = edad^2
-
-. label variable edad2 "Edad al cuadrado"
-
-. 
-. //  Realizamos las regresiones
-. 
-. eststo total: regress logsalario ib1.sexo edad edad2 ib1.educg
-
-      Source │       SS           df       MS      Number of obs   =    11.599
-─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
-       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
-    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
-       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
-
-─────────────┬────────────────────────────────────────────────────────────────
-  logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
-─────────────┼────────────────────────────────────────────────────────────────
-        sexo │
-      Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
-        edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
-       edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
-             │
-       educg │
-Nivel medio  │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
- Nivel alto  │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
-             │
-       _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
-─────────────┴────────────────────────────────────────────────────────────────
-
-. eststo male: regress logsalario edad edad2 ib1.educg if sexo == 1
-
-      Source │       SS           df       MS      Number of obs   =     5.966
-─────────────┼──────────────────────────────────   F(4, 5961)      =    386,62
-       Model │  833,616132         4  208,404033   Prob > F        =    0,0000
-    Residual │  3213,21346     5.961  ,539039333   R-squared       =    0,2060
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,2055
-       Total │   4046,8296     5.965  ,678429102   Root MSE        =    ,73419
-
-─────────────┬────────────────────────────────────────────────────────────────
-  logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
-─────────────┼────────────────────────────────────────────────────────────────
-        edad │   ,0758506   ,0061639    12,31   0,000     ,0637672     ,087934
-       edad2 │  -,0005995   ,0000715    -8,38   0,000    -,0007397   -,0004593
-             │
-       educg │
-Nivel medio  │   ,2544457   ,0246757    10,31   0,000     ,2060723    ,3028191
- Nivel alto  │   ,5653884   ,0220473    25,64   0,000     ,5221677    ,6086091
-             │
-       _cons │   5,037839    ,127506    39,51   0,000     4,787881    5,287797
-─────────────┴────────────────────────────────────────────────────────────────
-
-. eststo female: regress logsalario edad edad2 ib1.educg if sexo == 2
-
-      Source │       SS           df       MS      Number of obs   =     5.633
-─────────────┼──────────────────────────────────   F(4, 5628)      =    309,16
-       Model │  703,432328         4  175,858082   Prob > F        =    0,0000
-    Residual │  3201,40011     5.628   ,56883442   R-squared       =    0,1801
-─────────────┼──────────────────────────────────   Adj R-squared   =    0,1796
-       Total │  3904,83244     5.632  ,693329624   Root MSE        =    ,75421
-
-─────────────┬────────────────────────────────────────────────────────────────
-  logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
-─────────────┼────────────────────────────────────────────────────────────────
-        edad │   ,0665724     ,00695     9,58   0,000     ,0529477     ,080197
-       edad2 │  -,0005401   ,0000803    -6,73   0,000    -,0006974   -,0003827
-             │
-       educg │
-Nivel medio  │   ,2314164   ,0282288     8,20   0,000      ,176077    ,2867557
- Nivel alto  │   ,6600433   ,0245986    26,83   0,000     ,6118206    ,7082661
-             │
-       _cons │    5,05201   ,1443795    34,99   0,000     4,768971     5,33505
-─────────────┴────────────────────────────────────────────────────────────────
-
-. 
-. esttab total male female using "salarios1.rtf", replace
-(output written to salarios1.rtf)
-</pre>
+<p>{{1}}</p>
 <p>Obtenemos la siguiente tabla en Microsoft Word:</p>
 <figure>
 <img src="table5_1.png" style="width:50.0%"
@@ -413,30 +277,12 @@ alt="Tabla de resultados de regresión con estout para MS Word" />
 </figure>
 <p>Empleando algunas opciones adicionales de <code>estout</code>,
 podemos mejorar el resultado.</p>
-<pre class='stata'>. esttab total male female using "salarios2.rtf", ///
-> b(%04,3fc) se(%04,3fc) /// Presentar coeficientes y errores estándar (con formato)
-> varlabels(2.sexo "Mujer" edad "Edad" edad2 "Edad{\super 2}" 2.educg "Educación media" 3.educg "Educación superior") /// Etiquetas
-> stats(N r2_a, fmt(%6,0fc %04,3fc) labels("No. de observaciones" "R{\super 2} ajustado")) ///
-> nobaselevels /// No mostrar las categorías de referencia
-> noconstant /// No mostrar la constante
-> varwidth(20) /// Anchura de la columna de la variable
-> substitute("\deflang1033\plain\fs24" "\deflang1033\plain\fs20") ///
-> fonttbl(\f0\fnil Times New Roman;\f1\fnil Times New Roman;) /// Tamaño de la fuente
-> title(\fs24{\b Tabla 1.} {Regresión salarial por sexo}) /// Título de la tabla
-> nonumbers mtitles("Total" "Hombres" "Mujeres") /// Títulos de las columnas
-> nonotes /// Eliminar las notas por defecto
-> addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante." ///
-> "Fuente: Elaboración propia a partir de la ECV 2018.") ///
-> replace
-(output written to salarios2.rtf)
-</pre>
+<p>{{2}}</p>
 <p>La versión 17 de <code>Stata</code> acepta caracteres Unicode. Para
 versiones anterioes a la 17, podemos convertir el archivo
 <code>.docx</code> para que este aparezca con los caracteres Unicode de
 la siguiente forma:</p>
-<pre class='stata'>. unicode convertfile "salarios2.rtf" "salarios2_unicode.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode
-note: file "salarios2.rtf" converted to file "salarios2_unicode.rtf"
-</pre>
+<p>{{3}}</p>
 <figure>
 <img src="table5_2.png" style="width:50.0%"
 alt="Tabla de resultados de regresión con estout para MS Word con formato" />
@@ -654,33 +500,8 @@ del formato resultante del texto incluido será responsabilidad de LaTeX,
 que habremos configurado previamente. En general, mi consejo es
 únicamente crear en <code>Stata</code> de las filas con la información
 estadística y diseñar el resto de la tabla en el editor de LaTeX.</p>
-
-<pre class='stata'>. //    Establecemos la coma como decimal
-. 
-. set dp comma
-
-. 
-. //    Realizamos las regresiones
-. 
-. eststo total: quietly: regress logsalario sexodummy2 edad edad2 educdummy2 educdummy3
-
-. eststo male: quietly: regress logsalario edad edad2 educdummy2 educdummy3 if sexo == 1
-
-. eststo female: quietly: regress logsalario edad edad2 educdummy2 educdummy3 if sexo == 2
-
-. 
-. //  Exportamos la tabla
-. 
-. estout total male female using "tabla1.tex", replace style(tex) ///
->   keep(sexodummy2 edad edad2 educdummy2 educdummy3) ///
->   varlabels(sexodummy2 "Mujer" edad "Edad" edad2 "Edad\textsuperscript{2}" educdummy2 "Educación media" educdummy3 "Educación superior") ///
->   cells(b(fmt(3) star) se(par fmt(3))) ///
-> starlevels("\sym{*}" 0.10 "\sym{**}" 0.05 "\sym{***}" 0.01) ///
->   stats(N r2_a, fmt(%6.0f %04,3fc) labels("No. de observaciones" "R\textsuperscript{2} ajustado")) ///
->   prefoot("[2ex]") ///
->   mlabel(, none) collabels(none)
-(output written to tabla1.tex)
-</pre>
+<p>{{4}}</p>
+<p>{{5}}</p>
 <p>Podemos ver que la tabla de LaTeX generada es extremadamente
 simple.</p>
 <figure>
@@ -692,44 +513,7 @@ alt="Tabla generada por Stata con estout" />
 <p>A continuación, calculamos unos estadísticos descriptivos, los
 almacenamos en macros y exportamos un texto que las contiene al archivo
 <code>texto.tex</code></p>
-<pre class='stata'>. //  Instalamos el paquete texdoc
-. 
-. ssc install texdoc, replace
-checking texdoc consistency and verifying not already installed...
-all files already exist and are up to date.
-
-. 
-. //    Creamos algunas macros con estadísticos descriptivos
-. 
-. summarize salario if sexo == 1
-
-    Variable │        Obs        Mean    Std. dev.       Min        Max
-─────────────┼─────────────────────────────────────────────────────────
-     salario │      6.036    2163,165    1926,792          0    46507,3
-
-. local salh: display %04.0fc r(mean)
-
-. summarize salario if sexo == 2
-
-    Variable │        Obs        Mean    Std. dev.       Min        Max
-─────────────┼─────────────────────────────────────────────────────────
-     salario │      5.708    1830,543    1657,196          0      62207
-
-. local salm: display %04.0fc r(mean)
-
-. 
-. //    Exportamos un texto que contiene las macros
-. 
-. texdoc init "texto.tex", replace force
-(texdoc output file is texto.tex)
-
-. tex El salario medio de los hombres es \num{`salh'} euros mensuales y el de las mujeres, \num{`salm'}.
-
-. texdoc close
-(texdoc output written to texto.tex)
-
-. 
-</pre>
+<p>{{6}}</p>
 <figure>
 <img src="textplain.png" style="width:50.0%"
 alt="Texto generada por Stata con texdoc" />
@@ -738,47 +522,8 @@ alt="Texto generada por Stata con texdoc" />
 </figure>
 <p>Por último, podemos generar un gráfico en formato <code>.pdf</code>,
 que es muy apropiado para exportar a LaTeX.</p>
-<pre class='stata'>. //  Configuramos el gráfico
-. 
-. grstyle clear
-
-. grstyle init
-
-. grstyle set plain
-
-. grstyle color background white
-
-. grstyle graphsize x 4
-
-. grstyle graphsize y 4
-
-. grstyle set nogrid
-
-. grstyle set color hue, n(4)
-
-. grstyle linestyle legend none
-
-. grstyle set legend 6
-
-. grstyle set color red green orange blue
-
-. 
-. //  Elaboramos el gráfico
-. 
-. twoway ///
-> (kdensity logsalario if sexo == 1 [aweight = peso]) ///
-> (kdensity logsalario if sexo == 2 [aweight = peso]), ///
-> ytitle("Densidad", size(vsmall) margin(sides)) ylabel(, labsize(vsmall) format(%02,1fc)) ///
-> xtitle("Salario bruto en logaritmos (euros/mes)", size(vsmall) margin(top_bottom)) xlabel(, labsize(vsmall)) ///
-> legend(on order(1 "Hombres" 2 "Mujeres") cols(1) size(vsmall) position(10) ring(0))
-
-. 
-. // Exportamos el gráfico
-. 
-. graph export "figura1.pdf", as(pdf) replace
-file figura1.pdf saved as PDF format
-</pre>
-
+<p>{{7}}</p>
+<p>{{8}}</p>
 <figure>
 <img src="figure.png" style="width:30.0%"
 alt="Texto generado por Stata para insertar en LaTeX" />
@@ -939,7 +684,7 @@ class="citation" data-cites="Pellegrina2018">Pellegrina &amp; Fajardo
 (2018)</span></figcaption>
 </figure>
 <h1 id="references">References</h1>
-
+<p>{{9}}</p>
 <div id="refs" class="references csl-bib-body hanging-indent"
 data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-Christensen2018" class="csl-entry" role="listitem">

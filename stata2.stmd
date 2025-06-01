@@ -34,11 +34,13 @@ Procedemos en tres pasos:
 
 **Paso 2.** Ejecutamos la instrucción `merge` para fusionar la primera base con la segunda (`using file`)
 
-  <code>merge 1:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]</code>
+<pre>
+merge 1:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]
+</pre>
 
 **Paso 3.** Comprobamos que la operación se ha realizado correctamente (recurriendo a la variable creada, automáticamente, `_merge`). Esta variable puede tomar tres valores: el valor 3 indica que la observación se encuentra en las dos bases de datos (`match`); el valor 1, que solo se encuentra en la base de datos `master` y el valor 2, que únicamente la encontramos en la base de datos `using`. Dependiendo de nuestros objetivos, podemos quedarnos solo con las observaciones que se encuentran en ambos archivos y borrar el resto de observaciones.
 
-Así, en nuestro ejemplo, abrimos la base de datos
+Así, en nuestro ejemplo,
 
 ```{s}
 //  Abrimos la base de datos
@@ -82,7 +84,9 @@ En este caso, observamos que hay observaciones que solo aparecen en la base `mas
 
 En ocasiones, precisamos fusionar una base de datos a un cierto nivel (e.g., personas) con otra base de datos con información a nivel superior (e.g., hogares o regiones). Para realizar este tipo de operación empleamos
 
-  <code>merge m:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]</code>
+<pre>
+merge m:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]
+</pre>
 
 En nuestro caso, vamos a fusionar la base de datos de personas con información básica (`ecv18r.dta`) con la base de datos de los hogares con información básica (`ecv18d.dta`). La variable de enlace, común en ambas bases, es el identificador del hogar (`hid`). Según la documentación, el identificador personal está compuesto del identificador laboral más el número de orden de la persona dentro del hogar. En los ficheros de personas, hemos creado un identificador del hogar empleando `generate int hid = pid/100`, por lo que tenemos dicha variable. La fusión, en este caso, es perfecta, pero, en muchas ocasiones, hay problemas de no respuesta, errores de codificación, etc. y es habitual que nos tengamos que quedar solo con aquellos datos que enlazan perfectamente (`_merge == 3`).
 
@@ -123,7 +127,9 @@ El comando `append` nos permite unir archivos que contienen las mismas variables
 
 **Paso 2.** Con el comando, `append` agregamos el resto de archivos.
 
-  <code><u>ap</u>pend using <i>filename</i> [<i>filename</i> <i>...</i>] [, <i>options</i>]</code>
+<pre>
+<u>ap</u>pend using <i>filename</i> [<i>filename</i> <i>...</i>] [, <i>options</i>]
+</pre>
 
 En nuestro caso, podemos proceder Así
 
@@ -145,13 +151,17 @@ tabulate ano
 
 Esta tarea, si bien se puede realizar combinando otros comandos (`egen`, `merge` y `append`), es mucho más sencilla a través de la potente instrucción `collapse`:
 
-  <code>collapse <i>clist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]</code>
+<pre>
+collapse <i>clist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 
 donde <i>`clist`</i> viene dado por
 
-  <code>[(<i>stat</i>)] <i>varlist</i> [ [(<i>stat</i>)] ... ]</code>
+<pre>
+[(<i>stat</i>)] <i>varlist</i> [ [(<i>stat</i>)] ... ]
 
-  <code>[(<i>stat</i>)] <i>target_var</i>=<i>varname</i> [<i>target_var</i>=<i>varname</i> <i>...</i>] [ [(<i>stat</i>)] <i>...</i>]</code>
+[(<i>stat</i>)] <i>target_var</i>=<i>varname</i> [<i>target_var</i>=<i>varname</i> <i>...</i>] [ [(<i>stat</i>)] <i>...</i>]
+</pre>
 
 El comando admite el cálculo de un amplio conjunto de estadísticos descriptivos (`stat`) y permite usar ponderaciones:
 
@@ -210,7 +220,9 @@ list sexo ano salariomed
 ```
 Para calcular cuál es la evolución del salario medio por sexo, sería más fácil disponer de tres variables que recojan el salario, una para cada año (formato `wide`). El comando `reshape` funciona de la siguiente forma:
 
-  <code>reshape wide <i>stub</i>, i(<i>i</i>) j(<j>j</j>)</code>
+<pre>
+reshape wide <i>stub</i>, i(<i>i</i>) j(<j>j</j>)
+</pre>
 
 En nuestro caso,
 
@@ -231,7 +243,9 @@ list sexo salariomed2016 salariomed2018 cambio1618
 
 Podemos volver al formato `long` de forma análoga:
 
-  <code>reshape long <i>stub</i>, i(<i>i</i>) j(<j>j</j>)</code>
+<pre>
+reshape long <i>stub</i>, i(<i>i</i>) j(<j>j</j>)
+</pre>
 
 Así,
 
@@ -289,47 +303,34 @@ summarize $var1
 
 El tercer elemento clave en términos de programación son los bucles, que, a través de macros locales, nos permiten realizar operaciones de forma repetida y, de esa forma, programar de forma eficiente. Los principales bucles que podemos emplear son los siguientes:
 
-  <code>foreach <i>lname</i> in <i>any_list</i> {</code>
+<pre>foreach <i>lname</i> in <i>any_list</i> {
+    <i>commands referring to `lname'</i>
+}
 
-  <code>        <i>commands referring to `lname'</i></code>
+foreach <i>lname</i> of <u>loc</u>al <i>lmacname</i> {
+    <i>commands referring to `lname'</i>
+}
 
-  <code>}</code>
+foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {
+    <i>commands referring to `lname'</i>
+}
 
-  <code>foreach <i>lname</i> of <u>loc</u>al <i>lmacname</i> {</code>
+ foreach <i>lname</i> of <u>var</u>list <i>varlist</i> {
+    <i>commands referring to `lname'</i></pre>
+ }
 
-  <code>        <i>commands referring to `lname'</i></code>
+foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {
+    i>commands referring to `lname'</i></pre>
+}
 
-  <code>}</code>
+foreach <i>lname</i> of <u>num</u>list <i>numlist</i> {
+    <i>commands referring to `lname'</i>
+}
 
-  <code>foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {</code>
-
-  <code>        <i>commands referring to `lname'</i></code>
-
-  <code>}</code>
-
-  <code>foreach <i>lname</i> of <u>var</u>list <i>varlist</i> {</code>
-
-  <code>        <i>commands referring to `lname'</i></code>
-
-  <code>}</code>
-
-  <code>foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {</code>
-
-  <code>        <i>commands referring to `lname'</i></code>
-
-  <code>}</code>
-
-  <code>foreach <i>lname</i> of <u>num</u>list <i>numlist</i> {</code>
-
-  <code>        <i>commands referring to `lname'</i></code>
-
-  <code>}</code>
-
-  <code>forvalues <i>lname</i> = <i>range</i> {</code>
-
-  <code>        <i>commands referring to `lname'</i></code>
-
-  <code>}</code>
+forvalues <i>lname</i> = <i>range</i> {
+    <i>commands referring to `lname'</i>
+}
+</pre>
 
 Podemos calcular a modo de ejemplo la media del salario para cada uno de los 3 años en la muestra:
 
@@ -338,6 +339,183 @@ forvalues i=2016(1)2018{
   summarize salariomed if ano == `i'
 }
 ```
+
+# 6. El uso de `frames`
+
+Desde la versión 16 `Stata` ofrece la posiblidad de trabajar con varias bases de datos a la vez (como, por ejemplo, permiten `R` y `SQL`) a través de los `frames`. La mejor guía para el uso de `frames` en Stata es posiblemente la de [Asjad Naqvi](https://medium.com/the-stata-guide/the-stata-frames-guide-1149b50864e3). La mayor parte de las operaciones con `frames` podemos realizarlas alternativamente con `preserve` y `restore`. En algunas ocasiones, con los `frames` podemos acelerar algunos cálculos (e.g., dividiendo una muestra en hombres y mujeres, almacenando cada submuestra como un `frame` y analizando cada una por separado)
+
+Las aplicaciones de los frames son variadas:
+
+* Extraer de nuestra base de datos un subconjunto de datos (e.g., determinadas variables).
+* Realizar una copia de nuestros datos.
+* Guardar estadísticos descriptivos.
+* Guardar resultados de regresiones.
+* Enlazar diferentes `frames` (es posible enlazar `frames` que tengan distintos niveles).
+
+Vamos a ilustrar de forma muy sencilla cómo funcionan, a grandes rasgos, los `frames`. En primer lugar, la base de datos que tenemos abierta representa un `frame` que toma, por defecto, el nombre de `default`. Con la instrucción `frame` podemos ver el `frame` actual y con `frames dir`, cuáles tenemos disponibles.
+
+```{s}
+//  Abrimos una base de datos
+
+use "ecv17.dta", clear
+
+//  Averiguamos el frame actual
+
+frame
+
+//  Averiguamos qué frames tenemos disponibles
+
+frames dir
+```
+
+Podemos cambiar fácilmente el nombre del `frame` con `frame rename`:
+
+<pre>
+frame rename <i>oldframename</i> <i>newframename</i>
+</pre>
+
+En nuestro ejemplo, pasamos a llamarle `frame_ecv17`_
+
+```{s}
+//  Cambiamos el nombre al frame
+
+frame rename default frame_ecv17
+
+frames dir
+```
+
+Para crear una nuevo `frame`, podemos emplear la instrucción `frame create`: 
+
+<pre>
+frame create <i>newframename</i> <i>newvarlist</i>
+</pre>
+
+Es posible cambiar de `frame` en cualquier momento:
+
+<pre>
+frame change<i>framename</i>
+</pre>
+
+A modo de ejemplo, vamos a crear un `frame` con la base de datos del año 2018 (`ecv18.dta`)
+
+```{s}
+//  Creamos el nuevo frame vacío, que llamamos frame_ecv18
+
+frame create frame_ecv18
+
+//  Cambiamos al frame_ecv18
+
+frame change frame_ecv18
+
+//  Abrimos dentro de este frame (que está vacío) la base de datos ecv18.dta
+
+use "ecv18.dta", clear
+
+//  Comprobamos que ahora tenemos dos frames con datos
+
+frames dir
+```
+
+Vamos a realizar operaciones por separado con cada `frame` para ilustrar su uso:
+
+```{s}
+//  Nos trasladamos al frame_ecv17
+
+frame change frame_ecv17
+
+//  Tabulamos la variable sitact, que recoge la situación de actividad de la persona
+
+tabulate sitact
+
+//  Nos trasladamos al frame_ecv18
+
+frame change frame_ecv18
+
+//  Tabulamos la variable sitact, que recoge la situación de actividad de la persona
+
+tabulate sitact
+```
+
+También es posible realizar operaciones con frames distintos al que tenemos abierto con
+
+<pre>
+frame <i>framename</i>: <i>stata_command</i>
+</pre>
+
+o la secuencia
+
+<pre>
+frame <i>framename</i> {
+    <i>commands referring to `lname'</i>
+}
+
+Así, podemos realizar el mismo ejercicio que antes pero sin cambiar de `frame`
+
+```{s}
+//  Comprobamos en qué frame nos encontramos
+
+frame
+
+//  Tabulamos la variable sitact, que recoge la situación de actividad de la persona, en el frame_ecv_17
+
+frame frame_ecv17: tabulate sitact
+
+//  Repetimos la operación con frame_ecv18
+
+frame frame_ecv18: tabulate sitact
+```
+
+Existen un gran número de posibilidades con los `frames`: copiar datos, enlazar bases de datos, almacenar resultados, etc. El comando para elaborar mapas `geoplot` se basa en `frames` (que constituyen las capas).
+
+También podemos guardar `frames`, con la instrucción:
+
+<pre>
+frame save <i>filename</i> frames(<i>framelist</i>) [<i>options</i>]
+</pre>
+
+Los `frames` se guardan como un archivo `.dtas`
+
+Para abrir un archivo de `frames` empleamos
+
+<pre>
+frame use <i>filename</i> [, <i>options</i>]
+</pre>
+
+En nuestro ejemplo, podemos crear un archivo de `frames` que contenga los `frame_ecv17` y `frame_ecv18`.
+
+```{s}
+//  Creamos el archivo de frames y lo guardamos en el directorio de trabajo
+
+frame save frame_ecv1718, frames(frame_ecv17 frame_ecv18) replace
+
+//  Vaciamos la memoria
+
+clear
+
+//  Lo abrimos
+
+frame use frame_ecv1718, clear
+
+//  Comprobamos que contiene ambos frames
+
+frames dir
+
+//  Comprobemos en qué frame nos encontramos
+
+frame
+```
+
+Existe también la posibilidad de eliminar `frames` distintos al que estamos usando:
+
+<pre>
+frame drop <i>framename</i> [<i>framename</i> [...]]
+</pre>
+
+Así, por ejemplo, en nuestro `frame_ecv1718` podemos eliminar 
+
+Si trabajamos con `frames`, es conveniente limpiar la memoria de `frames` al comienzo de nuestro archivo `.do`. Podemos hacerlo con `frames reset`.
+
+El número de comandos disponibles es elevado y no podemos, lógicamente, revisar todos.
 
 ## Referencias
 

@@ -391,11 +391,13 @@ alt="Editor de archivos .do de Stata" />
 permite acceder directamente a los manuales en formato <code>.pdf</code>
 del programa, que contienen breves explicaciones estadísticas, ejemplos
 e incluso referencias. Es muy sencillo acudir a la ayuda.</p>
-<p><code><u>h</u>elp [<i>command_or_topic_name</i>] [, <u>non</u>ew
-name(viewername) <u>mark</u>er(<i>markername</i>)]</code></p>
+<pre>
+<u>h</u>elp [<i>command_or_topic_name</i>] [, <u>non</u>ew name(viewername) <u>mark</u>er(<i>markername</i>)]
+</pre>
 <p>De forma más genérica, podemos emplear</p>
-<p><code>search <i>word</i> [<i>word</i> …] [,
-<i>search_options</i>]</code></p>
+<pre>
+search <i>word</i> [<i>word</i> ...] [, <i>search_options</i>]
+</pre>
 <p>En segundo término, las <a
 href="https://www.stata.com/bookstore/statacheatsheets.pdf"><em>cheatsheets</em></a>
 de <code>Stata</code> son un magnífico recurso a considerar.</p>
@@ -425,7 +427,7 @@ destaca <span class="citation" data-cites="Escobar2012">Escobar et al.
 <p>El tercer tipo de recursos son los tutoriales <em>online</em>. Hay
 tres de especial interés:</p>
 <ul>
-<li>La web de <a href="https://data.princeton.edu/stata">Germán
+<li>La web de <a href="https://grodri.github.io/stata">Germán
 Rodríguez</a> en la Universidad de Princeton.</li>
 <li>La web del <a href="https://stats.idre.ucla.edu/stata/">Institute
 for Digital Research and Education de la UCLA</a>. Especialmente útiles
@@ -450,7 +452,7 @@ href="https://gemini.google.com/">Gemini</a> pueden programar en
 <code>R</code>) y podemos preguntarles dudas de todo tipo e incluso
 pedirnos que nos realice los análisis tras proporcionarle los datos.</p>
 <figure>
-<img src="ChatGPT.jpg" style="width:75.0%"
+<img src="ChatGPT.jpg" style="width:50.0%"
 alt="Ejemplo de utilización de ChatGPT para consultas sobre programación en Stata" />
 <figcaption aria-hidden="true">Ejemplo de utilización de ChatGPT para
 consultas sobre programación en <code>Stata</code></figcaption>
@@ -503,7 +505,9 @@ instrucción</p>
 </pre>
 <p>En segundo lugar, habitualmente, indicamos cuál es el directorio de
 trabajo.</p>
-<p><code>cd [”]<i>directory_name</i>[”]</code></p>
+<pre>
+cd ["]<i>directory_name</i>["]
+</pre>
 <p>En mi caso,</p>
 <pre class='stata'>. cd "D:\Dropbox\curso_stata\sesión1"
 D:\Dropbox\curso_stata\sesión1
@@ -519,8 +523,9 @@ href="https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&amp;cid=
 de texto delimitados por un separador, en este caso, una coma (“,”).
 Vamos a comenzar por un archivo de personas con algunas características
 básicas (<code>esudb18r.csv</code>).</p>
-<p><code>import <u>delim</u>ited [using] <i>filename</i> [,
-<i>import_delimited_options</i>]</code></p>
+<pre>
+import <u>delim</u>ited [using] <i>filename</i> [, <i>import_delimited_options</i>]
+</pre>
 <p>En mi caso,</p>
 <pre class='stata'>. import delimited using "esudb18r.csv", clear delimiter(",")
 (encoding automatically selected: ISO-8859-1)
@@ -545,15 +550,16 @@ convierte todas las variables en formato texto a formato numérico sin
 perder información (si hay pérdida de información, no lo hace). Existe,
 asimismo, un comando para realizar la operación contraria
 (<code>help tostring</code>).</p>
-<p><code>destring [<i>varlist</i>] ,
-{generate(<i>newvarlist</i>)|replace}
-[<i>destring_options</i>]</code></p>
+<pre>
+destring [<i>varlist</i>] , {generate(<i>newvarlist</i>)|replace} [<i>destring_options</i>]
+</pre>
 <p>En nuestro caso, aplicamos el comando como sigue</p>
 <pre><code>destring _all, replace</code></pre>
 
 <p>Podemos guardarlo mediante la instrucción <code>save</code>:</p>
-<p><code><u>sa</u>ve [<i>filename</i>] [,
-<i>save_options</i>]</code></p>
+<pre>
+<u>sa</u>ve [<i>filename</i>] [, <i>save_options</i>]
+</pre>
 <p>En mi caso, procedería como sigue para crear mi primer archivo
 <code>.dta</code>.</p>
 <pre class='stata'>. save "ecv18r.dta", replace
@@ -561,7 +567,9 @@ file ecv18r.dta saved
 </pre>
 <p>Para abrir un archivo <code>.dta</code>, la instrucción es muy
 sencilla.</p>
-<p><code><u>u</u>se <i>filename</i> [, clear <u>nol</u>abel]</code></p>
+<pre>
+<u>u</u>se <i>filename</i> [, clear <u>nol</u>abel]
+</pre>
 <p>En mi caso,</p>
 <pre class='stata'>. use "ecv18r.dta", clear
 </pre>
@@ -569,10 +577,13 @@ sencilla.</p>
 documentar de manera muy informal los resultados (e.g., para enviarlos a
 un co-autor o echar un primer vistazo a los análisis estadísticos). Al
 comienzo de la parte que queremos “grabar”, añadimos</p>
-<p><code>log using <i>filename</i> [, append replace
-[<u>t</u>ext|<u>s</u>mcl] name(<i>logname</i>) nomsg]</code></p>
+<pre>
+log using <i>filename</i> [, append replace [<u>t</u>ext|<u>s</u>mcl] name(<i>logname</i>) nomsg]
+</pre>
 <p>Al final de la parte que deseamos reportar, empleamos</p>
-<p><code>log close [<i>logname</i> | _all]</code></p>
+<pre>
+log close [<i>logname</i> | _all]
+</pre>
 <p>En nuestro caso, podríamos añadir al principio</p>
 <pre><code>capture log close // Para cerrar logs abiertos
 log using curso1, replace</code></pre>
@@ -646,25 +657,33 @@ numéricas y alfanuméricas)</th>
 </table>
 <p>Estos comandos se escriben como se expresa a continuación:</p>
 <p>Descripción de los datos en la memoria</p>
-<p><code><u>d</u>escribe [<i>varlist</i>] [,
-<i>memory_options</i>]</code></p>
+<pre>
+<u>d</u>escribe [<i>varlist</i>] [, <i>memory_options</i>]
+</pre>
 <p>Descripción del contenido de los datos</p>
-<p><code>codebook [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [,
-<i>options</i>]</code></p>
+<pre>
+codebook [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <i>options</i>]
+</pre>
 <p>Explorar los datos en la memoria</p>
-<p><code><u>br</u>owse [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [,
-<u>nol</u>abel]</code></p>
+<pre>
+<u>br</u>owse [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <u>nol</u>abel]
+</pre>
 <p>Mostrar valores de las variables</p>
-<p><code><u>l</u>ist [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [,
-<i>options</i>]</code></p>
+<pre>
+<u>l</u>ist [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [, <i>options</i>]
+</pre>
 <p>Estadísticos descriptivos</p>
-<p><code><u>su</u>mmarize [<i>varlist</i>] [<i>if</i>] [<i>in</i>]
-[<i>weight</i>] [, <i>options</i>]</code></p>
+<pre>
+<u>su</u>mmarize [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 <p>Correlación entre variables</p>
-<p><code><u>cor</u>relate [<i>varlist</i>] [<i>if</i>] [<i>in</i>]
-[<i>weight</i>] [, <i>correlate_options</i>]</code></p>
+<pre>
+<u>cor</u>relate [<i>varlist</i>] [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>correlate_options</i>]
+</pre>
 <p>Ordenar la base de datos por una o varias variables</p>
-<p><code><u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]</code></p>
+<pre>
+<u>so</u>rt <i>varlist</i> [<i>in</i>] [, stable]
+</pre>
 <p>Así, por ejemplo, podemos explorar la variable que recoge la
 situación laboral de los españoles (<code>rb210</code>).</p>
 <pre class='stata'>. codebook rb210
@@ -676,13 +695,13 @@ rb210                                                                           
                   Type: Numeric (byte)
 
                  Range: [1,4]                         Units: 1
-         Unique values: 4                         Missing .: 1/33,734
+         Unique values: 4                         Missing .: 1/33.734
 
             Tabulation: Freq.  Value
-                       13,021  1
-                        2,990  2
-                        6,183  3
-                       11,539  4
+                       13.021  1
+                        2.990  2
+                        6.183  3
+                       11.539  4
                             1  .
 </pre>
 <p>Fácilmente, podemos ver la distribución de la misma.</p>
@@ -690,12 +709,12 @@ rb210                                                                           
 
       RB210 │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          1 │     13,021       38.60       38.60
-          2 │      2,990        8.86       47.46
-          3 │      6,183       18.33       65.79
-          4 │     11,539       34.21      100.00
+          1 │      13021       38,60       38,60
+          2 │       2990        8,86       47,46
+          3 │       6183       18,33       65,79
+          4 │      11539       34,21      100,00
 ────────────┼───────────────────────────────────
-      Total │     33,733      100.00
+      Total │      33733      100,00
 </pre>
 <p>Además, podemos ver dicha distribución para un grupo concreto. Por
 ejemplo, estudiar cuál es la situación laboral de las mujeres (la
@@ -704,12 +723,12 @@ variable sexo es <code>rb090</code>).</p>
 
       RB210 │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-          1 │      6,023       34.48       34.48
-          2 │      1,550        8.87       43.35
-          3 │      2,562       14.67       58.02
-          4 │      7,333       41.98      100.00
+          1 │       6023       34,48       34,48
+          2 │       1550        8,87       43,35
+          3 │       2562       14,67       58,02
+          4 │       7333       41,98      100,00
 ────────────┼───────────────────────────────────
-      Total │     17,468      100.00
+      Total │      17468      100,00
 </pre>
 <p>Un comando para inspeccionar directamente los datos es
 <code>list</code>. Por ejemplo, podemos inspeccionar los 10 primeros
@@ -736,19 +755,26 @@ valores de la variable sexo (<code>rb090</code>):</p>
 observaciones</h2>
 <p>Para eliminar variables y observaciones de la base de datos podemos
 emplear tanto <code>drop</code> como <code>keep</code>.</p>
-<p><code>drop <i>varlist</i></code></p>
-<p><code>drop if <i>exp</i></code></p>
-<p><code>drop in <i>range</i> [if <i>exp</i>]</code></p>
-<p><code>keep <i>varlist</i></code></p>
-<p><code>keep if <i>exp</i></code></p>
-<p><code>keep in <i>range</i> [if <i>exp</i>]</code></p>
+<pre>
+drop <i>varlist</i>
+
+drop if <i>exp</i>
+
+drop in <i>range</i> [if <i>exp</i>]
+
+keep <i>varlist</i>
+
+keep if <i>exp</i>
+
+keep in <i>range</i> [if <i>exp</i>]
+</pre>
 <p>Así, por ejemplo, podemos eliminar el mes de nacimiento de la
 persona</p>
 <pre class='stata'>. drop rb070
 </pre>
 <p>O quedarnos únicamente con las mujeres</p>
 <pre class='stata'>. keep if rb090 == 2
-(16,266 observations deleted)
+(16.266 observations deleted)
 </pre>
 <p>Volvemos a la base de datos original.</p>
 <pre class='stata'>. use "ecv18r.dta", clear
@@ -759,26 +785,30 @@ datos, variables y valores</h2>
 lo habitual es etiquetar las variables y sus valores. También es posible
 etiquetar la base de datos.</p>
 <p>Para etiquetar la base de datos empleamos</p>
-<p><code><u>la</u>bel <u>da</u>ta [“<i>label</i>”]</code></p>
+<pre>
+<u>la</u>bel <u>da</u>ta ["<i>label</i>"]
+</pre>
 <p>Por ejemplo, podemos llamar a nuestra base de datos “ECV-Datos
 básicos de la persona”:</p>
 <pre class='stata'>. label data "ECV-Datos básicos de la persona"
 </pre>
 <p>El etiquetado de variables se realiza a través de la instrucción</p>
-<p><code><u>la</u>bel <u>var</u>iable <i>varname</i>
-[“<i>label</i>”]</code></p>
+<pre>
+<u>la</u>bel <u>var</u>iable <i>varname</i> ["<i>label</i>"]
+</pre>
 <p>En nuestro caso, por ejemplo,</p>
 <pre class='stata'>. label var rb090 "Sexo"
 </pre>
 <p>El etiqueda de las variables requiere, primero, definir una etiqueta
 para los valores y, posteriormente, asignarla a una variable. Así,</p>
 <p>Definición de etiqueta</p>
-<p><code><u>la</u>bel <u>de</u>fine <i>lblname</i> <i>#</i>
-“<i>label</i>” [<i>#</i> “<i>label</i>” …] [, <u>a</u>dd modify replace
-nofix]</code></p>
+<pre>
+<u>la</u>bel <u>de</u>fine <i>lblname</i> <i>#</i> "<i>label</i>" [<i>#</i> "<i>label</i>" ...] [, <u>a</u>dd modify replace nofix]
+</pre>
 <p>Asignación de etiqueta</p>
-<p><code><u>la</u>bel <u>val</u>ues <i>varlist</i> <i>lblname</i> [,
-nofix]</code></p>
+<pre>
+<u>la</u>bel <u>val</u>ues <i>varlist</i> <i>lblname</i> [, nofix]
+</pre>
 <p>En nuestro caso, por ejemplo,</p>
 <pre class='stata'>. label define sexo_lab 1 "Hombre" 2 "Mujer"
 
@@ -792,18 +822,20 @@ modificación de variables</h2>
 modificación de variables</h3>
 <p>En primer lugar, podemos cambiar el nombre de las variables con la
 instrucción <code>rename</code>.</p>
-<p><code><u>ren</u>ame <i>old_varname</i> <i>new_varname</i></code></p>
+<pre>
+<u>ren</u>ame <i>old_varname</i> <i>new_varname</i>
+</pre>
 <p>En nuestro caso,</p>
 <pre class='stata'>. rename rb090 sexo
 </pre>
 <p>Para estas tareas empleamos los comandos <code>generate</code> y
 <code>replace</code>. El segundo de ellos es para variables ya
 existentes.</p>
-<p><code><u>gen</u>erate [<i>type</i>] <i>newvar</i>[:<i>lblname</i>]
-=<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>b</u>efore(<i>varname</i>) |
-<u>a</u>fter(<i>varname</i>)]</code></p>
-<p><code>replace <i>oldvar</i> =<i>exp</i> [<i>if</i>] [<i>in</i>] [,
-<u>nop</u>romote]</code></p>
+<pre>
+<u>gen</u>erate [<i>type</i>] <i>newvar</i>[:<i>lblname</i>] =<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>b</u>efore(<i>varname</i>) | <u>a</u>fter(<i>varname</i>)]
+
+replace <i>oldvar</i> =<i>exp</i> [<i>if</i>] [<i>in</i>] [, <u>nop</u>romote]
+</pre>
 <p>A partir del año de nacimiento, <code>rb080</code>, vamos a generar
 una nueva variable que recoja la edad.</p>
 <pre class='stata'>. generate edad = 2018 - rb080
@@ -820,20 +852,20 @@ una nueva variable que recoja la edad.</p>
 
     Variable │        Obs        Mean    Std. dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-        edad │     33,734     44.8642    23.21889          0         86
+        edad │     33.734     44,8642    23,21889          0         86
 </pre>
 <p>Podemos generar una variable que recoja los grupos de edades:</p>
 <pre class='stata'>. generate gedad = 1 if edad &lt;= 29
-(24,224 missing values generated)
+(24.224 missing values generated)
 
 . replace gedad = 2 if edad >= 30 &amp; edad &lt;= 49
-(8,779 real changes made)
+(8.779 real changes made)
 
 . replace gedad = 3 if edad >= 50 &amp; edad &lt;= 64
-(7,886 real changes made)
+(7.886 real changes made)
 
 . replace gedad = 4 if edad >= 65
-(7,559 real changes made)
+(7.559 real changes made)
 
 . 
 . // Etiqueamos la variable y sus valores
@@ -849,12 +881,12 @@ una nueva variable que recoja la edad.</p>
 
     Grupo de edad │      Freq.     Percent        Cum.
 ──────────────────┼───────────────────────────────────
-Menor que 30 años │      9,510       28.19       28.19
-  De 30 a 49 años │      8,779       26.02       54.22
-  De 50 a 64 años │      7,886       23.38       77.59
-    65 y más años │      7,559       22.41      100.00
+Menor que 30 años │       9510       28,19       28,19
+  De 30 a 49 años │       8779       26,02       54,22
+  De 50 a 64 años │       7886       23,38       77,59
+    65 y más años │       7559       22,41      100,00
 ──────────────────┼───────────────────────────────────
-            Total │     33,734      100.00
+            Total │      33734      100,00
 </pre>
 <h3 id="recodificación-de-variables">Recodificación de variables</h3>
 <p>A través del comando <code>recode</code> podemos recodificar
@@ -902,12 +934,13 @@ variables.</p>
 </tbody>
 </table>
 <p>En términos generales,</p>
-<p><code>recode <i>varlist</i> (<i>rule</i>) [(<i>rule</i>) …] [,
-generate(<i>newvar</i>)]</code></p>
+<pre>
+recode <i>varlist</i> (<i>rule</i>) [(<i>rule</i>) ...] [, generate(<i>newvar</i>)]
+</pre>
 <p>En nuestro caso, podemos recodificar la variable <code>gedad</code>
 en un menor número de categorías.</p>
 <pre class='stata'>. recode gedad (1 2 = 1) (3 4 = 2)
-(24,224 changes made to gedad)
+(24.224 changes made to gedad)
 
 . 
 . // Etiquetamos la nueva variable y sus valores
@@ -923,17 +956,18 @@ en un menor número de categorías.</p>
 
    Grupo de edad │      Freq.     Percent        Cum.
 ─────────────────┼───────────────────────────────────
-Menor de 50 años │     18,289       54.22       54.22
-   50 y más años │     15,445       45.78      100.00
+Menor de 50 años │      18289       54,22       54,22
+   50 y más años │      15445       45,78      100,00
 ─────────────────┼───────────────────────────────────
-           Total │     33,734      100.00
+           Total │      33734      100,00
 </pre>
 <h3 id="generación-extendida-de-variables">Generación extendida de
 variables</h3>
 <p>El comando <code>egen</code> nos permite realizar muchas operaciones
 a partir de una o varias variables (conteo, medias, etc.)</p>
-<p><code>egen [<i>type</i>] <i>newvar</i> = <i>fcn</i>(<i>arguments</i>)
-[<i>if</i>] [<i>in</i>] [, <i>options</i>]</code></p>
+<pre>
+egen [<i>type</i>] <i>newvar</i> = <i>fcn</i>(<i>arguments</i>) [<i>if</i>] [<i>in</i>] [, <i>options</i>]
+</pre>
 <p>Por ejemplo, podemos calcular la edad promedio y almacenarla como una
 nueva variable.</p>
 <pre class='stata'>. egen edadm = mean(edad)
@@ -981,24 +1015,24 @@ porcentajes ofrecidos por la tabulación de esta variable no son muy
 
      P78a_U │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-         -2 │     22,051       78.31       78.31
-         -1 │          2        0.01       78.31
-          1 │      1,388        4.93       83.24
-          2 │      2,248        7.98       91.23
-          3 │      1,968        6.99       98.21
-          4 │         44        0.16       98.37
-          5 │        252        0.89       99.26
-          6 │        176        0.62       99.89
-          7 │          3        0.01       99.90
-          8 │         25        0.09       99.99
-          9 │          3        0.01      100.00
+         -2 │      22051       78,31       78,31
+         -1 │          2        0,01       78,31
+          1 │       1388        4,93       83,24
+          2 │       2248        7,98       91,23
+          3 │       1968        6,99       98,21
+          4 │         44        0,16       98,37
+          5 │        252        0,89       99,26
+          6 │        176        0,62       99,89
+          7 │          3        0,01       99,90
+          8 │         25        0,09       99,99
+          9 │          3        0,01      100,00
 ────────────┼───────────────────────────────────
-      Total │     28,160      100.00
+      Total │      28160      100,00
 </pre>
 <p>Una buena opción es, antes de nada, recodificar estos valores como
 perdidos, por ejemplo,</p>
 <pre class='stata'>. recode p78a_u (-2 -1 = .)
-(22,053 changes made to p78a_u)
+(22.053 changes made to p78a_u)
 </pre>
 <p>Otra opción posible podía haber sido codificar -2 como
 <code>.a</code> y -1 como <code>.b</code>.</p>
@@ -1020,9 +1054,13 @@ gran cantidad de paquetes que han sido creados por los usuarios de
 <code>Stata</code>. Normalmente, están adecuadamente documentados. En
 términos generales, podemos buscar paquetes de <code>Stata</code> con la
 siguiente instrucción:</p>
-<p><code>net search <i>word</i> [<i>word</i> …] [, options]</code></p>
+<pre>
+net search <i>word</i> [<i>word</i> ...] [, options]
+</pre>
 <p>Si sabemos el nombre del paquete, podemos emplearse</p>
-<p><code>ssc install <i>pkgname</i> [, all replace]</code></p>
+<pre>
+ssc install <i>pkgname</i> [, all replace]
+</pre>
 <p>Así, por ejemplo, podemos buscar paquetes que permitan realizar
 mediciones de pobreza con la siguiente instrucción</p>
 <pre class='stata'>. net search poverty

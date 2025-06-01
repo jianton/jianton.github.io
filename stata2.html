@@ -299,8 +299,9 @@ las hemos renombrado empleando un nombre común, <code>hid</code>.</p>
 <p><strong>Paso 2.</strong> Ejecutamos la instrucción <code>merge</code>
 para fusionar la primera base con la segunda
 (<code>using file</code>)</p>
-<p><code>merge 1:1 <i>varlist</i> using <i>filename</i> [,
-<i>options</i>]</code></p>
+<pre>
+merge 1:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]
+</pre>
 <p><strong>Paso 3.</strong> Comprobamos que la operación se ha realizado
 correctamente (recurriendo a la variable creada, automáticamente,
 <code>_merge</code>). Esta variable puede tomar tres valores: el valor 3
@@ -310,7 +311,7 @@ datos <code>master</code> y el valor 2, que únicamente la encontramos en
 la base de datos <code>using</code>. Dependiendo de nuestros objetivos,
 podemos quedarnos solo con las observaciones que se encuentran en ambos
 archivos y borrar el resto de observaciones.</p>
-<p>Así, en nuestro ejemplo, abrimos la base de datos</p>
+<p>Así, en nuestro ejemplo,</p>
 <pre class='stata'>. //  Abrimos la base de datos
 . 
 . use "ecv18d.dta", clear
@@ -324,7 +325,7 @@ archivos y borrar el resto de observaciones.</p>
     Result                      Number of obs
     ─────────────────────────────────────────
     Not matched                             0
-    Matched                            13,368  (_merge==3)
+    Matched                            13.368  (_merge==3)
     ─────────────────────────────────────────
 
 . 
@@ -335,9 +336,9 @@ archivos y borrar el resto de observaciones.</p>
    Matching result from │
                   merge │      Freq.     Percent        Cum.
 ────────────────────────┼───────────────────────────────────
-            Matched (3) │     13,368      100.00      100.00
+            Matched (3) │      13368      100,00      100,00
 ────────────────────────┼───────────────────────────────────
-                  Total │     13,368      100.00
+                  Total │      13368      100,00
 </pre>
 <p>Observamos que las observaciones se encuentran en ambas bases de
 datos simultáneamente.</p>
@@ -367,11 +368,11 @@ hogar}\]</span></p>
 
     Result                      Number of obs
     ─────────────────────────────────────────
-    Not matched                         5,362
-        from master                     5,362  (_merge==1)
+    Not matched                         5.362
+        from master                     5.362  (_merge==1)
         from using                          0  (_merge==2)
 
-    Matched                            28,372  (_merge==3)
+    Matched                            28.372  (_merge==3)
     ─────────────────────────────────────────
 
 . 
@@ -382,10 +383,10 @@ hogar}\]</span></p>
    Matching result from │
                   merge │      Freq.     Percent        Cum.
 ────────────────────────┼───────────────────────────────────
-        Master only (1) │      5,362       15.89       15.89
-            Matched (3) │     28,372       84.11      100.00
+        Master only (1) │       5362       15,89       15,89
+            Matched (3) │      28372       84,11      100,00
 ────────────────────────┼───────────────────────────────────
-                  Total │     33,734      100.00
+                  Total │      33734      100,00
 </pre>
 <p>En este caso, observamos que hay observaciones que solo aparecen en
 la base <code>master</code>. ¿Existe un error? No, lo que ocurre es que
@@ -401,8 +402,9 @@ viceversa)</h1>
 (e.g., personas) con otra base de datos con información a nivel superior
 (e.g., hogares o regiones). Para realizar este tipo de operación
 empleamos</p>
-<p><code>merge m:1 <i>varlist</i> using <i>filename</i> [,
-<i>options</i>]</code></p>
+<pre>
+merge m:1 <i>varlist</i> using <i>filename</i> [, <i>options</i>]
+</pre>
 <p>En nuestro caso, vamos a fusionar la base de datos de personas con
 información básica (<code>ecv18r.dta</code>) con la base de datos de los
 hogares con información básica (<code>ecv18d.dta</code>). La variable de
@@ -429,7 +431,7 @@ enlazan perfectamente (<code>_merge == 3</code>).</p>
     Result                      Number of obs
     ─────────────────────────────────────────
     Not matched                             0
-    Matched                            33,734  (_merge==3)
+    Matched                            33.734  (_merge==3)
     ─────────────────────────────────────────
 
 . 
@@ -440,9 +442,9 @@ enlazan perfectamente (<code>_merge == 3</code>).</p>
    Matching result from │
                   merge │      Freq.     Percent        Cum.
 ────────────────────────┼───────────────────────────────────
-            Matched (3) │     33,734      100.00      100.00
+            Matched (3) │      33734      100,00      100,00
 ────────────────────────┼───────────────────────────────────
-                  Total │     33,734      100.00
+                  Total │      33734      100,00
 </pre>
 <p>Podemos, fácilmente, fusionar todas las bases de datos en un único
 fichero (y, si queremos, ordenar la base de datos posteriormente).
@@ -459,11 +461,11 @@ no crearla al realizar la fusión).</p>
 
     Result                      Number of obs
     ─────────────────────────────────────────
-    Not matched                         5,362
-        from master                     5,362  
+    Not matched                         5.362
+        from master                     5.362  
         from using                          0  
 
-    Matched                            28,372  
+    Matched                            28.372  
     ─────────────────────────────────────────
 
 . 
@@ -474,7 +476,7 @@ no crearla al realizar la fusión).</p>
     Result                      Number of obs
     ─────────────────────────────────────────
     Not matched                             0
-    Matched                            33,734  
+    Matched                            33.734  
     ─────────────────────────────────────────
 
 . merge m:1 hid using "ecv18h.dta", nogenerate
@@ -482,7 +484,7 @@ no crearla al realizar la fusión).</p>
     Result                      Number of obs
     ─────────────────────────────────────────
     Not matched                             0
-    Matched                            33,734  
+    Matched                            33.734  
     ─────────────────────────────────────────
 </pre>
 <p><strong>Importante:</strong> Nunca debe emplearse la fusión
@@ -499,8 +501,9 @@ El procedimiento es el siguiente:</p>
 <p><strong>Paso 1.</strong> Abrimos uno de los archivos.</p>
 <p><strong>Paso 2.</strong> Con el comando, <code>append</code>
 agregamos el resto de archivos.</p>
-<p><code><u>ap</u>pend using <i>filename</i> [<i>filename</i> <i>…</i>]
-[, <i>options</i>]</code></p>
+<pre>
+<u>ap</u>pend using <i>filename</i> [<i>filename</i> <i>...</i>] [, <i>options</i>]
+</pre>
 <p>En nuestro caso, podemos proceder Así</p>
 <pre class='stata'>. //  Abrimos el archivo de la ECV de 2016
 . 
@@ -646,11 +649,11 @@ agregamos el resto de archivos.</p>
   Año de la │
    encuesta │      Freq.     Percent        Cum.
 ────────────┼───────────────────────────────────
-       2016 │     36,380       34.64       34.64
-       2017 │     34,911       33.24       67.88
-       2018 │     33,734       32.12      100.00
+       2016 │      36380       34,64       34,64
+       2017 │      34911       33,24       67,88
+       2018 │      33734       32,12      100,00
 ────────────┼───────────────────────────────────
-      Total │    105,025      100.00
+      Total │     105025      100,00
 </pre>
 <h1 id="crear-una-base-de-datos-con-estadísticos-descriptivos">3. Crear
 una base de datos con estadísticos descriptivos</h1>
@@ -658,13 +661,15 @@ una base de datos con estadísticos descriptivos</h1>
 (<code>egen</code>, <code>merge</code> y <code>append</code>), es mucho
 más sencilla a través de la potente instrucción
 <code>collapse</code>:</p>
-<p><code>collapse <i>clist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>]
-[, <i>options</i>]</code></p>
+<pre>
+collapse <i>clist</i> [<i>if</i>] [<i>in</i>] [<i>weight</i>] [, <i>options</i>]
+</pre>
 <p>donde <i><code>clist</code></i> viene dado por</p>
-<p><code>[(<i>stat</i>)] <i>varlist</i> [ [(<i>stat</i>)] … ]</code></p>
-<p><code>[(<i>stat</i>)] <i>target_var</i>=<i>varname</i>
-[<i>target_var</i>=<i>varname</i> <i>…</i>] [ [(<i>stat</i>)]
-<i>…</i>]</code></p>
+<pre>
+[(<i>stat</i>)] <i>varlist</i> [ [(<i>stat</i>)] ... ]
+
+[(<i>stat</i>)] <i>target_var</i>=<i>varname</i> [<i>target_var</i>=<i>varname</i> <i>...</i>] [ [(<i>stat</i>)] <i>...</i>]
+</pre>
 <p>El comando admite el cálculo de un amplio conjunto de estadísticos
 descriptivos (<code>stat</code>) y permite usar ponderaciones:</p>
 <pre><code>mean         means (default)
@@ -696,16 +701,16 @@ por sexo y año.</p>
 <pre class='stata'>. //  Seleccionamos los trabajadores asalariados únicamente
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-(16,671 missing values generated)
+(16.671 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(17,397 missing values generated)
+(17.397 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(61,114 observations deleted)
+(61.114 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(8,361 observations deleted)
+(8.361 observations deleted)
 
 . 
 . //  Creamos el salario bruto mensual de los trabajadores
@@ -733,20 +738,22 @@ siguiente:</p>
      ┌──────────────────────────┐
      │   sexo    ano   salari~d │
      ├──────────────────────────┤
-  1. │ Hombre   2016    2285.98 │
-  2. │ Hombre   2017   2200.433 │
-  3. │ Hombre   2018   2198.547 │
-  4. │  Mujer   2016   1877.008 │
-  5. │  Mujer   2017   1833.733 │
+  1. │ Hombre   2016    2285,98 │
+  2. │ Hombre   2017   2200,433 │
+  3. │ Hombre   2018   2198,547 │
+  4. │  Mujer   2016   1877,008 │
+  5. │  Mujer   2017   1833,733 │
      ├──────────────────────────┤
-  6. │  Mujer   2018   1854.421 │
+  6. │  Mujer   2018   1854,421 │
      └──────────────────────────┘
 </pre>
 <p>Para calcular cuál es la evolución del salario medio por sexo, sería
 más fácil disponer de tres variables que recojan el salario, una para
 cada año (formato <code>wide</code>). El comando <code>reshape</code>
 funciona de la siguiente forma:</p>
-<p><code>reshape wide <i>stub</i>, i(<i>i</i>) j(<j>j</j>)</code></p>
+<pre>
+reshape wide <i>stub</i>, i(<i>i</i>) j(<j>j</j>)
+</pre>
 <p>En nuestro caso,</p>
 <pre class='stata'>. //  Cambiamos la disposición de long a wide
 . 
@@ -777,12 +784,14 @@ xij variables:
      ┌──────────────────────────────────────────┐
      │   sexo   sal~2016   sal~2018   camb~1618 │
      ├──────────────────────────────────────────┤
-  1. │ Hombre    2285.98   2198.547   -3.824764 │
-  2. │  Mujer   1877.008   1854.421   -1.203314 │
+  1. │ Hombre    2285,98   2198,547   -3,824764 │
+  2. │  Mujer   1877,008   1854,421   -1,203314 │
      └──────────────────────────────────────────┘
 </pre>
 <p>Podemos volver al formato <code>long</code> de forma análoga:</p>
-<p><code>reshape long <i>stub</i>, i(<i>i</i>) j(<j>j</j>)</code></p>
+<pre>
+reshape long <i>stub</i>, i(<i>i</i>) j(<j>j</j>)
+</pre>
 <p>Así,</p>
 <pre class='stata'>. //  Cambiamos la disposición de long a wide
 . 
@@ -915,39 +924,37 @@ calcular los estadísticos descriptivos de <code>var1</code>.</p>
 
     Variable │        Obs        Mean    Std. dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          6    2041.687    207.3245   1833.733    2285.98
+  salariomed │          6    2041,687    207,3245   1833,733    2285,98
 </pre>
 <h2 id="el-uso-de-bucles">5.3 El uso de bucles</h2>
 <p>El tercer elemento clave en términos de programación son los bucles,
 que, a través de macros locales, nos permiten realizar operaciones de
 forma repetida y, de esa forma, programar de forma eficiente. Los
 principales bucles que podemos emplear son los siguientes:</p>
-<p><code>foreach <i>lname</i> in <i>any_list</i> {</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
-<p><code>foreach <i>lname</i> of <u>loc</u>al <i>lmacname</i>
-{</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
-<p><code>foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i>
-{</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
-<p><code>foreach <i>lname</i> of <u>var</u>list <i>varlist</i>
-{</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
-<p><code>foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i>
-{</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
-<p><code>foreach <i>lname</i> of <u>num</u>list <i>numlist</i>
-{</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
-<p><code>forvalues <i>lname</i> = <i>range</i> {</code></p>
-<p><code> <i>commands referring to `lname’</i></code></p>
-<p><code>}</code></p>
+<pre>foreach <i>lname</i> in <i>any_list</i> {
+    <i>commands referring to `lname'</i>
+}
+
+foreach <i>lname</i> of <u>loc</u>al <i>lmacname</i> {
+    <i>commands referring to `lname'</i>
+}
+
+foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {
+    <i>commands referring to `lname'</i>
+}
+
+ foreach <i>lname</i> of <u>var</u>list <i>varlist</i> {
+    <i>commands referring to `lname'</i></pre>
+<p>}</p>
+foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> { i&gt;commands
+referring to `lname’</i>
+</pre>
+<p>}</p>
+<p>foreach <i>lname</i> of <u>num</u>list <i>numlist</i> { <i>commands
+referring to `lname’</i> }</p>
+forvalues <i>lname</i> = <i>range</i> { <i>commands referring to
+`lname’</i> }
+</pre>
 <p>Podemos calcular a modo de ejemplo la media del salario para cada uno
 de los 3 años en la muestra:</p>
 <pre class='stata'>. forvalues i=2016(1)2018{
@@ -956,16 +963,250 @@ de los 3 años en la muestra:</p>
 
     Variable │        Obs        Mean    Std. dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          2    2081.494    289.1874   1877.008    2285.98
+  salariomed │          2    2081,494    289,1874   1877,008    2285,98
 
     Variable │        Obs        Mean    Std. dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          2    2017.083     259.296   1833.733   2200.433
+  salariomed │          2    2017,083     259,296   1833,733   2200,433
 
     Variable │        Obs        Mean    Std. dev.       Min        Max
 ─────────────┼─────────────────────────────────────────────────────────
-  salariomed │          2    2026.484    243.3336   1854.421   2198.547
+  salariomed │          2    2026,484    243,3336   1854,421   2198,547
 </pre>
+<h1 id="el-uso-de-frames">6. El uso de <code>frames</code></h1>
+<p>Desde la versión 16 <code>Stata</code> ofrece la posiblidad de
+trabajar con varias bases de datos a la vez (como, por ejemplo, permiten
+<code>R</code> y <code>SQL</code>) a través de los <code>frames</code>.
+La mejor guía para el uso de <code>frames</code> en Stata es
+posiblemente la de <a
+href="https://medium.com/the-stata-guide/the-stata-frames-guide-1149b50864e3">Asjad
+Naqvi</a>. La mayor parte de las operaciones con <code>frames</code>
+podemos realizarlas alternativamente con <code>preserve</code> y
+<code>restore</code>. En algunas ocasiones, con los <code>frames</code>
+podemos acelerar algunos cálculos (e.g., dividiendo una muestra en
+hombres y mujeres, almacenando cada submuestra como un
+<code>frame</code> y analizando cada una por separado)</p>
+<p>Las aplicaciones de los frames son variadas:</p>
+<ul>
+<li>Extraer de nuestra base de datos un subconjunto de datos (e.g.,
+determinadas variables).</li>
+<li>Realizar una copia de nuestros datos.</li>
+<li>Guardar estadísticos descriptivos.</li>
+<li>Guardar resultados de regresiones.</li>
+<li>Enlazar diferentes <code>frames</code> (es posible enlazar
+<code>frames</code> que tengan distintos niveles).</li>
+</ul>
+<p>Vamos a ilustrar de forma muy sencilla cómo funcionan, a grandes
+rasgos, los <code>frames</code>. En primer lugar, la base de datos que
+tenemos abierta representa un <code>frame</code> que toma, por defecto,
+el nombre de <code>default</code>. Con la instrucción <code>frame</code>
+podemos ver el <code>frame</code> actual y con <code>frames dir</code>,
+cuáles tenemos disponibles.</p>
+<pre class='stata'>. //  Abrimos una base de datos
+. 
+. use "ecv17.dta", clear
+(ECV 2017)
+
+. 
+. //  Averiguamos el frame actual
+. 
+. frame
+  (current frame is default)
+
+. 
+. //  Averiguamos qué frames tenemos disponibles
+. 
+. frames dir
+  default  34911 x 196; ECV 2017
+</pre>
+<p>Podemos cambiar fácilmente el nombre del <code>frame</code> con
+<code>frame rename</code>:</p>
+<pre>
+frame rename <i>oldframename</i> <i>newframename</i>
+</pre>
+<p>En nuestro ejemplo, pasamos a llamarle <code>frame_ecv17</code>_</p>
+<pre class='stata'>. //  Cambiamos el nombre al frame
+. 
+. frame rename default frame_ecv17
+
+. 
+. frames dir
+  frame_ecv17  34911 x 196; ECV 2017
+</pre>
+<p>Para crear una nuevo <code>frame</code>, podemos emplear la
+instrucción <code>frame create</code>:</p>
+<pre>
+frame create <i>newframename</i> <i>newvarlist</i>
+</pre>
+<p>Es posible cambiar de <code>frame</code> en cualquier momento:</p>
+<pre>
+frame change<i>framename</i>
+</pre>
+<p>A modo de ejemplo, vamos a crear un <code>frame</code> con la base de
+datos del año 2018 (<code>ecv18.dta</code>)</p>
+<pre class='stata'>. //  Creamos el nuevo frame vacío, que llamamos frame_ecv18
+. 
+. frame create frame_ecv18
+
+. 
+. //  Cambiamos al frame_ecv18
+. 
+. frame change frame_ecv18
+
+. 
+. //  Abrimos dentro de este frame (que está vacío) la base de datos ecv18.dta
+. 
+. use "ecv18.dta", clear
+(ECV 2018)
+
+. 
+. //  Comprobamos que ahora tenemos dos frames con datos
+. 
+. frames dir
+  frame_ecv17  34911 x 196; ECV 2017
+  frame_ecv18  33734 x 196; ECV 2018
+</pre>
+<p>Vamos a realizar operaciones por separado con cada <code>frame</code>
+para ilustrar su uso:</p>
+<pre class='stata'>. //  Nos trasladamos al frame_ecv17
+. 
+. frame change frame_ecv17
+
+. 
+. //  Tabulamos la variable sitact, que recoge la situación de actividad de la persona
+. 
+. tabulate sitact
+
+             Situación de actividad │      Freq.     Percent        Cum.
+────────────────────────────────────┼───────────────────────────────────
+                         Trabajando │      13287       38,07       38,07
+                             Parado │       3170        9,08       47,15
+Jubilado o jubilado anticipadamente │       6579       18,85       66,01
+Otra clase de inactividad económica │      11864       33,99      100,00
+────────────────────────────────────┼───────────────────────────────────
+                              Total │      34900      100,00
+
+. 
+. //  Nos trasladamos al frame_ecv18
+. 
+. frame change frame_ecv18
+
+. 
+. //  Tabulamos la variable sitact, que recoge la situación de actividad de la persona
+. 
+. tabulate sitact
+
+             Situación de actividad │      Freq.     Percent        Cum.
+────────────────────────────────────┼───────────────────────────────────
+                         Trabajando │      13021       38,60       38,60
+                             Parado │       2990        8,86       47,46
+Jubilado o jubilado anticipadamente │       6183       18,33       65,79
+Otra clase de inactividad económica │      11539       34,21      100,00
+────────────────────────────────────┼───────────────────────────────────
+                              Total │      33733      100,00
+</pre>
+<p>También es posible realizar operaciones con frames distintos al que
+tenemos abierto con</p>
+<pre>
+frame <i>framename</i>: <i>stata_command</i>
+</pre>
+<p>o la secuencia</p>
+<pre>
+<p>frame <i>framename</i> { <i>commands referring to `lname’</i> }</p>
+<p>Así, podemos realizar el mismo ejercicio que antes pero sin cambiar
+de <code>frame</code></p>
+<pre class='stata'>. //  Comprobamos en qué frame nos encontramos
+. 
+. frame
+  (current frame is frame_ecv18)
+
+. 
+. //  Tabulamos la variable sitact, que recoge la situación de actividad de la persona, en el frame_ecv_17
+. 
+. frame frame_ecv17: tabulate sitact
+
+             Situación de actividad │      Freq.     Percent        Cum.
+────────────────────────────────────┼───────────────────────────────────
+                         Trabajando │      13287       38,07       38,07
+                             Parado │       3170        9,08       47,15
+Jubilado o jubilado anticipadamente │       6579       18,85       66,01
+Otra clase de inactividad económica │      11864       33,99      100,00
+────────────────────────────────────┼───────────────────────────────────
+                              Total │      34900      100,00
+
+. 
+. //  Repetimos la operación con frame_ecv18
+. 
+. frame frame_ecv18: tabulate sitact
+
+             Situación de actividad │      Freq.     Percent        Cum.
+────────────────────────────────────┼───────────────────────────────────
+                         Trabajando │      13021       38,60       38,60
+                             Parado │       2990        8,86       47,46
+Jubilado o jubilado anticipadamente │       6183       18,33       65,79
+Otra clase de inactividad económica │      11539       34,21      100,00
+────────────────────────────────────┼───────────────────────────────────
+                              Total │      33733      100,00
+</pre>
+<p>Existen un gran número de posibilidades con los <code>frames</code>:
+copiar datos, enlazar bases de datos, almacenar resultados, etc. El
+comando para elaborar mapas <code>geoplot</code> se basa en
+<code>frames</code> (que constituyen las capas).</p>
+<p>También podemos guardar <code>frames</code>, con la instrucción:</p>
+<pre>
+frame save <i>filename</i> frames(<i>framelist</i>) [<i>options</i>]
+</pre>
+<p>Los <code>frames</code> se guardan como un archivo
+<code>.dtas</code></p>
+<p>Para abrir un archivo de <code>frames</code> empleamos</p>
+<pre>
+frame use <i>filename</i> [, <i>options</i>]
+</pre>
+<p>En nuestro ejemplo, podemos crear un archivo de <code>frames</code>
+que contenga los <code>frame_ecv17</code> y
+<code>frame_ecv18</code>.</p>
+<pre class='stata'>. //  Creamos el archivo de frames y lo guardamos en el directorio de trabajo
+. 
+. frame save frame_ecv1718, frames(frame_ecv17 frame_ecv18) replace
+file frame_ecv1718.dtas saved
+
+. 
+. //  Vaciamos la memoria
+. 
+. clear
+
+. 
+. //  Lo abrimos
+. 
+. frame use frame_ecv1718, clear
+  frame_ecv17  34911 x 196; ECV 2017
+  frame_ecv18  33734 x 196; ECV 2018
+
+. 
+. //  Comprobamos que contiene ambos frames
+. 
+. frames dir
+  frame_ecv17  34911 x 196; ECV 2017
+  frame_ecv18  33734 x 196; ECV 2018
+
+. 
+. //  Comprobemos en qué frame nos encontramos
+. 
+. frame
+  (current frame is frame_ecv17)
+</pre>
+<p>Existe también la posibilidad de eliminar <code>frames</code>
+distintos al que estamos usando:</p>
+<pre>
+frame drop <i>framename</i> [<i>framename</i> [...]]
+</pre>
+<p>Así, por ejemplo, en nuestro <code>frame_ecv1718</code> podemos
+eliminar</p>
+<p>Si trabajamos con <code>frames</code>, es conveniente limpiar la
+memoria de <code>frames</code> al comienzo de nuestro archivo
+<code>.do</code>. Podemos hacerlo con <code>frames reset</code>.</p>
+<p>El número de comandos disponibles es elevado y no podemos,
+lógicamente, revisar todos.</p>
 <h2 id="referencias">Referencias</h2>
 
 <div id="refs" class="references csl-bib-body hanging-indent"
