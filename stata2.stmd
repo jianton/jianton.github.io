@@ -448,6 +448,7 @@ o la secuencia
 frame <i>framename</i> {
     <i>commands referring to `lname'</i>
 }
+</pre>
 
 Así, podemos realizar el mismo ejercicio que antes pero sin cambiar de `frame`
 
