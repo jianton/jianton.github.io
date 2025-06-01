@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>吳恩達 | J.I. Antón | Applied Microeconometrics</title>
-    <link>https://jianton.github.io/author/%E5%90%B3%E6%81%A9%E9%81%94/</link>
-      <atom:link href="https://jianton.github.io/author/%E5%90%B3%E6%81%A9%E9%81%94/index.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4321/author/%E5%90%B3%E6%81%A9%E9%81%94/</link>
+      <atom:link href="http://localhost:4321/author/%E5%90%B3%E6%81%A9%E9%81%94/index.xml" rel="self" type="application/rss+xml" />
     <description>吳恩達</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
     <image>
-      <url>https://jianton.github.io/images/icon_hu83426120324ae0ba26ae9f6a53ddb01c_205146_512x512_fill_lanczos_center_3.png</url>
+      <url>http://localhost:4321/images/icon_hu83426120324ae0ba26ae9f6a53ddb01c_205146_512x512_fill_lanczos_center_3.png</url>
       <title>吳恩達</title>
-      <link>https://jianton.github.io/author/%E5%90%B3%E6%81%A9%E9%81%94/</link>
+      <link>http://localhost:4321/author/%E5%90%B3%E6%81%A9%E9%81%94/</link>
     </image>
     
     <item>
       <title>吳恩達</title>
-      <link>https://jianton.github.io/author/%E5%90%B3%E6%81%A9%E9%81%94/</link>
+      <link>http://localhost:4321/author/%E5%90%B3%E6%81%A9%E9%81%94/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://jianton.github.io/author/%E5%90%B3%E6%81%A9%E9%81%94/</guid>
+      <guid>http://localhost:4321/author/%E5%90%B3%E6%81%A9%E9%81%94/</guid>
       <description>&lt;p&gt;吳恩達 is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.&lt;/p&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.&lt;/p&gt;
 </description>
