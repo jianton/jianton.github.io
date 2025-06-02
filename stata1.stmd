@@ -27,7 +27,7 @@ Una alternativa muy razonable es `R`: potente, flexible, gratuito, con una comun
 
 # 2. Objetivos del curso
 
-El curso consta de 10 horas, por lo que la finalidad es proporcionar a los asistentes un panorama de lo que `Stata` puede hacer y orientarles en la búsqueda de recursos apropiados para que puedan aprender de forma autónoma de acuerdo con sus intereses. Todos los materiales del curso pueden descargarse en el siguiente [enlace](https://drive.google.com/drive/folders/1EE9fOnmFQfY-7pImpfMrsgYFo_7MaD6_?usp=sharing).
+El curso consta de 10 horas, por lo que la finalidad es proporcionar a los asistentes un panorama de lo que `Stata` puede hacer y orientarles en la búsqueda de recursos apropiados para que puedan aprender de forma autónoma de acuerdo con sus intereses. Todos los materiales del curso pueden descargarse en el siguiente [enlace](https://drive.google.com/file/d/16bukxS8OwOsmH51R0O_hw3ggXhfdZh6O/view?usp=drive_link).
 
 # 3. Conceptos básicos
 
@@ -73,10 +73,6 @@ Los archivos de ayuda de Stata.
 
 Diagramas de ecuaciones estructurales.
 
-### Archivos `.stpr`
-
-Archivos de proyectos de `Stata`. Agrupan jerárquicamente los archivos anteriores.
-
 ### Archivos `.stmd`
 
 Archivos Markdown de `Stata`, similares a los archivos *.do*, que se emplean por comandos como `markstat` para la creación de documentos dinámicos reproducibles.
@@ -84,6 +80,10 @@ Archivos Markdown de `Stata`, similares a los archivos *.do*, que se emplean por
 ### Archivos `.dtas`
 
 Archivos que contienen `frames` (varias bases de datos).
+
+### Archivos `.stpr`
+
+Archivos de proyectos de `Stata`. Agrupan jerárquicamente los archivos anteriores.
 
 En la práctica, los archivos que más vamos a utilizar son los archivos `.do` y `.dta`.
 
