@@ -320,7 +320,7 @@ foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {
  }
 
 foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {
-    i>commands referring to `lname'</i></pre>
+    i>commands referring to `lname'</i>
 }
 
 foreach <i>lname</i> of <u>num</u>list <i>numlist</i> {

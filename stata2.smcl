@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata2.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 1 Jun 2025, 22:33:43
+ {txt}opened on:  {res} 3 Jun 2025, 15:25:31
 {txt}
 {com}. //_1
 . cd "D:\Dropbox\curso_stata\sesión2"
@@ -339,7 +339,7 @@
 . //  Cambiamos la disposición de long a wide
 . 
 . reshape wide salariomed, i(sexo) j(ano)
-{txt}(j = 2016 2017 2018)
+{res}{txt}(j = 2016 2017 2018)
 
 Data{col 36}Long{col 43}->{col 48}Wide
 {hline 77}
@@ -373,7 +373,7 @@ xij variables:
 . //  Cambiamos la disposición de long a wide
 . 
 . reshape long salariomed, i(sexo) j(ano)
-{txt}(j = 2016 2017 2018)
+{res}{txt}(j = 2016 2017 2018)
 
 Data{col 36}Wide{col 43}->{col 48}Long
 {hline 77}
@@ -395,7 +395,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
 {p 0 48}{res}{bind:sexo           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:sexo_lab }{bind:  }{res}{res}Sexo{p_end}
-{p 0 48}{bind:ano            }{txt}{bind: int     }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Año de la encuesta{p_end}
+{p 0 48}{bind:ano            }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Año de la encuesta{p_end}
 {p 0 48}{bind:salariomed     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(mean) salario{p_end}
 {p 0 48}{bind:cambio1618     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Cambio porcentual del salario (2016-2018){p_end}
 {txt}{hline}
@@ -420,7 +420,7 @@ Sorted by: {res}sexo  ano
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
-{p 0 48}{res}{bind:ano            }{txt}{bind: int     }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Año de la encuesta{p_end}
+{p 0 48}{res}{bind:ano            }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Año de la encuesta{p_end}
 {p 0 48}{bind:salariomed     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(mean) salario{p_end}
 {p 0 48}{bind:cambio1618     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Cambio porcentual del salario (2016-2018){p_end}
 {txt}{hline}
@@ -441,7 +441,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 {hline}
 {p 0 48}{res}{bind:sexo           }{txt}{bind: byte    }{bind:%8.0g     }{space 1}{bind:sexo_lab }{bind:  }{res}{res}Sexo{p_end}
-{p 0 48}{bind:ano            }{txt}{bind: int     }{bind:%10.0g    }{space 1}{bind:         }{bind:  }{res}{res}Año de la encuesta{p_end}
+{p 0 48}{bind:ano            }{txt}{bind: int     }{bind:%8.0g     }{space 1}{bind:         }{bind:  }{res}{res}Año de la encuesta{p_end}
 {p 0 48}{bind:salariomed     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}(mean) salario{p_end}
 {p 0 48}{bind:cambio1618     }{txt}{bind: float   }{bind:%9.0g     }{space 1}{bind:         }{bind:  }{res}{res}Cambio porcentual del salario (2016-2018){p_end}
 {txt}{hline}
@@ -644,7 +644,7 @@ Sorted by: {res}sexo  ano
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata2.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 1 Jun 2025, 22:33:44
+ {txt}closed on:  {res} 3 Jun 2025, 15:25:32
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -841,7 +841,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
-ano             int     %10.0g                Año de la encuesta
+ano             int     %8.0g                 Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -866,7 +866,7 @@ Contains data
 Variable      Storage   Display    Value
     name         type    format    label      Variable label
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-ano             int     %10.0g                Año de la encuesta
+ano             int     %8.0g                 Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -887,7 +887,7 @@ Variable      Storage   Display    Value
     name         type    format    label      Variable label
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 sexo            byte    %8.0g      sexo_lab   Sexo
-ano             int     %10.0g                Año de la encuesta
+ano             int     %8.0g                 Año de la encuesta
 salariomed      float   %9.0g                 (mean) salario
 cambio1618      float   %9.0g                 Cambio porcentual del salario (2016-2018)
 ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
@@ -946,10 +946,8 @@ foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {
  foreach <i>lname</i> of <u>var</u>list <i>varlist</i> {
     <i>commands referring to `lname'</i></pre>
 <p>}</p>
-foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> { i&gt;commands
-referring to `lname’</i>
-</pre>
-<p>}</p>
+<p>foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {
+i&gt;commands referring to `lname’</i> }</p>
 <p>foreach <i>lname</i> of <u>num</u>list <i>numlist</i> { <i>commands
 referring to `lname’</i> }</p>
 forvalues <i>lname</i> = <i>range</i> { <i>commands referring to
