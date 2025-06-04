@@ -68,9 +68,7 @@ cd "D:\Dropbox\curso_stata\sesión4"
 //  Abrimos el archivo
 
 use "ecv18.dta", clear
-```
 
-```{s}
 //  Calculamos el salario medio y la tasa de pobreza por CCAA
 
 generate rentaasa = rentamonasag + rentanomonasag
