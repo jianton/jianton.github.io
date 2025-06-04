@@ -944,17 +944,23 @@ foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {
 }
 
  foreach <i>lname</i> of <u>var</u>list <i>varlist</i> {
-    <i>commands referring to `lname'</i></pre>
-<p>}</p>
-<p>foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {
-i&gt;commands referring to `lname’</i> }</p>
-<p>foreach <i>lname</i> of <u>num</u>list <i>numlist</i> { <i>commands
-referring to `lname’</i> }</p>
-forvalues <i>lname</i> = <i>range</i> { <i>commands referring to
-`lname’</i> }
+    <i>commands referring to `lname'</i>
+ }
+
+foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {
+    i>commands referring to `lname'</i>
+}
+
+foreach <i>lname</i> of <u>num</u>list <i>numlist</i> {
+    <i>commands referring to `lname'</i>
+}
+
+forvalues <i>lname</i> = <i>range</i> {
+    <i>commands referring to `lname'</i>
+}
 </pre>
 <p>Podemos calcular a modo de ejemplo la media del salario para cada uno
-de los 3 años en la muestra:</p>
+de los tres años en la muestra:</p>
 <pre class='stata'>. forvalues i=2016(1)2018{
   2.   summarize salariomed if ano == `i'
   3. }

@@ -316,7 +316,7 @@ foreach <i>lname</i> of <u>glo</u>bal <i>gmacname</i> {
 }
 
  foreach <i>lname</i> of <u>var</u>list <i>varlist</i> {
-    <i>commands referring to `lname'</i></pre>
+    <i>commands referring to `lname'</i>
  }
 
 foreach <i>lname</i> of <u>new</u>list <i>newvarlist</i> {
@@ -332,7 +332,7 @@ forvalues <i>lname</i> = <i>range</i> {
 }
 </pre>
 
-Podemos calcular a modo de ejemplo la media del salario para cada uno de los 3 años en la muestra:
+Podemos calcular a modo de ejemplo la media del salario para cada uno de los tres años en la muestra:
 
 ```{s}
 forvalues i=2016(1)2018{
