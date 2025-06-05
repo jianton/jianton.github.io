@@ -1,0 +1,19 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata_ejercicios.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 5 Jun 2025, 20:40:11
+{txt}
+{com}. //_1q
+. quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
+{txt}
+{com}. //_^
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata_ejercicios.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 5 Jun 2025, 20:40:11
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
