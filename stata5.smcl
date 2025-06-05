@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata5.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:56:11
+ {txt}opened on:  {res} 5 Jun 2025, 20:59:18
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -439,7 +439,7 @@ Adjusted R-squared{space 4} {c |} {space 1}{result:,1989575} {space 1}{result:,2
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata5.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:56:26
+ {txt}closed on:  {res} 5 Jun 2025, 20:59:34
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
