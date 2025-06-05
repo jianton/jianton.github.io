@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:52:25
+ {txt}opened on:  {res} 5 Jun 2025, 20:55:43
 {txt}
 {com}. //_1
 . clear all
@@ -656,7 +656,7 @@ all files already exist and are up to date.
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:52:34
+ {txt}closed on:  {res} 5 Jun 2025, 20:55:50
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

@@ -72,6 +72,8 @@ Realiza las cuatro regresiones de la posición ideológica sobre los siguientes 
 
 Con ayuda de `esttab` o `putexcel`, crea una tabla en Microsoft Word (o un procesador de textos similar) con la tabla de regresión.
 
+preuba
+
 ```{s/}
 quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
 ```

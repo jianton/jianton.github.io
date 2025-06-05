@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:39:46
+ {txt}opened on:  {res} 5 Jun 2025, 20:56:00
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -21,16 +21,16 @@
 . //  Calculamos el salario medio y la tasa de pobreza por CCAA
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-{txt}(5.362 missing values generated)
+{txt}(5,362 missing values generated)
 
 {com}. generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-{txt}(5.578 missing values generated)
+{txt}(5,578 missing values generated)
 
 {com}. keep if rentaasa > 0 & rentaasa < .
-{txt}(19.369 observations deleted)
+{txt}(19,369 observations deleted)
 
 {com}. keep if nmesesasa > 0 & nmesesasa < .
-{txt}(2.585 observations deleted)
+{txt}(2,585 observations deleted)
 
 {com}. 
 . generate salario = rentaasa/nmesesasa
@@ -158,16 +158,16 @@
 . generate edad = 2018 - anonac
 {txt}
 {com}. generate edadg = 1 if edad > 16 & edad <= 29
-{txt}(29.586 missing values generated)
+{txt}(29,586 missing values generated)
 
 {com}. replace edadg = 2 if edad >= 30 & edad <= 44
-{txt}(6.145 real changes made)
+{txt}(6,145 real changes made)
 
 {com}. replace edadg = 3 if edad >= 45 & edad <= 54
-{txt}(5.361 real changes made)
+{txt}(5,361 real changes made)
 
 {com}. replace edadg = 4 if edad >= 55 & edad <= 64
-{txt}(5.159 real changes made)
+{txt}(5,159 real changes made)
 
 {com}. label variable edadg "Grupos de edad"
 {txt}
@@ -179,16 +179,16 @@
 . //  Calculamos grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-{txt}(27.003 missing values generated)
+{txt}(27,003 missing values generated)
 
 {com}. replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-{txt}(8.725 real changes made)
+{txt}(8,725 real changes made)
 
 {com}. replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-{txt}(4.735 real changes made)
+{txt}(4,735 real changes made)
 
 {com}. replace educg = 4 if educ == 500
-{txt}(7.969 real changes made)
+{txt}(7,969 real changes made)
 
 {com}. 
 . label variable educg "Educación (agrupada)"
@@ -201,16 +201,16 @@
 . //  Calculamos el salario
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-{txt}(5.362 missing values generated)
+{txt}(5,362 missing values generated)
 
 {com}. generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-{txt}(5.578 missing values generated)
+{txt}(5,578 missing values generated)
 
 {com}. keep if rentaasa > 0 & rentaasa < .
-{txt}(19.369 observations deleted)
+{txt}(19,369 observations deleted)
 
 {com}. keep if nmesesasa > 0 & nmesesasa < .
-{txt}(2.585 observations deleted)
+{txt}(2,585 observations deleted)
 
 {com}. 
 . generate salario = rentaasa/nmesesasa
@@ -297,25 +297,25 @@
 . //  Calculamos la tasa de empleo
 . 
 . gen empleo = 0 if edad >= 18 & edad <= 64
-{txt}(13.265 missing values generated)
+{txt}(13,265 missing values generated)
 
 {com}. recode empleo (0 = 1) if sitact == 1
-{txt}(12.867 changes made to {bf:empleo})
+{txt}(12,867 changes made to {bf:empleo})
 
 {com}. 
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-{txt}(27.003 missing values generated)
+{txt}(27,003 missing values generated)
 
 {com}. replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-{txt}(8.725 real changes made)
+{txt}(8,725 real changes made)
 
 {com}. replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-{txt}(4.735 real changes made)
+{txt}(4,735 real changes made)
 
 {com}. replace educg = 4 if educ == 500
-{txt}(7.969 real changes made)
+{txt}(7,969 real changes made)
 
 {com}. 
 . label variable educg "Educación (agrupada)"
@@ -326,7 +326,7 @@
 {txt}
 {com}. 
 . keep if empleo < . & educg < .
-{txt}(13.442 observations deleted)
+{txt}(13,442 observations deleted)
 
 {com}. 
 . //  Creamos la base de datos con los estadísticos de interés
@@ -367,16 +367,16 @@
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-{txt}(27.003 missing values generated)
+{txt}(27,003 missing values generated)
 
 {com}. replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-{txt}(8.725 real changes made)
+{txt}(8,725 real changes made)
 
 {com}. replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-{txt}(4.735 real changes made)
+{txt}(4,735 real changes made)
 
 {com}. replace educg = 4 if educ == 500
-{txt}(7.969 real changes made)
+{txt}(7,969 real changes made)
 
 {com}. 
 . label variable educg "Educación (agrupada)"
@@ -387,7 +387,7 @@
 {txt}
 {com}. 
 . keep if educg < .
-{txt}(5.574 observations deleted)
+{txt}(5,574 observations deleted)
 
 {com}. 
 . //  Creamos la base de datos con los estadísticos de interés
@@ -541,16 +541,16 @@ xij variables:
 . //  Calculamos el salario
 . 
 . generate rentaasa = rentamonasag + rentamonasag
-{txt}(5.362 missing values generated)
+{txt}(5,362 missing values generated)
 
 {com}. generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-{txt}(5.578 missing values generated)
+{txt}(5,578 missing values generated)
 
 {com}. keep if rentaasa > 0 & rentaasa < .
-{txt}(19.416 observations deleted)
+{txt}(19,416 observations deleted)
 
 {com}. keep if nmesesasa > 0 & nmesesasa < .
-{txt}(2.540 observations deleted)
+{txt}(2,540 observations deleted)
 
 {com}. 
 . generate salario = rentaasa/nmesesasa
@@ -568,16 +568,16 @@ xij variables:
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-{txt}(10.934 missing values generated)
+{txt}(10,934 missing values generated)
 
 {com}. replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-{txt}(3.331 real changes made)
+{txt}(3,331 real changes made)
 
 {com}. replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-{txt}(2.509 real changes made)
+{txt}(2,509 real changes made)
 
 {com}. replace educg = 4 if educ == 500
-{txt}(5.094 real changes made)
+{txt}(5,094 real changes made)
 
 {com}. 
 . label variable educg "Educación (agrupada)"
@@ -720,7 +720,7 @@ saved
 {com}. geoframe create ccaa_pobreza_datos using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
 {res}{txt}(creating frame {stata geoframe describe ccaa_pobreza_datos:{bf:ccaa_pobreza_datos}} from ccaa_pobreza_datos.dta)
 (creating frame {stata geoframe describe ccaa_pobreza_datos_shp:{bf:ccaa_pobreza_datos_shp}} from ccaa_shp.dta)
-{res}{txt}(dropped 1.962 unmatched observations in frame {stata geoframe describe ccaa_pobreza_datos_shp:{bf:ccaa_pobreza_datos_shp}})
+{res}{txt}(dropped 1,962 unmatched observations in frame {stata geoframe describe ccaa_pobreza_datos_shp:{bf:ccaa_pobreza_datos_shp}})
 
             Frame name: {bf:ccaa_pobreza_datos} [{stata frame change ccaa_pobreza_datos:make current}]
             Frame type: {bf:attribute}
@@ -733,7 +733,7 @@ saved
 {com}. geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_etiquetas.dta", shp("ccaa_shp.dta") replace
 {res}{txt}(creating frame {stata geoframe describe ccaa_pobreza_etiquetas:{bf:ccaa_pobreza_etiquetas}} from ccaa_pobreza_etiquetas.dta)
 (creating frame {stata geoframe describe ccaa_pobreza_etiquetas_shp:{bf:ccaa_pobreza_etiquetas_shp}} from ccaa_shp.dta)
-{res}{txt}(dropped 1.962 unmatched observations in frame {stata geoframe describe ccaa_pobreza_etiquetas_shp:{bf:ccaa_pobreza_etiquetas_shp}})
+{res}{txt}(dropped 1,962 unmatched observations in frame {stata geoframe describe ccaa_pobreza_etiquetas_shp:{bf:ccaa_pobreza_etiquetas_shp}})
 
             Frame name: {bf:ccaa_pobreza_etiquetas} [{stata frame change ccaa_pobreza_etiquetas:make current}]
             Frame type: {bf:attribute}
@@ -763,7 +763,7 @@ saved
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:39:57
+ {txt}closed on:  {res} 5 Jun 2025, 20:56:11
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}
