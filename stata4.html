@@ -363,7 +363,6 @@ trabajo es elaborar el gráfico con los menús y obtener el código que
 responde a nuestras preferencias, que llevaremos al archivo
 <code>.do</code> para poder reproducir el gráfico cuando lo deseemos o
 reutilizarlo con otras bases de datos.</p>
-
 <pre class='stata'>. //  Fijamos el directorio de trabajo
 . 
 . cd "D:\Dropbox\curso_stata\sesión4"
@@ -379,16 +378,16 @@ D:\Dropbox\curso_stata\sesión4
 . //  Calculamos el salario medio y la tasa de pobreza por CCAA
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-(5,362 missing values generated)
+(5.362 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(5,578 missing values generated)
+(5.578 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(19,369 observations deleted)
+(19.369 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(2,585 observations deleted)
+(2.585 observations deleted)
 
 . 
 . generate salario = rentaasa/nmesesasa
@@ -524,16 +523,16 @@ nivel de estudios.</p>
 . generate edad = 2018 - anonac
 
 . generate edadg = 1 if edad > 16 &amp; edad &lt;= 29
-(29,586 missing values generated)
+(29.586 missing values generated)
 
 . replace edadg = 2 if edad >= 30 &amp; edad &lt;= 44
-(6,145 real changes made)
+(6.145 real changes made)
 
 . replace edadg = 3 if edad >= 45 &amp; edad &lt;= 54
-(5,361 real changes made)
+(5.361 real changes made)
 
 . replace edadg = 4 if edad >= 55 &amp; edad &lt;= 64
-(5,159 real changes made)
+(5.159 real changes made)
 
 . label variable edadg "Grupos de edad"
 
@@ -545,16 +544,16 @@ nivel de estudios.</p>
 . //  Calculamos grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(27,003 missing values generated)
+(27.003 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(8,725 real changes made)
+(8.725 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(4,735 real changes made)
+(4.735 real changes made)
 
 . replace educg = 4 if educ == 500
-(7,969 real changes made)
+(7.969 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -567,16 +566,16 @@ nivel de estudios.</p>
 . //  Calculamos el salario
 . 
 . generate rentaasa = rentamonasag + rentanomonasag
-(5,362 missing values generated)
+(5.362 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(5,578 missing values generated)
+(5.578 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(19,369 observations deleted)
+(19.369 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(2,585 observations deleted)
+(2.585 observations deleted)
 
 . 
 . generate salario = rentaasa/nmesesasa
@@ -667,25 +666,25 @@ empleo por sexo y nivel educativo en España.</p>
 . //  Calculamos la tasa de empleo
 . 
 . gen empleo = 0 if edad >= 18 &amp; edad &lt;= 64
-(13,265 missing values generated)
+(13.265 missing values generated)
 
 . recode empleo (0 = 1) if sitact == 1
-(12,867 changes made to empleo)
+(12.867 changes made to empleo)
 
 . 
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(27,003 missing values generated)
+(27.003 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(8,725 real changes made)
+(8.725 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(4,735 real changes made)
+(4.735 real changes made)
 
 . replace educg = 4 if educ == 500
-(7,969 real changes made)
+(7.969 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -696,7 +695,7 @@ empleo por sexo y nivel educativo en España.</p>
 
 . 
 . keep if empleo &lt; . &amp; educg &lt; .
-(13,442 observations deleted)
+(13.442 observations deleted)
 
 . 
 . //  Creamos la base de datos con los estadísticos de interés
@@ -742,16 +741,16 @@ editor de gráficos de <code>Stata</code>.</p>
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(27,003 missing values generated)
+(27.003 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(8,725 real changes made)
+(8.725 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(4,735 real changes made)
+(4.735 real changes made)
 
 . replace educg = 4 if educ == 500
-(7,969 real changes made)
+(7.969 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -762,7 +761,7 @@ editor de gráficos de <code>Stata</code>.</p>
 
 . 
 . keep if educg &lt; .
-(5,574 observations deleted)
+(5.574 observations deleted)
 
 . 
 . //  Creamos la base de datos con los estadísticos de interés
@@ -945,16 +944,16 @@ superior.</p>
 . //  Calculamos el salario
 . 
 . generate rentaasa = rentamonasag + rentamonasag
-(5,362 missing values generated)
+(5.362 missing values generated)
 
 . generate nmesesasa = nmesesasatc + 0.5*nmesesasatp
-(5,578 missing values generated)
+(5.578 missing values generated)
 
 . keep if rentaasa > 0 &amp; rentaasa &lt; .
-(19,416 observations deleted)
+(19.416 observations deleted)
 
 . keep if nmesesasa > 0 &amp; nmesesasa &lt; .
-(2,540 observations deleted)
+(2.540 observations deleted)
 
 . 
 . generate salario = rentaasa/nmesesasa
@@ -972,16 +971,16 @@ superior.</p>
 . //  Calculamos los grupos de niveles educativos
 . 
 . generate educg = 1 if educ == 0 | educ == 100
-(10,934 missing values generated)
+(10.934 missing values generated)
 
 . replace educg = 2 if educ == 200 | educ == 344 | educ == 353
-(3,331 real changes made)
+(3.331 real changes made)
 
 . replace educg = 3 if educ == 300 | educ == 354 | educ == 400 | educ == 450
-(2,509 real changes made)
+(2.509 real changes made)
 
 . replace educg = 4 if educ == 500
-(5,094 real changes made)
+(5.094 real changes made)
 
 . 
 . label variable educg "Educación (agrupada)"
@@ -1189,7 +1188,7 @@ correspondiente</p>
 . geoframe create ccaa_pobreza_datos using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
 (creating frame ccaa_pobreza_datos from ccaa_pobreza_datos.dta)
 (creating frame ccaa_pobreza_datos_shp from ccaa_shp.dta)
-(dropped 1,962 unmatched observations in frame ccaa_pobreza_datos_shp)
+(dropped 1.962 unmatched observations in frame ccaa_pobreza_datos_shp)
 
             Frame name: ccaa_pobreza_datos [make current]
             Frame type: attribute
@@ -1199,10 +1198,10 @@ correspondiente</p>
            Coordinates: _CX _CY
     Linked shape frame: ccaa_pobreza_datos_shp
 
-. geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
-(creating frame ccaa_pobreza_etiquetas from ccaa_pobreza_datos.dta)
+. geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_etiquetas.dta", shp("ccaa_shp.dta") replace
+(creating frame ccaa_pobreza_etiquetas from ccaa_pobreza_etiquetas.dta)
 (creating frame ccaa_pobreza_etiquetas_shp from ccaa_shp.dta)
-(dropped 1,962 unmatched observations in frame ccaa_pobreza_etiquetas_shp)
+(dropped 1.962 unmatched observations in frame ccaa_pobreza_etiquetas_shp)
 
             Frame name: ccaa_pobreza_etiquetas [make current]
             Frame type: attribute

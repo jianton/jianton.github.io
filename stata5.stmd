@@ -285,7 +285,7 @@ texdoc close
 
 ```
 
-![Texto generada por `Stata` con `texdoc`](textplain.png){width=50%}
+![Texto generado por `Stata` con `texdoc`](textplain.png){width=50%}
 
 Por último, podemos generar un gráfico en formato `.pdf`, que es muy apropiado para exportar a LaTeX.
 
@@ -338,14 +338,18 @@ Desde la versión 17, de `Stata` permite crear tablas personalizadas de resultad
 
 Así, en primer lugar, podemos almacenar la información de los modelos con `collect`.
 
-    . //	Creación de tablas con la herramienta Tables Builder de Stata
+```{s}
+//	Creación de tablas con la herramienta Tables Builder de Stata
 
-    . collect clear
-    . collect create Salarios
+collect clear
+collect create Salarios
 
-    . collect _r_b _r_se, tag(model[Total]): regress logsalario ib1.sexo edad edad2 ib1.educg
-    . collect _r_b _r_se, tag(model[Hombres]): regress logsalario edad edad2 ib1.educg if sexo == 1
-    . collect _r_b _r_se, tag(model[Mujeres]): regress logsalario edad edad2 ib1.educg if sexo == 2
+collect _r_b _r_se, tag(model[Total]): regress logsalario ib1.sexo edad edad2 ib1.educg
+collect _r_b _r_se, tag(model[Hombres]): regress logsalario edad edad2 ib1.educg if sexo == 1
+collect _r_b _r_se, tag(model[Mujeres]): regress logsalario edad edad2 ib1.educg if sexo == 2
+
+collect layout (colname[2.sexo edad edad2 2.educg 3.educg]#result[_r_b _r_se] result[N r2_a])  (model[Total] model[Hombres] model[Mujeres]) (), name(Salarios)
+```
 
 Posteriormente, empleamos el sistema de ventanas para personalizar la tabla.
 
@@ -353,39 +357,50 @@ Posteriormente, empleamos el sistema de ventanas para personalizar la tabla.
 
 Mediante el método ensayo-error, vamos adecuando la tabla a nuestras preferencias. Cada modificación resulta en un comando, que podremos copiar a nuestro archivo `.do` para reproducir el gráfico cuando queramos.
 
-    . collect stars _r_p 0.010 `"***"' 0.050 `"**"' 0.100 `"*"', attach(_r_b)
-    . collect label levels result N "No. de observaciones" r2_a "R cuadrado ajustado", modify
-    . collect style header result[_r_b], level(hide)
-    . collect style header result[_r_se], level(hide)
-    . collect style cell result[_r_b]#result[_r_se]#result[r2_a], warn nformat(%04,3f) halign(center) valign(center)
-    . collect style cell result[_r_se], warn sformat((%s))
-    . collect style cell result[N], warn nformat(%6,0fc)
-    . collect style cell result[N]#result[r2_a], warn halign(left) valign(center)
-    . collect style cell cell_type[item], warn halign(center) valign(center) margin( right, width(15pt) ) margin( left, width(15pt) )
-    . collect label levels educg 2 "Educación secundaria" 3 "Educación superior", modify
-    . collect style cell model[Total]#model[Hombres]#model[Mujeres], warn halign(center) valign(center)
-    . collect style cell result[N], warn margin( top, width(15) )
-    . collect notes, clear
-    . collect notes `"*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante."'
-    . collect notes `"Fuente: Elaboración propia a partir de la ECV 2018"'
-    . collect style cell, border( all,  pattern(nil) )
-    . collect style cell cell_type[column-header]#cell_type[corner], warn border(top, width(0.5) pattern(single)) border(bottom, width(0.5) pattern(single)) margin(top, width(5)) margin( bottom, width(5) )
-    . collect style cell result[r2_a], warn border( bottom, width(0.5) pattern(single) )
-    . collect style cell, basestyle font("Times New Roman", size(10pt))
-    . collect style title, font("Times New Roman", size(10pt))
-    . collect style notes, font("Times New Roman", size(10pt))
+```{s}
+collect stars _r_p 0.010 `"***"' 0.050 `"**"' 0.100 `"*"', attach(_r_b)
+collect label levels result N "No. de observaciones" r2_a "R cuadrado ajustado", modify
+collect style header result[_r_b], level(hide)
+collect style header result[_r_se], level(hide)
+collect style cell result[_r_b _r_se r2_a], warn nformat(%04,3f) halign(center) valign(center)
+collect style cell result[_r_se], warn sformat((%s))
+collect style cell result[N], warn nformat(%6,0fc)
+collect style cell result[N r2_a], warn halign(left) valign(center)
+collect style cell cell_type[item], warn halign(center) valign(center) margin( right, width(15pt) ) margin( left, width(15pt) )
+collect label levels educg 2 "Educación secundaria" 3 "Educación superior", modify
+collect style cell model[Total Hombres Mujeres], warn halign(center) valign(center)
+collect style cell result[N], warn margin( top, width(15) )
+collect title "Tabla 1. Regresión salarial por sexo"
+collect notes, clear
+collect notes `"*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante."'
+collect notes `"Fuente: Elaboración propia a partir de la ECV 2018"'
+collect style cell, border( all,  pattern(nil) )
+collect style cell cell_type[column-header corner], warn border(top, width(0.5) pattern(single)) border(bottom, width(0.5) pattern(single)) margin(top, width(5)) margin( bottom, width(5) )
+collect style cell result[r2_a], warn border( bottom, width(0.5) pattern(single) )
+collect style cell, basestyle font("Times New Roman", size(10pt))
+collect style title, font("Times New Roman", size(10pt))
+collect style notes, font("Times New Roman", size(10pt))
+```
 
 Una vez que la tabla se adecua a nuestras preferencias, podemos exportarla en distintos formatos.
 
 Por ejemplo, podemos exportarla en MS Word.
 
-    . collect style putdocx, halign(center) width(70%)
-    . collect export "salarios3.docx", as(docx) replace
+```{s}
+// Exportamos la tabla en MS Word
+
+collect style putdocx, halign(center) width(70%)
+collect export "salarios3.docx", as(docx) dofile("instrucciones_putdocx", replace) replace 
+```
 
 También puede exportarse en `.tex`.
 
-    . collect style tex, nobegintable centering
-    . collect export "salarios3", as(docx) dofile("instrucciones_putdocx", replace) replace
+```{s}
+//	Exportamos la tabla en TeX
+
+collect style tex, nobegintable centering
+collect export "salarios3.tex", as(tex) replace
+```
 
 La herramienta de personalización de tablas es sin duda útil y mejora el programa, pero, actualmente, los flujos anteriores basados en `putexcel` en el caso de MS Word y `estout` resultan más flexibles.
 

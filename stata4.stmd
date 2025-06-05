@@ -54,12 +54,6 @@ En primer lugar, vamos a configurar el formato de los gráficos para que nos sir
 
 Comenzamos por un gráfico sencillo, en el que tratamos de ver la relación el salario medio de una Comunidad Autónoma y la proporción de personas pobres (tasa de pobreza). Realizaremos en primer lugar el gráfico sin personalización alguna y, posteriormente, elaboraremos una figura con opciones personalizadas. El proceso es eminentemente ***learning by doing*** y la forma habitual de trabajo es elaborar el gráfico con los menús y obtener el código que responde a nuestras preferencias, que llevaremos al archivo `.do` para poder reproducir el gráfico cuando lo deseemos o reutilizarlo con otras bases de datos.
 
-```{s/}
-quietly{
-  set scheme s2color
-}
-```
-
 ```{s}
 //  Fijamos el directorio de trabajo
 
@@ -636,7 +630,7 @@ save "ccaa_pobreza_etiquetas.dta", replace
 ```{s}
 geoframe create ccaa using "ccaa.dta", shp("ccaa_shp.dta") replace
 geoframe create ccaa_pobreza_datos using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
-geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_datos.dta", shp("ccaa_shp.dta") replace
+geoframe create ccaa_pobreza_etiquetas using "ccaa_pobreza_etiquetas.dta", shp("ccaa_shp.dta") replace
 ```
 
 **Paso 5**. Generamos el gráfico

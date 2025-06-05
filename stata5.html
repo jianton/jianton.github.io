@@ -732,8 +732,8 @@ all files already exist and are up to date.
 </pre>
 <figure>
 <img src="textplain.png" style="width:50.0%"
-alt="Texto generada por Stata con texdoc" />
-<figcaption aria-hidden="true">Texto generada por <code>Stata</code> con
+alt="Texto generado por Stata con texdoc" />
+<figcaption aria-hidden="true">Texto generado por <code>Stata</code> con
 <code>texdoc</code></figcaption>
 </figure>
 <p>Por último, podemos generar un gráfico en formato <code>.pdf</code>,
@@ -828,14 +828,112 @@ oficial de <code>Stata</code></a> se ofrecen buenos consejos sobre el
 tema basados en la línea de comandos.</p>
 <p>Así, en primer lugar, podemos almacenar la información de los modelos
 con <code>collect</code>.</p>
-<pre><code>. //    Creación de tablas con la herramienta Tables Builder de Stata
-
+<pre class='stata'>. //    Creación de tablas con la herramienta Tables Builder de Stata
+. 
 . collect clear
-. collect create Salarios
 
+. collect create Salarios
+(current collection is Salarios)
+
+. 
 . collect _r_b _r_se, tag(model[Total]): regress logsalario ib1.sexo edad edad2 ib1.educg
+
+      Source │       SS           df       MS      Number of obs   =    11.599
+─────────────┼──────────────────────────────────   F(5, 11593)     =    577,13
+       Model │  1600,34458         5  320,068916   Prob > F        =    0,0000
+    Residual │  6429,36841    11.593  ,554590565   R-squared       =    0,1993
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,1990
+       Total │    8029,713    11.598  ,692336006   Root MSE        =    ,74471
+
+─────────────┬────────────────────────────────────────────────────────────────
+  logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+        sexo │
+      Mujer  │  -,2365705     ,01394   -16,97   0,000    -,2638953   -,2092458
+        edad │   ,0721823   ,0046198    15,62   0,000     ,0631268    ,0812378
+       edad2 │  -,0005808   ,0000535   -10,86   0,000    -,0006856   -,0004759
+             │
+       educg │
+Nivel medio  │    ,240602   ,0185962    12,94   0,000     ,2041503    ,2770537
+ Nivel alto  │    ,613554   ,0163944    37,42   0,000     ,5814181    ,6456898
+             │
+       _cons │   5,145524   ,0958254    53,70   0,000      4,95769    5,333357
+─────────────┴────────────────────────────────────────────────────────────────
+
 . collect _r_b _r_se, tag(model[Hombres]): regress logsalario edad edad2 ib1.educg if sexo == 1
-. collect _r_b _r_se, tag(model[Mujeres]): regress logsalario edad edad2 ib1.educg if sexo == 2</code></pre>
+
+      Source │       SS           df       MS      Number of obs   =     5.966
+─────────────┼──────────────────────────────────   F(4, 5961)      =    386,62
+       Model │  833,616132         4  208,404033   Prob > F        =    0,0000
+    Residual │  3213,21346     5.961  ,539039333   R-squared       =    0,2060
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,2055
+       Total │   4046,8296     5.965  ,678429102   Root MSE        =    ,73419
+
+─────────────┬────────────────────────────────────────────────────────────────
+  logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+        edad │   ,0758506   ,0061639    12,31   0,000     ,0637672     ,087934
+       edad2 │  -,0005995   ,0000715    -8,38   0,000    -,0007397   -,0004593
+             │
+       educg │
+Nivel medio  │   ,2544457   ,0246757    10,31   0,000     ,2060723    ,3028191
+ Nivel alto  │   ,5653884   ,0220473    25,64   0,000     ,5221677    ,6086091
+             │
+       _cons │   5,037839    ,127506    39,51   0,000     4,787881    5,287797
+─────────────┴────────────────────────────────────────────────────────────────
+
+. collect _r_b _r_se, tag(model[Mujeres]): regress logsalario edad edad2 ib1.educg if sexo == 2
+
+      Source │       SS           df       MS      Number of obs   =     5.633
+─────────────┼──────────────────────────────────   F(4, 5628)      =    309,16
+       Model │  703,432328         4  175,858082   Prob > F        =    0,0000
+    Residual │  3201,40011     5.628   ,56883442   R-squared       =    0,1801
+─────────────┼──────────────────────────────────   Adj R-squared   =    0,1796
+       Total │  3904,83244     5.632  ,693329624   Root MSE        =    ,75421
+
+─────────────┬────────────────────────────────────────────────────────────────
+  logsalario │ Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+─────────────┼────────────────────────────────────────────────────────────────
+        edad │   ,0665724     ,00695     9,58   0,000     ,0529477     ,080197
+       edad2 │  -,0005401   ,0000803    -6,73   0,000    -,0006974   -,0003827
+             │
+       educg │
+Nivel medio  │   ,2314164   ,0282288     8,20   0,000      ,176077    ,2867557
+ Nivel alto  │   ,6600433   ,0245986    26,83   0,000     ,6118206    ,7082661
+             │
+       _cons │    5,05201   ,1443795    34,99   0,000     4,768971     5,33505
+─────────────┴────────────────────────────────────────────────────────────────
+
+. 
+. collect layout (colname[2.sexo edad edad2 2.educg 3.educg]#result[_r_b _r_se] result[N r2_a])  (model[Total] model[Hombres] model[Mujeres]) (), name(Salarios)
+
+Collection: Salarios
+      Rows: colname[2.sexo edad edad2 2.educg 3.educg]#result[_r_b _r_se] result[N r2_a]
+   Columns: model[Total] model[Hombres] model[Mujeres]
+   Table 1: 17 x 3
+
+───────────────────────┬──────────────────────────────
+                       │     Total   Hombres   Mujeres
+───────────────────────┼──────────────────────────────
+Mujer                  │                              
+  Coefficient          │ -,2365705                    
+  Std. error           │    ,01394                    
+Edad                   │                              
+  Coefficient          │  ,0721823  ,0758506  ,0665724
+  Std. error           │  ,0046198  ,0061639    ,00695
+Edad al cuadrado       │                              
+  Coefficient          │ -,0005808 -,0005995 -,0005401
+  Std. error           │  ,0000535  ,0000715  ,0000803
+Nivel medio            │                              
+  Coefficient          │   ,240602  ,2544457  ,2314164
+  Std. error           │  ,0185962  ,0246757  ,0282288
+Nivel alto             │                              
+  Coefficient          │   ,613554  ,5653884  ,6600433
+  Std. error           │  ,0163944  ,0220473  ,0245986
+Number of observations │     11599      5966      5633
+Adjusted R-squared     │  ,1989575  ,2054596  ,1795614
+───────────────────────┴──────────────────────────────
+</pre>
 <p>Posteriormente, empleamos el sistema de ventanas para personalizar la
 tabla.</p>
 <figure>
@@ -848,35 +946,68 @@ elaborar tablas personalizadas de resultados</figcaption>
 preferencias. Cada modificación resulta en un comando, que podremos
 copiar a nuestro archivo <code>.do</code> para reproducir el gráfico
 cuando queramos.</p>
-<pre><code>. collect stars _r_p 0.010 `&quot;***&quot;&#39; 0.050 `&quot;**&quot;&#39; 0.100 `&quot;*&quot;&#39;, attach(_r_b)
-. collect label levels result N &quot;No. de observaciones&quot; r2_a &quot;R cuadrado ajustado&quot;, modify
+<pre class='stata'>. collect stars _r_p 0.010 `"***"' 0.050 `"**"' 0.100 `"*"', attach(_r_b)
+
+. collect label levels result N "No. de observaciones" r2_a "R cuadrado ajustado", modify
+
 . collect style header result[_r_b], level(hide)
+
 . collect style header result[_r_se], level(hide)
-. collect style cell result[_r_b]#result[_r_se]#result[r2_a], warn nformat(%04,3f) halign(center) valign(center)
+
+. collect style cell result[_r_b _r_se r2_a], warn nformat(%04,3f) halign(center) valign(center)
+
 . collect style cell result[_r_se], warn sformat((%s))
+
 . collect style cell result[N], warn nformat(%6,0fc)
-. collect style cell result[N]#result[r2_a], warn halign(left) valign(center)
+
+. collect style cell result[N r2_a], warn halign(left) valign(center)
+
 . collect style cell cell_type[item], warn halign(center) valign(center) margin( right, width(15pt) ) margin( left, width(15pt) )
-. collect label levels educg 2 &quot;Educación secundaria&quot; 3 &quot;Educación superior&quot;, modify
-. collect style cell model[Total]#model[Hombres]#model[Mujeres], warn halign(center) valign(center)
+
+. collect label levels educg 2 "Educación secundaria" 3 "Educación superior", modify
+
+. collect style cell model[Total Hombres Mujeres], warn halign(center) valign(center)
+
 . collect style cell result[N], warn margin( top, width(15) )
+
+. collect title "Tabla 1. Regresión salarial por sexo"
+
 . collect notes, clear
-. collect notes `&quot;*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante.&quot;&#39;
-. collect notes `&quot;Fuente: Elaboración propia a partir de la ECV 2018&quot;&#39;
+
+. collect notes `"*** significativo al 1%; ** significativo al 5%; significativo al 10%. Errores estándar entre paréntesis. Todos los modelos incluyen una constante."'
+
+. collect notes `"Fuente: Elaboración propia a partir de la ECV 2018"'
+
 . collect style cell, border( all,  pattern(nil) )
-. collect style cell cell_type[column-header]#cell_type[corner], warn border(top, width(0.5) pattern(single)) border(bottom, width(0.5) pattern(single)) margin(top, width(5)) margin( bottom, width(5) )
+
+. collect style cell cell_type[column-header corner], warn border(top, width(0.5) pattern(single)) border(bottom, width(0.5) pattern(single)) margin(top, width(5)) margin( bottom, width(5) )
+
 . collect style cell result[r2_a], warn border( bottom, width(0.5) pattern(single) )
-. collect style cell, basestyle font(&quot;Times New Roman&quot;, size(10pt))
-. collect style title, font(&quot;Times New Roman&quot;, size(10pt))
-. collect style notes, font(&quot;Times New Roman&quot;, size(10pt))</code></pre>
+
+. collect style cell, basestyle font("Times New Roman", size(10pt))
+
+. collect style title, font("Times New Roman", size(10pt))
+
+. collect style notes, font("Times New Roman", size(10pt))
+</pre>
 <p>Una vez que la tabla se adecua a nuestras preferencias, podemos
 exportarla en distintos formatos.</p>
 <p>Por ejemplo, podemos exportarla en MS Word.</p>
-<pre><code>. collect style putdocx, halign(center) width(70%)
-. collect export &quot;salarios3.docx&quot;, as(docx) replace</code></pre>
+<pre class='stata'>. // Exportamos la tabla en MS Word
+. 
+. collect style putdocx, halign(center) width(70%)
+
+. collect export "salarios3.docx", as(docx) dofile("instrucciones_putdocx", replace) replace 
+(collection Salarios exported to file salarios3.docx)
+</pre>
 <p>También puede exportarse en <code>.tex</code>.</p>
-<pre><code>. collect style tex, nobegintable centering
-. collect export &quot;salarios3&quot;, as(docx) dofile(&quot;instrucciones_putdocx&quot;, replace) replace</code></pre>
+<pre class='stata'>. //    Exportamos la tabla en TeX
+. 
+. collect style tex, nobegintable centering
+
+. collect export "salarios3.tex", as(tex) replace
+(collection Salarios exported to file salarios3.tex)
+</pre>
 <p>La herramienta de personalización de tablas es sin duda útil y mejora
 el programa, pero, actualmente, los flujos anteriores basados en
 <code>putexcel</code> en el caso de MS Word y <code>estout</code>
