@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:55:43
+ {txt}opened on:  {res}15 Jul 2025, 10:25:50
 {txt}
 {com}. //_1
 . clear all
@@ -603,8 +603,8 @@ Menor de 50 años {c |}{res}     18,289       54.22       54.22
 @net:from http://fmwww.bc.edu/RePEc/bocode/c/!http://fmwww.bc.edu/RePEc/bocode/c/@
     module to implement machine learning classification in Stata / module to
     implement machine learning classification in Stata / module to cache all
-    other Stata commands / module to generate calendar / module to estimate
-    proportions and means after survey data have been calibrated to population
+    other Stata commands / module to cache all other Stata commands / module
+    to generate calendar / module to estimate proportions and means after
 
 @net:from http://fmwww.bc.edu/RePEc/bocode/d/!http://fmwww.bc.edu/RePEc/bocode/d/@
     module to create network visualizations using D3.js to view in browser /
@@ -656,7 +656,7 @@ all files already exist and are up to date.
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata1.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:55:50
+ {txt}closed on:  {res}15 Jul 2025, 10:25:59
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

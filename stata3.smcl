@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata3.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:55:53
+ {txt}opened on:  {res}15 Jul 2025, 10:26:02
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -973,7 +973,7 @@ Scoring coefficients
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata3.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:55:59
+ {txt}closed on:  {res}15 Jul 2025, 10:26:09
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

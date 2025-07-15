@@ -358,7 +358,6 @@ correlate hrenta1 mc1
 replace mc1 = -mc1
 correlate hrenta1 mc1
 ```
-prueba
 
 # References
 

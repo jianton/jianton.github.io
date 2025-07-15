@@ -107,10 +107,6 @@ Los materiales del curso pueden descargarse en este [enlace](https://drive.googl
 Al término del curso, se proponen a los estudiantes una serie de problemas que puede descargarse en este [enlace](https://drive.google.com/file/d/1tsgvLeIRF3yPGc7pcpT4aZkgi4xUemO2/view?usp=sharing). Los ejercicios pueden realizarse creando un archivo `.do` o un archivo log (e.g., `smcl`), aunque otras opciones son admisibles (por ejemplo, los usuarios más avanzados pueden preferir archivos `.html` o `.pdf` generados con Markdown o TeX).
 :::
 ::::::::::::::
-
-prueba
-
-
 ```{s/}
 quietly: cd "D:\Dropbox\curso_stata\jianton.github.io"
 ```

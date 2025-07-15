@@ -78,7 +78,7 @@ addnote("*** significativo al 1%; ** significativo al 5%; significativo al 10%. 
 "Fuente: Elaboración propia a partir de la ECV 2018.") ///
 replace
 ```
-La versión 17 de `Stata` acepta caracteres Unicode. Para versiones anterioes a la 17, podemos convertir el archivo `.docx` para que este aparezca con los caracteres Unicode de la siguiente forma:
+La versión 17 y posteriores de `Stata` aceptan caracteres Unicode. Para versiones anterioes a la 17, podemos convertir el archivo `.docx` para que este aparezca con los caracteres Unicode de la siguiente forma:
 
 ```{s}
 unicode convertfile "salarios2.rtf" "salarios2_unicode.rtf", dstencoding(ISO-8859-1) replace // Posibilidad de utilizar caracteres que no son unicode

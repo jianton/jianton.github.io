@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:56:00
+ {txt}opened on:  {res}15 Jul 2025, 10:26:10
 {txt}
 {com}. //_1
 . //  Fijamos el directorio de trabajo
@@ -748,11 +748,11 @@ saved
 >     (area ccaa_pobreza_etiquetas hpobreza, color(Reds) cuts(0 10 20 30 40) label("@lb - @ub",  format(%09.0fc))) ///
 >     (label ccaa_pobreza_datos hpobreza, size(small) format(%09.1fc) color(black) ) ///        
 >     (line ccaa, lcolor(black) lwidth(0.1))    ///
->     , tight xsize(7) project legend(position(5) layout(- "Tasa de pobreza" 1) size(vsmall) col(1) reverse)
+>     , tight xsize(7) project legend(position(5) layout(- "Tasa de pobreza" 1) size(vsmall) col(1) reverse) ///
+>      title("Tasa de riesgo de pobreza en España", size(medium) margin(bottom))
 {res}{txt}(applying {bf:webmercator} projection)
 {res}{txt}
-{com}. 
-. //_17q
+{com}. //_17q
 . quietly{c -(}
 {txt}
 {com}. //_18q
@@ -763,7 +763,7 @@ saved
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata4.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:56:11
+ {txt}closed on:  {res}15 Jul 2025, 10:26:22
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

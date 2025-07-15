@@ -3,7 +3,7 @@
       name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata2.smcl
   {txt}log type:  {res}smcl
- {txt}opened on:  {res} 5 Jun 2025, 20:55:51
+ {txt}opened on:  {res}15 Jul 2025, 10:26:00
 {txt}
 {com}. //_1
 . cd "D:\Dropbox\curso_stata\sesión2"
@@ -644,7 +644,7 @@ Sorted by: {res}sexo  ano
       {txt}name:  {res}<unnamed>
        {txt}log:  {res}D:\Dropbox\curso_stata\jianton.github.io\stata2.smcl
   {txt}log type:  {res}smcl
- {txt}closed on:  {res} 5 Jun 2025, 20:55:52
+ {txt}closed on:  {res}15 Jul 2025, 10:26:01
 {txt}{.-}
 {smcl}
 {txt}{sf}{ul off}

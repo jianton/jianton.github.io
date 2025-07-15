@@ -640,8 +640,8 @@ geoplot ///
 		(area ccaa_pobreza_etiquetas hpobreza, color(Reds) cuts(0 10 20 30 40) label("@lb - @ub",  format(%09.0fc))) ///
 		(label ccaa_pobreza_datos hpobreza, size(small) format(%09.1fc) color(black) ) ///		
 		(line ccaa, lcolor(black) lwidth(0.1))	///
-		, tight xsize(7) project legend(position(5) layout(- "Tasa de pobreza" 1) size(vsmall) col(1) reverse)
-
+		, tight xsize(7) project legend(position(5) layout(- "Tasa de pobreza" 1) size(vsmall) col(1) reverse) ///
+ 		title("Tasa de riesgo de pobreza en España", size(medium) margin(bottom))
 ```
 
 ```{s/}
@@ -655,8 +655,6 @@ quietly{
 Obviamente, es posible realizar mapas mucho más elaborados y complicados.
 
 ![Ejemplo de mapa elaborado por Asjad Naqvi](map_europe.png){width=70%}
-
-prueba
 
 # References
 
